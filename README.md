@@ -62,4 +62,4 @@ ruff check . && ruff format --check . && mypy src && pytest
 
 ## 상태
 
-🟢 **M1 완료** — 온톨로지 타입 + 스키마 §5 validation 구현([`src/veristar/ontology/`](./src/veristar/ontology/)), `sample.json` 검증 통과, 테스트 25개·커버리지 98%. 다음: **M2** Wikidata 시드 수집기. 서비스 방향은 [`docs/service-design.md`](./docs/service-design.md) — 검색 메인 + 보조 생성, 스택 Python/FastAPI/JSONL.
+🟢 **M1·M2 완료** — 온톨로지 타입 + §5 validation([`ontology/`](./src/veristar/ontology/)), Wikidata 시드 수집기([`ingest/wikidata/`](./src/veristar/ingest/wikidata/)). 테스트 42개·커버리지 90%, ruff·mypy green. 다음: **M6a** 읽기전용 query API + 최소 탐색 UI. 서비스 방향은 [`docs/service-design.md`](./docs/service-design.md) — 검색 메인 + 보조 생성, 스택 Python/FastAPI/JSONL.
