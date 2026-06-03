@@ -77,9 +77,10 @@ def build_seed(
             sources[src.id] = src
         for stmt in records.statements:
             statements[stmt.id] = stmt
-            obj_qid = _bare_qid(stmt.object)
-            if obj_qid.startswith("Q") and obj_qid not in visited:
-                queue.append(obj_qid)
+        for obj_qid in records.expand_qids:
+            bare = _bare_qid(obj_qid)
+            if bare.startswith("Q") and bare not in visited:
+                queue.append(bare)
 
     logger.info(
         "seed built: %d entities, %d statements, %d sources (%d skipped)",

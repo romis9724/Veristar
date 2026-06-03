@@ -81,5 +81,22 @@ def test_group_debut_date(group_item: dict[str, Any]) -> None:
     assert rec is not None
     assert rec.entity.type is EntityType.GROUP
     assert rec.entity.debut_date == date(2016, 2, 23)
-    # 그룹은 관계 claim이 없으니 source도 비어 있다
+
+
+def test_has_part_is_expansion_hint_not_statement(group_item: dict[str, Any]) -> None:
+    # P527(has part)은 statement를 만들지 않고 확장 힌트로만 쓴다.
+    # memberOf 엣지는 멤버 본인의 P463에서 나오므로 그룹은 멤버 statement를 안 만든다.
+    rec = _map(group_item)
+    assert rec is not None
+    assert all(s.predicate is not Predicate.MEMBER_OF for s in rec.statements)
+    assert rec.statements == []
     assert rec.sources == []
+    assert "Q1" in rec.expand_qids  # 멤버는 확장 대상으로만 잡힘
+
+
+def test_statement_object_added_to_expand(person_item: dict[str, Any]) -> None:
+    # 관계 object(QGRP)는 reference 유무와 무관하게 확장 대상에 포함
+    rec = _map(person_item)
+    assert rec is not None
+    assert "QGRP" in rec.expand_qids
+    assert "QGRP2" in rec.expand_qids  # 무출처라 statement는 없지만 발견은 됨

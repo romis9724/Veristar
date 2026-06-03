@@ -102,6 +102,18 @@ ingest/wikidata/
 - [ ] 픽스처 기반 테스트(네트워크 0), 커버리지 80%+, ruff·mypy green.
 - [ ] 실 시드 1회 실행법 문서화(소규모 scope) — 실행 자체는 수동/선택.
 
+## 6.5 라이브 검증 결과 (2026-06-04, Stray Kids Q46134670)
+
+실 시드 1회 실행으로 두 가지 설계 오류를 발견·교정했다(픽스처만으로는 못 잡음):
+
+1. **P527(has part)은 statement로 만들지 않는다.** 방향이 그룹→멤버라 `memberOf`(Person→Group)와 반대고, "group of awards" 같은 비그룹에도 붙어 과적용된다. → **확장 힌트(expansion_props)로만** 쓰고, `memberOf` 엣지는 멤버 본인의 P463에서 생성.
+2. **확장은 statement object + 확장 힌트 object 양쪽을 따라간다.** (역방향 노드가 subject에 있어 `object`만 따라가면 멤버가 누락됨.)
+3. **타입 QID를 라이브로 검증·확장**했다(`mapping.py`의 `[verified]` 주석). best-effort 값만으론 다수가 "type not resolved"로 누락됐었다.
+
+또한 K-pop claim은 **대부분 reference가 없어** `require_reference=True`(기본)면 엣지가 거의 안 생긴다. 실용 시드는 `--allow-unreferenced` 필요 → 기본 정책 재검토 여지(열린 질문).
+
+결과(`--max 60 --allow-unreferenced`): 57 엔티티(Group 1·Person 9·Work 4·Award 43), 33 statements, 위반 0.
+
 ## 7. 범위 밖
 - 등급 분류기 본체(M3), 뉴스(M4), 생성(M5), API/UI(M6a). M2는 **Wikidata → 검증된 시드 JSON**까지.
 

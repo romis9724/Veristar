@@ -41,11 +41,16 @@ _ENTITY_CTOR: dict[EntityType, type] = {
 
 @dataclass(frozen=True)
 class MappedRecords:
-    """한 Wikidata 아이템에서 뽑은 결과."""
+    """한 Wikidata 아이템에서 뽑은 결과.
+
+    expand_qids: 확장(BFS)으로 추가 fetch할 QID(bare). statement object +
+    확장 힌트 속성(P527 등)의 object를 모은 것. 노드 발견용이라 reference 무관.
+    """
 
     entity: Entity
     statements: list[Statement]
     sources: list[Source]
+    expand_qids: list[str]
 
 
 # --- 저수준 파서 ---
@@ -203,18 +208,22 @@ def map_item(
         license="CC0",
     )
 
+    self_id = qid_to_id(qid)
     statements: list[Statement] = []
+    expand: list[str] = []
+
     for prop, predicate in mapping.statement_props.items():
         for idx, claim in enumerate(_claims(item, prop)):
-            if require_reference and not _has_reference(claim):
-                continue
             object_qid = _entity_qid(_main_value(claim))
             if object_qid is None:
+                continue
+            expand.append(object_qid)  # 노드 발견은 reference와 무관
+            if require_reference and not _has_reference(claim):
                 continue
             statements.append(
                 Statement(
                     id=f"stmt_wd_{qid}_{prop}_{object_qid}_{idx}",
-                    subject=qid_to_id(qid),
+                    subject=self_id,
                     predicate=predicate,
                     object=qid_to_id(object_qid),
                     grade=Grade.OFFICIAL,
@@ -226,5 +235,17 @@ def map_item(
                 )
             )
 
+    # 확장 힌트 속성(P527 등): statement는 만들지 않고 발견 대상만 추가
+    for prop in mapping.expansion_props:
+        for claim in _claims(item, prop):
+            object_qid = _entity_qid(_main_value(claim))
+            if object_qid is not None:
+                expand.append(object_qid)
+
     sources = [source] if statements else []
-    return MappedRecords(entity=entity, statements=statements, sources=sources)
+    return MappedRecords(
+        entity=entity,
+        statements=statements,
+        sources=sources,
+        expand_qids=sorted(set(expand)),
+    )

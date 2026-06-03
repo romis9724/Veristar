@@ -91,13 +91,14 @@ def person_item() -> dict[str, Any]:
 
 @pytest.fixture
 def group_item() -> dict[str, Any]:
-    """그룹 QGRP: 데뷔일 O."""
+    """그룹 QGRP: 데뷔일 O, has-part(P527)로 멤버 Q1 보유(역방향 매핑 대상)."""
     return {
         "id": "QGRP",
         "labels": {"ko": {"language": "ko", "value": "그룹 G"}},
         "claims": {
             "P31": [claim_entity("P31", "Q_GROUP")],
             "P571": [claim_time("P571", "+2016-02-23T00:00:00Z")],
+            "P527": [claim_entity("P527", "Q1", with_ref=True)],  # 그룹→멤버 (역방향)
         },
     }
 
