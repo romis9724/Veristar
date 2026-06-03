@@ -54,6 +54,17 @@ pip install -e ".[dev]"
 ruff check . && ruff format --check . && mypy src && pytest
 ```
 
+## 실행 (시드 생성 → 탐색 서비스)
+
+```bash
+# 1) Wikidata 시드 생성 (예: Stray Kids 루트에서 확장)
+python -m veristar.ingest.wikidata.seed --root Q46134670 --max 60 --allow-unreferenced
+
+# 2) 읽기전용 query API + HTMX 탐색 UI 기동
+uvicorn --factory veristar.api.app:create_default_app --port 8000
+#  → http://localhost:8000  (검색 → 엔티티 → 관계·연표·출처 등급)
+```
+
 ## 시작하기 (Claude Code)
 
 1. 이 폴더를 프로젝트 루트로 연다.
@@ -62,4 +73,4 @@ ruff check . && ruff format --check . && mypy src && pytest
 
 ## 상태
 
-🟢 **M1·M2 완료** — 온톨로지 타입 + §5 validation([`ontology/`](./src/veristar/ontology/)), Wikidata 시드 수집기([`ingest/wikidata/`](./src/veristar/ingest/wikidata/)). 테스트 42개·커버리지 90%, ruff·mypy green. 다음: **M6a** 읽기전용 query API + 최소 탐색 UI. 서비스 방향은 [`docs/service-design.md`](./docs/service-design.md) — 검색 메인 + 보조 생성, 스택 Python/FastAPI/JSONL.
+🟢 **M1·M2·M6a 완료** — 온톨로지 타입+validation([`ontology/`](./src/veristar/ontology/)), Wikidata 시드 수집기([`ingest/wikidata/`](./src/veristar/ingest/wikidata/)), 읽기전용 query API + HTMX 탐색 UI([`graph/`](./src/veristar/graph/)·[`api/`](./src/veristar/api/)). 실 시드(Stray Kids 57엔티티)로 검증. 테스트 74개·커버리지 93%, ruff·mypy green. **1차 슬라이스 완성.** 다음: M3/M4(뉴스)·M5(생성)·M6b(자연어 Q&A). 서비스 방향은 [`docs/service-design.md`](./docs/service-design.md).

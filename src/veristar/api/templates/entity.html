@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% set e = detail.entity %}
+{% block title %}{{ e.name }} — Veristar{% endblock %}
+{% block content %}
+<a href="/" class="meta">← 검색</a>
+<header class="entity-head">
+  <span class="type-badge">{{ e.type.value }}</span>
+  <h1>{{ e.name }}</h1>
+  <p class="meta">
+    <span class="qid">{{ e.id }}</span>
+    {% if e.aliases %} · {{ e.aliases | join(", ") }}{% endif %}
+    · 나가는 관계 {{ detail.outgoing_count }} · 들어오는 관계 {{ detail.incoming_count }}
+  </p>
+</header>
+
+<h2 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:1.5rem;">
+  연표 · 관계 (시간순)
+</h2>
+
+{% if not views %}
+  <p class="empty">표시할 관계가 없습니다. (기본은 ACTIVE 상태만 표시)</p>
+{% else %}
+<table class="rel">
+  <thead>
+    <tr>
+      <th>시점</th><th>관계</th><th>상대</th><th>등급</th><th>출처</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for v in views %}
+      {% set s = v.statement %}
+      <tr>
+        <td class="qid">{{ s.valid_from or "—" }}{% if s.valid_to %} ~ {{ s.valid_to }}{% endif %}</td>
+        <td>
+          <span class="pred">{{ s.predicate.value }}</span>
+          <span class="dir">({{ "→" if v.direction == "out" else "←" }})</span>
+        </td>
+        <td>
+          {% if v.other %}
+            <a href="/ui/entities/{{ v.other_id }}">{{ v.other.name }}</a>
+          {% else %}
+            <span class="qid">{{ v.other_id }}</span>
+          {% endif %}
+        </td>
+        <td><span class="badge {{ s.grade.value }}">{{ s.grade.value }}</span></td>
+        <td class="src">
+          {% for src in v.sources %}
+            <a href="{{ src.url }}" target="_blank" rel="noopener noreferrer">{{ src.publisher }}</a>{% if not loop.last %}, {% endif %}
+          {% else %}—{% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

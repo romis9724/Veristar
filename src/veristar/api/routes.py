@@ -1,0 +1,150 @@
+"""엔드포인트 — JSON API(/api) + HTMX UI(/, /ui).
+
+읽기 전용. 모든 statement 응답에 출처(등급)를 함께 싣는다.
+"""
+
+from __future__ import annotations
+
+from datetime import date
+
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+from veristar.graph import (
+    InMemoryGraphRepository,
+    StatementFilter,
+    entity_detail,
+    neighbors,
+    statements_for,
+    timeline,
+)
+from veristar.ontology.enums import Grade, Predicate, Status
+
+from .schemas import detail_to_out, entity_to_out, ok, view_to_out
+
+router = APIRouter()
+
+
+def get_repo(request: Request) -> InMemoryGraphRepository:
+    repo: InMemoryGraphRepository = request.app.state.repo
+    return repo
+
+
+def statement_filter(
+    grade: list[Grade] | None = Query(default=None),
+    predicate: list[Predicate] | None = Query(default=None),
+    status: list[Status] | None = Query(default=None),
+    date_from: date | None = Query(default=None, alias="from"),
+    date_to: date | None = Query(default=None, alias="to"),
+) -> StatementFilter:
+    return StatementFilter(
+        grades=frozenset(grade) if grade else None,
+        statuses=frozenset(status) if status else frozenset({Status.ACTIVE}),
+        predicates=frozenset(predicate) if predicate else None,
+        date_from=date_from,
+        date_to=date_to,
+    )
+
+
+def _require_entity(repo: InMemoryGraphRepository, entity_id: str) -> None:
+    if repo.get_entity(entity_id) is None:
+        raise HTTPException(status_code=404, detail=f"entity not found: {entity_id}")
+
+
+# --- JSON API ---
+
+
+@router.get("/api/health")
+def health(repo: InMemoryGraphRepository = Depends(get_repo)) -> dict[str, object]:
+    return ok({"status": "ok", "stats": repo.stats()})
+
+
+@router.get("/api/entities")
+def search_entities(
+    q: str = Query(min_length=1),
+    limit: int = Query(default=20, ge=1, le=100),
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    results = repo.search_entities(q, limit)
+    return ok([entity_to_out(e) for e in results])
+
+
+@router.get("/api/entities/{entity_id:path}/statements")
+def entity_statements(
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+    filt: StatementFilter = Depends(statement_filter),
+) -> dict[str, object]:
+    _require_entity(repo, entity_id)
+    return ok([view_to_out(v) for v in statements_for(repo, entity_id, filt)])
+
+
+@router.get("/api/entities/{entity_id:path}/timeline")
+def entity_timeline(
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+    filt: StatementFilter = Depends(statement_filter),
+) -> dict[str, object]:
+    _require_entity(repo, entity_id)
+    return ok([view_to_out(v) for v in timeline(repo, entity_id, filt)])
+
+
+@router.get("/api/entities/{entity_id:path}/neighbors")
+def entity_neighbors(
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+    filt: StatementFilter = Depends(statement_filter),
+) -> dict[str, object]:
+    _require_entity(repo, entity_id)
+    return ok([view_to_out(v) for v in neighbors(repo, entity_id, filt)])
+
+
+@router.get("/api/entities/{entity_id:path}")
+def entity_detail_endpoint(
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    detail = entity_detail(repo, entity_id)
+    if detail is None:
+        raise HTTPException(status_code=404, detail=f"entity not found: {entity_id}")
+    return ok(detail_to_out(detail))
+
+
+# --- HTMX UI ---
+
+
+@router.get("/", response_class=HTMLResponse)
+def ui_index(request: Request) -> HTMLResponse:
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(request, "index.html", {})
+
+
+@router.get("/ui/search", response_class=HTMLResponse)
+def ui_search(
+    request: Request,
+    q: str = Query(default=""),
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> HTMLResponse:
+    results = repo.search_entities(q) if q.strip() else []
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(request, "_results.html", {"results": results, "q": q})
+
+
+@router.get("/ui/entities/{entity_id:path}", response_class=HTMLResponse)
+def ui_entity(
+    request: Request,
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+    filt: StatementFilter = Depends(statement_filter),
+) -> HTMLResponse:
+    detail = entity_detail(repo, entity_id)
+    if detail is None:
+        raise HTTPException(status_code=404, detail=f"entity not found: {entity_id}")
+    views = timeline(repo, entity_id, filt)
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(
+        request,
+        "entity.html",
+        {"detail": detail, "views": views, "predicates": list(Predicate), "grades": list(Grade)},
+    )

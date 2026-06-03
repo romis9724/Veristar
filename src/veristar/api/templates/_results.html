@@ -1,0 +1,13 @@
+{% if q and not results %}
+  <p class="empty">"{{ q }}"에 해당하는 엔티티가 없습니다.</p>
+{% elif results %}
+  <ul class="results">
+    {% for e in results %}
+      <li>
+        <span class="type-badge">{{ e.type.value }}</span>
+        <a href="/ui/entities/{{ e.id }}">{{ e.name }}</a>
+        <span class="qid">{{ e.id }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

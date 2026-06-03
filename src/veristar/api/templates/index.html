@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Veristar — 지식 탐색{% endblock %}
+{% block content %}
+<section class="search" aria-labelledby="h">
+  <h1 id="h" style="letter-spacing:-0.03em;">연예 지식그래프 탐색</h1>
+  <p class="meta">엔티티를 검색해 관계·연표·출처 등급을 확인한다.</p>
+  <input
+    type="search"
+    name="q"
+    placeholder="인물·그룹·작품 이름…"
+    autocomplete="off"
+    aria-label="엔티티 검색"
+    hx-get="/ui/search"
+    hx-trigger="input changed delay:300ms, keyup[key=='Enter']"
+    hx-target="#results"
+    hx-indicator="#ind"
+  />
+  <span id="ind" class="htmx-indicator meta">검색 중…</span>
+  <div id="results"></div>
+</section>
+{% endblock %}

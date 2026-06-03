@@ -112,8 +112,8 @@ veristar/
 
 **1차 (현재 목표) — 안전한 Wikidata 백본 위의 읽기전용 검색**
 - ✅ **M1** 온톨로지 데이터 모델(타입) + validation (스키마 §5)
-- ✅ **M2** Wikidata 시드 수집기(루트 QID 확장, 레퍼런스 달린 OFFICIAL만) → `src/veristar/ingest/wikidata`. (실 시드 1회 실행은 수동)
-- **M6a** 읽기전용 query API(엔티티 검색·관계·연표·등급/기간 필터) + 최소 탐색 UI ← 다음
+- ✅ **M2** Wikidata 시드 수집기(루트 QID 확장, 레퍼런스 달린 OFFICIAL만) → `src/veristar/ingest/wikidata`.
+- ✅ **M6a** 읽기전용 query API + HTMX 탐색 UI → `src/veristar/graph`(저장소·조회)·`src/veristar/api`(FastAPI). 실 시드로 검증. **1차 슬라이스 완성.**
 
 **후행 — 신선도·생성 확장 (구현 전 사용자 확인)**
 - **M3** 출처 등급 분류기 + 민감 카테고리 필터 (뉴스 본격화 시)

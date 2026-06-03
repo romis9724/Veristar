@@ -16,7 +16,8 @@ ingest ──> grading ──> graph ──> generate
 | [`ontology/`](./ontology/) | — (공유) | 엔티티·Statement·Source 데이터 모델(타입)과 validation | 출처 없는 Statement는 모델 레벨에서 거부 |
 | [`ingest/`](./ingest/) | [1][2] | Wikidata/Wikipedia 시드 + 뉴스 사실 추출(원문 비복제) | 본문 복제 금지, 민감 카테고리 입구 차단 |
 | [`grading/`](./grading/) | [3] | `source_type` → `OFFICIAL/REPORTED/RUMOR` 분류 | 등급은 출처 성격이지 진실 여부 아님 |
-| [`graph/`](./graph/) | [4] | reified Statement 저장소 인터페이스 | 적재 시 validation 통과 필수 |
+| [`graph/`](./graph/) | [4] + query | 저장소(Repository) + 조회(search·관계·연표·이웃, 출처 부착) | 적재 시 validation 통과 필수 |
+| [`api/`](./api/) | query 표면 | 읽기전용 FastAPI(JSON `/api`) + HTMX 탐색 UI(`/`) | 읽기 전용, 모든 statement에 출처 등급 노출 |
 | [`generate/`](./generate/) | [5] | 연표·요약 등 재구성형 콘텐츠 생성 | `OFFICIAL` & 비민감만 입력, 추론형 금지 |
 
 스키마 정의는 [`docs/ontology-schema.md`](../../docs/ontology-schema.md), 안전 규칙은 [`docs/safety-guidelines.md`](../../docs/safety-guidelines.md)를 본다.
