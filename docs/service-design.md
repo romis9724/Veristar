@@ -108,7 +108,7 @@ fetch(링크/제목만)
 | 언어 | Python 3.11+ | `CLAUDE.md` §7 |
 | query API | FastAPI | 읽기전용 엔드포인트 |
 | 그래프 저장 | 파일 기반 JSONL | 규모 확대 시 Neo4j/RDF 검토(Repository 패턴으로 교체 가능하게) |
-| 최소 탐색 UI | **미정 (열린 질문)** | 추천: FastAPI+Jinja2+HTMX(KISS·무빌드) vs Next.js |
+| 최소 탐색 UI | **FastAPI + Jinja2 + HTMX** (확정) | 무빌드·서버렌더·Python 단일 스택 |
 
 ## 8. 1차 완성 범위 & 완료 기준
 
@@ -123,7 +123,7 @@ fetch(링크/제목만)
 
 ## 9. 열린 질문
 
-1. **최소 탐색 UI 프론트 스택** — FastAPI+Jinja2+HTMX(권장) vs Next.js.
+1. ✅ **최소 탐색 UI 프론트 스택** — **FastAPI + Jinja2 + HTMX로 확정**(2026-06-04, KISS·무빌드·Python 단일 스택).
 2. [2] 뉴스 소스의 구체적 ToS·라이선스 — 구현 착수 전 조사 필요.
 
 ## 10. 마일스톤 재정렬

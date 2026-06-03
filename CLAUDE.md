@@ -92,7 +92,7 @@ veristar/
 - 도구: ruff(lint/format) · mypy(타입) · pytest(테스트) — §8 참조
 - 시드 소스: Wikidata(CC0, 라이선스 자유 — 적극 활용), Wikipedia
 - 뉴스: **스크래핑 대신 공개 API/RSS 우선.** 네이버·다음 본문 크롤링은 약관·저작권 문제 → 지양
-- 최소 탐색 UI 프론트: **미정** (FastAPI+Jinja2+HTMX 권장 vs Next.js — `service-design.md` §9 열린 질문)
+- 최소 탐색 UI 프론트: **FastAPI + Jinja2 + HTMX** (확정 2026-06-04 — 무빌드·Python 단일 스택)
 
 ## 8. 개발 시 Claude Code 행동 지침
 
