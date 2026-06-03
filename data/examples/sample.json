@@ -1,0 +1,152 @@
+{
+  "_comment": "Veristar 스키마 예시. 모든 값은 구조 설명용 예시이며, OFFICIAL/비민감 사실만 모델링한다.",
+  "entities": [
+    {
+      "id": "person_001",
+      "type": "Person",
+      "name": "아티스트 A",
+      "aliases": ["Artist A"],
+      "occupation": ["singer", "actor"],
+      "created_at": "2026-06-04T00:00:00Z"
+    },
+    {
+      "id": "group_001",
+      "type": "Group",
+      "name": "그룹 G",
+      "group_type": "idol",
+      "debut_date": "2016-02-23",
+      "created_at": "2026-06-04T00:00:00Z"
+    },
+    {
+      "id": "org_001",
+      "type": "Organization",
+      "name": "소속사 C",
+      "org_role": "agency",
+      "created_at": "2026-06-04T00:00:00Z"
+    },
+    {
+      "id": "work_001",
+      "type": "Work",
+      "name": "앨범 X",
+      "work_type": "album",
+      "release_date": "2023-09-04",
+      "created_at": "2026-06-04T00:00:00Z"
+    },
+    {
+      "id": "event_001",
+      "type": "Event",
+      "name": "음악 시상식 2023",
+      "event_type": "award_ceremony",
+      "event_date": "2023-12-30",
+      "created_at": "2026-06-04T00:00:00Z"
+    },
+    {
+      "id": "award_001",
+      "type": "Award",
+      "name": "올해의 신인상",
+      "award_category": "rookie",
+      "created_at": "2026-06-04T00:00:00Z"
+    }
+  ],
+
+  "sources": [
+    {
+      "id": "src_001",
+      "source_type": "WIKIDATA_VERIFIED",
+      "publisher": "Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q000000",
+      "title": "Group G (Q000000)",
+      "published_at": "2016-02-23",
+      "retrieved_at": "2026-06-04",
+      "license": "CC0"
+    },
+    {
+      "id": "src_002",
+      "source_type": "OFFICIAL_ANNOUNCEMENT",
+      "publisher": "소속사 C 공식",
+      "url": "https://example.com/official/notice/123",
+      "title": "앨범 X 발매 안내",
+      "published_at": "2023-09-04",
+      "retrieved_at": "2026-06-04",
+      "license": "news-link-only"
+    },
+    {
+      "id": "src_003",
+      "source_type": "GOV_OR_AWARD_BODY",
+      "publisher": "음악 시상식 주관사",
+      "url": "https://example.com/awards/2023/winners",
+      "title": "2023 수상자 발표",
+      "published_at": "2023-12-30",
+      "retrieved_at": "2026-06-04",
+      "license": "news-link-only"
+    }
+  ],
+
+  "statements": [
+    {
+      "id": "stmt_001",
+      "subject": "person_001",
+      "predicate": "memberOf",
+      "object": "group_001",
+      "grade": "OFFICIAL",
+      "status": "ACTIVE",
+      "sources": ["src_001"],
+      "valid_from": "2016-02-23",
+      "valid_to": null,
+      "asserted_at": "2016-02-23",
+      "sensitive": false
+    },
+    {
+      "id": "stmt_002",
+      "subject": "group_001",
+      "predicate": "affiliatedWith",
+      "object": "org_001",
+      "grade": "OFFICIAL",
+      "status": "ACTIVE",
+      "sources": ["src_001", "src_002"],
+      "valid_from": "2016-02-23",
+      "valid_to": null,
+      "asserted_at": "2016-02-23",
+      "sensitive": false
+    },
+    {
+      "id": "stmt_003",
+      "subject": "group_001",
+      "predicate": "released",
+      "object": "work_001",
+      "grade": "OFFICIAL",
+      "status": "ACTIVE",
+      "sources": ["src_002"],
+      "valid_from": "2023-09-04",
+      "valid_to": null,
+      "asserted_at": "2023-09-04",
+      "sensitive": false
+    },
+    {
+      "id": "stmt_004",
+      "subject": "group_001",
+      "predicate": "wonAward",
+      "object": "award_001",
+      "grade": "OFFICIAL",
+      "status": "ACTIVE",
+      "sources": ["src_003"],
+      "valid_from": "2023-12-30",
+      "valid_to": null,
+      "asserted_at": "2023-12-30",
+      "sensitive": false
+    },
+    {
+      "id": "stmt_005",
+      "subject": "award_001",
+      "predicate": "presentedAt",
+      "object": "event_001",
+      "grade": "OFFICIAL",
+      "status": "ACTIVE",
+      "sources": ["src_003"],
+      "valid_from": "2023-12-30",
+      "valid_to": null,
+      "asserted_at": "2023-12-30",
+      "sensitive": false
+    }
+  ]
+}
