@@ -12,3 +12,12 @@ Q13580495   # BTS 방탄소년단 (boy band) [verified]
 Q20645861   # TWICE (girl group) [verified]
 Q100877982  # aespa (girl group) [verified]
 Q113189277  # NewJeans (girl group) [verified]
+
+# 소속사 — BFS로 소속 아티스트 자동 발견
+Q16161254   # 하이브 (HYBE Corporation) [verified]
+Q483938     # SM 엔터테인먼트 [verified]
+Q483238     # JYP 엔터테인먼트 [verified]
+Q50595      # YG 엔터테인먼트 [verified]
+
+# 솔로·추가 그룹 (Wikidata search 검증)
+Q495577     # G-Dragon [verified]

@@ -1,0 +1,29 @@
+# Veristar M4 뉴스 RSS 피드 설정
+# 공개 RSS/API만 사용. 네이버·다음 본문 크롤링 금지 (safety-guidelines.md §3).
+#
+# 사용법:
+#   python -m veristar.ingest.news.pipeline --feeds config/news_feeds.yaml
+#
+# source_type 값: PRESS | OFFICIAL_ANNOUNCEMENT | ARTIST_OFFICIAL_SNS
+# - PRESS → Grade.REPORTED (콘텐츠 재료 불가)
+# - OFFICIAL_ANNOUNCEMENT → Grade.OFFICIAL (소속사 공식 보도자료)
+
+feeds:
+  - name: 연합뉴스 연예
+    url: https://www.yna.co.kr/RSS/entertainment.xml
+    source_type: PRESS
+
+  - name: Soompi
+    url: https://www.soompi.com/feed
+    source_type: PRESS
+
+  - name: Billboard Korea
+    url: https://www.billboard-korea.com/feed/
+    source_type: PRESS
+
+# 소속사 공식 보도자료 RSS가 있으면 아래에 추가:
+# (OFFICIAL_ANNOUNCEMENT → Grade.OFFICIAL, 콘텐츠 재료로 사용 가능)
+#
+#  - name: HYBE 공식 보도자료
+#    url: https://hybecorp.com/kor/press/rss
+#    source_type: OFFICIAL_ANNOUNCEMENT
