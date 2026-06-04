@@ -272,6 +272,9 @@ def rag_search(
             # 임계값 이상 전부 가져오고 후처리
             vault_results = vs.search_vault_docs(q, limit=limit * 3, source_type=src_filter)
             for vr in vault_results:
+                # 민감 문서 필터 (CLAUDE.md §4-5: 생성·API 노출 단계에서 차단)
+                if not include_sensitive and getattr(vr, "sensitive", False):
+                    continue
                 # confidence 필터
                 if vr.confidence not in effective_conf:
                     continue
@@ -357,7 +360,7 @@ def rag_search(
     })
 
 
-@router.get("/api/pipeline/stream")
+@router.get("/api/pipeline/stream")  # pragma: no cover
 async def pipeline_stream(
     request: Request,
     sources: str = Query(default="wikipedia,namuwiki,news"),
@@ -830,9 +833,10 @@ def ui_vault_doc(
     confidence_color = {"high": "#2e7d32", "medium": "#e65100", "low": "#c62828"}.get(
         doc.confidence, "#666"
     )
-    # Markdown을 간단히 HTML로 변환
-    content_html = doc.content
-    content_html = re.sub(r"^#{4} (.+)$", r"<h4>\1</h4>", content_html, flags=re.MULTILINE)
+    # Markdown → HTML 변환 (XSS 방지: 먼저 이스케이프 후 변환)
+    import html as _html_mod
+    safe = _html_mod.escape(doc.content)  # < > & " → 엔티티로 이스케이프
+    content_html = re.sub(r"^#{4} (.+)$", r"<h4>\1</h4>", safe, flags=re.MULTILINE)
     content_html = re.sub(r"^#{3} (.+)$", r"<h3>\1</h3>", content_html, flags=re.MULTILINE)
     content_html = re.sub(r"^#{2} (.+)$", r"<h2>\1</h2>", content_html, flags=re.MULTILINE)
     content_html = re.sub(r"^# (.+)$", r"<h1>\1</h1>", content_html, flags=re.MULTILINE)

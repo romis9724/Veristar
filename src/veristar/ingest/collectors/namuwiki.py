@@ -15,13 +15,12 @@ confidence는 항상 UNVERIFIED로 시작한다.
 
 from __future__ import annotations
 
-import json
 import logging
 import re
 import urllib.parse
 from datetime import datetime
 
-from veristar.vault.store import ConfidenceLevel, VaultDoc
+from veristar.vault.store import ConfidenceLevel, VaultDoc, VaultStore
 
 from .base import CollectorBase, CollectResult
 

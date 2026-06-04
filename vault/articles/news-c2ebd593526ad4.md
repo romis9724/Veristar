@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/beloved-girl-group-secret-reunite-after-12-year-hiatus/"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

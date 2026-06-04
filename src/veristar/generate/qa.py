@@ -1,7 +1,7 @@
-"""자연어 Q&A — 그래프 statement를 근거로 로컬 LLM(Ollama qwen3)이 답변 (GraphRAG).
+"""자연어 Q&A — 그래프 statement + vault RAG를 근거로 로컬 LLM(Ollama qwen3)이 답변.
 
 핵심 제약(CLAUDE.md §4-4, §5):
-- 모든 답변은 OFFICIAL·비민감 statement에서 인용된 사실만.
+- 그래프 OFFICIAL statement + vault HIGH/MEDIUM 문서 스니펫을 컨텍스트로 제공.
 - 추론·평가·예측·미확인 정보를 포함하면 안 됨.
 - LLM이 답변을 만들 때 그래프 밖의 지식을 추가하지 않도록 프롬프트로 강제.
 - Ollama 미연결 시 "모델 미연결" 오류 반환 (graceful).
@@ -39,20 +39,48 @@ def _statements_to_context(views: list[StatementView]) -> str:
     return "\n".join(lines)
 
 
+def _vault_context(question: str, limit: int = 3) -> str:
+    """vault 벡터 검색으로 관련 문서 스니펫을 가져온다 (PostgreSQL 모드만)."""
+    try:
+        from pgvector.psycopg import register_vector  # type: ignore[import-untyped]
+
+        from veristar.db.connection import get_conn, is_available
+        from veristar.db.vector_store import VectorStore
+
+        if not is_available():
+            return ""
+        with get_conn() as conn:
+            register_vector(conn)
+            vs = VectorStore(conn)
+            docs = vs.search_vault_docs(
+                question, limit=limit, min_confidence="medium"
+            )
+        if not docs:
+            return ""
+        snippets = []
+        for d in docs:
+            if d.sensitive:
+                continue
+            snippet = d.content[:400].replace("\n", " ")
+            snippets.append(f"[{d.source_type}] {d.title}: {snippet}")
+        return "\n".join(snippets)
+    except Exception:
+        return ""
+
+
 def answer_question(
     repo: GraphRepository,
     question: str,
     entity_id: str | None = None,
     max_statements: int = 30,
 ) -> QAResult:
-    """그래프에서 OFFICIAL 사실을 검색해 로컬 LLM(Ollama qwen3)에 근거 제공, 답변 생성."""
+    """그래프 OFFICIAL facts + vault RAG 문서를 컨텍스트로 LLM에 전달, 답변 생성."""
     filt = StatementFilter(grades=frozenset({Grade.OFFICIAL}), statuses=frozenset({Status.ACTIVE}))
 
     # 엔티티 지정 시 해당 엔티티만, 아니면 전체 검색(키워드 매칭)
     if entity_id:
         views = statements_for(repo, entity_id, filt)
     else:
-        # 질문 '안에 언급된' 엔티티를 찾아 관련 statement 수집
         matched_entities = repo.find_mentioned(question, limit=3)
         views = []
         for e in matched_entities:
@@ -60,11 +88,17 @@ def answer_question(
 
     views = [v for v in views if not v.statement.sensitive][:max_statements]
     grounded_ids = [v.statement.id for v in views]
-    context = _statements_to_context(views) if views else "(관련 OFFICIAL 사실 없음)"
+    graph_context = _statements_to_context(views) if views else "(관련 OFFICIAL 사실 없음)"
+
+    # vault RAG 컨텍스트 추가 (PostgreSQL 모드일 때)
+    vault_ctx = _vault_context(question, limit=3)
+    context = (
+        f"{graph_context}\n\n[관련 문서 발췌]\n{vault_ctx}" if vault_ctx else graph_context
+    )
 
     system_prompt = textwrap.dedent("""
         당신은 Veristar 지식그래프의 Q&A 어시스턴트입니다.
-        아래 제공된 [공식 확인 사실]만을 근거로 질문에 답하세요.
+        아래 제공된 [공식 확인 사실]과 [관련 문서 발췌]만을 근거로 질문에 답하세요.
 
         규칙:
         1. 제공된 사실에 없는 내용은 절대 추가하지 마세요 (추론·예측·평가 금지).

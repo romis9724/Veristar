@@ -76,7 +76,9 @@ def test_htmx_self_hosted(client: TestClient) -> None:
 def test_ui_index_renders(client: TestClient) -> None:
     r = client.get("/")
     assert r.status_code == 200
-    assert "지식그래프" in r.text
+    # index.html은 RAG 검색 UI로 업데이트됨 ("지식 검색" 텍스트 포함)
+    assert r.status_code == 200
+    assert "검색" in r.text
 
 
 def test_ui_search_fragment(client: TestClient) -> None:
@@ -170,3 +172,67 @@ def test_ui_graph_has_nav_link(client: TestClient) -> None:
     assert r.status_code == 200
     assert "/ui/graph" in r.text
     assert "/ui/vault" in r.text
+
+
+# ─── 새 기능 추가 테스트 ──────────────────────────────────────────────────────
+
+def test_pipeline_status_idle(client: TestClient) -> None:
+    r = client.get("/api/pipeline/status")
+    assert r.status_code == 200
+    d = r.json()["data"]
+    assert "status" in d
+    assert "log_count" in d
+
+
+def test_pipeline_logs_empty(client: TestClient) -> None:
+    r = client.get("/api/pipeline/logs")
+    assert r.status_code == 200
+    d = r.json()["data"]
+    assert "logs" in d
+    assert isinstance(d["logs"], list)
+
+
+def test_rag_search_basic(client: TestClient) -> None:
+    r = client.get("/api/search/rag", params={"q": "아티스트"})
+    assert r.status_code == 200
+    d = r.json()["data"]
+    assert "results" in d
+    assert "query" in d
+    assert d["query"] == "아티스트"
+
+
+def test_rag_search_sensitive_filtered(client: TestClient) -> None:
+    # include_sensitive=false 기본값 — 민감 문서 제외
+    r = client.get("/api/search/rag", params={"q": "아티스트", "include_sensitive": "false"})
+    assert r.status_code == 200
+    # 민감 문서가 결과에 없어야 함
+    for item in r.json()["data"]["results"]:
+        assert item.get("sensitive", False) is False
+
+
+def test_collect_ui_page(client: TestClient) -> None:
+    r = client.get("/ui/collect")
+    assert r.status_code == 200
+    assert "agent-panel" in r.text
+    assert "파이프라인" in r.text
+
+
+def test_rag_search_with_source_type(client: TestClient) -> None:
+    r = client.get("/api/search/rag", params={"q": "아티스트", "source_type": "wikipedia"})
+    assert r.status_code == 200
+    d = r.json()["data"]
+    # InMemory 모드: vault 없이도 entity 검색 결과 반환
+    assert "results" in d
+    assert "filters" in d
+
+
+def test_rag_search_include_unverified(client: TestClient) -> None:
+    r = client.get("/api/search/rag", params={"q": "그룹", "include_unverified": "true"})
+    assert r.status_code == 200
+    assert r.json()["data"]["query"] == "그룹"
+
+
+def test_vault_doc_partial_no_id(client: TestClient) -> None:
+    r = client.get("/ui/vault/doc")
+    assert r.status_code == 200
+    assert "선택" in r.text  # 빈 메시지

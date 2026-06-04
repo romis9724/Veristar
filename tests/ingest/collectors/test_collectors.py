@@ -136,7 +136,8 @@ def test_namuwiki_scrape_fallback(vault: VaultStore) -> None:
 
 
 def test_namuwiki_both_fail(vault: VaultStore) -> None:
-    collector = NamuWikiCollector(vault)
+    # Playwright 비활성화 + HTTP fallback도 실패 → errors=1
+    collector = NamuWikiCollector(vault, use_playwright=False)
     collector._get = lambda url: None  # type: ignore[assignment]
     result = collector.collect("없는항목")
     assert result.errors == 1

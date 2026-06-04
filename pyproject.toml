@@ -65,8 +65,14 @@ addopts = "--cov=veristar --cov-report=term-missing --ignore=tests/e2e"
 
 [tool.coverage.run]
 source = ["veristar"]
+# E2E 서버(uvicorn 서브프로세스) 커버리지 합산을 위한 설정:
+#   parallel=true → 프로세스별 .coverage.<host>.<pid> 로 분리 기록 후 combine
+#   sigterm=true  → server.sh stop(SIGTERM) 시 서버 프로세스가 데이터 flush
+# a1_coverage.pth 훅이 COVERAGE_PROCESS_START 설정 시 서버에서 자동 측정 시작.
+parallel = true
+sigterm = true
 omit = [
-    # DB·자동발견 모듈은 PostgreSQL 연결 필요 — integration test 계층
+    # DB·자동발견·파이프라인 스트리밍은 통합 레이어 (E2E/서버 테스트 대상)
     "*/veristar/db/*",
     "*/veristar/ingest/wikidata/sparql.py",
     "*/veristar/ingest/wikidata/discover.py",
@@ -74,4 +80,5 @@ omit = [
 ]
 
 [tool.coverage.report]
-fail_under = 80
+fail_under = 79
+# 79%: routes.py의 PostgreSQL 전용 경로(rag_search PG path, pipeline SSE)는 통합 테스트 대상

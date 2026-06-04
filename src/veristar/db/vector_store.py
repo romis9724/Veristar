@@ -55,6 +55,7 @@ class VaultDocResult:
         self.source_type: str = row["source_type"]
         self.source_url: str = row["source_url"]
         self.confidence: str = row["confidence"]
+        self.sensitive: bool = bool(row.get("sensitive", False))
         self.similarity: float = float(row.get("similarity", 0.0))
 
 
@@ -175,7 +176,7 @@ class VectorStore:
         where = " AND ".join(where_parts)
         rows = self._conn.execute(
             f"""
-            SELECT id, title, content, source_type, source_url, confidence,
+            SELECT id, title, content, source_type, source_url, confidence, sensitive,
                    1 - (embedding <=> %s::vector) AS similarity
             FROM vault_docs
             WHERE {where}
