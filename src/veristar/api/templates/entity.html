@@ -13,12 +13,57 @@
   </p>
 </header>
 
-<h2 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-top:1.5rem;">
-  연표 · 관계 (시간순)
-</h2>
+<form id="filter-form" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1.2rem;align-items:center;">
+  <label style="font-size:0.78rem;color:var(--muted);">등급</label>
+  <select name="grade" onchange="applyFilter()">
+    <option value="">전체</option>
+    <option value="OFFICIAL" {% if request.query_params.get('grade')=='OFFICIAL' %}selected{% endif %}>OFFICIAL</option>
+    <option value="REPORTED" {% if request.query_params.get('grade')=='REPORTED' %}selected{% endif %}>REPORTED</option>
+    <option value="RUMOR" {% if request.query_params.get('grade')=='RUMOR' %}selected{% endif %}>RUMOR</option>
+  </select>
+  <label style="font-size:0.78rem;color:var(--muted);">관계</label>
+  <select name="predicate" onchange="applyFilter()">
+    <option value="">전체</option>
+    {% for p in predicates %}
+      <option value="{{ p.value }}" {% if request.query_params.get('predicate')==p.value %}selected{% endif %}>{{ p.value }}</option>
+    {% endfor %}
+  </select>
+  <label style="font-size:0.78rem;color:var(--muted);">상태</label>
+  <select name="status" onchange="applyFilter()">
+    <option value="">ACTIVE</option>
+    <option value="ACTIVE SUPERSEDED" {% if 'SUPERSEDED' in request.query_params.get('status','') %}selected{% endif %}>전체</option>
+  </select>
+</form>
+<script>
+function applyFilter(){
+  const f=document.getElementById('filter-form');
+  const grade=f.grade.value, pred=f.predicate.value, status=f.status.value;
+  const params=new URLSearchParams();
+  if(grade) grade.split(' ').forEach(g=>params.append('grade',g));
+  if(pred) params.append('predicate',pred);
+  if(status) status.split(' ').forEach(s=>params.append('status',s));
+  const base=window.location.pathname;
+  window.location.href=base+(params.toString()?'?'+params.toString():'');
+}
+</script>
+
+<div style="margin-top:1rem;display:flex;gap:0.5rem;align-items:center;">
+  <h2 style="font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin:0;">
+    연표 · 관계 (시간순)
+  </h2>
+  <button
+    hx-get="/ui/entities/{{ e.id }}/summary"
+    hx-target="#summary-box"
+    hx-swap="innerHTML"
+    style="font-size:0.75rem;padding:0.2rem 0.6rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;color:var(--accent);">
+    요약 생성
+  </button>
+</div>
+<div id="summary-box" style="margin:0.6rem 0;font-size:0.85rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0.8rem 1rem;display:none;"
+  hx-on::after-request="this.style.display='block'"></div>
 
 {% if not views %}
-  <p class="empty">표시할 관계가 없습니다. (기본은 ACTIVE 상태만 표시)</p>
+  <p class="empty">표시할 관계가 없습니다.</p>
 {% else %}
 <table class="rel">
   <thead>

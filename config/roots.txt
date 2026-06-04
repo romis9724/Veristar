@@ -2,8 +2,13 @@
 # 한 줄에 1개. '#' 뒤는 주석. build_seed가 각 루트에서 BFS 확장한다.
 #
 #   python -m veristar.ingest.wikidata.seed --roots-file config/roots.txt --max 60 --allow-unreferenced
+#   python -m veristar.ingest.wikidata.seed --roots-file config/roots.txt --max 60 --allow-unreferenced --fresh
 #
-# 새 아티스트/그룹을 추가하려면 QID를 한 줄 추가하면 된다(누적 병합됨).
+# QID 추가 → 재실행하면 기존 그래프에 누적된다.
 
-Q46134670   # 스트레이 키즈 (boy band)
-Q25056945   # 블랙핑크 (girl group)
+Q46134670   # 스트레이 키즈 (boy band) [verified]
+Q25056945   # 블랙핑크 (girl group) [verified]
+Q13580495   # BTS 방탄소년단 (boy band) [verified]
+Q20645861   # TWICE (girl group) [verified]
+Q100877982  # aespa (girl group) [verified]
+Q113189277  # NewJeans (girl group) [verified]

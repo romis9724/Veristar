@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Q&A — Veristar{% endblock %}
+{% block content %}
+<a href="/" class="meta">← 검색</a>
+<h1 style="letter-spacing:-0.02em;">그래프 기반 Q&amp;A</h1>
+<p class="meta">공식 확인된 사실만 근거로 답합니다. 추론·예측 없음.</p>
+
+<form method="get" action="/ui/qa" style="display:flex;gap:0.5rem;margin-top:1rem;">
+  <input name="q" value="{{ q }}" placeholder="예: 스트레이 키즈가 받은 상은?" style="flex:1;padding:0.7rem 1rem;font-size:1rem;border:1px solid var(--line);border-radius:10px;">
+  <button type="submit" style="padding:0.7rem 1.2rem;background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer;">질문</button>
+</form>
+
+{% if result %}
+<div style="margin-top:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.2rem;">
+  <p class="meta" style="margin:0 0 0.5rem;">질문: <strong>{{ result.question }}</strong></p>
+  <div style="white-space:pre-wrap;line-height:1.7;">{{ result.answer }}</div>
+  <p class="meta" style="margin-top:1rem;border-top:1px solid var(--line);padding-top:0.5rem;">
+    근거 statement {{ result.grounded_in | length }}건 · OFFICIAL 등급만 · 모델: {{ result.model_used or "미연결" }}
+  </p>
+</div>
+{% elif q %}
+  <p class="empty">결과 없음.</p>
+{% endif %}
+{% endblock %}

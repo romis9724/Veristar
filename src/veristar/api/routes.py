@@ -11,6 +11,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
+from veristar.generate import answer_question, generate_summary
 from veristar.graph import (
     InMemoryGraphRepository,
     StatementFilter,
@@ -100,6 +101,27 @@ def entity_neighbors(
     return ok([view_to_out(v) for v in neighbors(repo, entity_id, filt)])
 
 
+@router.get("/api/entities/{entity_id:path}/summary")
+def entity_summary(
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    """재구성형 요약·연표 텍스트 (OFFICIAL·비민감 statement만, 추론 없음)."""
+    result = generate_summary(repo, entity_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail=f"entity not found: {entity_id}")
+    return ok(
+        {
+            "entity_id": result.entity_id,
+            "entity_name": result.entity_name,
+            "summary": result.summary_text,
+            "timeline": result.timeline_text,
+            "statement_count": result.statement_count,
+            "source_ids": result.source_ids,
+        }
+    )
+
+
 @router.get("/api/entities/{entity_id:path}")
 def entity_detail_endpoint(
     entity_id: str,
@@ -112,6 +134,57 @@ def entity_detail_endpoint(
 
 
 # --- HTMX UI ---
+
+
+@router.get("/api/qa")
+def api_qa(
+    q: str = Query(min_length=1),
+    entity_id: str | None = Query(default=None),
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    """그래프 근거 자연어 Q&A. OFFICIAL 사실만 사용, 추론 없음."""
+    result = answer_question(repo, q, entity_id=entity_id)
+    return ok(
+        {
+            "question": result.question,
+            "answer": result.answer,
+            "grounded_in_count": len(result.grounded_in),
+            "model": result.model_used,
+        }
+    )
+
+
+@router.get("/ui/qa", response_class=HTMLResponse)
+def ui_qa(
+    request: Request,
+    q: str = Query(default=""),
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> HTMLResponse:
+    templates: Jinja2Templates = request.app.state.templates
+    result = answer_question(repo, q) if q.strip() else None
+    return templates.TemplateResponse(request, "qa.html", {"q": q, "result": result})
+
+
+@router.get("/ui/entities/{entity_id:path}/summary", response_class=HTMLResponse)
+def ui_summary(
+    request: Request,
+    entity_id: str,
+    repo: InMemoryGraphRepository = Depends(get_repo),
+) -> HTMLResponse:
+    result = generate_summary(repo, entity_id)
+    if result is None:
+        return HTMLResponse("<p>엔티티를 찾을 수 없습니다.</p>", status_code=404)
+    lines = result.timeline_text.split("\n") if result.timeline_text else []
+    html = f"<strong>{result.summary_text}</strong>"
+    if lines:
+        html += (
+            "<ul style='margin:0.5rem 0 0 1rem;'>"
+            + "".join(f"<li>{ln}</li>" for ln in lines[:15])
+            + "</ul>"
+        )
+    note = f"출처 기반 사실 {result.statement_count}건 · OFFICIAL 등급만 · 추론 없음"
+    html += f"<p class='meta' style='margin-top:0.5rem;'>{note}</p>"
+    return HTMLResponse(html)
 
 
 @router.get("/", response_class=HTMLResponse)
