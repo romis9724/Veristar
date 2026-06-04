@@ -39,6 +39,7 @@ class WikidataMapping:
             # --- Group ---
             "Q215380": EntityType.GROUP,  # [verified] musical group
             "Q216337": EntityType.GROUP,  # [verified] boy band
+            "Q641066": EntityType.GROUP,  # [verified] girl group
             "Q9212979": EntityType.GROUP,  # musical duo (best-effort)
             "Q2088357": EntityType.GROUP,  # musical ensemble (best-effort)
             # --- Organization ---

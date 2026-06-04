@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .filters import StatementFilter
+from .merge import MergeReport, merge
 from .queries import (
     EntityDetail,
     StatementView,
@@ -25,4 +26,6 @@ __all__ = [
     "statements_for",
     "timeline",
     "neighbors",
+    "merge",
+    "MergeReport",
 ]

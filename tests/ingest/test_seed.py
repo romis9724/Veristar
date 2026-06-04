@@ -77,3 +77,17 @@ def test_unknown_root_yields_empty_graph(unknown_item: dict[str, Any]) -> None:
     _, doc = _seed({"Q_X": unknown_item}, ["Q_X"])
     assert doc.entities == []
     assert doc.statements == []
+
+
+def test_multiple_roots_collected(person_item: dict[str, Any], group_item: dict[str, Any]) -> None:
+    # 두 루트(Q1, QGRP)에서 각각 수집되어 누적
+    client, doc = _seed({"Q1": person_item, "QGRP": group_item}, ["Q1", "QGRP"])
+    assert {e.id for e in doc.entities} == {"wd:Q1", "wd:QGRP"}
+
+
+def test_read_roots_file(tmp_path: Path) -> None:
+    from veristar.ingest.wikidata.seed import read_roots_file
+
+    f = tmp_path / "roots.txt"
+    f.write_text("# comment\nQ1\n\n  Q2  # inline\nQ3\n", encoding="utf-8")
+    assert read_roots_file(f) == ["Q1", "Q2", "Q3"]

@@ -18,8 +18,13 @@
 - `client.py` — `WikidataClient`(Protocol) + `HttpWikidataClient`(httpx). 테스트는 Fake/MockTransport
 - `seed.py` — scope→fetch→map→assemble→`validate_cross_references`→JSON 기록
 
-실 시드 실행 (소규모, 루트 QID 지정):
+실 시드 실행:
 ```bash
-python -m veristar.ingest.wikidata.seed --root Q494721 --max 50 --out data/seed/wikidata_seed.json
+# 단일/다중 루트
+python -m veristar.ingest.wikidata.seed --root Q46134670 Q25056945 --max 60 --allow-unreferenced
+# 루트 목록 파일(크롤 scope) — config/roots.txt
+python -m veristar.ingest.wikidata.seed --roots-file config/roots.txt --max 60 --allow-unreferenced
 ```
-산출물은 M1 `load_graph()` 검증을 통과한다. reference 없는 claim까지 받으려면 `--allow-unreferenced`.
+- 출력 파일이 있으면 **병합/누적**이 기본(여러 실행·루트가 영속 그래프에 쌓임, id 기준 중복제거). 덮어쓰려면 `--fresh`.
+- 재수집 시 사라진 사실은 삭제하지 않고 **SUPERSEDED** 처리(스키마 §2.3) — 병합 로직은 `src/veristar/graph/merge.py`.
+- 산출물은 M1 `load_graph()` 검증 통과. reference 없는 claim까지 받으려면 `--allow-unreferenced`.

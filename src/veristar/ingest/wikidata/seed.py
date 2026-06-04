@@ -11,7 +11,8 @@ from collections import deque
 from datetime import datetime
 from pathlib import Path
 
-from veristar.ontology.graph import GraphDocument, GraphValidationError
+from veristar.graph import merge
+from veristar.ontology.graph import GraphDocument, GraphValidationError, load_graph
 from veristar.ontology.models import Entity, Source, Statement
 
 from .client import HttpWikidataClient, WikidataClient
@@ -109,9 +110,20 @@ def write_seed(doc: GraphDocument, out_path: str | Path) -> Path:
     return path
 
 
+def read_roots_file(path: str | Path) -> list[str]:
+    """한 줄 1 QID 파일 파싱(`#` 주석·빈 줄 무시)."""
+    out: list[str] = []
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        token = line.split("#", 1)[0].strip()
+        if token:
+            out.append(token)
+    return out
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Wikidata 시드 수집기 (M2)")
-    parser.add_argument("--root", nargs="+", required=True, help="루트 QID (예: Q494721)")
+    parser.add_argument("--root", nargs="+", default=[], help="루트 QID (예: Q494721)")
+    parser.add_argument("--roots-file", help="루트 QID 목록 파일(한 줄 1개, # 주석)")
     parser.add_argument("--out", default="data/seed/wikidata_seed.json", help="출력 JSON 경로")
     parser.add_argument("--max", type=int, default=50, help="최대 엔티티 수")
     parser.add_argument(
@@ -119,22 +131,47 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="reference 없는 claim도 OFFICIAL로 수용 (기본: skip)",
     )
+    parser.add_argument(
+        "--fresh",
+        action="store_true",
+        help="기존 출력 파일을 무시하고 덮어쓰기 (기본: 있으면 병합/누적)",
+    )
     args = parser.parse_args(argv)
+
+    roots = list(args.root)
+    if args.roots_file:
+        roots += read_roots_file(args.roots_file)
+    if not roots:
+        parser.error("루트가 없습니다. --root 또는 --roots-file 을 지정하세요.")
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     client = HttpWikidataClient()
     try:
-        doc = build_seed(
+        incoming = build_seed(
             client,
-            args.root,
+            roots,
             retrieved_at=datetime.now(),
             require_reference=not args.allow_unreferenced,
             max_entities=args.max,
         )
     finally:
         client.close()
-    path = write_seed(doc, args.out)
-    logger.info("wrote %s", path)
+
+    out_path = Path(args.out)
+    if out_path.exists() and not args.fresh:
+        base = load_graph(out_path)
+        doc, report = merge(base, incoming)
+        logger.info("merged into existing: %s", report.summary())
+    else:
+        doc = incoming
+
+    violations = doc.validate_cross_references()
+    if violations:
+        raise GraphValidationError(violations)
+    path = write_seed(doc, out_path)
+    logger.info(
+        "wrote %s (%d entities, %d statements)", path, len(doc.entities), len(doc.statements)
+    )
     return 0
 
 
