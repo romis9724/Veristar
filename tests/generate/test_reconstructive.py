@@ -94,11 +94,4 @@ def test_summary_none_for_missing_entity() -> None:
     assert generate_summary(_repo(), "wd:QNOTEXIST") is None
 
 
-def test_qa_graceful_without_api_key(monkeypatch) -> None:
-
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-    from veristar.generate import answer_question
-
-    result = answer_question(_repo(), "수상 내역은?", entity_id="wd:QG")
-    assert "ANTHROPIC_API_KEY" in result.answer or "오류" in result.answer
-    assert result.grounded_in == []
+# Q&A(LLM) 테스트는 tests/generate/test_qa.py 로 이동 (Ollama qwen3 기반).

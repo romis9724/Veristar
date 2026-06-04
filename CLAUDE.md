@@ -90,6 +90,7 @@ veristar/
 - query API: **FastAPI** (1차 = 읽기전용 엔드포인트)
 - 그래프 저장: **파일 기반 JSONL** → 규모 커지면 Neo4j 또는 RDF 트리플스토어 검토(Repository 패턴으로 교체 가능하게)
 - 도구: ruff(lint/format) · mypy(타입) · pytest(테스트) — §8 참조
+- LLM(요약·Q&A): **로컬 Ollama qwen3** (앤트로픽 API 미사용). 설정: `OLLAMA_HOST`(기본 localhost:11434)·`VERISTAR_LLM_MODEL`(기본 `qwen3:14b`). 클라이언트 `src/veristar/generate/llm.py`
 - 시드 소스: Wikidata(CC0, 라이선스 자유 — 적극 활용), Wikipedia
 - 뉴스: **스크래핑 대신 공개 API/RSS 우선.** 네이버·다음 본문 크롤링은 약관·저작권 문제 → 지양
 - 최소 탐색 UI 프론트: **FastAPI + Jinja2 + HTMX** (확정 2026-06-04 — 무빌드·Python 단일 스택)
@@ -117,7 +118,7 @@ veristar/
 - ✅ **M3** 출처 등급 분류기 + 민감 카테고리 필터 → `src/veristar/grading`
 - ✅ **M5** 재구성형 콘텐츠 생성기(연표·요약) → `src/veristar/generate/reconstructive.py`
 - ✅ **M6a** 읽기전용 query API + HTMX 탐색 UI(등급·관계 필터, 요약 버튼)
-- ✅ **M6b** 자연어 Q&A(GraphRAG, Claude Haiku grounding) → `src/veristar/generate/qa.py`
+- ✅ **M6b** 자연어 Q&A(GraphRAG, 로컬 Ollama qwen3 grounding) → `src/veristar/generate/qa.py`·`generate/llm.py`
 - ✅ **Scheduling** `scripts/refresh_seed.sh` (cron/launchd 주기적 갱신)
 
 **미구현 — 법적 검토 후 별도 진행**

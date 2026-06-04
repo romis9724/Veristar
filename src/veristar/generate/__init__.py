@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .llm import LLMResult, chat
 from .qa import QAResult, answer_question
 from .reconstructive import SummaryResult, generate_summary, generate_timeline_text
 
@@ -11,4 +12,6 @@ __all__ = [
     "generate_timeline_text",
     "QAResult",
     "answer_question",
+    "LLMResult",
+    "chat",
 ]

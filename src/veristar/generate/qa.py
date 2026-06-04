@@ -1,20 +1,21 @@
-"""자연어 Q&A — 그래프 statement를 근거로 Claude가 답변 (GraphRAG).
+"""자연어 Q&A — 그래프 statement를 근거로 로컬 LLM(Ollama qwen3)이 답변 (GraphRAG).
 
 핵심 제약(CLAUDE.md §4-4, §5):
 - 모든 답변은 OFFICIAL·비민감 statement에서 인용된 사실만.
 - 추론·평가·예측·미확인 정보를 포함하면 안 됨.
-- Claude가 답변을 만들 때 그래프 밖의 지식을 추가하지 않도록 프롬프트로 강제.
-- ANTHROPIC_API_KEY 없으면 "모델 미연결" 오류 반환 (graceful).
+- LLM이 답변을 만들 때 그래프 밖의 지식을 추가하지 않도록 프롬프트로 강제.
+- Ollama 미연결 시 "모델 미연결" 오류 반환 (graceful).
 """
 
 from __future__ import annotations
 
-import os
 import textwrap
 from dataclasses import dataclass
 
 from veristar.graph import InMemoryGraphRepository, StatementFilter, StatementView, statements_for
 from veristar.ontology.enums import Grade, Status
+
+from .llm import chat
 
 
 @dataclass(frozen=True)
@@ -44,26 +45,7 @@ def answer_question(
     entity_id: str | None = None,
     max_statements: int = 30,
 ) -> QAResult:
-    """그래프에서 OFFICIAL 사실을 검색해 Claude에 근거 제공, 답변 생성."""
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not api_key:
-        return QAResult(
-            question=question,
-            answer="[오류] ANTHROPIC_API_KEY 환경변수가 설정되지 않았습니다.",
-            grounded_in=[],
-            entity_id=entity_id,
-        )
-
-    try:
-        import anthropic  # type: ignore[import-not-found]
-    except ImportError:
-        return QAResult(
-            question=question,
-            answer="[오류] anthropic 패키지 미설치. pip install anthropic 실행 후 재시도하세요.",
-            grounded_in=[],
-            entity_id=entity_id,
-        )
-
+    """그래프에서 OFFICIAL 사실을 검색해 로컬 LLM(Ollama qwen3)에 근거 제공, 답변 생성."""
     filt = StatementFilter(grades=frozenset({Grade.OFFICIAL}), statuses=frozenset({Status.ACTIVE}))
 
     # 엔티티 지정 시 해당 엔티티만, 아니면 전체 검색(키워드 매칭)
@@ -93,19 +75,20 @@ def answer_question(
 
     user_prompt = f"[공식 확인 사실]\n{context}\n\n[질문]\n{question}"
 
-    client = anthropic.Anthropic(api_key=api_key)
-    response = client.messages.create(
-        model="claude-haiku-4-5-20251001",  # 토큰 효율 — Haiku 사용
-        max_tokens=512,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_prompt}],
-    )
-    answer_text = response.content[0].text if response.content else "(응답 없음)"
+    result = chat(system_prompt, user_prompt, max_tokens=512)
+    if not result.ok:
+        return QAResult(
+            question=question,
+            answer=f"[오류] {result.error}",
+            grounded_in=grounded_ids,
+            entity_id=entity_id,
+            model_used=result.model,
+        )
 
     return QAResult(
         question=question,
-        answer=answer_text,
+        answer=result.text or "(응답 없음)",
         grounded_in=grounded_ids,
         entity_id=entity_id,
-        model_used="claude-haiku-4-5",
+        model_used=result.model,
     )
