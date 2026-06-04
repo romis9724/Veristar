@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 import urllib.parse
 from datetime import datetime
 
@@ -57,10 +58,15 @@ class WikipediaCollector(CollectorBase):
     """Wikipedia 한국어/영어 문서를 수집해 vault에 저장한다."""
 
     def __init__(
-        self, store: VaultStore, langs: tuple[str, ...] = ("ko", "en"), timeout: float = 30.0
+        self,
+        store: VaultStore,
+        langs: tuple[str, ...] = ("ko", "en"),
+        timeout: float = 30.0,
+        request_delay: float = 1.0,
     ) -> None:
         super().__init__(store, timeout)
         self.langs = langs
+        self.request_delay = request_delay
 
     def collect(self, target: str, **kwargs: object) -> CollectResult:
         """target: 수집할 인물/그룹 이름 (한국어 또는 영어)."""
@@ -68,6 +74,7 @@ class WikipediaCollector(CollectorBase):
         for lang in self.langs:
             r = self._collect_lang(target, lang)
             result = result.merge(r)
+            time.sleep(self.request_delay)
         return result
 
     def _collect_lang(self, query: str, lang: str) -> CollectResult:
