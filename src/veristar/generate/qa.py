@@ -52,8 +52,8 @@ def answer_question(
     if entity_id:
         views = statements_for(repo, entity_id, filt)
     else:
-        # 질문에서 엔티티 이름 찾아 관련 statement 수집
-        matched_entities = repo.search_entities(question, limit=3)
+        # 질문 '안에 언급된' 엔티티를 찾아 관련 statement 수집
+        matched_entities = repo.find_mentioned(question, limit=3)
         views = []
         for e in matched_entities:
             views.extend(statements_for(repo, e.id, filt))

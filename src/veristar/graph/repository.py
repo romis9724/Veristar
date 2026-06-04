@@ -65,6 +65,22 @@ class InMemoryGraphRepository:
                     break
         return list(seen.values())
 
+    def find_mentioned(self, text: str, limit: int = 5) -> list[Entity]:
+        """`text`(자연어 질문 등) **안에 이름/별칭이 등장하는** 엔티티를 찾는다.
+
+        search_entities(부분일치 검색)와 방향이 반대다. 더 긴(구체적) 이름을 먼저
+        매칭하고, 엔티티 id 기준 중복 제거.
+        """
+        t = text.lower()
+        seen: dict[str, Entity] = {}
+        # 긴 이름 우선 → 짧은 별칭의 우연 매칭보다 구체적 매칭을 앞세움
+        for term, entity_id in sorted(self._name_index, key=lambda x: len(x[0]), reverse=True):
+            if term and term in t and entity_id not in seen:
+                seen[entity_id] = self._by_id[entity_id]
+                if len(seen) >= limit:
+                    break
+        return list(seen.values())
+
     def statements_of(self, entity_id: str) -> list[Statement]:
         """엔티티가 subject 또는 object인 모든 statement (중복 제거)."""
         out = self._out.get(entity_id, [])

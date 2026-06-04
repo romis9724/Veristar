@@ -37,3 +37,11 @@ def test_bidirectional_adjacency(repo: InMemoryGraphRepository) -> None:
 
 def test_stats(repo: InMemoryGraphRepository) -> None:
     assert repo.stats() == {"entities": 3, "sources": 1, "statements": 3}
+
+
+def test_find_mentioned_in_question(repo: InMemoryGraphRepository) -> None:
+    # 자연어 질문 안에 등장하는 엔티티를 찾는다(search_entities와 방향 반대)
+    found = repo.find_mentioned("아티스트 A 의 소속 그룹은?")
+    assert "wd:Q1" in {e.id for e in found}
+    # 언급 없는 질문 → 없음
+    assert repo.find_mentioned("오늘 날씨 어때?") == []

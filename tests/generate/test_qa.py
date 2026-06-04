@@ -77,6 +77,22 @@ def test_qa_graceful_when_ollama_unavailable(monkeypatch: pytest.MonkeyPatch) ->
     assert result.grounded_in == ["ok"]  # 근거는 여전히 수집됨
 
 
+def test_qa_resolves_entity_from_question_without_entity_id(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # entity_id 없이 문장형 질문 → 질문에 언급된 엔티티를 찾아 grounding (UI 경로 회귀 방지)
+    captured: dict[str, str] = {}
+
+    def fake_chat(system: str, user: str, **kw: object) -> LLMResult:
+        captured["user"] = user
+        return LLMResult(text="아티스트 A는 그룹 G의 멤버입니다.", model="qwen3", ok=True)
+
+    monkeypatch.setattr("veristar.generate.qa.chat", fake_chat)
+    result = answer_question(_repo(), "아티스트 A의 소속 그룹은 어디야?")  # entity_id 없음
+    assert result.grounded_in == ["ok"]  # 질문 속 '아티스트 A' 해소 → OFFICIAL 사실 grounding
+    assert "memberOf" in captured["user"]
+
+
 def test_qa_no_facts_still_calls_model(monkeypatch: pytest.MonkeyPatch) -> None:
     def fake_chat(system: str, user: str, **kw: object) -> LLMResult:
         return LLMResult(text="해당 정보는 그래프에 없습니다.", model="qwen3", ok=True)
