@@ -1,12 +1,15 @@
-"""FastAPI 앱 팩토리 + 백그라운드 시드 자동 갱신.
+"""FastAPI 앱 팩토리 + 저장소 선택 + 백그라운드 시드 자동 갱신.
 
-저장소를 주입해 앱을 만든다(테스트는 픽스처 저장소 주입). 운영은 환경변수
-VERISTAR_SEED_PATH(기본 data/seed/wikidata_seed.json)에서 시드를 로드한다.
+저장소 선택 우선순위:
+  1. PostgreSQL (DATABASE_URL 환경변수 + 연결 가능할 때) → PostgreSQLGraphRepository
+  2. InMemory JSONL 폴백 (VERISTAR_SEED_PATH)
+
+PostgreSQL 모드에서는 get_repo() Depends가 요청마다 커넥션을 열고 닫는다.
+InMemory 모드에서는 app.state.repo를 공유한다.
 
 시드 자동 갱신(VERISTAR_REFRESH_INTERVAL_HOURS > 0):
-- 앱 lifespan 백그라운드 태스크로 주기적으로 갱신·병합
-- 완료 후 app.state.repo를 hot-reload(진행 중 요청은 기존 저장소 그대로 서빙)
-- config/roots.txt → scripts/refresh_seed.sh 와 동일한 seed.main() 호출
+- PostgreSQL 모드: JSONL 갱신 후 pg migrate 동기화
+- InMemory 모드: JSONL 갱신 후 in-memory hot-reload
 
     uvicorn --factory veristar.api.app:create_default_app
 """
@@ -53,26 +56,44 @@ async def _seed_refresh_loop(app: FastAPI, seed_path: str, interval_hours: float
         await asyncio.sleep(interval_sec)
         logger.info("자동 시드 갱신 시작 (interval=%.1fh, roots=%s)", interval_hours, roots_path)
         try:
-            # blocking I/O → 별도 스레드에서 실행(이벤트 루프 차단 방지)
             await asyncio.get_event_loop().run_in_executor(
-                None,
-                _do_refresh,
-                seed_path,
-                roots_path,
-                max_entities,
+                None, _do_refresh, seed_path, roots_path, max_entities,
             )
-            # 갱신된 파일로 저장소 교체
-            new_repo = InMemoryGraphRepository.from_path(seed_path)
-            app.state.repo = new_repo
-            s = new_repo.stats()
-            logger.info(
-                "시드 갱신 완료: 엔티티 %d · statement %d · 소스 %d",
-                s["entities"],
-                s["statements"],
-                s["sources"],
-            )
+            if app.state.use_postgres:
+                # PostgreSQL 모드: JSONL → PG 동기화
+                await asyncio.get_event_loop().run_in_executor(None, _pg_sync, seed_path)
+                logger.info("PostgreSQL 시드 갱신 완료")
+            else:
+                # InMemory 모드: 저장소 hot-reload
+                new_repo = InMemoryGraphRepository.from_path(seed_path)
+                app.state.repo = new_repo
+                s = new_repo.stats()
+                logger.info(
+                    "시드 갱신 완료: 엔티티 %d · statement %d · 소스 %d",
+                    s["entities"], s["statements"], s["sources"],
+                )
         except Exception as exc:
             logger.error("시드 갱신 실패(다음 주기에 재시도): %s", exc)
+
+
+def _pg_sync(seed_path: str) -> None:
+    """JSONL → PostgreSQL 동기화 (PostgreSQL 모드 자동 갱신 후 호출)."""
+    from pgvector.psycopg import register_vector  # type: ignore[import-untyped]
+
+    from veristar.db.connection import get_conn, is_available
+    from veristar.db.migrate import migrate_graph
+    from veristar.db.pg_repository import PostgreSQLGraphRepository
+
+    if not is_available():
+        return
+    try:
+        with get_conn() as conn:
+            register_vector(conn)
+            repo = PostgreSQLGraphRepository(conn)  # type: ignore[arg-type]
+            migrate_graph(repo, Path(seed_path))
+        logger.info("PostgreSQL 동기화 완료")
+    except Exception as exc:
+        logger.warning("PostgreSQL 동기화 실패: %s", exc)
 
 
 def _do_refresh(seed_path: str, roots_path: str, max_entities: int) -> None:
@@ -116,15 +137,12 @@ def _do_refresh(seed_path: str, roots_path: str, max_entities: int) -> None:
 async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     interval = _refresh_interval_hours()
     seed_path = os.environ.get("VERISTAR_SEED_PATH", _DEFAULT_SEED)
+
     if interval > 0:
-        logger.info(
-            "시드 자동 갱신 활성: %.1f시간 간격 (VERISTAR_REFRESH_INTERVAL_HOURS=%.1f)",
-            interval,
-            interval,
-        )
+        logger.info("시드 자동 갱신 활성: %.1fh (VERISTAR_REFRESH_INTERVAL_HOURS)", interval)
         task = asyncio.create_task(_seed_refresh_loop(app, seed_path, interval))
     else:
-        logger.info("시드 자동 갱신 비활성 (VERISTAR_REFRESH_INTERVAL_HOURS=0)")
+        logger.info("시드 자동 갱신 비활성")
         task = None
     try:
         yield
@@ -134,30 +152,35 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 def create_app(repo: InMemoryGraphRepository) -> FastAPI:
+    """테스트·커스텀 저장소 주입용 (InMemory)."""
     app = FastAPI(title="Veristar Query API", version="0.1.0")
     app.state.repo = repo
+    app.state.use_postgres = False
     app.state.templates = Jinja2Templates(directory=str(_TEMPLATES_DIR))
     app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
-
-    from .routes import router  # 순환참조 회피
-
+    from .routes import router
     app.include_router(router)
     return app
 
 
-def build_default_repo() -> InMemoryGraphRepository:
-    path = os.environ.get("VERISTAR_SEED_PATH", _DEFAULT_SEED)
-    return InMemoryGraphRepository.from_path(path)
-
-
 def create_default_app() -> FastAPI:
-    repo = build_default_repo()
+    """운영 진입점 — PostgreSQL 우선, InMemory 폴백."""
+    from veristar.db.connection import is_available
+
     app = FastAPI(title="Veristar Query API", version="0.1.0", lifespan=_lifespan)
-    app.state.repo = repo
     app.state.templates = Jinja2Templates(directory=str(_TEMPLATES_DIR))
     app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
 
-    from .routes import router
+    if is_available():
+        logger.info("저장소: PostgreSQL (DATABASE_URL)")
+        app.state.use_postgres = True
+        app.state.repo = None  # routes.py의 get_repo()가 요청마다 커넥션 생성
+    else:
+        seed_path = os.environ.get("VERISTAR_SEED_PATH", _DEFAULT_SEED)
+        logger.info("저장소: InMemory JSONL (%s)", seed_path)
+        app.state.use_postgres = False
+        app.state.repo = InMemoryGraphRepository.from_path(seed_path)
 
+    from .routes import router
     app.include_router(router)
     return app

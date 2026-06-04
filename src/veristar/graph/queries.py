@@ -12,7 +12,7 @@ from datetime import date
 from veristar.ontology.models import Entity, Source, Statement
 
 from .filters import StatementFilter
-from .repository import InMemoryGraphRepository
+from .repository import GraphRepository
 
 
 @dataclass(frozen=True)
@@ -33,11 +33,11 @@ class EntityDetail:
     incoming_count: int
 
 
-def search(repo: InMemoryGraphRepository, query: str, limit: int = 20) -> list[Entity]:
+def search(repo: GraphRepository, query: str, limit: int = 20) -> list[Entity]:
     return repo.search_entities(query, limit)
 
 
-def entity_detail(repo: InMemoryGraphRepository, entity_id: str) -> EntityDetail | None:
+def entity_detail(repo: GraphRepository, entity_id: str) -> EntityDetail | None:
     entity = repo.get_entity(entity_id)
     if entity is None:
         return None
@@ -48,7 +48,7 @@ def entity_detail(repo: InMemoryGraphRepository, entity_id: str) -> EntityDetail
     )
 
 
-def _view(repo: InMemoryGraphRepository, entity_id: str, stmt: Statement) -> StatementView:
+def _view(repo: GraphRepository, entity_id: str, stmt: Statement) -> StatementView:
     if stmt.subject == entity_id:
         direction, other_id = "out", stmt.object
     else:
@@ -64,7 +64,7 @@ def _view(repo: InMemoryGraphRepository, entity_id: str, stmt: Statement) -> Sta
 
 
 def statements_for(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     entity_id: str,
     filt: StatementFilter | None = None,
 ) -> list[StatementView]:
@@ -76,7 +76,7 @@ _FAR_FUTURE = date.max
 
 
 def timeline(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     entity_id: str,
     filt: StatementFilter | None = None,
 ) -> list[StatementView]:
@@ -86,7 +86,7 @@ def timeline(
 
 
 def neighbors(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     entity_id: str,
     filt: StatementFilter | None = None,
 ) -> list[StatementView]:

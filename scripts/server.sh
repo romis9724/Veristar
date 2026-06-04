@@ -20,6 +20,8 @@ HOST="${VERISTAR_HOST:-127.0.0.1}"
 PORT="${VERISTAR_PORT:-8000}"
 SEED="${VERISTAR_SEED_PATH:-data/seed/wikidata_seed.json}"
 REFRESH="${VERISTAR_REFRESH_INTERVAL_HOURS:-24}"
+# PostgreSQL: DATABASE_URL 환경변수가 있으면 자동으로 PostgreSQL 모드
+DB_URL="${DATABASE_URL:-postgresql://veristar:veristar@localhost:5433/veristar}"
 APP="veristar.api.app:create_default_app"
 UVICORN="$ROOT/.venv/bin/uvicorn"
 RUNDIR="$ROOT/.run"
@@ -52,6 +54,7 @@ start() {
     echo "✗ 포트 $PORT 가 이미 사용 중입니다. './scripts/server.sh stop' 후 다시 시도하세요."
     exit 1
   fi
+  DATABASE_URL="$DB_URL" \
   VERISTAR_SEED_PATH="$SEED" \
   VERISTAR_REFRESH_INTERVAL_HOURS="$REFRESH" \
   nohup "$UVICORN" --factory "$APP" \
@@ -60,6 +63,7 @@ start() {
   sleep 1
   if is_running; then
     echo "✓ started → http://$HOST:$PORT  (PID $(cat "$PIDFILE"), log: $LOGFILE)"
+    echo "  저장소: PostgreSQL ($DB_URL)"
     [[ "$REFRESH" != "0" ]] && echo "  자동 갱신: ${REFRESH}시간마다 (VERISTAR_REFRESH_INTERVAL_HOURS=$REFRESH)"
   else
     echo "✗ 기동 실패. 로그 확인: $LOGFILE"

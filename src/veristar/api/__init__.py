@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from .app import build_default_repo, create_app, create_default_app
+from .app import create_app, create_default_app
 
-__all__ = ["create_app", "create_default_app", "build_default_repo"]
+__all__ = ["create_app", "create_default_app"]

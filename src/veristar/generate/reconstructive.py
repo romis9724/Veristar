@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from veristar.graph import InMemoryGraphRepository, StatementFilter, timeline
+from veristar.graph import GraphRepository, StatementFilter, timeline  # noqa: F401
 from veristar.ontology.enums import Grade, Predicate, Status
 from veristar.ontology.query import official_nonsensitive  # noqa: F401 (게이트 원칙 명시)
 
@@ -39,7 +39,7 @@ class SummaryResult:
 
 
 def generate_timeline_text(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     entity_id: str,
 ) -> str:
     """OFFICIAL 비민감 관계를 시간순 텍스트 연표로 재구성."""
@@ -67,7 +67,7 @@ def generate_timeline_text(
 
 
 def generate_summary(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     entity_id: str,
 ) -> SummaryResult | None:
     """엔티티의 OFFICIAL 비민감 statement를 요약·연표로 재구성."""

@@ -12,7 +12,7 @@ from __future__ import annotations
 import textwrap
 from dataclasses import dataclass
 
-from veristar.graph import InMemoryGraphRepository, StatementFilter, StatementView, statements_for
+from veristar.graph import GraphRepository, StatementFilter, StatementView, statements_for
 from veristar.ontology.enums import Grade, Status
 
 from .llm import chat
@@ -40,7 +40,7 @@ def _statements_to_context(views: list[StatementView]) -> str:
 
 
 def answer_question(
-    repo: InMemoryGraphRepository,
+    repo: GraphRepository,
     question: str,
     entity_id: str | None = None,
     max_statements: int = 30,
