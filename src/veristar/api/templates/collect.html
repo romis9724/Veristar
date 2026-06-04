@@ -326,5 +326,38 @@ function cleanup() {
   document.getElementById('run-btn').disabled = false;
   document.getElementById('stop-btn').style.display = 'none';
 }
+
+// ── 페이지 로드 시: 서버 로그 복원 ────────────────────────────────────────────
+async function restoreIfRunning() {
+  try {
+    const r = await fetch('/api/pipeline/logs');
+    const d = (await r.json()).data;
+
+    if (!d.task_id || !d.logs.length) return;
+
+    // 이전 로그가 있으면 복원
+    document.getElementById('agent-panel').innerHTML = '';
+    addRaw(`<div class="msg-header" style="color:oklch(65% 0.1 75)">
+      ← 실행 이력 복원 (task: ${d.task_id})
+    </div>`);
+
+    for (const msg of d.logs) {
+      handleMsg(msg);
+    }
+
+    if (d.status === 'running') {
+      // 아직 실행 중 → SSE 재연결
+      document.getElementById('run-btn').disabled = true;
+      document.getElementById('stop-btn').style.display = 'block';
+      addMsg('← 파이프라인 실행 중 — 스트림 재연결', 'msg-log-info');
+
+      evtSource = new EventSource(`/api/pipeline/stream`);
+      evtSource.onmessage = (e) => { handleMsg(JSON.parse(e.data)); };
+      evtSource.onerror = () => { addMsg('⚠️ 연결 끊김', 'msg-log-warn'); cleanup(); };
+    }
+  } catch(_) {}
+}
+
+restoreIfRunning();
 </script>
 {% endblock %}

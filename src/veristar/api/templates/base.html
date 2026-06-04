@@ -75,6 +75,37 @@
     .site-nav { margin-left: auto; display: flex; gap: 1.2rem; font-size: 0.875rem; }
     .site-nav a { color: var(--muted); font-weight: 500; }
     .site-nav a:hover { color: var(--accent); text-decoration: none; }
+    /* 파이프라인 실행 중 배지 */
+    #pipeline-badge {
+      display: none; align-items: center; gap: 0.35rem;
+      background: oklch(55% 0.18 150); color: #fff;
+      font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem;
+      border-radius: 20px; cursor: pointer; text-decoration: none;
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+    #pipeline-badge.visible { display: flex; }
+    @keyframes pulse-badge {
+      0%,100% { opacity: 1; } 50% { opacity: 0.7; }
+    }
+    /* 토스트 */
+    #toast-wrap {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;
+      pointer-events: none;
+    }
+    .toast {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; padding: 0.8rem 1.1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+      font-size: 0.84rem; min-width: 220px; max-width: 320px;
+      pointer-events: all; transform: translateY(80px); opacity: 0;
+      transition: transform 300ms cubic-bezier(0.16,1,0.3,1), opacity 300ms;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast .toast-title { font-weight: 700; margin-bottom: 0.2rem; font-size: 0.88rem; }
+    .toast .toast-body { color: var(--muted); font-size: 0.78rem; }
+    .toast-success .toast-title { color: oklch(42% 0.18 150); }
+    .toast-error .toast-title { color: #c62828; }
   </style>
 </head>
 <body>
@@ -86,10 +117,66 @@
       <a href="/ui/graph">그래프</a>
       <a href="/ui/vault">Vault</a>
       <a href="/ui/qa">Q&amp;A</a>
-      <a href="/ui/collect" style="color:var(--accent)">⚙ 파이프라인</a>
+      <a href="/ui/collect">⚙ 파이프라인</a>
+      <a href="/ui/collect" id="pipeline-badge">
+        <span>⟳</span> 실행 중
+      </a>
     </nav>
   </header>
   <main>{% block content %}{% endblock %}</main>
   <footer>모든 사실은 출처와 등급을 가진다 · OFFICIAL / REPORTED / RUMOR</footer>
+  <div id="toast-wrap"></div>
+
+<script>
+// ── 전역 토스트 함수 ─────────────────────────────────────────────────────────
+window.showToast = function(title, body, type='success', duration=5000) {
+  const wrap = document.getElementById('toast-wrap');
+  const el = document.createElement('div');
+  el.className = `toast toast-${type}`;
+  el.innerHTML = `<div class="toast-title">${title}</div><div class="toast-body">${body}</div>`;
+  wrap.appendChild(el);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => el.classList.add('show'));
+  });
+  setTimeout(() => {
+    el.classList.remove('show');
+    setTimeout(() => el.remove(), 350);
+  }, duration);
+};
+
+// ── 파이프라인 상태 폴링 (3초마다) ───────────────────────────────────────────
+let _prevStatus = null;
+
+async function _checkPipeline() {
+  try {
+    const r = await fetch('/api/pipeline/status');
+    const d = (await r.json()).data;
+    const badge = document.getElementById('pipeline-badge');
+
+    if (d.status === 'running') {
+      badge.classList.add('visible');
+    } else {
+      badge.classList.remove('visible');
+    }
+
+    // 완료 전환 감지 → 토스트
+    if (_prevStatus === 'running' && d.status === 'done') {
+      const s = d.summary || {};
+      showToast(
+        '✅ 파이프라인 완료',
+        `vault ${s.vault_total ?? '?'}건 · HIGH ${s.verified_high ?? '?'}건`,
+        'success'
+      );
+    }
+    if (_prevStatus === 'running' && d.status === 'error') {
+      showToast('❌ 파이프라인 오류', '로그를 확인하세요.', 'error');
+    }
+    _prevStatus = d.status;
+  } catch (_) {}
+}
+
+_checkPipeline();
+setInterval(_checkPipeline, 3000);
+</script>
 </body>
 </html>

@@ -13,7 +13,10 @@ import asyncio
 import json
 import os
 import threading
+import uuid
 from collections.abc import AsyncIterator, Iterator
+from dataclasses import dataclass
+from dataclasses import field as dc_field
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
@@ -165,6 +168,43 @@ def entity_detail_endpoint(
     if detail is None:
         raise HTTPException(status_code=404, detail=f"entity not found: {entity_id}")
     return ok(detail_to_out(detail))
+
+
+# --- Pipeline 상태 저장소 ---
+# 서버 메모리에 파이프라인 로그를 보관해 페이지 이탈 후 재접속해도 복원 가능.
+
+
+@dataclass
+class _PipelineState:
+    task_id: str
+    status: str = "idle"   # idle | running | done | error
+    logs: list[dict[str, object]] = dc_field(default_factory=list)
+    summary: dict[str, object] = dc_field(default_factory=dict)
+
+
+_pipeline: _PipelineState = _PipelineState(task_id="")
+
+
+@router.get("/api/pipeline/status")
+def pipeline_status() -> dict[str, object]:
+    """현재 파이프라인 상태 반환."""
+    return ok({
+        "task_id": _pipeline.task_id,
+        "status": _pipeline.status,
+        "log_count": len(_pipeline.logs),
+        "summary": _pipeline.summary,
+    })
+
+
+@router.get("/api/pipeline/logs")
+def pipeline_logs() -> dict[str, object]:
+    """전체 로그 반환 (재접속 시 화면 복원용)."""
+    return ok({
+        "task_id": _pipeline.task_id,
+        "status": _pipeline.status,
+        "logs": _pipeline.logs,
+        "summary": _pipeline.summary,
+    })
 
 
 # --- Graph / Tree / Vault API ---
@@ -320,16 +360,42 @@ async def pipeline_stream(
     limit: int = Query(default=50, ge=1, le=500),
     steps: str = Query(default="collect,verify,sync,migrate"),
 ) -> object:
-    """데이터 수집·검증·동기화 파이프라인을 실행하고 SSE로 진행 상황을 스트리밍한다."""
+    """데이터 수집·검증·동기화 파이프라인을 실행하고 SSE로 진행 상황을 스트리밍한다.
+
+    서버 메모리(_pipeline)에 로그를 보관해 페이지 이탈 후 재접속해도 전체 로그 복원 가능.
+    이미 실행 중이면 새 실행 없이 현재 로그만 스트리밍.
+    """
     from fastapi.responses import StreamingResponse
+
+    global _pipeline  # noqa: PLW0603
+
+    # 이미 실행 중이면 현재 로그만 스트리밍 (중복 실행 방지)
+    if _pipeline.status == "running":
+        async def _replay() -> AsyncIterator[str]:
+            for msg in list(_pipeline.logs):
+                yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
+            if _pipeline.status != "running":
+                done_msg = {"type": "done", "summary": _pipeline.summary}
+                yield f"data: {json.dumps(done_msg, ensure_ascii=False)}\n\n"
+        return StreamingResponse(_replay(), media_type="text/event-stream",
+                                  headers={"Cache-Control": "no-cache"})
+
+    # 새 파이프라인 시작
+    task_id = str(uuid.uuid4())[:8]
+    _pipeline.task_id = task_id
+    _pipeline.status = "running"
+    _pipeline.logs = []
+    _pipeline.summary = {}
 
     queue: asyncio.Queue[dict[str, object]] = asyncio.Queue()
     loop = asyncio.get_event_loop()
 
     def put(msg: dict[str, object]) -> None:
+        _pipeline.logs.append(msg)           # 서버 메모리에 저장
         loop.call_soon_threadsafe(queue.put_nowait, msg)
 
     def _run() -> None:
+        global _pipeline  # noqa: PLW0603
         step_list = [s.strip() for s in steps.split(",")]
         src_list = [s.strip() for s in sources.split(",")]
         put({"type": "header", "msg": f"파이프라인 시작 — {', '.join(step_list)}"})
@@ -458,12 +524,14 @@ async def pipeline_stream(
         # ── 완료 ───────────────────────────────────────────────────────────
         from veristar.vault.store import VaultStore
         vs = VaultStore("vault").stats()
-        put({"type": "done",
-             "summary": {
-                 "vault_total": vs["total"],
-                 "verified_high": vs["verified_high"],
-                 "unverified": vs["unverified"],
-             }})
+        summary = {
+            "vault_total": vs["total"],
+            "verified_high": vs["verified_high"],
+            "unverified": vs["unverified"],
+        }
+        _pipeline.summary = summary
+        _pipeline.status = "done"
+        put({"type": "done", "summary": summary})
 
     # 백그라운드 스레드에서 파이프라인 실행
     threading.Thread(target=_run, daemon=True).start()
