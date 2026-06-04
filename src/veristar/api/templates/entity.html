@@ -55,12 +55,12 @@ function applyFilter(){
     hx-get="/ui/entities/{{ e.id }}/summary"
     hx-target="#summary-box"
     hx-swap="innerHTML"
+    hx-on::after-request="document.getElementById('summary-box').style.display='block'"
     style="font-size:0.75rem;padding:0.2rem 0.6rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;color:var(--accent);">
     요약 생성
   </button>
 </div>
-<div id="summary-box" style="margin:0.6rem 0;font-size:0.85rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0.8rem 1rem;display:none;"
-  hx-on::after-request="this.style.display='block'"></div>
+<div id="summary-box" style="margin:0.6rem 0;font-size:0.85rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0.8rem 1rem;display:none;"></div>
 
 {% if not views %}
   <p class="empty">표시할 관계가 없습니다.</p>
