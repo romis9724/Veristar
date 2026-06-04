@@ -250,6 +250,10 @@ def _extract_facts(
         if s not in known_ids or o not in known_ids:
             logger.debug("unknown entity: %s / %s", s, o)
             continue
+        # 자기참조 제거 (subject == object)
+        if s == o:
+            logger.debug("self-referential rejected: %s -[%s]-> %s", s, p, o)
+            continue
         # 핵심 필터: subject 또는 object 중 하나는 반드시 주 엔티티여야 함
         if main_entity_id and s != main_entity_id and o != main_entity_id:
             logger.debug(
