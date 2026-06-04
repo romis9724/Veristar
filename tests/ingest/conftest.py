@@ -56,6 +56,46 @@ def claim_entity(
     return claim
 
 
+def claim_award(
+    qid: str, *, point_in_time: str, category: str, with_ref: bool = True
+) -> dict[str, Any]:
+    """수상 claim: P585(시점)·P1810(부문) 한정자 포함. P580은 없음(수상은 단발 사건)."""
+    claim: dict[str, Any] = {
+        "mainsnak": {
+            "snaktype": "value",
+            "property": "P166",
+            "datavalue": {
+                "value": {"entity-type": "item", "id": qid, "numeric-id": 0},
+                "type": "wikibase-entityid",
+            },
+        },
+        "type": "statement",
+        "rank": "normal",
+        "qualifiers": {
+            "P585": [
+                {
+                    "snaktype": "value",
+                    "property": "P585",
+                    "datavalue": {
+                        "value": {"time": point_in_time, "precision": 11},
+                        "type": "time",
+                    },
+                }
+            ],
+            "P1810": [
+                {
+                    "snaktype": "value",
+                    "property": "P1810",
+                    "datavalue": {"value": category, "type": "string"},
+                }
+            ],
+        },
+    }
+    if with_ref:
+        claim["references"] = _REF
+    return claim
+
+
 def claim_time(prop: str, time_str: str) -> dict[str, Any]:
     return {
         "mainsnak": {
@@ -99,6 +139,22 @@ def group_item() -> dict[str, Any]:
             "P31": [claim_entity("P31", "Q_GROUP")],
             "P571": [claim_time("P571", "+2016-02-23T00:00:00Z")],
             "P527": [claim_entity("P527", "Q1", with_ref=True)],  # 그룹→멤버 (역방향)
+        },
+    }
+
+
+@pytest.fixture
+def award_winner_item() -> dict[str, Any]:
+    """그룹 QW: 같은 상(QAWARD)을 다른 해·부문으로 두 번 수상 (P585·P1810으로 구분)."""
+    return {
+        "id": "QW",
+        "labels": {"ko": {"language": "ko", "value": "그룹 W"}},
+        "claims": {
+            "P31": [claim_entity("P31", "Q_GROUP")],
+            "P166": [
+                claim_award("QAWARD", point_in_time="+2019-01-06T00:00:00Z", category="신인상"),
+                claim_award("QAWARD", point_in_time="+2022-01-08T00:00:00Z", category="본상"),
+            ],
         },
     }
 

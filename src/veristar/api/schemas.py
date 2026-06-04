@@ -40,6 +40,7 @@ class StatementOut(BaseModel):
     other_id: str
     other_name: str | None
     other_type: str | None
+    qualifier: str | None
     valid_from: date | None
     valid_to: date | None
     sources: list[SourceOut]
@@ -82,6 +83,7 @@ def view_to_out(view: StatementView) -> StatementOut:
         other_id=view.other_id,
         other_name=view.other.name if view.other else None,
         other_type=view.other.type.value if view.other else None,
+        qualifier=stmt.qualifier,
         valid_from=stmt.valid_from,
         valid_to=stmt.valid_to,
         sources=[source_to_out(s) for s in view.sources],

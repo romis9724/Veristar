@@ -72,6 +72,22 @@ def test_all_statements_official_and_reference_wikidata_source(
     assert all(s.sources == [src.id] for s in rec.statements)
 
 
+def test_same_award_distinguished_by_year_and_category(
+    award_winner_item: dict[str, Any],
+) -> None:
+    # 같은 상(QAWARD)을 두 번 수상 → 동일 object지만 연도·부문으로 구분돼야 함
+    rec = _map(award_winner_item)
+    assert rec is not None
+    awards = [s for s in rec.statements if s.predicate is Predicate.WON_AWARD]
+    assert len(awards) == 2
+    assert all(a.object == "wd:QAWARD" for a in awards)
+    # P585(point in time)이 valid_from으로 폴백되어 연도가 채워짐
+    years = sorted(a.valid_from.year for a in awards if a.valid_from)
+    assert years == [2019, 2022]
+    # P1810 부문 라벨이 qualifier로
+    assert {a.qualifier for a in awards} == {"신인상", "본상"}
+
+
 def test_unknown_type_returns_none(unknown_item: dict[str, Any]) -> None:
     assert _map(unknown_item) is None
 

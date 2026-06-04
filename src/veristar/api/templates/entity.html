@@ -41,6 +41,7 @@
           {% else %}
             <span class="qid">{{ v.other_id }}</span>
           {% endif %}
+          {% if s.qualifier %}<span class="qual">· {{ s.qualifier }}</span>{% endif %}
         </td>
         <td><span class="badge {{ s.grade.value }}">{{ s.grade.value }}</span></td>
         <td class="src">

@@ -126,6 +126,19 @@ def _qualifier_date(claim: dict[str, Any], prop: str) -> date | None:
     return None
 
 
+def _qualifier_string(claim: dict[str, Any], prop: str) -> str | None:
+    """문자열/단일언어 한정자 값 (예: P1810 subject named as)."""
+    for q in claim.get("qualifiers", {}).get(prop, []):
+        if q.get("snaktype") != "value":
+            continue
+        value = q.get("datavalue", {}).get("value")
+        if isinstance(value, str):
+            return value
+        if isinstance(value, dict) and "text" in value:
+            return str(value["text"])
+    return None
+
+
 # --- 엔티티 타입·속성 ---
 
 
@@ -220,6 +233,10 @@ def map_item(
             expand.append(object_qid)  # 노드 발견은 reference와 무관
             if require_reference and not _has_reference(claim):
                 continue
+            # 시작시점(P580) 없으면 단발 사건 시점(P585)으로 폴백 → 수상 연도 구분
+            valid_from = _qualifier_date(claim, mapping.start_qualifier) or _qualifier_date(
+                claim, mapping.point_in_time_qualifier
+            )
             statements.append(
                 Statement(
                     id=f"stmt_wd_{qid}_{prop}_{object_qid}_{idx}",
@@ -229,9 +246,10 @@ def map_item(
                     grade=Grade.OFFICIAL,
                     status=Status.ACTIVE,
                     sources=[source.id],
-                    valid_from=_qualifier_date(claim, mapping.start_qualifier),
+                    valid_from=valid_from,
                     valid_to=_qualifier_date(claim, mapping.end_qualifier),
                     sensitive=False,
+                    qualifier=_qualifier_string(claim, mapping.label_qualifier),
                 )
             )
 

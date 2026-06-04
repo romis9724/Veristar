@@ -97,6 +97,9 @@ class Statement(BaseModel):
     valid_to: date | None = None
     asserted_at: date | None = None
     sensitive: bool = False
+    # 같은 (subject,predicate,object)라도 구분되는 보조 라벨. 출처가 제공한 사실만
+    # 담는다(예: 수상 부문 "Best New Artist", 배역명). 추론·생성은 금지(§4).
+    qualifier: str | None = None
 
     @model_validator(mode="after")
     def _check_validity_window(self) -> Statement:

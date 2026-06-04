@@ -86,8 +86,11 @@ class WikidataMapping:
     inception_prop: str = "P571"
     publication_prop: str = "P577"
     # 시간 한정자
-    start_qualifier: str = "P580"
-    end_qualifier: str = "P582"
+    start_qualifier: str = "P580"  # start time
+    end_qualifier: str = "P582"  # end time
+    point_in_time_qualifier: str = "P585"  # 단발 사건(수상 등) 시점 → valid_from 폴백
+    # 같은 관계를 구분하는 라벨 한정자 (예: 수상 부문). P1810=subject named as.
+    label_qualifier: str = "P1810"
 
 
 DEFAULT_MAPPING = WikidataMapping()

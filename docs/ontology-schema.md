@@ -70,9 +70,12 @@
   "valid_from": "2016-02-23",     // 관계 시작 시점 (선택)
   "valid_to": null,               // 종료 시점. null이면 현재 유효
   "asserted_at": "2016-02-23",    // 출처가 이 사실을 말한 시점
-  "sensitive": false              // 민감 카테고리 플래그 (true면 생성에서 제외)
+  "sensitive": false,             // 민감 카테고리 플래그 (true면 생성에서 제외)
+  "qualifier": null               // 같은 (subject,predicate,object) 구분용 보조 라벨 (선택)
 }
 ```
+
+> `qualifier`: 동일한 주어·관계·목적어가 여러 번 성립할 때(예: 같은 상을 다른 해/부문으로 여러 번 수상) 이를 구분하는 **출처 제공 보조 라벨**이다. 예: 수상 부문("Best New Artist"), 배역명. 추론으로 만들어내지 않는다(§4-4). 연도 구분은 `valid_from`(수상 시점)으로 표현한다.
 
 ### 2.1 관계 어휘 (predicate)
 
