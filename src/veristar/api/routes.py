@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import json
 import os
 import threading
@@ -170,8 +171,9 @@ def entity_detail_endpoint(
     return ok(detail_to_out(detail))
 
 
-# --- Pipeline 상태 저장소 ---
-# 서버 메모리에 파이프라인 로그를 보관해 페이지 이탈 후 재접속해도 복원 가능.
+# --- Pipeline 상태 저장소 + 브로드캐스트 ---
+# 서버 메모리에 파이프라인 로그를 보관 + 여러 SSE 구독자에게 동시 전달.
+# 브라우저 페이지 이탈 후 재접속해도 기존 로그 복원 + 새 메시지 계속 수신.
 
 
 @dataclass
@@ -180,6 +182,8 @@ class _PipelineState:
     status: str = "idle"   # idle | running | done | error
     logs: list[dict[str, object]] = dc_field(default_factory=list)
     summary: dict[str, object] = dc_field(default_factory=dict)
+    # 활성 SSE 구독자 큐 목록 — put() 호출 시 전부에 브로드캐스트
+    subscribers: list[asyncio.Queue[dict[str, object]]] = dc_field(default_factory=list)
 
 
 _pipeline: _PipelineState = _PipelineState(task_id="")
@@ -369,15 +373,48 @@ async def pipeline_stream(
 
     global _pipeline  # noqa: PLW0603
 
-    # 이미 실행 중이면 현재 로그만 스트리밍 (중복 실행 방지)
+    loop = asyncio.get_event_loop()
+
+    # ── 구독자 등록 헬퍼 ────────────────────────────────────────────────────
+    async def _stream_to_client() -> AsyncIterator[str]:
+        """기존 로그 재생 후 신규 메시지를 브로드캐스트로 수신.
+
+        레이스 컨디션 방지:
+          1. 구독자 큐 먼저 등록
+          2. 그 시점까지의 로그를 replay_end 기준으로 재생
+          3. 이후 큐에서 신규 메시지 수신
+        """
+        sub_q: asyncio.Queue[dict[str, object]] = asyncio.Queue()
+        _pipeline.subscribers.append(sub_q)
+        replay_end = len(_pipeline.logs)  # 등록 시점 스냅샷
+        try:
+            # 기존 로그 재생
+            for msg in _pipeline.logs[:replay_end]:
+                yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
+            # 신규 메시지 수신
+            while True:
+                msg = await sub_q.get()
+                yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
+                if msg.get("type") == "done":
+                    break
+        finally:
+            with contextlib.suppress(ValueError):
+                _pipeline.subscribers.remove(sub_q)
+
+    # 이미 실행 중이면 구독만 (중복 실행 방지)
     if _pipeline.status == "running":
-        async def _replay() -> AsyncIterator[str]:
+        return StreamingResponse(
+            _stream_to_client(),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+        )
+
+    # 완료/오류 상태면 기존 로그를 한번만 재생
+    if _pipeline.status in ("done", "error") and _pipeline.logs:
+        async def _replay_once() -> AsyncIterator[str]:
             for msg in list(_pipeline.logs):
                 yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
-            if _pipeline.status != "running":
-                done_msg = {"type": "done", "summary": _pipeline.summary}
-                yield f"data: {json.dumps(done_msg, ensure_ascii=False)}\n\n"
-        return StreamingResponse(_replay(), media_type="text/event-stream",
+        return StreamingResponse(_replay_once(), media_type="text/event-stream",
                                   headers={"Cache-Control": "no-cache"})
 
     # 새 파이프라인 시작
@@ -386,13 +423,13 @@ async def pipeline_stream(
     _pipeline.status = "running"
     _pipeline.logs = []
     _pipeline.summary = {}
-
-    queue: asyncio.Queue[dict[str, object]] = asyncio.Queue()
-    loop = asyncio.get_event_loop()
+    _pipeline.subscribers = []
 
     def put(msg: dict[str, object]) -> None:
-        _pipeline.logs.append(msg)           # 서버 메모리에 저장
-        loop.call_soon_threadsafe(queue.put_nowait, msg)
+        _pipeline.logs.append(msg)
+        # 모든 구독자에게 브로드캐스트
+        for sub_q in list(_pipeline.subscribers):
+            loop.call_soon_threadsafe(sub_q.put_nowait, msg)
 
     def _run() -> None:
         global _pipeline  # noqa: PLW0603
@@ -533,18 +570,10 @@ async def pipeline_stream(
         _pipeline.status = "done"
         put({"type": "done", "summary": summary})
 
-    # 백그라운드 스레드에서 파이프라인 실행
+    # 백그라운드 스레드에서 파이프라인 실행 후 구독자 스트림으로 서빙
     threading.Thread(target=_run, daemon=True).start()
-
-    async def _generate() -> AsyncIterator[str]:
-        while True:
-            msg = await queue.get()
-            yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
-            if msg.get("type") == "done":
-                break
-
     return StreamingResponse(
-        _generate(),
+        _stream_to_client(),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
