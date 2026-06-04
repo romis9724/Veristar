@@ -76,9 +76,7 @@ def _require_entity(repo: GraphRepository, entity_id: str) -> None:
 
 
 @router.get("/api/health")
-def health(
-    request: Request, repo: GraphRepository = Depends(get_repo)
-) -> dict[str, object]:
+def health(request: Request, repo: GraphRepository = Depends(get_repo)) -> dict[str, object]:
     interval = float(os.environ.get("VERISTAR_REFRESH_INTERVAL_HOURS", "24"))
     use_pg = getattr(request.app.state, "use_postgres", False)
     return ok(
@@ -166,6 +164,165 @@ def entity_detail_endpoint(
     return ok(detail_to_out(detail))
 
 
+# --- Graph / Tree / Vault API ---
+
+
+@router.get("/api/graph/data")
+def graph_data(
+    grade: list[Grade] | None = Query(default=None),
+    entity_type: str | None = Query(default=None),
+    repo: GraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    """D3.js 그래프용 nodes + links JSON."""
+    from veristar.ontology.enums import Status
+
+    all_entities = repo.search_entities("", limit=500)
+    if entity_type:
+        all_entities = [e for e in all_entities if getattr(e, "type", "") == entity_type]
+
+    entity_ids = {e.id for e in all_entities}
+    grade_filter = frozenset(grade) if grade else None
+
+    nodes = [
+        {
+            "id": e.id,
+            "name": e.name,
+            "type": str(getattr(e, "type", "Unknown")),
+        }
+        for e in all_entities
+    ]
+
+    links: list[dict[str, str]] = []
+    seen_links: set[str] = set()
+    for e in all_entities:
+        for stmt in repo.outgoing(e.id):
+            if stmt.status != Status.ACTIVE:
+                continue
+            if stmt.object not in entity_ids:
+                continue
+            if grade_filter and stmt.grade not in grade_filter:
+                continue
+            key = f"{stmt.subject}|{stmt.predicate}|{stmt.object}"
+            if key not in seen_links:
+                seen_links.add(key)
+                links.append(
+                    {
+                        "source": stmt.subject,
+                        "target": stmt.object,
+                        "predicate": str(stmt.predicate),
+                        "grade": str(stmt.grade),
+                    }
+                )
+
+    return ok({"nodes": nodes, "links": links})
+
+
+@router.get("/api/tree")
+def entity_tree(
+    repo: GraphRepository = Depends(get_repo),
+) -> dict[str, object]:
+    """엔티티 타입별 트리 구조."""
+    from collections import defaultdict
+
+    all_entities = repo.search_entities("", limit=500)
+    tree: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for e in all_entities:
+        etype = str(getattr(e, "type", "Unknown"))
+        tree[etype].append({"id": e.id, "name": e.name})
+
+    return ok({t: sorted(items, key=lambda x: x["name"]) for t, items in sorted(tree.items())})
+
+
+@router.get("/api/vault/docs")
+def vault_docs(
+    source_type: str | None = Query(default=None),
+    confidence: str | None = Query(default=None),
+    limit: int = Query(default=50, ge=1, le=200),
+    request: Request = None,  # type: ignore[assignment]
+) -> dict[str, object]:
+    """vault 문서 목록 (파일 탐색기용)."""
+    from veristar.db.connection import is_available
+
+    if is_available() and getattr(request.app.state, "use_postgres", False):
+        from pgvector.psycopg import register_vector
+
+        from veristar.db.connection import get_conn
+
+        conn = get_conn()
+        register_vector(conn)
+        filters = []
+        params: list[object] = []
+        if source_type:
+            filters.append("source_type = %s")
+            params.append(source_type)
+        if confidence:
+            filters.append("confidence = %s")
+            params.append(confidence)
+        where = ("WHERE " + " AND ".join(filters)) if filters else ""
+        rows = conn.execute(
+            f"SELECT id, title, source_type, confidence, sensitive, published "  # noqa: S608
+            f"FROM vault_docs {where} ORDER BY source_type, title LIMIT %s",
+            [*params, limit],
+        ).fetchall()
+        conn.close()
+        docs = [
+            {
+                "id": r["id"],
+                "title": r["title"],
+                "source_type": r["source_type"],
+                "confidence": r["confidence"],
+                "sensitive": r["sensitive"],
+                "published": str(r["published"]) if r["published"] else None,
+            }
+            for r in rows
+        ]
+    else:
+        from veristar.vault.store import VaultStore
+
+        store = VaultStore("vault")
+        all_docs = store.list_docs(source_type=source_type)
+        docs = [
+            {
+                "id": d.id,
+                "title": d.title,
+                "source_type": d.source_type,
+                "confidence": d.confidence,
+                "sensitive": d.sensitive,
+                "published": str(d.published) if d.published else None,
+            }
+            for d in all_docs[:limit]
+        ]
+
+    return ok(docs)
+
+
+@router.get("/api/vault/doc/{doc_id:path}")
+def vault_doc_detail(
+    doc_id: str,
+    request: Request,
+) -> dict[str, object]:
+    """vault 단일 문서 내용."""
+    from veristar.vault.store import VaultStore
+
+    store = VaultStore("vault")
+    doc = store.read(doc_id)
+    if doc is None:
+        raise HTTPException(status_code=404, detail=f"vault doc not found: {doc_id}")
+    return ok(
+        {
+            "id": doc.id,
+            "title": doc.title,
+            "content": doc.content,
+            "source_type": doc.source_type,
+            "source_url": doc.source_url,
+            "confidence": doc.confidence,
+            "license": doc.license,
+            "sensitive": doc.sensitive,
+            "published": str(doc.published) if doc.published else None,
+        }
+    )
+
+
 # --- HTMX UI ---
 
 
@@ -217,6 +374,74 @@ def ui_summary(
         )
     note = f"출처 기반 사실 {result.statement_count}건 · OFFICIAL 등급만 · 추론 없음"
     html += f"<p class='meta' style='margin-top:0.5rem;'>{note}</p>"
+    return HTMLResponse(html)
+
+
+@router.get("/ui/graph", response_class=HTMLResponse)
+def ui_graph(request: Request) -> HTMLResponse:
+    """D3.js Force Graph 그래프 탐색기."""
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(request, "graph.html", {})
+
+
+@router.get("/ui/vault", response_class=HTMLResponse)
+def ui_vault(request: Request) -> HTMLResponse:
+    """vault 문서 브라우저."""
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(request, "vault.html", {})
+
+
+@router.get("/ui/vault/doc", response_class=HTMLResponse)
+def ui_vault_doc(
+    request: Request,
+    id: str = Query(default=""),
+) -> HTMLResponse:
+    """vault 단일 문서 렌더링 (HTMX partial)."""
+    if not id:
+        return HTMLResponse("<p class='meta'>문서를 선택하세요.</p>")
+    import re
+
+    from veristar.vault.store import VaultStore
+
+    store = VaultStore("vault")
+    doc = store.read(id)
+    if doc is None:
+        return HTMLResponse("<p class='meta'>문서를 찾을 수 없습니다.</p>", status_code=404)
+
+    confidence_color = {"high": "#2e7d32", "medium": "#e65100", "low": "#c62828"}.get(
+        doc.confidence, "#666"
+    )
+    # Markdown을 간단히 HTML로 변환
+    content_html = doc.content
+    content_html = re.sub(r"^#{4} (.+)$", r"<h4>\1</h4>", content_html, flags=re.MULTILINE)
+    content_html = re.sub(r"^#{3} (.+)$", r"<h3>\1</h3>", content_html, flags=re.MULTILINE)
+    content_html = re.sub(r"^#{2} (.+)$", r"<h2>\1</h2>", content_html, flags=re.MULTILINE)
+    content_html = re.sub(r"^# (.+)$", r"<h1>\1</h1>", content_html, flags=re.MULTILINE)
+    content_html = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", content_html)
+    content_html = content_html.replace("\n\n", "</p><p>").replace("\n", "<br>")
+    content_html = f"<p>{content_html}</p>"
+
+    html = f"""
+<div style="padding:0.5rem 0">
+  <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;margin-bottom:0.6rem">
+    <span style="font-size:0.7rem;background:#eee;padding:2px 6px;border-radius:4px">
+      {doc.source_type}</span>
+    <span style="font-size:0.7rem;color:{confidence_color};font-weight:600">{doc.confidence}</span>
+    {"<span style='font-size:0.7rem;color:#c62828'>🔒 민감</span>" if doc.sensitive else ""}
+    {f'<span style="font-size:0.7rem;color:#888">{doc.published}</span>' if doc.published else ""}
+  </div>
+  <a href="{doc.source_url}" target="_blank"
+     style="font-size:0.75rem;color:var(--accent);word-break:break-all">{doc.source_url}</a>
+  {
+        f'<div style="font-size:0.7rem;color:#888;margin-top:2px">라이선스: {doc.license}</div>'
+        if doc.license
+        else ""
+    }
+  <hr style="margin:0.6rem 0;border:none;border-top:1px solid var(--line)">
+  <div style="font-size:0.82rem;line-height:1.6;max-height:60vh;overflow-y:auto">
+    {content_html[:8000]}
+  </div>
+</div>"""
     return HTMLResponse(html)
 
 

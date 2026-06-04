@@ -126,6 +126,7 @@ class WikipediaCollector(CollectorBase):
         if not text:
             return None
         import json
+
         data = json.loads(text)
         results = data.get("query", {}).get("search", [])
         return results[0]["title"] if results else None
@@ -144,15 +145,11 @@ class WikipediaCollector(CollectorBase):
         if not text:
             return "", ""
         import json
+
         data = json.loads(text)
         pages = data.get("query", {}).get("pages", {})
         for page in pages.values():
-            content = (
-                page.get("revisions", [{}])[0]
-                .get("slots", {})
-                .get("main", {})
-                .get("*", "")
-            )
+            content = page.get("revisions", [{}])[0].get("slots", {}).get("main", {}).get("*", "")
             page_url = f"https://{lang}.wikipedia.org/wiki/{urllib.parse.quote(title)}"
             return content, page_url
         return "", ""

@@ -8,9 +8,9 @@ from unittest.mock import patch
 
 import pytest
 
+from veristar.generate.llm import LLMResult
 from veristar.ingest.news.extractor import extract_facts
 from veristar.ingest.news.rss import FeedItem
-from veristar.generate.llm import LLMResult
 
 
 @pytest.fixture
@@ -64,9 +64,9 @@ def test_extract_fact_from_title(repo, feed_item_bts_award) -> None:
         published=date(2024, 1, 1),
         feed_name="테스트",
     )
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):
@@ -86,9 +86,9 @@ def test_invalid_predicate_filtered(repo) -> None:
         published=date(2024, 1, 1),
         feed_name="테스트",
     )
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "marriedTo", "object_id": "wd:Q2"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "marriedTo", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):
@@ -104,9 +104,9 @@ def test_unknown_entity_filtered(repo) -> None:
         published=date(2024, 1, 1),
         feed_name="테스트",
     )
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q9999"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q9999"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):

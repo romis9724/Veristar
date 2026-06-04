@@ -3,18 +3,17 @@
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 
-from veristar.graph import InMemoryGraphRepository
 from veristar.generate.llm import LLMResult
-from veristar.ontology.enums import EntityType, Grade
+from veristar.graph import InMemoryGraphRepository
+from veristar.ontology.enums import Grade, Predicate
 from veristar.ontology.graph import GraphDocument
-from veristar.ontology.models import Group, Organization, Person, Source, Statement
-from veristar.ontology.enums import Predicate, SourceType, Status
+from veristar.ontology.models import Group, Organization, Person
 from veristar.vault.store import ConfidenceLevel, VaultDoc, VaultStore
 from veristar.verify.graph_sync import (
     SyncReport,
@@ -23,7 +22,6 @@ from veristar.verify.graph_sync import (
     _source_id,
     sync_high_to_graph,
 )
-from datetime import datetime
 
 
 @pytest.fixture
@@ -61,8 +59,11 @@ def vault_with_high(tmp_path: Path) -> VaultStore:
 
 def test_source_id_deterministic() -> None:
     doc = VaultDoc(
-        id="test", title="t", content="c",
-        source_type="wikipedia", source_url="https://example.com",
+        id="test",
+        title="t",
+        content="c",
+        source_type="wikipedia",
+        source_url="https://example.com",
     )
     assert _source_id(doc) == _source_id(doc)
     assert _source_id(doc).startswith("src_vault_")
@@ -93,9 +94,9 @@ def test_is_valid_direction_unknown_entity(repo: InMemoryGraphRepository) -> Non
 
 def test_sync_high_extracts_fact(vault_with_high: VaultStore, minimal_seed: Path) -> None:
     """유효한 사실이 추출되면 그래프에 statement가 추가된다."""
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.verify.graph_sync.chat", return_value=mock_result):
@@ -110,9 +111,9 @@ def test_sync_high_invalid_direction_rejected(
     vault_with_high: VaultStore, minimal_seed: Path
 ) -> None:
     """그룹→개인 방향의 memberOf는 거부된다."""
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q2", "predicate": "memberOf", "object_id": "wd:Q1"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q2", "predicate": "memberOf", "object_id": "wd:Q1"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.verify.graph_sync.chat", return_value=mock_result):
@@ -121,9 +122,7 @@ def test_sync_high_invalid_direction_rejected(
     assert report.new_statements == 0
 
 
-def test_sync_high_llm_failure_skipped(
-    vault_with_high: VaultStore, minimal_seed: Path
-) -> None:
+def test_sync_high_llm_failure_skipped(vault_with_high: VaultStore, minimal_seed: Path) -> None:
     mock_result = LLMResult(ok=False, text="", model="test", error="timeout")
 
     with patch("veristar.verify.graph_sync.chat", return_value=mock_result):
@@ -137,9 +136,9 @@ def test_sync_high_writes_to_seed(vault_with_high: VaultStore, minimal_seed: Pat
     """dry_run=False이면 실제로 시드 파일이 갱신된다."""
     from veristar.ontology.graph import load_graph
 
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.verify.graph_sync.chat", return_value=mock_result):

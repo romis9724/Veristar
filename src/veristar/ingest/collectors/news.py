@@ -120,11 +120,13 @@ def _parse_feed(xml_text: str) -> list[dict[str, str]]:
 def _parse_rss2(root: ET.Element) -> list[dict[str, str]]:
     items = []
     for item in root.findall(".//item"):
-        items.append({
-            "title": (item.findtext("title") or "").strip(),
-            "url": (item.findtext("link") or "").strip(),
-            "date": (item.findtext("pubDate") or "").strip(),
-        })
+        items.append(
+            {
+                "title": (item.findtext("title") or "").strip(),
+                "url": (item.findtext("link") or "").strip(),
+                "date": (item.findtext("pubDate") or "").strip(),
+            }
+        )
     return items
 
 
@@ -136,11 +138,13 @@ def _parse_atom(root: ET.Element) -> list[dict[str, str]]:
         pub_el = entry.find(f"{{{_ATOM_NS}}}published")
         if pub_el is None:
             pub_el = entry.find(f"{{{_ATOM_NS}}}updated")
-        items.append({
-            "title": (title_el.text or "").strip() if title_el is not None else "",
-            "url": (link_el.get("href") or "").strip() if link_el is not None else "",
-            "date": (pub_el.text or "").strip() if pub_el is not None else "",
-        })
+        items.append(
+            {
+                "title": (title_el.text or "").strip() if title_el is not None else "",
+                "url": (link_el.get("href") or "").strip() if link_el is not None else "",
+                "date": (pub_el.text or "").strip() if pub_el is not None else "",
+            }
+        )
     return items
 
 

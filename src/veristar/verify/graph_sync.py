@@ -172,6 +172,7 @@ def _literal_mentioned(text: str, repo: InMemoryGraphRepository, limit: int = 15
         # 2자 이하 이름: 공백·구두점으로 둘러싸인 토큰으로만 허용 (오탐 방지)
         if name_len <= 2:
             import re
+
             pattern = r"(?<![가-힣a-zA-Z0-9])" + re.escape(term) + r"(?![가-힣a-zA-Z0-9])"
             if not re.search(pattern, t):
                 continue
@@ -258,7 +259,10 @@ def _extract_facts(
         if main_entity_id and s != main_entity_id and o != main_entity_id:
             logger.debug(
                 "rejected (neither is main entity %s): %s -[%s]-> %s",
-                main_entity_id, s, p, o,
+                main_entity_id,
+                s,
+                p,
+                o,
             )
             continue
         # 엔티티 타입 기반 방향 검증

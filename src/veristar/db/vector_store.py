@@ -183,9 +183,7 @@ class VectorStore:
         ).fetchall()
         return [VaultDocResult(r) for r in rows]
 
-    def find_duplicate_vault_docs(
-        self, threshold: float = 0.96
-    ) -> list[tuple[str, str, float]]:
+    def find_duplicate_vault_docs(self, threshold: float = 0.96) -> list[tuple[str, str, float]]:
         """임베딩 유사도가 매우 높은 (거의 동일한) 문서 쌍을 찾는다."""
         rows = self._conn.execute(
             """

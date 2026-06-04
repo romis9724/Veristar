@@ -64,6 +64,7 @@ class YouTubeCollector(CollectorBase):
         }
         url = f"{_YT_CHANNEL_URL}?{urllib.parse.urlencode(params)}"
         import json
+
         text = self._get(url)
         if not text:
             return CollectResult(errors=1)
@@ -107,6 +108,7 @@ class YouTubeCollector(CollectorBase):
         }
         url = f"{_YT_SEARCH_URL}?{urllib.parse.urlencode(params)}"
         import json
+
         text = self._get(url)
         if not text:
             return CollectResult(errors=1)

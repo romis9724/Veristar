@@ -60,9 +60,14 @@ class InMemoryGraphRepository:
         return self._sources.get(source_id)
 
     def search_entities(self, query: str, limit: int = 20) -> list[Entity]:
-        q = query.strip().lower()
-        if not q:
+        raw = query.strip()
+        if not raw:
+            # 완전히 빈 문자열 → 전체 반환 (그래프 뷰·트리 뷰용)
+            # 공백만 있는 경우("   ")는 빈 결과 (의도적 빈 검색)
+            if query == "":
+                return list(self._by_id.values())[:limit]
             return []
+        q = raw.lower()
         seen: dict[str, Entity] = {}
         for term, entity_id in self._name_index:
             if q in term and entity_id not in seen:

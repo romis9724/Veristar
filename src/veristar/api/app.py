@@ -57,7 +57,11 @@ async def _seed_refresh_loop(app: FastAPI, seed_path: str, interval_hours: float
         logger.info("자동 시드 갱신 시작 (interval=%.1fh, roots=%s)", interval_hours, roots_path)
         try:
             await asyncio.get_event_loop().run_in_executor(
-                None, _do_refresh, seed_path, roots_path, max_entities,
+                None,
+                _do_refresh,
+                seed_path,
+                roots_path,
+                max_entities,
             )
             if app.state.use_postgres:
                 # PostgreSQL 모드: JSONL → PG 동기화
@@ -70,7 +74,9 @@ async def _seed_refresh_loop(app: FastAPI, seed_path: str, interval_hours: float
                 s = new_repo.stats()
                 logger.info(
                     "시드 갱신 완료: 엔티티 %d · statement %d · 소스 %d",
-                    s["entities"], s["statements"], s["sources"],
+                    s["entities"],
+                    s["statements"],
+                    s["sources"],
                 )
         except Exception as exc:
             logger.error("시드 갱신 실패(다음 주기에 재시도): %s", exc)
@@ -159,6 +165,7 @@ def create_app(repo: InMemoryGraphRepository) -> FastAPI:
     app.state.templates = Jinja2Templates(directory=str(_TEMPLATES_DIR))
     app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
     from .routes import router
+
     app.include_router(router)
     return app
 
@@ -182,5 +189,6 @@ def create_default_app() -> FastAPI:
         app.state.repo = InMemoryGraphRepository.from_path(seed_path)
 
     from .routes import router
+
     app.include_router(router)
     return app

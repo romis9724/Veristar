@@ -30,6 +30,7 @@ SCREENSHOT_DIR.mkdir(parents=True, exist_ok=True)
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _save_screenshot(page: Page, name: str) -> None:
     path = SCREENSHOT_DIR / f"{name}.png"
     page.screenshot(path=str(path))
@@ -43,6 +44,7 @@ def _goto(page: Page, path: str, **kwargs) -> Response | None:
 # Fixtures
 # ---------------------------------------------------------------------------
 
+
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
     """Set a generous default timeout for slow Ollama responses."""
@@ -52,6 +54,7 @@ def browser_context_args(browser_context_args):
 # ---------------------------------------------------------------------------
 # 1. Home page — search form renders
 # ---------------------------------------------------------------------------
+
 
 class TestHomePage:
     def test_title_and_logo(self, page: Page) -> None:
@@ -89,6 +92,7 @@ class TestHomePage:
 # 2. Search results page — GET /ui/search?q=BTS
 # ---------------------------------------------------------------------------
 
+
 class TestSearchPageBTS:
     def test_bts_result_appears(self, page: Page) -> None:
         _goto(page, "/ui/search?q=BTS")
@@ -112,6 +116,7 @@ class TestSearchPageBTS:
 # 3. Korean search — GET /ui/search?q=블랙핑크
 # ---------------------------------------------------------------------------
 
+
 class TestSearchPageKorean:
     def test_blackpink_result_appears(self, page: Page) -> None:
         q = urllib.parse.quote("블랙핑크")
@@ -130,6 +135,7 @@ class TestSearchPageKorean:
 # ---------------------------------------------------------------------------
 # 4. BTS entity detail page — /ui/entities/wd:Q13580495
 # ---------------------------------------------------------------------------
+
 
 class TestEntityPageBTS:
     def test_entity_name_heading(self, page: Page) -> None:
@@ -183,6 +189,7 @@ class TestEntityPageBTS:
 # 5. BLACKPINK entity detail page — /ui/entities/wd:Q25056945
 # ---------------------------------------------------------------------------
 
+
 class TestEntityPageBlackpink:
     def test_entity_name_heading(self, page: Page) -> None:
         _goto(page, "/ui/entities/wd:Q25056945")
@@ -204,6 +211,7 @@ class TestEntityPageBlackpink:
 # ---------------------------------------------------------------------------
 # 6. Stray Kids entity detail page — /ui/entities/wd:Q46134670
 # ---------------------------------------------------------------------------
+
 
 class TestEntityPageStrayKids:
     def test_entity_name_heading(self, page: Page) -> None:
@@ -227,6 +235,7 @@ class TestEntityPageStrayKids:
 # 7. BTS summary partial — /ui/entities/wd:Q13580495/summary (direct GET)
 # ---------------------------------------------------------------------------
 
+
 class TestSummaryPartial:
     def test_summary_returns_content(self, page: Page) -> None:
         response = _goto(page, "/ui/entities/wd:Q13580495/summary", timeout=60_000)
@@ -247,6 +256,7 @@ class TestSummaryPartial:
 # ---------------------------------------------------------------------------
 # 8. Q&A UI page — /ui/qa?q=BTS는 언제 데뷔했나요
 # ---------------------------------------------------------------------------
+
 
 class TestQAPage:
     def test_qa_page_renders(self, page: Page) -> None:
@@ -277,6 +287,7 @@ class TestQAPage:
 # 9. API: GET /api/health
 # ---------------------------------------------------------------------------
 
+
 class TestAPIHealth:
     def test_health_status_ok(self, page: Page) -> None:
         _goto(page, "/api/health")
@@ -303,6 +314,7 @@ class TestAPIHealth:
 # 10. API: GET /api/entities?q=BTS
 # ---------------------------------------------------------------------------
 
+
 class TestAPIEntities:
     def test_bts_entity_returned(self, page: Page) -> None:
         _goto(page, "/api/entities?q=BTS")
@@ -325,6 +337,7 @@ class TestAPIEntities:
 # ---------------------------------------------------------------------------
 # 11. API: GET /api/entities/wd:Q13580495/timeline
 # ---------------------------------------------------------------------------
+
 
 class TestAPITimeline:
     def test_timeline_returns_list(self, page: Page) -> None:
@@ -354,6 +367,7 @@ class TestAPITimeline:
 # ---------------------------------------------------------------------------
 # 12. API: GET /api/entities/wd:Q13580495/neighbors
 # ---------------------------------------------------------------------------
+
 
 class TestAPINeighbors:
     def test_neighbors_returns_list(self, page: Page) -> None:
@@ -385,6 +399,7 @@ class TestAPINeighbors:
 # 13. API: GET /api/entities/wd:Q13580495/statements?grade=OFFICIAL
 # ---------------------------------------------------------------------------
 
+
 class TestAPIStatements:
     def test_filtered_statements_all_official(self, page: Page) -> None:
         _goto(page, "/api/entities/wd:Q13580495/statements?grade=OFFICIAL")
@@ -407,6 +422,7 @@ class TestAPIStatements:
 # ---------------------------------------------------------------------------
 # 14. API: GET /api/qa?q=스트레이키즈멤버
 # ---------------------------------------------------------------------------
+
 
 class TestAPIQA:
     def test_qa_returns_answer(self, page: Page) -> None:
@@ -438,6 +454,7 @@ class TestAPIQA:
 # ---------------------------------------------------------------------------
 # 15. HTMX: Typeahead search on home page
 # ---------------------------------------------------------------------------
+
 
 class TestHTMXTypeahead:
     def test_typeahead_shows_results(self, page: Page) -> None:
@@ -471,6 +488,7 @@ class TestHTMXTypeahead:
 # 16. HTMX: Grade filter on entity detail page
 # ---------------------------------------------------------------------------
 
+
 class TestHTMXGradeFilter:
     def test_filter_navigates_to_grade_param(self, page: Page) -> None:
         _goto(page, "/ui/entities/wd:Q13580495")
@@ -495,6 +513,7 @@ class TestHTMXGradeFilter:
 # ---------------------------------------------------------------------------
 # 17. HTMX: Summary button click on entity detail page
 # ---------------------------------------------------------------------------
+
 
 class TestHTMXSummaryButton:
     def test_summary_button_click_loads_content(self, page: Page) -> None:

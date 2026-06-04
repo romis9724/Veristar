@@ -94,3 +94,79 @@ def test_ui_entity_page_shows_grade_badge(client: TestClient) -> None:
 
 def test_ui_entity_404(client: TestClient) -> None:
     assert client.get("/ui/entities/wd:Q404").status_code == 404
+
+
+# ─── 새 UI 엔드포인트 ─────────────────────────────────────────────────────────
+
+
+def test_graph_data_returns_nodes(client: TestClient) -> None:
+    r = client.get("/api/graph/data")
+    assert r.status_code == 200
+    d = r.json()["data"]
+    assert "nodes" in d
+    assert "links" in d
+    assert len(d["nodes"]) >= 2  # repo에 엔티티 있음
+
+
+def test_graph_data_grade_filter(client: TestClient) -> None:
+    r = client.get("/api/graph/data", params={"grade": "OFFICIAL"})
+    assert r.status_code == 200
+    d = r.json()["data"]
+    for lnk in d["links"]:
+        assert lnk["grade"] == "OFFICIAL"
+
+
+def test_entity_tree_returns_types(client: TestClient) -> None:
+    r = client.get("/api/tree")
+    assert r.status_code == 200
+    d = r.json()["data"]
+    # 최소 1개 이상 타입이 있어야 함
+    assert len(d) >= 1
+    for items in d.values():
+        assert isinstance(items, list)
+        assert all("id" in i and "name" in i for i in items)
+
+
+def test_vault_docs_endpoint(client: TestClient) -> None:
+    r = client.get("/api/vault/docs", params={"limit": 5})
+    assert r.status_code == 200
+    docs = r.json()["data"]
+    assert isinstance(docs, list)
+
+
+def test_vault_doc_detail_not_found(client: TestClient) -> None:
+    r = client.get("/api/vault/doc/nonexistent-id-xyz")
+    assert r.status_code == 404
+
+
+def test_ui_graph_page_renders(client: TestClient) -> None:
+    r = client.get("/ui/graph")
+    assert r.status_code == 200
+    assert "d3.min.js" in r.text
+    assert "graph-canvas" in r.text
+
+
+def test_ui_vault_page_renders(client: TestClient) -> None:
+    r = client.get("/ui/vault")
+    assert r.status_code == 200
+    assert "vault" in r.text.lower()
+    assert "file-tree" in r.text
+
+
+def test_ui_qa_page_renders_multiturn(client: TestClient) -> None:
+    r = client.get("/ui/qa")
+    assert r.status_code == 200
+    assert "chat-box" in r.text
+    assert "send-btn" in r.text
+
+
+def test_ui_vault_doc_partial_missing(client: TestClient) -> None:
+    r = client.get("/ui/vault/doc", params={"id": "does-not-exist"})
+    assert r.status_code == 404
+
+
+def test_ui_graph_has_nav_link(client: TestClient) -> None:
+    r = client.get("/")
+    assert r.status_code == 200
+    assert "/ui/graph" in r.text
+    assert "/ui/vault" in r.text

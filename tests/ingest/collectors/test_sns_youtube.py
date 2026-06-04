@@ -3,16 +3,16 @@
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 
-from veristar.vault.store import VaultStore
+from veristar.ingest.collectors.runner import run_all
 from veristar.ingest.collectors.sns_scraper import InstagramScraper, TwitterScraper, _og_meta
 from veristar.ingest.collectors.youtube import YouTubeCollector, _parse_date
-from veristar.ingest.collectors.runner import load_celebrity_list, run_all
-from datetime import date
+from veristar.vault.store import VaultStore
 
 
 @pytest.fixture
@@ -84,6 +84,7 @@ def test_twitter_no_html(vault: VaultStore) -> None:
 def test_duplicate_warning_suppressed(vault: VaultStore) -> None:
     """두 번째 collect는 경고를 재출력하지 않는다."""
     from veristar.ingest.collectors.sns_scraper import _WARNED
+
     _WARNED.clear()
 
     scraper = InstagramScraper(vault, rate_limit_sec=0)
@@ -97,33 +98,39 @@ def test_duplicate_warning_suppressed(vault: VaultStore) -> None:
 
 # === YouTube 수집기 ===
 
-_YT_CHANNEL_RESP = json.dumps({
-    "items": [{
-        "snippet": {
-            "title": "아이유 IU",
-            "description": "아이유 공식 채널",
-        },
-        "statistics": {
-            "subscriberCount": "5000000",
-            "videoCount": "100",
-        }
-    }]
-})
-
-_YT_SEARCH_RESP = json.dumps({
-    "items": [
-        {
-            "id": {"videoId": "abc123"},
-            "snippet": {
-                "title": "아이유 - LILAC",
-                "description": "공식 MV",
-                "channelTitle": "아이유 IU",
-                "channelId": "UCxxx",
-                "publishedAt": "2021-03-25T00:00:00Z",
+_YT_CHANNEL_RESP = json.dumps(
+    {
+        "items": [
+            {
+                "snippet": {
+                    "title": "아이유 IU",
+                    "description": "아이유 공식 채널",
+                },
+                "statistics": {
+                    "subscriberCount": "5000000",
+                    "videoCount": "100",
+                },
             }
-        }
-    ]
-})
+        ]
+    }
+)
+
+_YT_SEARCH_RESP = json.dumps(
+    {
+        "items": [
+            {
+                "id": {"videoId": "abc123"},
+                "snippet": {
+                    "title": "아이유 - LILAC",
+                    "description": "공식 MV",
+                    "channelTitle": "아이유 IU",
+                    "channelId": "UCxxx",
+                    "publishedAt": "2021-03-25T00:00:00Z",
+                },
+            }
+        ]
+    }
+)
 
 
 def test_youtube_channel_collect(vault: VaultStore) -> None:
@@ -147,7 +154,6 @@ def test_youtube_search_collect(vault: VaultStore) -> None:
 
 def test_youtube_no_api_key(vault: VaultStore) -> None:
     collector = YouTubeCollector(vault, api_key="")
-    import os
     with patch.dict("os.environ", {"YOUTUBE_API_KEY": ""}):
         result = collector.collect("아이유")
     assert result.errors == 1
@@ -175,21 +181,25 @@ def test_youtube_empty_items(vault: VaultStore) -> None:
 
 # === runner ===
 
+
 def test_run_all_wikipedia_only(tmp_path: Path) -> None:
     config = tmp_path / "celebs.yaml"
-    config.write_text("""\
+    config.write_text(
+        """\
 celebrities:
   - name: 아이유
     namu_title: 아이유
-""", encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
 
     vault_path = tmp_path / "vault"
 
     wiki_search = json.dumps({"query": {"search": [{"title": "아이유"}]}})
     long_content = "아이유는 대한민국의 가수이자 배우로, 2008년 데뷔해 많은 히트곡을 발표했다. " * 5
-    wiki_content = json.dumps({
-        "query": {"pages": {"1": {"revisions": [{"slots": {"main": {"*": long_content}}}]}}}
-    })
+    wiki_content = json.dumps(
+        {"query": {"pages": {"1": {"revisions": [{"slots": {"main": {"*": long_content}}}]}}}}
+    )
     responses = [wiki_search, wiki_content]
     idx = 0
 

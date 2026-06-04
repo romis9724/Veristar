@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
 
-from veristar.ingest.wikipedia.alias_supplement import supplement_seed, _patch_aliases
-from veristar.ingest.wikipedia.client import WikipediaClient
+from veristar.ingest.wikipedia.alias_supplement import _patch_aliases, supplement_seed
 from veristar.ontology.graph import GraphDocument, load_graph
 from veristar.ontology.models import Group
 
@@ -16,8 +14,10 @@ from veristar.ontology.models import Group
 class FakeWikipediaClient:
     """테스트용 Fake — 실제 HTTP 호출 없음."""
 
-    def __init__(self, title_map: dict[str, str | None], redirect_map: dict[str, list[str]]) -> None:
-        self._titles = title_map        # qid → kowiki title
+    def __init__(
+        self, title_map: dict[str, str | None], redirect_map: dict[str, list[str]]
+    ) -> None:
+        self._titles = title_map  # qid → kowiki title
         self._redirects = redirect_map  # page title → list[redirect title]
 
     def fetch_kowiki_title(self, qid: str) -> str | None:
@@ -77,7 +77,7 @@ def test_supplement_skips_existing_aliases(minimal_seed: Path) -> None:
 
     aliases = added.get("wd:Q46134670", [])
     assert "Stray Kids" not in aliases  # 이미 있음
-    assert "SKZ" in aliases             # 새로 추가
+    assert "SKZ" in aliases  # 새로 추가
 
 
 def test_supplement_skips_no_kowiki(minimal_seed: Path) -> None:

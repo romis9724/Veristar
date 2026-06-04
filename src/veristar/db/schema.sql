@@ -80,3 +80,24 @@ CREATE TABLE IF NOT EXISTS vault_docs (
 CREATE INDEX IF NOT EXISTS idx_vault_docs_source_type ON vault_docs(source_type);
 CREATE INDEX IF NOT EXISTS idx_vault_docs_confidence  ON vault_docs(confidence);
 CREATE INDEX IF NOT EXISTS idx_vault_docs_sensitive   ON vault_docs(sensitive);
+
+-- ─── 수집 대상 (멀티소스 수집 큐) ────────────────────────────────────────────
+-- SPARQL 자동 발견 결과를 적재. runner.py가 status=pending을 읽어 수집한다.
+CREATE TABLE IF NOT EXISTS collection_targets (
+    id                TEXT PRIMARY KEY,    -- slug 또는 wikidata_qid
+    name              TEXT    NOT NULL,
+    namu_title        TEXT,
+    youtube_channel   TEXT,
+    instagram         TEXT,
+    twitter           TEXT,
+    wikidata_qid      TEXT,                -- wd:Q... (있으면 BFS 루트 후보)
+    category          TEXT,                -- singer | actor | entertainer | creator | group
+    status            TEXT    NOT NULL DEFAULT 'pending',  -- pending | collecting | done | failed
+    priority          INTEGER NOT NULL DEFAULT 0,
+    last_collected_at TIMESTAMPTZ,
+    created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+    extra             JSONB   NOT NULL DEFAULT '{}'::jsonb
+);
+
+CREATE INDEX IF NOT EXISTS idx_targets_status   ON collection_targets(status);
+CREATE INDEX IF NOT EXISTS idx_targets_category ON collection_targets(category);

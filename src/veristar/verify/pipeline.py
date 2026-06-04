@@ -88,7 +88,7 @@ class VerifyPipeline:
         self,
         store: VaultStore,
         *,
-        high_threshold: float = 0.0,   # HIGH면 자동 승인
+        high_threshold: float = 0.0,  # HIGH면 자동 승인
         model: str | None = None,
     ) -> None:
         self.store = store
@@ -110,11 +110,18 @@ class VerifyPipeline:
             # sensitive 플래그도 업데이트 (문서 재저장)
             if result.sensitive != doc.sensitive:
                 updated = VaultDoc(
-                    id=doc.id, title=doc.title, content=doc.content,
-                    source_type=doc.source_type, source_url=doc.source_url,
-                    entity_refs=doc.entity_refs, published=doc.published,
-                    retrieved=doc.retrieved, confidence=result.confidence,
-                    license=doc.license, sensitive=result.sensitive, extra=doc.extra,
+                    id=doc.id,
+                    title=doc.title,
+                    content=doc.content,
+                    source_type=doc.source_type,
+                    source_url=doc.source_url,
+                    entity_refs=doc.entity_refs,
+                    published=doc.published,
+                    retrieved=doc.retrieved,
+                    confidence=result.confidence,
+                    license=doc.license,
+                    sensitive=result.sensitive,
+                    extra=doc.extra,
                 )
                 self.store.write(updated)
 
@@ -128,7 +135,10 @@ class VerifyPipeline:
 
             logger.info(
                 "%s → %s (sensitive=%s): %s",
-                doc.id, result.confidence, result.sensitive, result.reason[:60],
+                doc.id,
+                result.confidence,
+                result.sensitive,
+                result.reason[:60],
             )
 
         return report

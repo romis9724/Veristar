@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from veristar.db.connection import is_available
-from veristar.db.vector_store import embed_text, _LINK_THRESHOLD
+from veristar.db.vector_store import _LINK_THRESHOLD, embed_text
 
 
 def test_link_threshold_default() -> None:
@@ -12,10 +12,12 @@ def test_link_threshold_default() -> None:
 
 def test_embed_text_returns_none_on_error(monkeypatch) -> None:
     """HTTP 오류 시 embed_text는 None을 반환한다."""
-    import httpx
     from unittest.mock import patch
 
-    with patch("veristar.db.vector_store.httpx.post", side_effect=httpx.ConnectError("connection refused")):
+    import httpx
+
+    err = httpx.ConnectError("connection refused")
+    with patch("veristar.db.vector_store.httpx.post", side_effect=err):
         result = embed_text("test")
     assert result is None
 

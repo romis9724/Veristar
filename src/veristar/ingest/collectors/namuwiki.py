@@ -72,9 +72,7 @@ def _extract_namu_body(html: str) -> str:
 
     # 스크립트·스타일·nav·header 제거
     for tag in ("script", "style", "nav", "header", "footer"):
-        html = re.sub(
-            rf"<{tag}[^>]*>.*?</{tag}>", "", html, flags=re.DOTALL | re.IGNORECASE
-        )
+        html = re.sub(rf"<{tag}[^>]*>.*?</{tag}>", "", html, flags=re.DOTALL | re.IGNORECASE)
 
     # 1순위: <div class="wiki-paragraph"> (나무위키 본문 컨테이너)
     div_paras = [
@@ -103,9 +101,7 @@ def _extract_namu_body(html: str) -> str:
     # 헤딩 추출 (위치 포함)
     heading_items = [
         (m.start(), f"{'#' * int(m.group(1))} {clean(m.group(2))}")
-        for m in re.finditer(
-            r"<h([2-5])[^>]*>(.*?)</h\1>", html, flags=re.DOTALL | re.IGNORECASE
-        )
+        for m in re.finditer(r"<h([2-5])[^>]*>(.*?)</h\1>", html, flags=re.DOTALL | re.IGNORECASE)
     ]
 
     if paragraphs:

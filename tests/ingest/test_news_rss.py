@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from datetime import date
-
-from veristar.ingest.news.rss import FeedConfig, parse_feed, load_feed_configs
 from pathlib import Path
 
+from veristar.ingest.news.rss import load_feed_configs, parse_feed
 
 RSS2_SAMPLE = """\
 <?xml version="1.0" encoding="UTF-8"?>

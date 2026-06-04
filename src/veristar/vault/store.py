@@ -25,9 +25,9 @@ from typing import Any
 
 class ConfidenceLevel(StrEnum):
     UNVERIFIED = "unverified"
-    LOW = "low"       # LLM cross-check 실패 또는 단일 소스
+    LOW = "low"  # LLM cross-check 실패 또는 단일 소스
     MEDIUM = "medium"  # 부분 교차검증
-    HIGH = "high"     # 다중 소스 교차검증 완료
+    HIGH = "high"  # 다중 소스 교차검증 완료
 
 
 @dataclass
@@ -35,20 +35,20 @@ class VaultDoc:
     """Vault에 저장되는 단일 문서."""
 
     # --- 필수 ---
-    id: str                       # 고유 ID (slug). 파일명 기반.
+    id: str  # 고유 ID (slug). 파일명 기반.
     title: str
-    content: str                  # Markdown 본문 (원문 또는 처리 후)
-    source_type: str              # wikipedia | namuwiki | news | youtube | instagram | twitter
+    content: str  # Markdown 본문 (원문 또는 처리 후)
+    source_type: str  # wikipedia | namuwiki | news | youtube | instagram | twitter
     source_url: str
 
     # --- 선택 ---
-    entity_refs: list[str] = field(default_factory=list)   # 연관 엔티티 slug
+    entity_refs: list[str] = field(default_factory=list)  # 연관 엔티티 slug
     published: date | None = None
     retrieved: date | None = None
     confidence: ConfidenceLevel = ConfidenceLevel.UNVERIFIED
-    license: str = ""             # e.g. "CC BY-SA 4.0", "CC BY-NC-SA 2.0 KR"
-    sensitive: bool = False       # 민감 정보 포함 여부 (저장은 허용, 서비스에서 필터)
-    extra: dict[str, Any] = field(default_factory=dict)    # 소스별 추가 필드
+    license: str = ""  # e.g. "CC BY-SA 4.0", "CC BY-NC-SA 2.0 KR"
+    sensitive: bool = False  # 민감 정보 포함 여부 (저장은 허용, 서비스에서 필터)
+    extra: dict[str, Any] = field(default_factory=dict)  # 소스별 추가 필드
 
     def to_markdown(self) -> str:
         """Obsidian 호환 Markdown 직렬화."""
@@ -97,8 +97,16 @@ class VaultDoc:
 
 
 _KNOWN_KEYS = {
-    "id", "title", "source_type", "source_url", "entity_refs",
-    "published", "retrieved", "confidence", "license", "sensitive",
+    "id",
+    "title",
+    "source_type",
+    "source_url",
+    "entity_refs",
+    "published",
+    "retrieved",
+    "confidence",
+    "license",
+    "sensitive",
 }
 
 _CATEGORY_DIR: dict[str, str] = {
@@ -160,11 +168,18 @@ class VaultStore:
         if doc is None:
             return False
         updated = VaultDoc(
-            id=doc.id, title=doc.title, content=doc.content,
-            source_type=doc.source_type, source_url=doc.source_url,
-            entity_refs=doc.entity_refs, published=doc.published,
-            retrieved=doc.retrieved, confidence=confidence,
-            license=doc.license, sensitive=doc.sensitive, extra=doc.extra,
+            id=doc.id,
+            title=doc.title,
+            content=doc.content,
+            source_type=doc.source_type,
+            source_url=doc.source_url,
+            entity_refs=doc.entity_refs,
+            published=doc.published,
+            retrieved=doc.retrieved,
+            confidence=confidence,
+            license=doc.license,
+            sensitive=doc.sensitive,
+            extra=doc.extra,
         )
         self.write(updated)
         return True
@@ -183,7 +198,7 @@ class VaultStore:
 
 
 def _yaml_str(s: str) -> str:
-    if any(c in s for c in (':', '"', "'", '\n', '#')):
+    if any(c in s for c in (":", '"', "'", "\n", "#")):
         escaped = s.replace('"', '\\"')
         return f'"{escaped}"'
     return s
@@ -198,6 +213,7 @@ def _split_frontmatter(text: str) -> tuple[dict[str, Any], str]:
         return {}, text
     try:
         import yaml  # type: ignore[import-untyped]
+
         fm = yaml.safe_load(m.group(1)) or {}
     except ImportError:
         fm = _simple_yaml_parse(m.group(1))

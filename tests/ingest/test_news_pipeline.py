@@ -3,21 +3,19 @@
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 
-from veristar.ingest.news.pipeline import run_pipeline, fact_to_source, fact_to_statement
-from veristar.ingest.news.rss import FeedConfig, FeedItem, RssClient
+from veristar.generate.llm import LLMResult
 from veristar.ingest.news.extractor import ExtractedFact
+from veristar.ingest.news.pipeline import fact_to_source, fact_to_statement, run_pipeline
+from veristar.ingest.news.rss import FeedConfig, FeedItem
 from veristar.ontology.enums import Grade, SourceType, Status
 from veristar.ontology.graph import GraphDocument, load_graph
-from veristar.ontology.models import Group, Source, Statement
-from veristar.generate.llm import LLMResult
-
-from datetime import datetime
+from veristar.ontology.models import Group
 
 
 @pytest.fixture
@@ -54,9 +52,9 @@ def test_pipeline_adds_statements(minimal_seed: Path) -> None:
         )
     ]
     feed_configs = [FeedConfig(name="테스트", url="https://dummy", source_type="PRESS")]
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):
@@ -73,12 +71,10 @@ def test_pipeline_adds_statements(minimal_seed: Path) -> None:
 
 def test_pipeline_dry_run_no_write(minimal_seed: Path) -> None:
     original = minimal_seed.read_text()
-    items = [
-        FeedItem("아티스트 A 그룹 G 뉴스", "https://x.com/1", date(2024, 1, 1))
-    ]
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    items = [FeedItem("아티스트 A 그룹 G 뉴스", "https://x.com/1", date(2024, 1, 1))]
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):
@@ -93,12 +89,10 @@ def test_pipeline_dry_run_no_write(minimal_seed: Path) -> None:
 
 
 def test_pipeline_writes_when_not_dry_run(minimal_seed: Path) -> None:
-    items = [
-        FeedItem("아티스트 A 그룹 G 확인", "https://x.com/2", date(2024, 1, 1))
-    ]
-    llm_response = json.dumps({
-        "facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]
-    })
+    items = [FeedItem("아티스트 A 그룹 G 확인", "https://x.com/2", date(2024, 1, 1))]
+    llm_response = json.dumps(
+        {"facts": [{"subject_id": "wd:Q1", "predicate": "memberOf", "object_id": "wd:Q2"}]}
+    )
     mock_result = LLMResult(ok=True, text=llm_response, model="test", error=None)
 
     with patch("veristar.ingest.news.extractor.chat", return_value=mock_result):

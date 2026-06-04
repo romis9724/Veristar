@@ -4,16 +4,15 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 import pytest
 
-from veristar.vault.store import ConfidenceLevel, VaultStore
-from veristar.ingest.collectors.base import CollectorBase, CollectResult
-from veristar.ingest.collectors.wikipedia import WikipediaCollector
+from veristar.ingest.collectors.base import CollectResult
 from veristar.ingest.collectors.namuwiki import NamuWikiCollector
 from veristar.ingest.collectors.news import NewsCollector
 from veristar.ingest.collectors.runner import load_celebrity_list
+from veristar.ingest.collectors.wikipedia import WikipediaCollector
+from veristar.vault.store import VaultStore
 
 
 @pytest.fixture
@@ -23,18 +22,30 @@ def vault(tmp_path: Path) -> VaultStore:
 
 # === Wikipedia 수집기 ===
 
-_WIKI_SEARCH_RESP = json.dumps({
-    "query": {"search": [{"title": "아이유"}]}
-})
-_WIKI_CONTENT_RESP = json.dumps({
-    "query": {"pages": {"12345": {
-        "revisions": [{"slots": {"main": {"*": (
-            "== 생애 ==\n아이유(본명 이지은, 1993년 5월 16일~)는 대한민국의 가수이자 배우이다. "
-            "2008년 데뷔해 '불후의 명곡', '나의 아저씨' 등으로 활동 중이다.\n\n"
-            "== 음악 ==\n국내외 음원 차트에서 다수의 1위를 기록했다."
-        )}}}]
-    }}}
-})
+_WIKI_SEARCH_RESP = json.dumps({"query": {"search": [{"title": "아이유"}]}})
+_WIKI_CONTENT_RESP = json.dumps(
+    {
+        "query": {
+            "pages": {
+                "12345": {
+                    "revisions": [
+                        {
+                            "slots": {
+                                "main": {
+                                    "*": (
+                                        "== 생애 ==\n아이유(본명 이지은, 1993년 5월 16일~)는 대한민국의 가수이자 배우이다. "
+                                        "2008년 데뷔해 '불후의 명곡', '나의 아저씨' 등으로 활동 중이다.\n\n"
+                                        "== 음악 ==\n국내외 음원 차트에서 다수의 1위를 기록했다."
+                                    )
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+)
 
 
 def test_wikipedia_collect_saves_doc(vault: VaultStore) -> None:
@@ -84,6 +95,7 @@ def test_wikipedia_fetch_failure(vault: VaultStore) -> None:
 
 
 # === 나무위키 수집기 ===
+
 
 def test_namuwiki_collect_json_api(vault: VaultStore) -> None:
     collector = NamuWikiCollector(vault)
@@ -184,16 +196,20 @@ def test_news_feed_fetch_fail(vault: VaultStore) -> None:
 
 # === runner 설정 파싱 ===
 
+
 def test_load_celebrity_list(tmp_path: Path) -> None:
     yaml = tmp_path / "celebs.yaml"
-    yaml.write_text("""\
+    yaml.write_text(
+        """\
 celebrities:
   - name: 아이유
     namu_title: 아이유
     youtube_channel: UCxxx
   - name: BTS
     namu_title: 방탄소년단
-""", encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
     celebs = load_celebrity_list(yaml)
     assert len(celebs) == 2
     assert celebs[0]["name"] == "아이유"

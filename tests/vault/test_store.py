@@ -102,8 +102,6 @@ def test_stats(vault: VaultStore) -> None:
 def test_skip_duplicate(vault: VaultStore) -> None:
     doc = _sample_doc()
     vault.write(doc)
-    # 같은 doc을 _save로 다시 저장하면 skip
-    store_method = vault
     # _save는 read를 통해 중복 감지하므로, 직접 write를 두 번 하면 덮어씀
     # CollectorBase._save는 같은 URL이면 skip
     second = _sample_doc(title="변경된 제목")

@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% block title %}Vault 브라우저 · Veristar{% endblock %}
+{% block content %}
+<style>
+  main { max-width: none; padding: 0; }
+  .vault-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: calc(100vh - 57px);
+  }
+  /* 왼쪽 파일 탐색기 */
+  .vault-sidebar {
+    border-right: 1px solid var(--line);
+    overflow-y: auto;
+    background: var(--surface);
+    font-size: 0.82rem;
+  }
+  .vault-sidebar-header {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .vault-search {
+    padding: 0.5rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .vault-search input {
+    width: 100%; padding: 0.35rem 0.6rem; font-size: 0.8rem;
+    border: 1px solid var(--line); border-radius: 6px; background: var(--bg);
+  }
+  .vault-section { border-bottom: 1px solid var(--line); }
+  .vault-section-header {
+    padding: 0.5rem 0.9rem;
+    font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; gap: 0.4rem;
+    user-select: none;
+  }
+  .vault-section-header:hover { background: oklch(95% 0.005 260); }
+  .vault-section-header .chevron { font-size: 0.6rem; color: var(--muted); transition: transform 150ms; }
+  .vault-section-header.collapsed .chevron { transform: rotate(-90deg); }
+  .vault-section-body { display: none; }
+  .vault-section-body.open { display: block; }
+  .vault-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.28rem 0.9rem 0.28rem 1.5rem;
+    cursor: pointer; transition: background 100ms;
+    border-left: 3px solid transparent;
+  }
+  .vault-item:hover { background: oklch(94% 0.01 265); }
+  .vault-item.active {
+    background: oklch(92% 0.04 265);
+    border-left-color: var(--accent);
+  }
+  .vault-item-name {
+    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .conf-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  }
+  .conf-high { background: #2e7d32; }
+  .conf-medium { background: #e65100; }
+  .conf-low { background: #c62828; }
+  .conf-unverified { background: #aaa; }
+  /* 오른쪽 뷰어 */
+  .vault-viewer {
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    background: var(--bg);
+  }
+  .vault-viewer-empty {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; height: 100%;
+    color: var(--muted); text-align: center;
+  }
+  .vault-viewer-empty .icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  #doc-view h1,h2,h3,h4 { margin-top: 1rem; margin-bottom: 0.3rem; }
+  #doc-view h1 { font-size: 1.4rem; }
+  #doc-view h2 { font-size: 1.15rem; }
+  #doc-view h3 { font-size: 1rem; }
+  #doc-view h4 { font-size: 0.9rem; }
+  #doc-view p { margin: 0.5rem 0; line-height: 1.65; }
+  #doc-view br + br { display: none; }
+  .stats-bar {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.75rem; color: var(--muted);
+    background: var(--surface);
+  }
+  .stats-bar strong { color: var(--ink); }
+</style>
+
+<!-- 통계 바 -->
+<div class="stats-bar" id="stats-bar">
+  <span>로딩 중...</span>
+</div>
+
+<div class="vault-layout">
+  <!-- 파일 탐색기 -->
+  <div class="vault-sidebar">
+    <div class="vault-sidebar-header">
+      📂 vault
+    </div>
+    <div class="vault-search">
+      <input type="text" id="search-input" placeholder="문서 검색..." oninput="filterDocs(this.value)">
+    </div>
+    <div id="file-tree"></div>
+  </div>
+
+  <!-- 문서 뷰어 -->
+  <div class="vault-viewer">
+    <div class="vault-viewer-empty" id="viewer-empty">
+      <div class="icon">📄</div>
+      <div>왼쪽에서 문서를 선택하세요.</div>
+    </div>
+    <div id="doc-view" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+const SOURCE_ICON = {
+  wikipedia: "📖", namuwiki: "📝", news: "📰",
+  youtube: "▶️", instagram: "📷", twitter: "🐦",
+};
+const SOURCE_LABEL = {
+  wikipedia: "Wikipedia", namuwiki: "나무위키", news: "뉴스",
+  youtube: "YouTube", instagram: "Instagram", twitter: "Twitter",
+};
+
+let allDocs = [];
+let activeId = null;
+
+async function loadDocs() {
+  const res = await fetch("/api/vault/docs?limit=200");
+  allDocs = (await res.json()).data;
+  renderTree(allDocs);
+  updateStats(allDocs);
+}
+
+function updateStats(docs) {
+  const byType = {};
+  const byConf = {};
+  docs.forEach(d => {
+    byType[d.source_type] = (byType[d.source_type] || 0) + 1;
+    byConf[d.confidence] = (byConf[d.confidence] || 0) + 1;
+  });
+  const bar = document.getElementById("stats-bar");
+  bar.innerHTML = `<strong>${docs.length}건</strong> &nbsp;` +
+    Object.entries(byType).map(([t, n]) => `${SOURCE_ICON[t] || ""} ${SOURCE_LABEL[t] || t}: <strong>${n}</strong>`).join(" &nbsp;·&nbsp; ") +
+    " &nbsp;|&nbsp; " +
+    `<span style="color:#2e7d32">HIGH: <strong>${byConf.high||0}</strong></span> ` +
+    `<span style="color:#e65100">MED: <strong>${byConf.medium||0}</strong></span> ` +
+    `<span style="color:#aaa">미검증: <strong>${byConf.unverified||0}</strong></span>`;
+}
+
+function renderTree(docs) {
+  const groups = {};
+  docs.forEach(d => {
+    if (!groups[d.source_type]) groups[d.source_type] = [];
+    groups[d.source_type].push(d);
+  });
+
+  const tree = document.getElementById("file-tree");
+  tree.innerHTML = Object.entries(groups).map(([type, items]) => `
+    <div class="vault-section">
+      <div class="vault-section-header" onclick="toggleSection(this)">
+        <span class="chevron">▶</span>
+        ${SOURCE_ICON[type] || "📁"} ${SOURCE_LABEL[type] || type}
+        <span style="margin-left:auto;font-size:0.7rem;color:var(--muted)">${items.length}</span>
+      </div>
+      <div class="vault-section-body open" data-type="${type}">
+        ${items.map(d => `
+          <div class="vault-item" id="item-${CSS.escape(d.id)}" onclick="selectDoc('${d.id.replace(/'/g,"\\'")}')">
+            <div class="conf-dot conf-${d.confidence}"></div>
+            <div class="vault-item-name" title="${d.title}">${d.title}</div>
+          </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function toggleSection(header) {
+  header.classList.toggle("collapsed");
+  header.nextElementSibling.classList.toggle("open");
+}
+
+function filterDocs(q) {
+  const filtered = q.trim()
+    ? allDocs.filter(d => d.title.toLowerCase().includes(q.toLowerCase()))
+    : allDocs;
+  renderTree(filtered);
+  updateStats(filtered);
+}
+
+async function selectDoc(id) {
+  // 활성 표시
+  document.querySelectorAll(".vault-item").forEach(el => el.classList.remove("active"));
+  const item = document.getElementById("item-" + CSS.escape(id));
+  if (item) item.classList.add("active");
+  activeId = id;
+
+  // 문서 로드
+  const res = await fetch(`/ui/vault/doc?id=${encodeURIComponent(id)}`);
+  const html = await res.text();
+
+  document.getElementById("viewer-empty").style.display = "none";
+  const view = document.getElementById("doc-view");
+  view.style.display = "block";
+  view.innerHTML = `<div style="margin-bottom:1rem">
+    <h1 style="margin:0 0 0.3rem;font-size:1.3rem" id="doc-title">로딩 중...</h1>
+  </div>` + html;
+
+  // 제목 업데이트
+  const doc = allDocs.find(d => d.id === id);
+  if (doc) {
+    document.getElementById("doc-title").textContent = doc.title;
+  }
+}
+
+loadDocs();
+</script>
+{% endblock %}

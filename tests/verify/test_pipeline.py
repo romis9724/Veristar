@@ -3,15 +3,14 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 
-from veristar.vault.store import ConfidenceLevel, VaultDoc, VaultStore
-from veristar.verify.pipeline import VerifyPipeline, VerifyResult, PipelineReport
 from veristar.generate.llm import LLMResult
+from veristar.vault.store import ConfidenceLevel, VaultDoc, VaultStore
+from veristar.verify.pipeline import PipelineReport, VerifyPipeline
 
 
 @pytest.fixture

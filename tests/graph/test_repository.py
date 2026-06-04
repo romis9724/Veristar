@@ -16,8 +16,10 @@ def test_search_by_name_and_alias_case_insensitive(repo: InMemoryGraphRepository
     assert repo.search_entities("그룹")[0].id == "wd:Q2"
 
 
-def test_search_empty_query_returns_nothing(repo: InMemoryGraphRepository) -> None:
-    assert repo.search_entities("") == []
+def test_search_empty_query_returns_all(repo: InMemoryGraphRepository) -> None:
+    # 완전 빈 문자열 → 전체 반환 (그래프 뷰용)
+    assert len(repo.search_entities("")) == 3
+    # 공백만 → 빈 결과 (의도적 빈 검색 = "찾는 게 없음")
     assert repo.search_entities("   ") == []
 
 

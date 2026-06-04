@@ -1,12 +1,12 @@
 """통합 수집 CLI — 모든 수집기를 순서대로 실행한다.
 
-설정 파일: config/celebrities.yaml
+수집 대상: PostgreSQL collection_targets (우선) → celebrities.yaml (폴백).
+대상은 `python -m veristar.ingest.wikidata.discover`로 채운다.
 
 사용법:
     python -m veristar.ingest.collectors.runner \\
-        --config config/celebrities.yaml \\
-        --vault vault/ \\
-        --sources wikipedia,namuwiki,news
+        --vault vault/ --sources wikipedia,namuwiki,news \\
+        [--limit 100] [--config config/celebrities.yaml]
 """
 
 from __future__ import annotations
@@ -26,18 +26,13 @@ logger = logging.getLogger(__name__)
 
 
 def load_celebrity_list(config_path: str | Path) -> list[dict[str, str]]:
-    """celebrities.yaml 파싱.
+    """celebrities.yaml 파싱 (DB 폴백용).
 
     형식::
 
         celebrities:
           - name: 아이유
             namu_title: 아이유
-            youtube_channel: UCzx8rFWJHzBFfKqSEDmKYSg
-            instagram: dlwlrma
-            twitter: IUofficial
-          - name: BTS 방탄소년단
-            namu_title: 방탄소년단
     """
     path = Path(config_path)
     if not path.exists():
@@ -52,7 +47,7 @@ def load_celebrity_list(config_path: str | Path) -> list[dict[str, str]]:
         if stripped.startswith("- name:"):
             if current.get("name"):
                 celebrities.append(dict(current))
-            current = {"name": stripped[len("- name:"):].strip()}
+            current = {"name": stripped[len("- name:") :].strip()}
         elif ":" in stripped and not stripped.startswith("celebrities"):
             k, _, v = stripped.partition(":")
             current[k.strip()] = v.strip()
@@ -61,16 +56,50 @@ def load_celebrity_list(config_path: str | Path) -> list[dict[str, str]]:
     return celebrities
 
 
+def load_targets(
+    config_path: str | Path, limit: int | None = None
+) -> tuple[list[dict[str, str]], bool]:
+    """수집 대상을 로드한다. PostgreSQL collection_targets 우선, YAML 폴백.
+
+    Returns:
+        (대상 dict 목록, DB 모드 여부)
+        DB 모드면 각 dict에 'id'(collection_targets.id)가 포함된다.
+    """
+    try:
+        from veristar.db.connection import get_conn, is_available
+
+        if is_available():
+            from veristar.db.targets_repository import CollectionTargetsRepository
+
+            with get_conn() as conn:
+                repo = CollectionTargetsRepository(conn)
+                pending = repo.list_pending(limit=limit)
+            if pending:
+                logger.info("수집 대상: PostgreSQL collection_targets %d건", len(pending))
+                normalized = [
+                    {k: ("" if v is None else str(v)) for k, v in t.items()} for t in pending
+                ]
+                return normalized, True
+            logger.info("collection_targets에 pending 대상 없음 → YAML 폴백")
+    except Exception as exc:
+        logger.warning("DB 대상 로드 실패, YAML 폴백: %s", exc)
+
+    celebrities = load_celebrity_list(config_path)
+    logger.info("수집 대상: YAML %d건", len(celebrities))
+    return celebrities, False
+
+
 def run_all(
     config_path: str | Path,
     vault_root: str | Path,
     sources: list[str],
     feeds_path: str | Path = "config/news_feeds.yaml",
+    limit: int | None = None,
 ) -> CollectResult:
-    """모든 수집기 실행."""
-    celebrities = load_celebrity_list(config_path)
+    """모든 수집기 실행. 수집 대상은 DB(우선) 또는 YAML(폴백)에서 로드."""
+    celebrities, db_mode = load_targets(config_path, limit=limit)
     if not celebrities:
-        logger.warning("수집 대상이 없습니다: %s", config_path)
+        logger.warning("수집 대상이 없습니다 (DB·YAML 모두 비어 있음)")
         return CollectResult()
 
     store = VaultStore(vault_root)
@@ -124,12 +153,33 @@ def run_all(
                 total = total.merge(r)
                 logger.info("youtube [%s]: saved=%d", name, r.saved)
 
+    # DB 모드: 처리한 대상을 done으로 마킹 (id 보유 시)
+    if db_mode:
+        _mark_targets_done([c.get("id", "") for c in celebrities if c.get("id")])
+
     return total
+
+
+def _mark_targets_done(target_ids: list[str]) -> None:
+    """수집 완료한 대상을 collection_targets에서 done으로 마킹한다."""
+    if not target_ids:
+        return
+    try:
+        from veristar.db.connection import get_conn
+        from veristar.db.targets_repository import CollectionTargetsRepository
+
+        with get_conn() as conn:
+            repo = CollectionTargetsRepository(conn)
+            for tid in target_ids:
+                repo.mark_done(tid)
+        logger.info("collection_targets %d건 done 마킹", len(target_ids))
+    except Exception as exc:
+        logger.warning("done 마킹 실패: %s", exc)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="통합 콘텐츠 수집기")
-    parser.add_argument("--config", default="config/celebrities.yaml")
+    parser.add_argument("--config", default="config/celebrities.yaml", help="YAML 폴백 경로")
     parser.add_argument("--vault", default="vault")
     parser.add_argument(
         "--sources",
@@ -137,15 +187,20 @@ def main(argv: list[str] | None = None) -> int:
         help="수집 소스 (콤마 구분): wikipedia,namuwiki,news,youtube",
     )
     parser.add_argument("--feeds", default="config/news_feeds.yaml")
+    parser.add_argument(
+        "--limit", type=int, default=None, help="DB 모드에서 처리할 pending 대상 수 제한"
+    )
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
     sources = [s.strip() for s in args.sources.split(",")]
-    result = run_all(args.config, args.vault, sources, args.feeds)
+    result = run_all(args.config, args.vault, sources, args.feeds, limit=args.limit)
     logger.info(
         "수집 완료: saved=%d skipped=%d errors=%d",
-        result.saved, result.skipped, result.errors,
+        result.saved,
+        result.skipped,
+        result.errors,
     )
     return 0
 

@@ -97,24 +97,23 @@ class PostgreSQLGraphRepository:
     # ─── 기본 CRUD ─────────────────────────────────────────────────────────────
 
     def get_entity(self, entity_id: str) -> Entity | None:
-        row = self._conn.execute(
-            "SELECT * FROM entities WHERE id = %s", (entity_id,)
-        ).fetchone()
+        row = self._conn.execute("SELECT * FROM entities WHERE id = %s", (entity_id,)).fetchone()
         return _row_to_entity(row) if row else None
 
     def get_source(self, source_id: str) -> Source | None:
-        row = self._conn.execute(
-            "SELECT * FROM sources WHERE id = %s", (source_id,)
-        ).fetchone()
+        row = self._conn.execute("SELECT * FROM sources WHERE id = %s", (source_id,)).fetchone()
         return _row_to_source(row) if row else None
 
     # ─── 검색 ──────────────────────────────────────────────────────────────────
 
     def search_entities(self, query: str, limit: int = 20) -> list[Entity]:
-        """이름·별칭 기반 텍스트 검색 (ILIKE + alias 배열 검색)."""
+        """이름·별칭 기반 텍스트 검색. 빈 쿼리면 전체 반환 (그래프 뷰용)."""
         q = query.strip()
         if not q:
-            return []
+            rows = self._conn.execute(
+                "SELECT * FROM entities ORDER BY name LIMIT %s", (limit,)
+            ).fetchall()
+            return [_row_to_entity(r) for r in rows]
         rows = self._conn.execute(
             """
             SELECT * FROM entities

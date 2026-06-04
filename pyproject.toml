@@ -48,20 +48,29 @@ packages = ["veristar"]
 
 [[tool.mypy.overrides]]
 # psycopg3·pgvector는 타입 스텁이 없어 strict 완화 적용
-module = ["veristar.db.*", "veristar.graph.entity_linker"]
+module = [
+    "veristar.db.*",
+    "veristar.graph.entity_linker",
+    "veristar.ingest.wikidata.sparql",
+    "veristar.ingest.wikidata.discover",
+    "veristar.ingest.collectors.runner",
+]
 ignore_missing_imports = true
 ignore_errors = true
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "--cov=veristar --cov-report=term-missing"
+addopts = "--cov=veristar --cov-report=term-missing --ignore=tests/e2e"
 
 [tool.coverage.run]
 source = ["veristar"]
 omit = [
-    # DB 모듈은 PostgreSQL 연결이 필요한 통합 레이어 — 별도 integration test로 관리
+    # DB·자동발견 모듈은 PostgreSQL 연결 필요 — integration test 계층
     "*/veristar/db/*",
+    "*/veristar/ingest/wikidata/sparql.py",
+    "*/veristar/ingest/wikidata/discover.py",
+    "*/veristar/ingest/collectors/runner.py",
 ]
 
 [tool.coverage.report]
