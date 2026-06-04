@@ -47,27 +47,29 @@ _SYSTEM = (
 _PROMPT = """\
 문서 제목: {title}
 출처 유형: {source_type}
-문서 주제 엔티티: {main_entity}
+문서 주제 엔티티: {main_entity} (id: {main_entity_id})
 
 문서 내용 (처음 800자):
 {content}
 
-그래프에 있는 엔티티:
+그래프에 있는 엔티티 (문서에 직접 언급된 것만):
 {entity_list}
 
-추출 규칙:
-1. subject와 object 모두 위 엔티티 목록의 id 값이어야 한다.
-2. predicate 방향 규칙 (엄격히 준수):
-   - memberOf      : 개인(Person) → 그룹/조직(Group/Org) [예: 멤버→그룹]
-   - affiliatedWith: 그룹(Group) → 조직(Org) [예: 그룹→소속사]
-   - wonAward      : 개인/그룹 → 상(Award) [예: 아티스트→수상]
+추출 규칙 (엄격히 준수):
+1. subject 또는 object 중 하나는 반드시 문서 주제 엔티티({main_entity_id})이어야 한다.
+   → 문서가 스트레이 키즈에 관한 것이면, subject나 object 중 하나는 반드시 스트레이 키즈여야 한다.
+   → 두 엔티티 모두 주제 엔티티가 아닌 사실은 추출하지 않는다.
+2. subject와 object 모두 위 엔티티 목록의 id 값이어야 한다.
+3. predicate 방향 규칙:
+   - memberOf      : 개인(Person) → 그룹/조직(Group/Org)
+   - affiliatedWith: 그룹(Group) → 조직(Org)
+   - wonAward      : 개인/그룹 → 상(Award)
    - nominatedFor  : 개인/그룹 → 상(Award)
    - appearedIn    : 개인 → 작품/이벤트(Work/Event)
    - released      : 개인/그룹 → 작품(Work)
    - collaboratedWith: 개인/그룹 ↔ 개인/그룹
-3. 문서에 명시된 것만. 추론·예측 금지.
-4. 사실이 없거나 엔티티 매칭 불가 → {{"facts": []}}
-5. 그룹이 subject이고 개인이 object인 memberOf → 방향 반전해서 넣지 말 것 (그냥 제외)
+4. 문서에 명시된 것만. 추론·예측 금지.
+5. 사실이 없으면 → {{"facts": []}}
 
 JSON만 출력:
 {{"facts": [{{"subject_id": "...", "predicate": "...", "object_id": "..."}}]}}
@@ -152,30 +154,69 @@ def _is_valid_direction(
     )
 
 
+def _literal_mentioned(text: str, repo: InMemoryGraphRepository, limit: int = 15) -> list[Any]:
+    """텍스트에 이름이 **명시적으로 등장하는** 엔티티만 반환 (substring 완전 일치).
+
+    벡터 유사도 대신 리터럴 부분 문자열을 사용해 K-pop 문맥에서의 false-positive를 방지한다.
+    짧은 이름(≤ 2자)은 단독 토큰으로 등장할 때만 허용한다.
+    """
+    t = text.lower()
+    results: list[Any] = []
+    seen: set[str] = set()
+    for term, entity_id in sorted(repo._name_index, key=lambda x: len(x[0]), reverse=True):
+        if entity_id in seen:
+            continue
+        name_len = len(term)
+        if name_len == 0:
+            continue
+        # 2자 이하 이름: 공백·구두점으로 둘러싸인 토큰으로만 허용 (오탐 방지)
+        if name_len <= 2:
+            import re
+            pattern = r"(?<![가-힣a-zA-Z0-9])" + re.escape(term) + r"(?![가-힣a-zA-Z0-9])"
+            if not re.search(pattern, t):
+                continue
+        else:
+            if term not in t:
+                continue
+        entity = repo._by_id.get(entity_id)
+        if entity:
+            results.append(entity)
+            seen.add(entity_id)
+            if len(results) >= limit:
+                break
+    return results
+
+
 def _extract_facts(
     vault_doc: VaultDoc,
     repo: InMemoryGraphRepository,
     model: str | None = None,
 ) -> list[dict[str, str]]:
-    """LLM으로 vault 문서에서 그래프 사실을 추출한다."""
-    from veristar.graph.entity_linker import find_mentioned_with_vectors
+    """LLM으로 vault 문서에서 그래프 사실을 추출한다.
 
-    # 벡터 기반 entity linker로 후보 엔티티 탐색 (짧은 이름 false-positive 차단)
-    search_text = vault_doc.title + " " + vault_doc.content[:500]
-    mentioned = find_mentioned_with_vectors(search_text, repo, limit=12)
+    개선된 전략:
+    1. 리터럴 부분 문자열로 엔티티 탐색 (벡터 유사도 → false-positive 방지)
+    2. 주 엔티티(문서 제목 매칭) 식별
+    3. 프롬프트에서 주 엔티티 포함 사실만 허용
+    4. 추출 후 코드 레벨에서 주 엔티티 필터 재확인
+    """
+    # 리터럴 부분 문자열로 엔티티 탐색
+    search_text = vault_doc.title + " " + vault_doc.content[:800]
+    mentioned = _literal_mentioned(search_text, repo, limit=15)
     if len(mentioned) < 2:
         return []
 
-    # 주 엔티티 (제목에서 벡터 유사도 기준 1순위)
-    main_entity_names = [
-        e.name for e in find_mentioned_with_vectors(vault_doc.title, repo, limit=1)
-    ]
-    main_entity = main_entity_names[0] if main_entity_names else vault_doc.title
+    # 주 엔티티: 제목에 직접 언급된 것 중 가장 긴 이름 (= 문서의 주인공)
+    title_mentioned = _literal_mentioned(vault_doc.title, repo, limit=1)
+    main_entity_obj = title_mentioned[0] if title_mentioned else None
+    main_entity_id = main_entity_obj.id if main_entity_obj else ""
+    main_entity = main_entity_obj.name if main_entity_obj else vault_doc.title
 
     prompt = _PROMPT.format(
         title=vault_doc.title,
         source_type=vault_doc.source_type,
         main_entity=main_entity,
+        main_entity_id=main_entity_id,
         content=vault_doc.content[:800],
         entity_list=_build_entity_list(mentioned),
     )
@@ -208,6 +249,13 @@ def _extract_facts(
             continue
         if s not in known_ids or o not in known_ids:
             logger.debug("unknown entity: %s / %s", s, o)
+            continue
+        # 핵심 필터: subject 또는 object 중 하나는 반드시 주 엔티티여야 함
+        if main_entity_id and s != main_entity_id and o != main_entity_id:
+            logger.debug(
+                "rejected (neither is main entity %s): %s -[%s]-> %s",
+                main_entity_id, s, p, o,
+            )
             continue
         # 엔티티 타입 기반 방향 검증
         if not _is_valid_direction(s, p, o, repo):
