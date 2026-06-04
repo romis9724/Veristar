@@ -112,7 +112,7 @@ def test_skip_duplicate(vault: VaultStore) -> None:
 
 
 def test_vault_dir_structure(tmp_path: Path) -> None:
-    store = VaultStore(tmp_path / "my_vault")
+    VaultStore(tmp_path / "my_vault")
     assert (tmp_path / "my_vault" / "entities").is_dir()
     assert (tmp_path / "my_vault" / "articles").is_dir()
     assert (tmp_path / "my_vault" / "sns").is_dir()

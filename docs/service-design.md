@@ -59,12 +59,31 @@
 - **매핑**: P463→memberOf, P800→appearedIn, P166→wonAward, P1411→nominatedFor
 - **갱신**: 24h 자동 갱신 (`VERISTAR_REFRESH_INTERVAL_HOURS`)
 
+### 4.1b 수집 대상 자동 발견 (SPARQL) — 구현 완료
+
+수동 목록(celebrities.yaml) 대신 Wikidata SPARQL로 한국 연예인을 대량 발견한다.
+
+```
+ingest/wikidata/sparql.py (WDQS 직업별 쿼리)
+    P27=Q884(한국) + P106(직업) + kowiki sitelink
+    직업: singer(가수·아이돌)·actor(배우)·entertainer(예능)·creator(유튜버)·group(그룹)
+    ↓
+ingest/wikidata/discover.py (CLI)
+    ↓
+PostgreSQL collection_targets (status=pending)
+```
+
+- **규모**: kowiki sitelink 필터(유명 인물)로 직업당 수천 명. 상한 없음.
+- **상태 추적**: status(pending/collecting/done/failed)·priority·last_collected_at.
+- **roots.txt와 독립**: collection_targets는 멀티소스 수집 큐, roots.txt는 Wikidata BFS 그래프 시드.
+- **WDQS rate-limit**: 429 지수 백오프(Retry-After 존중), 직업 그룹별 쿼리 분할.
+
 ### 4.2 [2] 멀티소스 수집기 — 구현 완료
 
 ```
-config/celebrities.yaml (연예인 목록)
+PostgreSQL collection_targets (우선) 또는 celebrities.yaml (폴백)
     ↓
-ingest/collectors/runner.py (통합 CLI)
+ingest/collectors/runner.py (통합 CLI) — pending 대상 로드, 완료 시 done 마킹
     ├── wikipedia.py   → vault/articles/ (CC BY-SA 4.0)
     ├── namuwiki.py    → vault/articles/ (CC BY-NC-SA 2.0 KR) ⚠️ CSR 한계
     ├── news.py        → vault/articles/ (RSS + 본문, 언론사 저작권)
@@ -187,6 +206,7 @@ else:
 | Sources | 77개 |
 | vault_docs | 87건 (Wikipedia 20 + 나무위키 7 + 뉴스 60) |
 | Wikidata 루트 | 10개 (그룹 6 + 소속사 4 + G-Dragon) |
+| collection_targets | SPARQL 발견 (group 1966건 적재, 직업 확장 시 수천 명) |
 
 ## 10. 열린 과제
 
@@ -194,4 +214,4 @@ else:
 2. **M4 추가 피드**: ToS·라이선스 확인 후 추가 가능.
 3. **MEDIUM 큐 처리**: 사람 검토 UI 미구현.
 4. **벡터 인덱스 최적화**: IVFFlat (엔티티 수 100+ 시 활성화).
-5. **연예인 목록 확장**: `config/celebrities.yaml`에 솔로·배우 추가.
+5. **수집 대상 확장**: `discover.py`로 SPARQL 재실행 (직업 추가·필터 조정).

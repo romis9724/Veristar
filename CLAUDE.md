@@ -73,7 +73,7 @@ veristar/
 ├── docker-compose.yml             # PostgreSQL 16 + pgvector (포트 5433)
 ├── config/
 │   ├── roots.txt                  # Wikidata 루트 QID
-│   ├── celebrities.yaml           # 연예인 수집 대상 목록
+│   │                              # (수집 대상은 PostgreSQL collection_targets 테이블)
 │   └── news_feeds.yaml            # RSS 피드 설정
 ├── docs/
 │   ├── ontology-schema.md         # 엔티티·관계·출처·vault 모델
@@ -84,6 +84,9 @@ veristar/
 │   ├── ontology/                  # M1: 타입 + validation
 │   ├── ingest/
 │   │   ├── wikidata/              # M2: Wikidata 시드 수집기
+│   │   │   ├── seed.py            #   루트 QID BFS 확장 → JSONL 그래프
+│   │   │   ├── sparql.py          #   WDQS SPARQL 한국 연예인 대량 발견
+│   │   │   └── discover.py        #   SPARQL → collection_targets 적재 CLI
 │   │   ├── wikipedia/             # Wikipedia 별칭 보완 (alias_supplement)
 │   │   ├── collectors/            # 멀티소스 수집기
 │   │   │   ├── base.py            #   AbstractCollector
@@ -92,7 +95,7 @@ veristar/
 │   │   │   ├── news.py            #   RSS + 본문
 │   │   │   ├── youtube.py         #   YouTube Data API v3
 │   │   │   ├── sns_scraper.py     #   Instagram·Twitter (ToS 경고)
-│   │   │   └── runner.py          #   통합 CLI
+│   │   │   └── runner.py          #   통합 CLI (collection_targets 우선·YAML 폴백)
 │   │   └── news/                  # M4: RSS 뉴스 파이프라인 (제목추출·REPORTED)
 │   ├── grading/                   # M3: 등급 분류 + 민감 필터
 │   ├── graph/
@@ -111,9 +114,10 @@ veristar/
 │   │   ├── qa.py                  # GraphRAG Q&A
 │   │   └── reconstructive.py      # M5: 연표·요약 생성
 │   ├── db/
-│   │   ├── schema.sql             # PostgreSQL DDL (entities/statements/sources/vault_docs)
+│   │   ├── schema.sql             # PostgreSQL DDL (entities/statements/sources/vault_docs/collection_targets)
 │   │   ├── connection.py          # psycopg3 연결 (DATABASE_URL)
 │   │   ├── pg_repository.py       # PostgreSQLGraphRepository
+│   │   ├── targets_repository.py  # CollectionTargetsRepository (수집 큐)
 │   │   ├── vector_store.py        # pgvector 임베딩·유사도 검색
 │   │   └── migrate.py             # JSONL + vault → PostgreSQL 마이그레이션
 │   └── api/                       # M6a: FastAPI + Jinja2 + HTMX

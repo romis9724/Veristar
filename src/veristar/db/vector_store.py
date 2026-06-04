@@ -20,16 +20,17 @@ from pgvector.psycopg import register_vector  # type: ignore[import-untyped]
 logger = logging.getLogger(__name__)
 
 _OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
-_EMBED_MODEL = os.environ.get("VERISTAR_EMBED_MODEL", "nomic-embed-text")
-_EMBED_DIM = 768
-_LINK_THRESHOLD = float(os.environ.get("VERISTAR_LINK_THRESHOLD", "0.82"))
+# bge-m3: 한국어 강한 다국어 임베딩 (1024-dim). nomic-embed-text는 한국어 변별력 없음.
+_EMBED_MODEL = os.environ.get("VERISTAR_EMBED_MODEL", "bge-m3")
+_EMBED_DIM = int(os.environ.get("VERISTAR_EMBED_DIM", "1024"))
+_LINK_THRESHOLD = float(os.environ.get("VERISTAR_LINK_THRESHOLD", "0.6"))
 
 
 def embed_text(text: str, timeout: float = 30.0) -> list[float] | None:
-    """Ollama nomic-embed-text로 텍스트를 임베딩한다.
+    """Ollama 임베딩 모델로 텍스트를 벡터화한다 (기본 bge-m3, 1024-dim).
 
     Returns:
-        768-dim float 리스트, 실패 시 None.
+        임베딩 float 리스트, 실패 시 None.
     """
     try:
         resp = httpx.post(

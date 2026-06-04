@@ -42,8 +42,8 @@ veristar/
 ├── docker-compose.yml         # PostgreSQL 16 + pgvector
 ├── config/
 │   ├── roots.txt              # Wikidata 루트 QID (10개 그룹·소속사)
-│   ├── celebrities.yaml       # 연예인 수집 대상 목록
 │   └── news_feeds.yaml        # RSS 피드 설정
+│                              # (수집 대상은 PostgreSQL collection_targets — SPARQL 자동 발견)
 ├── vault/                     # raw vault (Obsidian 호환 Markdown)
 │   ├── articles/              # Wikipedia·나무위키·뉴스 기사
 │   └── sns/                   # YouTube·SNS 메타데이터
@@ -101,13 +101,24 @@ python -m veristar.db.migrate \
   --embed
 ```
 
-### 3. 추가 콘텐츠 수집 (선택)
+### 3. 수집 대상 자동 발견 (SPARQL)
 
 ```bash
-# 멀티소스 수집 (Wikipedia·나무위키·뉴스)
+# Wikidata SPARQL로 한국 연예인 대량 발견 → collection_targets 적재
+# 직업: singer(가수·아이돌) actor(배우) entertainer(예능) creator(유튜버) group(그룹)
+python -m veristar.ingest.wikidata.discover \
+  --occupations singer,actor,entertainer,creator,group
+#  → kowiki sitelink 있는 유명 인물만 (수천 명 규모)
+```
+
+### 4. 추가 콘텐츠 수집 (선택)
+
+```bash
+# 멀티소스 수집 — collection_targets에서 pending 대상을 읽어 수집
+# (DB 연결 불가 시 config/celebrities.yaml 폴백)
 python -m veristar.ingest.collectors.runner \
-  --config config/celebrities.yaml --vault vault/ \
-  --sources wikipedia,namuwiki,news
+  --vault vault/ --sources wikipedia,namuwiki,news \
+  --limit 100   # pending 중 100건만 (생략 시 전체)
 
 # LLM 검증 (unverified → HIGH/MEDIUM/LOW)
 python -m veristar.verify.pipeline --vault vault/
@@ -117,7 +128,7 @@ python -m veristar.verify.graph_sync \
   --vault vault/ --seed data/seed/wikidata_seed.json
 ```
 
-### 4. 서버 시작
+### 5. 서버 시작
 
 ```bash
 ./scripts/server.sh start

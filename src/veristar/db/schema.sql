@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS entities (
     created_at  TIMESTAMPTZ  NOT NULL,
     -- 타입별 추가 속성 (Person: birth_year/nationality, Group: debut_date, ...)
     extra       JSONB        NOT NULL DEFAULT '{}'::jsonb,
-    -- nomic-embed-text: 768 dims
-    embedding   vector(768)
+    -- bge-m3: 1024 dims (한국어 강한 다국어 임베딩)
+    embedding   vector(1024)
 );
 
 CREATE INDEX IF NOT EXISTS idx_entities_type      ON entities(type);
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS vault_docs (
     sensitive    BOOLEAN NOT NULL DEFAULT FALSE,
     extra        JSONB   NOT NULL DEFAULT '{}'::jsonb,
     -- title + content 앞부분 임베딩 (의미 검색·중복 감지용)
-    embedding    vector(768)
+    embedding    vector(1024)
 );
 
 CREATE INDEX IF NOT EXISTS idx_vault_docs_source_type ON vault_docs(source_type);

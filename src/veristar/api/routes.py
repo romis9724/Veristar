@@ -214,8 +214,9 @@ def pipeline_logs() -> dict[str, object]:
 # --- Graph / Tree / Vault API ---
 
 
-_RAG_SIM_THRESHOLD = 0.82      # 기본 유사도 임계값 (이 미만은 무관련로 제외)
-_RAG_UNVERIFIED_WEIGHT = 0.3   # 미검증 문서의 유사도 가중치 (0.82 × 0.3 = 0.246 → 제외)
+# bge-m3 cosine 분포: 관련 0.6~0.78 / 무관 0.45 이하 → 0.5 경계가 변별점
+_RAG_SIM_THRESHOLD = 0.5       # 기본 유사도 임계값 (이 미만은 무관련로 제외)
+_RAG_UNVERIFIED_WEIGHT = 0.5   # 미검증 문서의 점수 가중치 (정렬용, 임계값과 별개)
 _CONF_WEIGHTS = {
     "high": 1.0, "medium": 0.85, "low": 0.6, "unverified": _RAG_UNVERIFIED_WEIGHT
 }
@@ -277,13 +278,12 @@ def rag_search(
                 # source_type 복수 필터
                 if source_type and vr.source_type not in source_type:
                     continue
-                # 유사도 × confidence 가중치 = 최종 점수
-                weight = _CONF_WEIGHTS.get(vr.confidence, 0.3)
+                # 유사도 × confidence 가중치 = 최종 점수 (정렬용)
+                weight = _CONF_WEIGHTS.get(vr.confidence, 0.5)
                 final_score = vr.similarity * weight
-                # 임계값 미만 제외 (미검증 포함 시 더 낮은 임계값 적용)
-                unv_factor = 0.5 if vr.confidence == "unverified" else 1.0
-                effective_threshold = sim_threshold * unv_factor
-                if vr.similarity < effective_threshold:
+                # 임계값 미만 제외 — confidence와 무관하게 동일 적용
+                # (bge-m3는 unverified 문서도 관련성 자체는 정확히 측정)
+                if vr.similarity < sim_threshold:
                     continue
                 results.append({
                     "type": "vault_doc",
