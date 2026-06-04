@@ -73,4 +73,8 @@ uvicorn --factory veristar.api.app:create_default_app --port 8000
 
 ## 상태
 
-🟢 **전체 로드맵 완료** (M4 뉴스 제외·법적검토 대기). 6그룹 78엔티티·114 statements. M3등급분류·M5재구성생성·M6b GraphRAG Q&A·스케줄링 완성. 테스트 90개·커버리지 87%·ruff·mypy green. 서버: `scripts/server.sh start`
+🟢 **전체 로드맵 완료**. 6그룹+소속사4개·G-Dragon 루트(10개). 123테스트·커버리지 83%·ruff·mypy green.
+
+- Wikipedia 별칭 보완: `python -m veristar.ingest.wikipedia.alias_supplement --seed data/seed/wikidata_seed.json`
+- M4 뉴스 파이프라인(공개 RSS): `python -m veristar.ingest.news.pipeline --feeds config/news_feeds.yaml`
+- 서버: `scripts/server.sh start`

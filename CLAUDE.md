@@ -121,7 +121,9 @@ veristar/
 - ✅ **M6b** 자연어 Q&A(GraphRAG, 로컬 Ollama qwen3 grounding) → `src/veristar/generate/qa.py`·`generate/llm.py`
 - ✅ **Scheduling** `scripts/refresh_seed.sh` (cron/launchd 주기적 갱신)
 
-**미구현 — 법적 검토 후 별도 진행**
-- **M4** 뉴스 사실 추출기(원문 비복제, 제약된 LLM 추출, 사람 검수 큐) → ToS·라이선스 선행 검토 필요
+- ✅ **M4** 뉴스 RSS 파이프라인(공개 RSS only) → `src/veristar/ingest/news/` — 제목추출·REPORTED등급·민감필터
+- ✅ **Wikipedia 별칭** `src/veristar/ingest/wikipedia/alias_supplement.py` — kowiki redirect → alias 보완
+
+⚠️ **M4 추가 확장 전 선행 확인**: 공개 RSS 외 추가 피드 사용 시 해당 서비스 ToS·라이선스 반드시 검토.
 
 > 검색 서비스 = Karpathy "LLM Wiki" 패턴의 `query` 연산. 단 지식층은 자유 마크다운이 아니라 **출처 검증 그래프**다. (`docs/service-design.md` §3)
