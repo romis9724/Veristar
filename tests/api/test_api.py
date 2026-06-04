@@ -65,6 +65,14 @@ def test_timeline_and_neighbors(client: TestClient) -> None:
     assert {v["other_id"] for v in nb} == {"wd:Q2"}
 
 
+def test_htmx_self_hosted(client: TestClient) -> None:
+    # htmx는 CDN이 아니라 self-host 정적 파일로 서빙된다
+    assert "/static/htmx.min.js" in client.get("/").text
+    r = client.get("/static/htmx.min.js")
+    assert r.status_code == 200
+    assert "htmx" in r.text
+
+
 def test_ui_index_renders(client: TestClient) -> None:
     r = client.get("/")
     assert r.status_code == 200

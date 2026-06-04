@@ -12,11 +12,13 @@ import os
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from veristar.graph import InMemoryGraphRepository
 
 _TEMPLATES_DIR = Path(__file__).parent / "templates"
+_STATIC_DIR = Path(__file__).parent / "static"
 _DEFAULT_SEED = "data/seed/wikidata_seed.json"
 
 
@@ -24,6 +26,8 @@ def create_app(repo: InMemoryGraphRepository) -> FastAPI:
     app = FastAPI(title="Veristar Query API", version="0.1.0")
     app.state.repo = repo
     app.state.templates = Jinja2Templates(directory=str(_TEMPLATES_DIR))
+    # htmx 등 정적 자산은 self-host (CDN 의존·차단 회피, 오프라인·CSP 친화)
+    app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
 
     from .routes import router  # 순환참조 회피
 
