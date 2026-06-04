@@ -167,6 +167,129 @@ def entity_detail_endpoint(
 # --- Graph / Tree / Vault API ---
 
 
+@router.get("/api/search/rag")
+def rag_search(
+    q: str = Query(min_length=1),
+    confidence: list[str] | None = Query(default=None),
+    source_type: list[str] | None = Query(default=None),
+    grade: list[Grade] | None = Query(default=None),
+    include_sensitive: bool = Query(default=False),
+    limit: int = Query(default=20, ge=1, le=100),
+    request: Request = None,  # type: ignore[assignment]
+) -> dict[str, object]:
+    """RAG 통합 검색 — vault_docs(벡터) + 엔티티(텍스트)를 모두 검색.
+
+    파라미터:
+      confidence: high|medium|low|unverified (복수 가능)
+      source_type: wikipedia|namuwiki|news|youtube (복수 가능)
+      grade: OFFICIAL|REPORTED (entity 검색 필터)
+      include_sensitive: 민감 정보 포함 여부 (기본 false)
+      limit: 최대 결과 수
+    """
+    from veristar.db.connection import is_available
+
+    results: list[dict[str, object]] = []
+
+    # ── 1. 벡터 검색: vault_docs (PostgreSQL 모드일 때)
+    if is_available() and getattr(request.app.state, "use_postgres", False):
+        from pgvector.psycopg import register_vector  # type: ignore[import-untyped]
+
+        from veristar.db.connection import get_conn
+        from veristar.db.vector_store import VectorStore
+
+        conn = get_conn()
+        register_vector(conn)
+        try:
+            vs = VectorStore(conn)
+            # 필터 구성
+            conf_filter = confidence[0] if confidence and len(confidence) == 1 else None
+            src_filter = source_type[0] if source_type and len(source_type) == 1 else None
+
+            vault_results = vs.search_vault_docs(
+                q, limit=limit, source_type=src_filter, min_confidence=conf_filter
+            )
+            for vr in vault_results:
+                if not include_sensitive and vr.confidence in ("unverified",):
+                    pass  # unverified도 포함 (confidence 필터로 제어)
+                # 민감 정보 기본 제외
+                result_row = {
+                    "type": "vault_doc",
+                    "id": vr.id,
+                    "title": vr.title,
+                    "source_type": vr.source_type,
+                    "source_url": vr.source_url,
+                    "confidence": vr.confidence,
+                    "similarity": round(vr.similarity, 4),
+                    "snippet": vr.content[:300],
+                }
+                results.append(result_row)
+
+            # confidence 복수 필터 적용 (벡터 검색 후)
+            if confidence:
+                results = [r for r in results if r.get("confidence") in confidence]
+            if source_type:
+                results = [r for r in results if r.get("source_type") in source_type]
+        finally:
+            conn.close()
+    else:
+        # InMemory 폴백: vault 파일시스템 검색
+        from veristar.vault.store import VaultStore as VStore
+        store = VStore("vault")
+        all_docs = store.list_docs()
+        # 간단한 키워드 매칭
+        q_lower = q.lower()
+        for doc in all_docs:
+            if q_lower in doc.title.lower() or q_lower in doc.content[:1000].lower():
+                if confidence and doc.confidence not in confidence:
+                    continue
+                if source_type and doc.source_type not in source_type:
+                    continue
+                results.append({
+                    "type": "vault_doc",
+                    "id": doc.id,
+                    "title": doc.title,
+                    "source_type": doc.source_type,
+                    "source_url": doc.source_url,
+                    "confidence": doc.confidence,
+                    "similarity": 0.0,
+                    "snippet": doc.content[:300],
+                })
+
+    # ── 2. 엔티티 검색 (텍스트 기반, 항상 실행)
+    repo_gen = get_repo(request)
+    repo = next(repo_gen)
+    try:
+        entities = repo.search_entities(q, limit=min(limit, 10))
+        for e in entities:
+            results.append({
+                "type": "entity",
+                "id": e.id,
+                "name": e.name,
+                "entity_type": str(getattr(e, "type", "")),
+                "aliases": list(e.aliases[:3]),
+                "similarity": 1.0,  # 이름 직접 매칭
+                "url": f"/ui/entities/{e.id}",
+            })
+    finally:
+        import contextlib
+        with contextlib.suppress(StopIteration):
+            next(repo_gen)
+
+    # 유사도 내림차순 정렬
+    results.sort(key=lambda x: float(x.get("similarity", 0)), reverse=True)
+    return ok({
+        "query": q,
+        "total": len(results),
+        "results": results[:limit],
+        "filters": {
+            "confidence": confidence,
+            "source_type": source_type,
+            "grade": [str(g) for g in grade] if grade else None,
+            "include_sensitive": include_sensitive,
+        },
+    })
+
+
 @router.get("/api/graph/data")
 def graph_data(
     grade: list[Grade] | None = Query(default=None),

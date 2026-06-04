@@ -1,22 +1,198 @@
 {% extends "base.html" %}
 {% block title %}Veristar — 지식 탐색{% endblock %}
 {% block content %}
-<section class="search" aria-labelledby="h">
-  <h1 id="h" style="letter-spacing:-0.03em;">연예 지식그래프 탐색</h1>
-  <p class="meta">엔티티를 검색해 관계·연표·출처 등급을 확인한다.</p>
-  <input
-    type="search"
-    name="q"
-    placeholder="인물·그룹·작품 이름…"
-    autocomplete="off"
-    aria-label="엔티티 검색"
-    hx-get="/ui/search"
-    hx-trigger="input changed delay:300ms, keyup[key=='Enter']"
-    hx-target="#results"
-    hx-indicator="#ind"
-  />
-  <span id="ind" class="htmx-indicator meta">검색 중…</span>
-  <div id="results"></div>
-  <p class="meta" style="margin-top:1rem;"><a href="/ui/qa">자연어 Q&amp;A →</a></p>
-</section>
+<style>
+  .search-wrap { max-width: 680px; margin: 0 auto; }
+  .search-header { margin-bottom: 1.2rem; }
+  .search-input-row {
+    display: flex; gap: 0.5rem; margin-bottom: 0.8rem;
+  }
+  .search-input-row input {
+    flex: 1; padding: 0.85rem 1.1rem; font-size: 1.05rem;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--surface); font-family: var(--sans);
+  }
+  .search-input-row input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .search-btn {
+    padding: 0 1.2rem; background: var(--accent); color: #fff;
+    border: none; border-radius: 12px; cursor: pointer; font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .filter-bar {
+    display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;
+    padding: 0.6rem 0.8rem; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; margin-bottom: 0.8rem; font-size: 0.8rem;
+  }
+  .filter-bar label { color: var(--muted); font-weight: 600; }
+  .filter-group { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .filter-chip {
+    padding: 0.2rem 0.6rem; border: 1px solid var(--line); border-radius: 20px;
+    cursor: pointer; background: var(--bg); font-size: 0.75rem; user-select: none;
+  }
+  .filter-chip input { display: none; }
+  .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .result-item {
+    padding: 0.8rem 1rem; margin: 0.4rem 0;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    transition: transform 150ms, border-color 150ms;
+  }
+  .result-item:hover { transform: translateX(3px); border-color: var(--accent); }
+  .result-item a { text-decoration: none; color: inherit; display: block; }
+  .result-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; }
+  .result-title { font-weight: 600; font-size: 0.95rem; }
+  .result-type {
+    font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 4px;
+    background: oklch(93% 0.04 265); color: var(--accent); font-family: var(--mono);
+  }
+  .result-meta { font-size: 0.75rem; color: var(--muted); display: flex; gap: 0.6rem; }
+  .result-snippet { font-size: 0.8rem; color: var(--ink); margin-top: 0.3rem; line-height: 1.5; }
+  .sim-bar {
+    display: inline-block; height: 4px; border-radius: 2px; background: var(--accent);
+    vertical-align: middle; margin-left: 0.4rem;
+  }
+  .search-mode-toggle { font-size: 0.78rem; color: var(--muted); display: flex; gap: 1rem; }
+  .search-mode-toggle a { cursor: pointer; }
+  .search-mode-toggle a.active { color: var(--accent); font-weight: 600; }
+</style>
+
+<div class="search-wrap">
+  <div class="search-header">
+    <h1 style="letter-spacing:-0.03em;margin-bottom:0.3rem">연예 지식 검색</h1>
+    <p class="meta">전체 데이터(그래프·vault·뉴스)를 벡터 의미 검색합니다.</p>
+  </div>
+
+  <!-- 검색창 -->
+  <div class="search-input-row">
+    <input type="search" id="q-input" placeholder="인물·그룹·사건 자연어 검색…"
+      autocomplete="off" onkeydown="if(event.key==='Enter') doSearch()">
+    <button class="search-btn" onclick="doSearch()">검색</button>
+  </div>
+
+  <!-- 필터 바 -->
+  <div class="filter-bar">
+    <label>검증 상태</label>
+    <div class="filter-group" id="conf-filters">
+      <label class="filter-chip active"><input type="checkbox" value="high" checked> HIGH</label>
+      <label class="filter-chip active"><input type="checkbox" value="medium" checked> MEDIUM</label>
+      <label class="filter-chip active"><input type="checkbox" value="low" checked> LOW</label>
+      <label class="filter-chip active"><input type="checkbox" value="unverified" checked> 미검증</label>
+    </div>
+    <span style="color:var(--line)">|</span>
+    <label>소스</label>
+    <div class="filter-group" id="src-filters">
+      <label class="filter-chip active"><input type="checkbox" value="wikipedia" checked> Wikipedia</label>
+      <label class="filter-chip active"><input type="checkbox" value="namuwiki" checked> 나무위키</label>
+      <label class="filter-chip active"><input type="checkbox" value="news" checked> 뉴스</label>
+    </div>
+    <span style="color:var(--line)">|</span>
+    <label class="filter-chip" id="sensitive-chip" onclick="toggleSensitive()">
+      🔒 민감 포함
+    </label>
+  </div>
+
+  <!-- 결과 -->
+  <div id="search-results">
+    <p class="meta" style="text-align:center;padding:2rem 0">검색어를 입력하세요.</p>
+  </div>
+</div>
+
+<script>
+let sensitiveOn = false;
+
+// 필터 칩 토글
+document.querySelectorAll('.filter-chip input').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.parentElement.classList.toggle('active', cb.checked);
+  });
+});
+
+function toggleSensitive() {
+  sensitiveOn = !sensitiveOn;
+  const chip = document.getElementById('sensitive-chip');
+  chip.classList.toggle('active', sensitiveOn);
+}
+
+function getFilters() {
+  const confidence = [...document.querySelectorAll('#conf-filters input:checked')].map(c => c.value);
+  const source_type = [...document.querySelectorAll('#src-filters input:checked')].map(c => c.value);
+  return { confidence, source_type };
+}
+
+async function doSearch() {
+  const q = document.getElementById('q-input').value.trim();
+  if (!q) return;
+
+  const { confidence, source_type } = getFilters();
+  const params = new URLSearchParams({ q, limit: 30, include_sensitive: sensitiveOn });
+  confidence.forEach(c => params.append('confidence', c));
+  source_type.forEach(s => params.append('source_type', s));
+
+  const box = document.getElementById('search-results');
+  box.innerHTML = '<p class="meta" style="padding:1rem 0">검색 중…</p>';
+
+  try {
+    const res = await fetch(`/api/search/rag?${params}`);
+    const data = (await res.json()).data;
+    renderResults(data);
+  } catch (e) {
+    box.innerHTML = '<p class="meta">오류가 발생했습니다.</p>';
+  }
+}
+
+function renderResults(data) {
+  const box = document.getElementById('search-results');
+  if (!data.results.length) {
+    box.innerHTML = '<p class="meta" style="padding:1rem 0">결과 없음. 필터를 조정해보세요.</p>';
+    return;
+  }
+
+  const SOURCE_ICON = { wikipedia:'📖', namuwiki:'📝', news:'📰', youtube:'▶️', entity:'🔗' };
+  const CONF_COLOR = { high:'#2e7d32', medium:'#e65100', low:'#c62828', unverified:'#888' };
+
+  box.innerHTML = `<div class="meta" style="margin-bottom:0.6rem">${data.total}건 검색됨</div>` +
+    data.results.map(r => {
+      if (r.type === 'entity') {
+        return `
+<div class="result-item">
+  <a href="${r.url}">
+    <div class="result-header">
+      <span class="result-title">${r.name}</span>
+      <span class="result-type">엔티티</span>
+      <span class="type-badge">${r.entity_type}</span>
+    </div>
+    <div class="result-meta">
+      <span>${r.aliases.join('·') || ''}</span>
+      <span style="margin-left:auto">🔗 ${r.id}</span>
+    </div>
+  </a>
+</div>`;
+      }
+      const sim = Math.round(r.similarity * 100);
+      const confColor = CONF_COLOR[r.confidence] || '#888';
+      const icon = SOURCE_ICON[r.source_type] || '📄';
+      const snippet = (r.snippet || '').replace(/\n/g, ' ').slice(0, 200);
+      return `
+<div class="result-item">
+  <a href="${r.source_url}" target="_blank">
+    <div class="result-header">
+      <span class="result-title">${icon} ${r.title}</span>
+      <span class="result-type">${r.source_type}</span>
+      <span style="font-size:0.7rem;color:${confColor};font-weight:600">${r.confidence}</span>
+      ${sim > 0 ? `<span class="sim-bar" style="width:${Math.max(20, sim)}px" title="${sim}% 유사도"></span>` : ''}
+    </div>
+    ${snippet ? `<div class="result-snippet">${snippet}…</div>` : ''}
+  </a>
+</div>`;
+    }).join('');
+}
+
+// 타입어헤드 (엔티티 전용 — 기존 기능 유지)
+document.getElementById('q-input').addEventListener('input', function() {
+  const q = this.value.trim();
+  if (q.length < 2) {
+    document.getElementById('search-results').innerHTML =
+      '<p class="meta" style="text-align:center;padding:2rem 0">검색어를 입력하세요.</p>';
+  }
+});
+</script>
 {% endblock %}

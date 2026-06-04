@@ -151,49 +151,95 @@ def _extract_namu_body(html: str) -> str:
     return plain[:10000].strip()
 
 
+def _fetch_with_playwright(url: str, js_wait_ms: int = 5000) -> str:
+    """Playwright로 CSR 페이지를 렌더링하고 본문 텍스트를 반환한다.
+
+    나무위키는 완전 CSR이므로 JS 실행 후 inner_text를 추출한다.
+    TOC가 두 번 등장할 때 두 번째 이후가 실제 본문이다.
+    """
+    from playwright.sync_api import sync_playwright  # type: ignore[import-untyped]
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        try:
+            page = browser.new_page()
+            page.goto(url, timeout=25000)
+            page.wait_for_timeout(js_wait_ms)
+            body_text = page.inner_text("body")
+        finally:
+            browser.close()
+
+    if not body_text:
+        return ""
+
+    # 나무위키는 TOC에 '1. 개요'가 먼저 나오고, 본문에도 '1. 개요'가 나온다.
+    # 마지막으로 등장하는 '1. 개요' 이후를 본문으로 사용한다.
+    marker = "1. 개요"
+    parts = body_text.split(marker)
+    if len(parts) >= 3:
+        # 마지막 등장 이후 = 실제 본문
+        return marker + parts[-1]
+    # 한 번만 등장하면 그대로 사용
+    if len(parts) == 2:
+        return marker + parts[-1]
+    return body_text
+
+
 class NamuWikiCollector(CollectorBase):
-    """나무위키 문서를 수집해 vault에 저장한다."""
+    """나무위키 문서를 수집해 vault에 저장한다.
+
+    Playwright(headless Chromium)로 CSR 렌더링 후 본문 추출.
+    Playwright 없으면 HTML fallback(섹션 구조만).
+    """
+
+    def __init__(
+        self,
+        store: VaultStore,
+        use_playwright: bool = True,
+        js_wait_ms: int = 5000,
+        timeout: float = 30.0,
+    ) -> None:
+        super().__init__(store, timeout)
+        self.use_playwright = use_playwright
+        self.js_wait_ms = js_wait_ms
 
     def collect(self, target: str, **kwargs: object) -> CollectResult:
         """target: 수집할 나무위키 문서 제목 (한국어)."""
-        # 나무위키 문서 직접 접근 (API 대신 w/{title}.json)
         encoded = urllib.parse.quote(target)
-        api_url = f"{_NAMU_BASE}/w/{encoded}.json"
-        text = self._get(api_url)
-
-        if not text:
-            # 일반 페이지 scraping fallback
-            return self._scrape_fallback(target)
-
-        try:
-            data = json.loads(text)
-        except json.JSONDecodeError:
-            return self._scrape_fallback(target)
-
-        content_raw = data.get("text", "") or data.get("content", "")
-        if not content_raw:
-            return CollectResult(skipped=1)
-
-        content_md = _namu_to_markdown(content_raw)
         page_url = f"{_NAMU_BASE}/w/{encoded}"
 
+        # 1순위: Playwright (CSR 렌더링 — 실제 본문)
+        if self.use_playwright:
+            try:
+                content = _fetch_with_playwright(page_url, self.js_wait_ms)
+                if len(content) > 200:
+                    return self._save_doc(target, content, page_url, method="playwright")
+            except Exception as exc:
+                logger.warning("playwright 실패 (%s), HTML fallback: %s", target, exc)
+
+        # 2순위: HTML fallback (섹션 구조만)
+        return self._scrape_fallback(target)
+
+    def _save_doc(
+        self, target: str, content: str, page_url: str, method: str = "playwright"
+    ) -> CollectResult:
         doc = VaultDoc(
             id=f"namuwiki-{_slug(target)}",
             title=f"{target} (나무위키)",
-            content=f"> ⚠️ 나무위키: {_LICENSE}. 비상업적·출처 표기 필수.\n\n{content_md}",
+            content=f"> ⚠️ 나무위키: {_LICENSE}. 비상업적·출처 표기 필수.\n\n{content[:15000]}",
             source_type="namuwiki",
             source_url=page_url,
             entity_refs=[_slug(target)],
             retrieved=datetime.now().date(),
             confidence=ConfidenceLevel.UNVERIFIED,
             license=_LICENSE,
-            extra={"namu_title": target},
+            extra={"namu_title": target, "method": method},
         )
         saved = self._save(doc)
         return CollectResult(saved=1 if saved else 0, skipped=0 if saved else 1)
 
     def _scrape_fallback(self, target: str) -> CollectResult:
-        """API 실패 시 일반 HTML에서 본문 추출 (개선된 파서 사용)."""
+        """Playwright 실패 시 HTML에서 본문 추출 (섹션 구조)."""
         encoded = urllib.parse.quote(target)
         url = f"{_NAMU_BASE}/w/{encoded}"
         html = self._get(url)
@@ -201,24 +247,10 @@ class NamuWikiCollector(CollectorBase):
             return CollectResult(errors=1, messages=[f"namu fetch failed: {target}"])
 
         text = _extract_namu_body(html)
-
         if len(text) < 100:
             return CollectResult(skipped=1)
 
-        doc = VaultDoc(
-            id=f"namuwiki-{_slug(target)}",
-            title=f"{target} (나무위키)",
-            content=f"> ⚠️ 나무위키: {_LICENSE}. 비상업적·출처 표기 필수.\n\n{text[:10000]}",
-            source_type="namuwiki",
-            source_url=url,
-            entity_refs=[_slug(target)],
-            retrieved=datetime.now().date(),
-            confidence=ConfidenceLevel.UNVERIFIED,
-            license=_LICENSE,
-            extra={"namu_title": target, "method": "scrape"},
-        )
-        saved = self._save(doc)
-        return CollectResult(saved=1 if saved else 0, skipped=0 if saved else 1)
+        return self._save_doc(target, text, url, method="scrape")
 
 
 def _slug(text: str) -> str:

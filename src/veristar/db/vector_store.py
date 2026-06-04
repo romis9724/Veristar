@@ -159,27 +159,29 @@ class VectorStore:
         vec = embed_text(query)
         if vec is None:
             return []
-        filters = ["embedding IS NOT NULL"]
-        params: list[Any] = [vec, vec, vec]
+        # psycopg3은 %s 플레이스홀더 사용 (PostgreSQL 네이티브 $N 아님)
+        extra_filters: list[str] = []
+        extra_params: list[Any] = []
         if source_type:
-            filters.append(f"source_type = ${len(params) + 1}")
-            params.append(source_type)
+            extra_filters.append("source_type = %s")
+            extra_params.append(source_type)
         if min_confidence:
             order = ["unverified", "low", "medium", "high"]
             valid = [c for c in order if order.index(c) >= order.index(min_confidence)]
-            filters.append(f"confidence = ANY(${len(params) + 1}::text[])")
-            params.append(valid)
-        where = " AND ".join(filters)
+            extra_filters.append("confidence = ANY(%s::text[])")
+            extra_params.append(valid)
+        where_parts = ["embedding IS NOT NULL"] + extra_filters
+        where = " AND ".join(where_parts)
         rows = self._conn.execute(
             f"""
             SELECT id, title, content, source_type, source_url, confidence,
-                   1 - (embedding <=> $1::vector) AS similarity
+                   1 - (embedding <=> %s::vector) AS similarity
             FROM vault_docs
             WHERE {where}
-            ORDER BY embedding <=> $2::vector
+            ORDER BY embedding <=> %s::vector
             LIMIT {limit}
-            """,
-            params,
+            """,  # noqa: S608
+            [vec, *extra_params, vec],
         ).fetchall()
         return [VaultDocResult(r) for r in rows]
 
