@@ -156,7 +156,56 @@ Statement가 가리키는 출처. 등급 판정의 근거다.
 
 ---
 
-## 4. 전체 예시 그래프
+## 4. VaultDoc (raw 수집 콘텐츠)
+
+Knowledge graph 아래에 **수집 원본 레이어**가 존재한다. (`vault/store.py`)
+
+```jsonc
+{
+  "id": "wikipedia-ko-방탄소년단",
+  "title": "방탄소년단 (Wikipedia KO)",
+  "content": "...",               // Markdown 본문 (원문 또는 변환)
+  "source_type": "wikipedia",    // wikipedia | namuwiki | news | youtube | instagram | twitter
+  "source_url": "https://...",
+  "entity_refs": ["방탄소년단"],  // 연관 엔티티 slug
+  "published": "2026-06-04",
+  "retrieved": "2026-06-04",
+  "confidence": "unverified",    // unverified | low | medium | high
+  "license": "CC BY-SA 4.0",
+  "sensitive": false,            // true여도 저장. 생성·API에서만 차단.
+  "extra": {}                    // source별 추가 메타
+}
+```
+
+### confidence 레벨 (LLM cross-check 결과)
+
+| 레벨 | 의미 | 조치 |
+|---|---|---|
+| `unverified` | 수집 직후 초기값 | verify/pipeline.py 처리 대기 |
+| `high` | 공식 출처·구체 사실·교차 검증 가능 | 그래프 승격 (graph_sync.py) |
+| `medium` | 부분 신뢰, 확인 필요 | 사람 검토 큐 |
+| `low` | 루머·추측·미확인 | 폐기 (재수집 필요) |
+
+> **VaultDoc은 Statement와 독립적이다.** vault는 raw 수집 레이어이며, graph_sync.py가 HIGH 문서에서 사실을 추출해 Statement를 만든다. 직접 생성 입력으로 쓰지 않는다.
+
+---
+
+## 5. PostgreSQL 스키마
+
+`src/veristar/db/schema.sql` 참조. 주요 테이블:
+
+| 테이블 | 대응 모델 | 비고 |
+|---|---|---|
+| `entities` | Entity 서브타입 | `embedding vector(768)` 포함 |
+| `statements` | Statement | subject·object 소프트 참조 |
+| `sources` | Source | |
+| `vault_docs` | VaultDoc | `embedding vector(768)` 포함 |
+
+벡터 인덱스: IVFFlat (행 100개 이상 시 활성화 권장).
+
+---
+
+## 6. 전체 예시 그래프
 
 `data/examples/sample.json` 참조. 구조 요약:
 
@@ -164,11 +213,12 @@ Statement가 가리키는 출처. 등급 판정의 근거다.
 Entities:   [Person, Group, Organization, Work, Event, Award]
 Statements: 각 관계 = 1 Statement (grade·source·valid_from 포함)
 Sources:    각 Statement가 참조하는 출처 레코드
+VaultDocs:  수집 원본 Markdown (confidence 분류 후 그래프 승격)
 ```
 
 ---
 
-## 5. Validation 규칙 (코드로 강제)
+## 7. Validation 규칙 (코드로 강제)
 
 데이터 적재 시 아래를 검사한다. 하나라도 위반하면 **거부**한다.
 
@@ -181,7 +231,7 @@ Sources:    각 Statement가 참조하는 출처 레코드
 
 ---
 
-## 6. 의도적으로 넣지 않은 것 (Out of Scope)
+## 8. 의도적으로 넣지 않은 것 (Out of Scope)
 
 아래는 **일부러 모델링하지 않는다.** 추가 요청이 와도 §safety-guidelines를 근거로 재검토한다.
 
