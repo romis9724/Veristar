@@ -73,4 +73,4 @@ uvicorn --factory veristar.api.app:create_default_app --port 8000
 
 ## 상태
 
-🟢 **M1·M2·M6a 완료** — 온톨로지 타입+validation([`ontology/`](./src/veristar/ontology/)), Wikidata 시드 수집기([`ingest/wikidata/`](./src/veristar/ingest/wikidata/)), 읽기전용 query API + HTMX 탐색 UI([`graph/`](./src/veristar/graph/)·[`api/`](./src/veristar/api/)). 실 시드(Stray Kids 57엔티티)로 검증. 테스트 74개·커버리지 93%, ruff·mypy green. **1차 슬라이스 완성.** 다음: M3/M4(뉴스)·M5(생성)·M6b(자연어 Q&A). 서비스 방향은 [`docs/service-design.md`](./docs/service-design.md).
+🟢 **전체 로드맵 완료** (M4 뉴스 제외·법적검토 대기). 6그룹 78엔티티·114 statements. M3등급분류·M5재구성생성·M6b GraphRAG Q&A·스케줄링 완성. 테스트 90개·커버리지 87%·ruff·mypy green. 서버: `scripts/server.sh start`

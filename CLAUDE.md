@@ -110,15 +110,17 @@ veristar/
 
 서비스 방향 확정(2026-06-04, `docs/service-design.md`)에 따라 **데이터 우선 + 검색 1차 출시**로 재배치한다.
 
-**1차 (현재 목표) — 안전한 Wikidata 백본 위의 읽기전용 검색**
+**완료 — 로드맵 전 마일스톤 구현됨**
 - ✅ **M1** 온톨로지 데이터 모델(타입) + validation (스키마 §5)
 - ✅ **M2** Wikidata 시드 수집기(루트 QID 확장, 레퍼런스 달린 OFFICIAL만) → `src/veristar/ingest/wikidata`.
-- ✅ **M6a** 읽기전용 query API + HTMX 탐색 UI → `src/veristar/graph`(저장소·조회)·`src/veristar/api`(FastAPI). 실 시드로 검증. **1차 슬라이스 완성.**
+- ✅ **M2b** 다중 루트 scope(`config/roots.txt`) + 증분 병합·SUPERSEDED 저장소
+- ✅ **M3** 출처 등급 분류기 + 민감 카테고리 필터 → `src/veristar/grading`
+- ✅ **M5** 재구성형 콘텐츠 생성기(연표·요약) → `src/veristar/generate/reconstructive.py`
+- ✅ **M6a** 읽기전용 query API + HTMX 탐색 UI(등급·관계 필터, 요약 버튼)
+- ✅ **M6b** 자연어 Q&A(GraphRAG, Claude Haiku grounding) → `src/veristar/generate/qa.py`
+- ✅ **Scheduling** `scripts/refresh_seed.sh` (cron/launchd 주기적 갱신)
 
-**후행 — 신선도·생성 확장 (구현 전 사용자 확인)**
-- **M3** 출처 등급 분류기 + 민감 카테고리 필터 (뉴스 본격화 시)
-- **M4** 뉴스 사실 추출기(원문 비복제, 제약된 LLM 추출, 사람 검수 큐) → REPORTED 확장
-- **M5** 재구성형 콘텐츠 생성기(연표·요약)
-- **M6b** 검색 확장 — 자연어 Q&A(GraphRAG)
+**미구현 — 법적 검토 후 별도 진행**
+- **M4** 뉴스 사실 추출기(원문 비복제, 제약된 LLM 추출, 사람 검수 큐) → ToS·라이선스 선행 검토 필요
 
 > 검색 서비스 = Karpathy "LLM Wiki" 패턴의 `query` 연산. 단 지식층은 자유 마크다운이 아니라 **출처 검증 그래프**다. (`docs/service-design.md` §3)
