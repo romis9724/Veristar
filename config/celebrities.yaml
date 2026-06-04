@@ -1,0 +1,74 @@
+# Veristar 한국 연예인 수집 대상 목록
+#
+# 사용법:
+#   python -m veristar.ingest.collectors.runner \
+#     --config config/celebrities.yaml \
+#     --vault vault/ \
+#     --sources wikipedia,namuwiki,news,youtube
+#
+# 필드:
+#   name: 기본 이름 (필수)
+#   namu_title: 나무위키 문서 제목 (없으면 name 사용)
+#   youtube_channel: YouTube 채널 ID (UCxxx 형식)
+#   instagram: 인스타그램 사용자명 (@없이)
+#   twitter: 트위터 사용자명 (@없이)
+
+celebrities:
+  # === K-pop 그룹 ===
+  - name: 스트레이 키즈
+    namu_title: 스트레이 키즈
+    youtube_channel: UCWGMmPkdTPFmyJDAVB7ANPQ
+    instagram: stray_kids
+    twitter: Stray_Kids
+
+  - name: 블랙핑크
+    namu_title: 블랙핑크
+    youtube_channel: UCOmHUn--16B90oW2L6FRR3A
+    instagram: blackpinkofficial
+    twitter: BLACKPINK
+
+  - name: 방탄소년단
+    namu_title: 방탄소년단
+    youtube_channel: UCLkAepWjdylmXSltofFvsYQ
+    instagram: bts.bighitofficial
+    twitter: BTS_twt
+
+  - name: TWICE
+    namu_title: TWICE(걸그룹)
+    youtube_channel: UCaT_bSAb7ob-eDqSiMGLfpA
+    instagram: twicetagram
+    twitter: JYPETWICE
+
+  - name: aespa
+    namu_title: 에스파
+    youtube_channel: UCh9qFHbv9mIoS_3oYj0s4cw
+    instagram: aespa_official
+    twitter: aespa_SM
+
+  - name: NewJeans
+    namu_title: 뉴진스
+    youtube_channel: UCtGXhePDOEInl-uDGCkfJEg
+    instagram: newjeans_official
+
+  # === 솔로 아티스트 ===
+  - name: 아이유
+    namu_title: 아이유
+    youtube_channel: UCCkfhm7xnJstl7qJ5VtNNQw
+    instagram: dlwlrma
+    twitter: IUofficial
+
+  - name: G-Dragon
+    namu_title: G-DRAGON
+    instagram: xxxibgdrgn
+    twitter: IBGDRGN
+
+  # === 배우 (예시) ===
+  - name: 이정재
+    namu_title: 이정재(배우)
+
+  - name: 김수현
+    namu_title: 김수현(배우)
+
+  # === 유튜버 (예시) ===
+  # - name: 뻔뻔한TV
+  #   youtube_channel: UCxxx
