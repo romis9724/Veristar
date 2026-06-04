@@ -8,6 +8,9 @@
 #
 # 환경변수로 조정: VERISTAR_HOST(기본 127.0.0.1) · VERISTAR_PORT(기본 8000)
 #                  VERISTAR_SEED_PATH(기본 data/seed/wikidata_seed.json)
+#                  VERISTAR_REFRESH_INTERVAL_HOURS(기본 24, 0=비활성)
+#                  VERISTAR_ROOTS_FILE(기본 config/roots.txt)
+#                  VERISTAR_MAX(기본 80)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -16,6 +19,7 @@ cd "$ROOT"
 HOST="${VERISTAR_HOST:-127.0.0.1}"
 PORT="${VERISTAR_PORT:-8000}"
 SEED="${VERISTAR_SEED_PATH:-data/seed/wikidata_seed.json}"
+REFRESH="${VERISTAR_REFRESH_INTERVAL_HOURS:-24}"
 APP="veristar.api.app:create_default_app"
 UVICORN="$ROOT/.venv/bin/uvicorn"
 RUNDIR="$ROOT/.run"
@@ -48,12 +52,15 @@ start() {
     echo "✗ 포트 $PORT 가 이미 사용 중입니다. './scripts/server.sh stop' 후 다시 시도하세요."
     exit 1
   fi
-  VERISTAR_SEED_PATH="$SEED" nohup "$UVICORN" --factory "$APP" \
+  VERISTAR_SEED_PATH="$SEED" \
+  VERISTAR_REFRESH_INTERVAL_HOURS="$REFRESH" \
+  nohup "$UVICORN" --factory "$APP" \
     --host "$HOST" --port "$PORT" >"$LOGFILE" 2>&1 &
   echo $! >"$PIDFILE"
   sleep 1
   if is_running; then
     echo "✓ started → http://$HOST:$PORT  (PID $(cat "$PIDFILE"), log: $LOGFILE)"
+    [[ "$REFRESH" != "0" ]] && echo "  자동 갱신: ${REFRESH}시간마다 (VERISTAR_REFRESH_INTERVAL_HOURS=$REFRESH)"
   else
     echo "✗ 기동 실패. 로그 확인: $LOGFILE"
     tail -n 15 "$LOGFILE" 2>/dev/null || true

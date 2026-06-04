@@ -57,8 +57,22 @@ def _require_entity(repo: InMemoryGraphRepository, entity_id: str) -> None:
 
 
 @router.get("/api/health")
-def health(repo: InMemoryGraphRepository = Depends(get_repo)) -> dict[str, object]:
-    return ok({"status": "ok", "stats": repo.stats()})
+def health(
+    request: Request, repo: InMemoryGraphRepository = Depends(get_repo)
+) -> dict[str, object]:
+    import os
+
+    interval = float(os.environ.get("VERISTAR_REFRESH_INTERVAL_HOURS", "24"))
+    return ok(
+        {
+            "status": "ok",
+            "stats": repo.stats(),
+            "auto_refresh": {
+                "enabled": interval > 0,
+                "interval_hours": interval if interval > 0 else None,
+            },
+        }
+    )
 
 
 @router.get("/api/entities")
