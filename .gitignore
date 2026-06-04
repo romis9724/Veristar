@@ -32,3 +32,6 @@ htmlcov/
 # 데이터 (시드 산출물은 용량이 커질 수 있어 기본 무시 — 필요 시 화이트리스트)
 /data/seed/*
 !/data/seed/.gitkeep
+
+# 서버 런타임(PID·로그)
+/.run/

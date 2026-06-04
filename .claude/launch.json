@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "veristar-api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["--factory", "veristar.api.app:create_default_app", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}
