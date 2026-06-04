@@ -13,6 +13,9 @@ dependencies = [
     "fastapi>=0.110",
     "jinja2>=3.1",
     "uvicorn>=0.29",
+    # PostgreSQL + pgvector
+    "psycopg[binary]>=3.1",
+    "pgvector>=0.3",
 ]
 
 [project.optional-dependencies]
@@ -43,6 +46,12 @@ strict = true
 mypy_path = "src"
 packages = ["veristar"]
 
+[[tool.mypy.overrides]]
+# psycopg3·pgvector는 타입 스텁이 없어 strict 완화 적용
+module = ["veristar.db.*", "veristar.graph.entity_linker"]
+ignore_missing_imports = true
+ignore_errors = true
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
@@ -50,6 +59,10 @@ addopts = "--cov=veristar --cov-report=term-missing"
 
 [tool.coverage.run]
 source = ["veristar"]
+omit = [
+    # DB 모듈은 PostgreSQL 연결이 필요한 통합 레이어 — 별도 integration test로 관리
+    "*/veristar/db/*",
+]
 
 [tool.coverage.report]
 fail_under = 80

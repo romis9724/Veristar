@@ -158,14 +158,18 @@ def _extract_facts(
     model: str | None = None,
 ) -> list[dict[str, str]]:
     """LLM으로 vault 문서에서 그래프 사실을 추출한다."""
-    # 문서 제목 + 내용에서 언급된 엔티티 탐색
+    from veristar.graph.entity_linker import find_mentioned_with_vectors
+
+    # 벡터 기반 entity linker로 후보 엔티티 탐색 (짧은 이름 false-positive 차단)
     search_text = vault_doc.title + " " + vault_doc.content[:500]
-    mentioned = repo.find_mentioned(search_text, limit=12)
+    mentioned = find_mentioned_with_vectors(search_text, repo, limit=12)
     if len(mentioned) < 2:
         return []
 
-    # 주 엔티티 (제목에서 가장 먼저 매칭된 것)
-    main_entity_names = [e.name for e in repo.find_mentioned(vault_doc.title, limit=1)]
+    # 주 엔티티 (제목에서 벡터 유사도 기준 1순위)
+    main_entity_names = [
+        e.name for e in find_mentioned_with_vectors(vault_doc.title, repo, limit=1)
+    ]
     main_entity = main_entity_names[0] if main_entity_names else vault_doc.title
 
     prompt = _PROMPT.format(

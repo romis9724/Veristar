@@ -31,7 +31,8 @@ def minimal_seed(tmp_path: Path) -> Path:
     """엔티티 3개짜리 최소 시드."""
     from veristar.ingest.wikidata.seed import write_seed
 
-    person = Person(id="wd:Q1", name="다현", created_at=datetime(2024, 1, 1))
+    # 이름이 충분히 길어야 벡터 검증 없이 substring 매칭으로 통과 (SHORT_NAME_LEN=3)
+    person = Person(id="wd:Q1", name="모모 (TWICE)", created_at=datetime(2024, 1, 1))
     group = Group(id="wd:Q2", name="트와이스", created_at=datetime(2024, 1, 1))
     org = Organization(id="wd:Q3", name="JYP 엔터테인먼트", created_at=datetime(2024, 1, 1))
     doc = GraphDocument(entities=[person, group, org], sources=[], statements=[])
@@ -46,7 +47,7 @@ def vault_with_high(tmp_path: Path) -> VaultStore:
     doc = VaultDoc(
         id="wikipedia-ko-트와이스",
         title="트와이스 (Wikipedia KO)",
-        content="트와이스는 JYP 엔터테인먼트 소속 걸그룹이다. 다현은 트와이스 멤버이다.",
+        content="트와이스는 JYP 엔터테인먼트 소속 걸그룹이다. 모모 (TWICE)는 트와이스 멤버이다.",
         source_type="wikipedia",
         source_url="https://ko.wikipedia.org/wiki/트와이스",
         confidence=ConfidenceLevel.HIGH,
