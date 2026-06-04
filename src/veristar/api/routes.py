@@ -9,8 +9,11 @@
 
 from __future__ import annotations
 
+import asyncio
+import json
 import os
-from collections.abc import Iterator
+import threading
+from collections.abc import AsyncIterator, Iterator
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
@@ -167,26 +170,44 @@ def entity_detail_endpoint(
 # --- Graph / Tree / Vault API ---
 
 
+_RAG_SIM_THRESHOLD = 0.82      # 기본 유사도 임계값 (이 미만은 무관련로 제외)
+_RAG_UNVERIFIED_WEIGHT = 0.3   # 미검증 문서의 유사도 가중치 (0.82 × 0.3 = 0.246 → 제외)
+_CONF_WEIGHTS = {
+    "high": 1.0, "medium": 0.85, "low": 0.6, "unverified": _RAG_UNVERIFIED_WEIGHT
+}
+
+
 @router.get("/api/search/rag")
 def rag_search(
     q: str = Query(min_length=1),
     confidence: list[str] | None = Query(default=None),
     source_type: list[str] | None = Query(default=None),
     grade: list[Grade] | None = Query(default=None),
+    include_unverified: bool = Query(default=False, description="미검증 문서 포함 여부"),
     include_sensitive: bool = Query(default=False),
+    sim_threshold: float = Query(default=_RAG_SIM_THRESHOLD, ge=0.0, le=1.0),
     limit: int = Query(default=20, ge=1, le=100),
     request: Request = None,  # type: ignore[assignment]
 ) -> dict[str, object]:
-    """RAG 통합 검색 — vault_docs(벡터) + 엔티티(텍스트)를 모두 검색.
+    """RAG 통합 검색 — vault_docs(벡터 + 유사도 임계값) + 엔티티(텍스트)를 모두 검색.
+
+    관련성 기준:
+      - cosine similarity >= sim_threshold(기본 0.82) 만 포함
+      - 미검증(unverified) 문서는 기본 제외 (include_unverified=true 시 포함)
+      - confidence 가중치: high×1.0 / medium×0.85 / low×0.6 / unverified×0.3
 
     파라미터:
-      confidence: high|medium|low|unverified (복수 가능)
-      source_type: wikipedia|namuwiki|news|youtube (복수 가능)
-      grade: OFFICIAL|REPORTED (entity 검색 필터)
-      include_sensitive: 민감 정보 포함 여부 (기본 false)
-      limit: 최대 결과 수
+      confidence: high|medium|low (복수 가능, 기본=high+medium+low)
+      source_type: wikipedia|namuwiki|news (복수 가능)
+      include_unverified: 미검증 포함 (기본 false)
+      sim_threshold: 유사도 임계값 (기본 0.82)
     """
     from veristar.db.connection import is_available
+
+    # 기본 confidence 필터: unverified 제외
+    effective_conf = set(confidence) if confidence else {"high", "medium", "low"}
+    if include_unverified:
+        effective_conf.add("unverified")
 
     results: list[dict[str, object]] = []
 
@@ -201,18 +222,26 @@ def rag_search(
         register_vector(conn)
         try:
             vs = VectorStore(conn)
-            # 필터 구성
-            conf_filter = confidence[0] if confidence and len(confidence) == 1 else None
             src_filter = source_type[0] if source_type and len(source_type) == 1 else None
 
-            vault_results = vs.search_vault_docs(
-                q, limit=limit, source_type=src_filter, min_confidence=conf_filter
-            )
+            # 임계값 이상 전부 가져오고 후처리
+            vault_results = vs.search_vault_docs(q, limit=limit * 3, source_type=src_filter)
             for vr in vault_results:
-                if not include_sensitive and vr.confidence in ("unverified",):
-                    pass  # unverified도 포함 (confidence 필터로 제어)
-                # 민감 정보 기본 제외
-                result_row = {
+                # confidence 필터
+                if vr.confidence not in effective_conf:
+                    continue
+                # source_type 복수 필터
+                if source_type and vr.source_type not in source_type:
+                    continue
+                # 유사도 × confidence 가중치 = 최종 점수
+                weight = _CONF_WEIGHTS.get(vr.confidence, 0.3)
+                final_score = vr.similarity * weight
+                # 임계값 미만 제외 (미검증 포함 시 더 낮은 임계값 적용)
+                unv_factor = 0.5 if vr.confidence == "unverified" else 1.0
+                effective_threshold = sim_threshold * unv_factor
+                if vr.similarity < effective_threshold:
+                    continue
+                results.append({
                     "type": "vault_doc",
                     "id": vr.id,
                     "title": vr.title,
@@ -220,15 +249,9 @@ def rag_search(
                     "source_url": vr.source_url,
                     "confidence": vr.confidence,
                     "similarity": round(vr.similarity, 4),
+                    "score": round(final_score, 4),
                     "snippet": vr.content[:300],
-                }
-                results.append(result_row)
-
-            # confidence 복수 필터 적용 (벡터 검색 후)
-            if confidence:
-                results = [r for r in results if r.get("confidence") in confidence]
-            if source_type:
-                results = [r for r in results if r.get("source_type") in source_type]
+                })
         finally:
             conn.close()
     else:
@@ -275,8 +298,8 @@ def rag_search(
         with contextlib.suppress(StopIteration):
             next(repo_gen)
 
-    # 유사도 내림차순 정렬
-    results.sort(key=lambda x: float(x.get("similarity", 0)), reverse=True)
+    # 최종 점수(유사도 × confidence 가중치) 내림차순 정렬
+    results.sort(key=lambda x: float(x.get("score", x.get("similarity", 0))), reverse=True)
     return ok({
         "query": q,
         "total": len(results),
@@ -288,6 +311,182 @@ def rag_search(
             "include_sensitive": include_sensitive,
         },
     })
+
+
+@router.get("/api/pipeline/stream")
+async def pipeline_stream(
+    request: Request,
+    sources: str = Query(default="wikipedia,namuwiki,news"),
+    limit: int = Query(default=50, ge=1, le=500),
+    steps: str = Query(default="collect,verify,sync,migrate"),
+) -> object:
+    """데이터 수집·검증·동기화 파이프라인을 실행하고 SSE로 진행 상황을 스트리밍한다."""
+    from fastapi.responses import StreamingResponse
+
+    queue: asyncio.Queue[dict[str, object]] = asyncio.Queue()
+    loop = asyncio.get_event_loop()
+
+    def put(msg: dict[str, object]) -> None:
+        loop.call_soon_threadsafe(queue.put_nowait, msg)
+
+    def _run() -> None:
+        step_list = [s.strip() for s in steps.split(",")]
+        src_list = [s.strip() for s in sources.split(",")]
+        put({"type": "header", "msg": f"파이프라인 시작 — {', '.join(step_list)}"})
+
+        # ── 1. 멀티소스 수집 ────────────────────────────────────────────────
+        if "collect" in step_list:
+            put({"type": "step", "name": "멀티소스 수집", "icon": "📥", "status": "running",
+                 "detail": f"소스: {sources} | 한도: {limit}건"})
+            try:
+                from veristar.ingest.collectors.runner import load_targets
+                from veristar.vault.store import VaultStore
+
+                store = VaultStore("vault")
+                targets, db_mode = load_targets("config/celebrities.yaml", limit=limit)
+                put({"type": "log", "level": "info",
+                     "msg": f"  수집 대상 {len(targets)}건 ({('DB' if db_mode else 'YAML')} 모드)"})
+
+                total_saved = total_skip = 0
+                for i, target in enumerate(targets, 1):
+                    name = target.get("name", "?")
+                    put({"type": "progress", "current": i, "total": len(targets),
+                         "label": name})
+                    for src in src_list:
+                        try:
+                            if src == "wikipedia":
+                                from veristar.ingest.collectors.wikipedia import WikipediaCollector
+                                with WikipediaCollector(store) as c:
+                                    r = c.collect(name)
+                                    total_saved += r.saved
+                                    total_skip += r.skipped
+                            elif src == "namuwiki":
+                                from veristar.ingest.collectors.namuwiki import NamuWikiCollector
+                                namu_title = target.get("namu_title") or name
+                                with NamuWikiCollector(store) as c:
+                                    r = c.collect(namu_title)
+                                    total_saved += r.saved
+                                    total_skip += r.skipped
+                        except Exception as exc:
+                            put({"type": "log", "level": "warn",
+                                 "msg": f"  [{src}] {name}: {exc!s:.60}"})
+
+                # 뉴스 수집 (피드별)
+                if "news" in src_list:
+                    from veristar.ingest.collectors.news import NewsCollector
+                    from veristar.ingest.news.rss import load_feed_configs
+                    feeds = load_feed_configs("config/news_feeds.yaml")
+                    with NewsCollector(store) as c:
+                        for cfg in feeds:
+                            put({"type": "log", "level": "info",
+                                 "msg": f"  뉴스 피드: {cfg.name}"})
+                            r = c.collect(cfg.url, feed_name=cfg.name, source_type=cfg.source_type)
+                            total_saved += r.saved
+
+                put({"type": "step_done", "name": "멀티소스 수집",
+                     "msg": f"저장 {total_saved}건 / 스킵 {total_skip}건"})
+            except Exception as exc:
+                put({"type": "step_error", "name": "멀티소스 수집", "msg": str(exc)})
+
+        # ── 2. LLM 검증 ─────────────────────────────────────────────────────
+        if "verify" in step_list:
+            put({"type": "step", "name": "LLM 검증", "icon": "🔍", "status": "running",
+                 "detail": "unverified 문서를 HIGH/MEDIUM/LOW로 분류"})
+            try:
+                from veristar.vault.store import VaultStore
+                from veristar.verify.pipeline import VerifyPipeline
+
+                store = VaultStore("vault")
+                unverified = store.list_unverified()
+                put({"type": "log", "level": "info",
+                     "msg": f"  미검증 문서 {len(unverified)}건 처리"})
+
+                pipeline = VerifyPipeline(store)
+                for i, doc in enumerate(unverified, 1):
+                    put({"type": "progress", "current": i, "total": len(unverified),
+                         "label": doc.title[:40]})
+                    pipeline.run([doc])
+
+                vs = store.stats()
+                put({"type": "step_done", "name": "LLM 검증",
+                     "msg": (f"HIGH {vs.get('verified_high', 0)}건 | "
+                             f"미검증 {vs.get('unverified', 0)}건 남음")})
+            except Exception as exc:
+                put({"type": "step_error", "name": "LLM 검증", "msg": str(exc)})
+
+        # ── 3. 그래프 승격 ──────────────────────────────────────────────────
+        if "sync" in step_list:
+            put({"type": "step", "name": "그래프 승격", "icon": "📊", "status": "running",
+                 "detail": "HIGH vault docs → JSONL 그래프"})
+            try:
+                from pathlib import Path
+
+                from veristar.vault.store import VaultStore
+                from veristar.verify.graph_sync import sync_high_to_graph
+
+                report = sync_high_to_graph(
+                    VaultStore("vault"),
+                    Path("data/seed/wikidata_seed.json"),
+                )
+                put({"type": "step_done", "name": "그래프 승격",
+                     "msg": (f"statement +{report.new_statements}건 | "
+                             f"source +{report.new_sources}건")})
+            except Exception as exc:
+                put({"type": "step_error", "name": "그래프 승격", "msg": str(exc)})
+
+        # ── 4. PostgreSQL 동기화 ────────────────────────────────────────────
+        if "migrate" in step_list:
+            put({"type": "step", "name": "PostgreSQL 동기화", "icon": "🐘", "status": "running",
+                 "detail": "JSONL + vault → PostgreSQL + 임베딩"})
+            try:
+                from pathlib import Path
+
+                from veristar.db.migrate import run_migration
+
+                report = run_migration(
+                    Path("data/seed/wikidata_seed.json"),
+                    Path("vault"),
+                    embed=True,
+                )
+                put({"type": "step_done", "name": "PostgreSQL 동기화",
+                     "msg": (f"entities {report.entities} | statements {report.statements} | "
+                             f"vault_docs {report.vault_docs} | "
+                             f"임베딩 {report.entity_embeddings + report.vault_embeddings}건")})
+            except Exception as exc:
+                put({"type": "step_error", "name": "PostgreSQL 동기화", "msg": str(exc)})
+
+        # ── 완료 ───────────────────────────────────────────────────────────
+        from veristar.vault.store import VaultStore
+        vs = VaultStore("vault").stats()
+        put({"type": "done",
+             "summary": {
+                 "vault_total": vs["total"],
+                 "verified_high": vs["verified_high"],
+                 "unverified": vs["unverified"],
+             }})
+
+    # 백그라운드 스레드에서 파이프라인 실행
+    threading.Thread(target=_run, daemon=True).start()
+
+    async def _generate() -> AsyncIterator[str]:
+        while True:
+            msg = await queue.get()
+            yield f"data: {json.dumps(msg, ensure_ascii=False)}\n\n"
+            if msg.get("type") == "done":
+                break
+
+    return StreamingResponse(
+        _generate(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+@router.get("/ui/collect", response_class=HTMLResponse)
+def ui_collect(request: Request) -> HTMLResponse:
+    """데이터 수집·동기화 파이프라인 실행 + 실시간 진행 화면."""
+    templates: Jinja2Templates = request.app.state.templates
+    return templates.TemplateResponse(request, "collect.html", {})
 
 
 @router.get("/api/graph/data")

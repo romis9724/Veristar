@@ -75,7 +75,7 @@
       <label class="filter-chip active"><input type="checkbox" value="high" checked> HIGH</label>
       <label class="filter-chip active"><input type="checkbox" value="medium" checked> MEDIUM</label>
       <label class="filter-chip active"><input type="checkbox" value="low" checked> LOW</label>
-      <label class="filter-chip active"><input type="checkbox" value="unverified" checked> 미검증</label>
+      <label class="filter-chip" id="unverified-chip"><input type="checkbox" value="unverified"> 미검증</label>
     </div>
     <span style="color:var(--line)">|</span>
     <label>소스</label>
@@ -123,8 +123,16 @@ async function doSearch() {
   if (!q) return;
 
   const { confidence, source_type } = getFilters();
-  const params = new URLSearchParams({ q, limit: 30, include_sensitive: sensitiveOn });
-  confidence.forEach(c => params.append('confidence', c));
+  const includeUnverified = confidence.includes('unverified');
+  // unverified는 별도 파라미터로 전송 (서버에서 가중치 적용)
+  const confWithout = confidence.filter(c => c !== 'unverified');
+  const params = new URLSearchParams({
+    q, limit: 30,
+    include_sensitive: sensitiveOn,
+    include_unverified: includeUnverified,
+    sim_threshold: 0.82,
+  });
+  confWithout.forEach(c => params.append('confidence', c));
   source_type.forEach(s => params.append('source_type', s));
 
   const box = document.getElementById('search-results');
