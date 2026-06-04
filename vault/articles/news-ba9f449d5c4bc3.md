@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845463wpp/watch-riize-covers-apink-and-2pm-in-contrasting-dance-practice-videos"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -30,4 +30,3 @@ Watch Now
 Or watch the group on &#8220;Idol Festa Attack&#8221; below:
 
 Watch Now
-

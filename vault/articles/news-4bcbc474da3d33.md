@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845384wpp/kang-dong-won-um-tae-goo-and-park-ji-hyun-stun-in-retro-futuristic-concept-photos-for-wild-sing"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -42,4 +42,3 @@ And Um Tae Goo in “My Sweet Mobster”:
 WATCH NOW
 
 Source (1)
-

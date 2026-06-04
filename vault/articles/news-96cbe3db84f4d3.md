@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845198wpp/quiz-answer-these-personality-questions-and-well-tell-you-which-cortis-member-youre-most-like"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 feed_name: Soompi
 news_source_type: PRESS
 ---

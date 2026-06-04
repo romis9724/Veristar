@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/NewJeans"
 entity_refs: ["newjeans"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: NewJeans

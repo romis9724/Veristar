@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%ED%8A%B8%EC%99%80%EC%9D%B4%EC%8A%A4"
 entity_refs: ["twice"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 트와이스

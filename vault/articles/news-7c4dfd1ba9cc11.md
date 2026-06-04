@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845158wpp/seo-in-guk-and-krystal-confirmed-for-new-fantasy-office-drama"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---

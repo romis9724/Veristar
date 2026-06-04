@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845265wpp/and2ble-records-4th-highest-1st-week-sales-for-k-pop-group-debut-album-in-hanteo-history"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -24,4 +24,3 @@ With this achievement, AND2BLE recorded the fourth-highest first-week sales for 
 “Sequence 01: Curiosity” also earned the second-highest first-week sales of any debut album released in 2026, surpassed only by ALPHA DRIVE ONE.
 
 Source (1)
-

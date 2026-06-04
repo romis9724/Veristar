@@ -13,6 +13,88 @@ method: scrape
 
 > ⚠️ 나무위키: CC BY-NC-SA 2.0 KR. 비상업적·출처 표기 필수.
 
-NewJeans - 나무위키
+편집 보호된 문서입니다. 문서의 ACL 탭을 확인하세요.
 
-최근 변경최근 토론특수 기능  NewJeans 최근 수정 시각: 2026-06-03 15:48:171k편집 요청편집 요청편집 권한이 부족합니다. 가입한지 15일 지난 사용자(이)여야 합니다. 해당 문서의 ACL 탭을 확인하시기 바랍니다. 편집 권한이 부족한 경우 아래의 &#39;편집 요청&#39; 버튼으로 편집 요청을 생성할 수 있습니다. [편집 요청 도움말]편집 요청닫기토론역사뉴진스에서 넘어옴 분류NewJeans유튜브 공식 아티스트 채널골든디스크어워즈 대상 수상자MAMA AWARDS 대상 수상자MAMA AWARDS/올해의 가수상멜론 뮤직 어워드 대상 수상자한국대중음악상 수상NHK 홍백가합전 출장 가수Weverse 입점 아티스트2022년 데뷔2022년 결성된 음악 그룹한국대중음악상 후보대한민국의 걸그룹4인조 음악 그룹뉴트로 아티스트ADOR인터넷 밈/가수/대한민국인터넷 밈/기타 분야/대한민국&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   편집 보호된 문서입니다. 문서의 ACL 탭을 확인하세요.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   본 그룹의 데뷔 음반에 대한 내용은 New Jeans(음반) 문서를, 본 그룹이 발매한 동명의 노래에 대한 내용은 New Jeans(노래) 문서를 참고하십시오.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NewJeans뉴진스민지하니해린혜인 &#91; 전 멤버 &#93;다니엘 &#91; 한국 음반 &#93;New JeansEP 1집2022. 08. 01.Ditto선공개 싱글2022. 12. 19.OMG싱글 1집2023. 01. 02.Super Shy선공개 싱글2023. 07. 07.Get UpEP 2집2023. 07. 21.How Sweet더블 싱글2024. 05. 24. &#91; 일본 음반 &#93;Supernatural더블 싱글2024. 06. 21. &#91; 기타 음반 &#93; &#91; 리믹스 &#93;NJWMX리믹스 앨범2023. 12. 19. &#91; 참여 음반 &#93;Zero콜라보 싱글2023. 04. 03.Be Who You Are콜라보 싱글2023. 05. 31.Zero (J.I.D Remix)리믹스 싱글2023. 06. 21.아름다운 구속OST2023. 09. 01.GODS주제곡2023. 10. 04.우리의 밤은 당신의 낮보다 아름답다OST2023. 11. 24. &#91; 관련 문서 &#93;활동음반활동공연 및 행사노래광고 및 화보음악 방송 직캠노래방 수록곡콘텐츠유튜브PhoningLIVE팬덤Bunnies응원법굿즈갤러리ⓜ인물 · 사건 사고밈뉴진스의 하입보이요우리 엄마엄마가나 XX인데 개추 눌렀다뉴진스럽다기타수상 경력Rhythm Hive뮤직비디오 등장인물반희수(채널)뉴진스 코드 in 부산멤버 간 케미논란 및 사건 사고NJZ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NewJeans뉴진스데뷔일 2022년 7월 22일&#91;1&#93;(데뷔일로부터 +1413일, 3주년) 2024년 6월 21일(데뷔일로부터 +713일, 1주년)데뷔 음반 EP 1집  New Jeans 더블 싱글 Supernatural장르댄스 팝, 일렉트로팝, 뭄바톤, R&amp;B, 저지 클럽, 뉴 잭 스윙소속사ADOR레이블 HYBE LABELS 게펜 레코드유통사 YG PLUS  유니버설 뮤직 그룹 텐센트 뮤직 엔터테인먼트팬덤Bunnies (버니즈)응원봉빙키봉링크 ⠀&#91; 펼치기 · 접기 &#93;공식 사이트  공식 SNS 공식｜멤버｜｜｜｜｜  ｜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 개요2. 멤버2.1. 멤버 간 케미2.2. 전 멤버3. 특징3.1. 로고3.2. 그룹명3.3. 콘셉트3.4. 실력3.4.1. 보컬3.4.2. 댄스3.5. 비주얼3.6. 연혁 및 입지3.7. 인기 및 기록4. 수상 경력5. 빌보드5.1. 빌보드 HOT 1005.2. 빌보드 2005.3. 빌보드 글로벌 2005.4. 빌보드 글로벌 200 (미국 제외)6. 음반6.1. 노래방 수록 목록7. 뮤직비디오7.1. 등장인물8. 활동8.1. Phoning8.1.1. LIVE8.2. YouTube8.3. 음악 방송 직캠8.4. 광고 및 화보8.5. 공연 및 행사9. 팬덤9.1. 응원법9.2. 굿즈10. 여담10.1. 데뷔 전10.2. 브랜드 평판11. 논란 및 사건 사고12. 역대 프로필 사진13. 둘러보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 개요&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;둘, 셋! 안녕하세요, NewJeans입니다!&quot;2022년 7월 22일에 데뷔한 ADOR 소속 4인조&#91;2&#93; 다국적 걸그룹.&#91;3&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 멤버&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;민지하니해린혜인2004. 05. 07. (22세) 2004. 10. 06. (21세)   |  2006. 05. 15. (20세) 2008. 04. 21. (18세) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1. 멤버 간 케미&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   자세한 내용은 NewJeans/멤버 간 케미 문서를 참고하십시오.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2. 전 멤버&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름생년월일국적활동 기간다니엘2005. 04. 11. (21세)  |  2022. 07. 22. ~ 2025. 12. 29.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 특징&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. 로고&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;음반 발매와 함께 프로모 형식으로 여러 가지 새로운 로고가 올라온다. 뉴진스(NewJeans)만의 &#39;뉴트로 감성&#39;을 살리며 틀에 박히지 않은 다양한 디자인을 선보이고 있다.&#91;4&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. 그룹명&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대중음악은 일상과 초근접해 있는 문화이기 때문에 마치 매일 입는 옷과 같다. 특히 진스(Jeans)는 시대를 불문해 남녀노소 모두에게 사랑받아 온 아이템이다. 뉴진스(NewJeans)에는 매일 찾게 되고 언제 입어도 질리지 않는 진스처럼 시대의 아이콘이 되겠다는 포부와 New Genes, 즉 새로운 시대를 열겠다는 각오도 동시에 담겨 있다.&#91;5&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3. 콘셉트&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;멤버들이 모여 자유분방하면서도 독특한 퍼포먼스를 선보인다. 소녀들이 &quot;재밌게 즐긴다&quot;라는 표현이 어울리는 뉴진스 만의 청춘 하이틴스러운 컨셉은 &#39;자연스럽다&#39;라는 느낌을 주어, 뉴진스가 많은 대중들에게 사랑받는 데에 크게 기여한다. 데뷔곡 Attention과 Hype Boy에서부터 대중들의 눈길을 사로잡는 참신한 군무로 &quot;자칫하면 어려보이기만 할 수 있는 십대들을 데리고 최적의 컨셉으로 밀고나갔다&quot;라는 평을 받으며 그룹의 이미지를 확실하게 각인시켰다. 이후 발매된 Ditto와 Super Shy 등 여러 곡에서 역시 무대를 순수하게 즐기며 뛰노는듯한 멤버들의 모습으로 좋은 평가를 받았다.레트로와 힙합을 적절히 섞은 음악적 퀄리티 역시 호평받는 부분이다. 레트로 관련 작업물로 한국 음악계에서 호평받은 프로듀서 250이 뉴진스의 색깔에 걸맞게 호화로운 프로듀싱을 하고, 각 멤버들의 편안한 음색이 조화를 이루어 뉴진스를 한층 더 뉴진스답게 만들어준다. FRNK 프로듀서의 손에서 나온 Cookie나 OMG 등의 노래에선 통통 튀는 특유의 비트로 뉴진스의 트렌디하고 힙한 면모를 부각시켰으며, 해외에서 특히 사랑 받는다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4. 실력&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. 보컬&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;멤버 전원이 그룹이 추구하는 음악에 맞는 음색과 기술을 가지고 있다고 평가 받는다. 곡을 녹음할 때 가이드 보컬을 사용하지 않아 &#39;뉴진스&#39;만의 음악 스타일을 형성하는 데에 있어 큰 기여를 하고 있으며, 모든 멤버들의 음색이 예쁘면서도 다른 개성이 느껴져 스타일의 폭이 넓다.&#91;6&#93;특이한 점은 여타 그룹과 달리 &#39;강한 메인보컬&#39;, &#39;강한 메인래퍼&#39;의 존재가 없다는 점이다. 기존의 K-POP 그룹들이 벨팅 계열의 파워풀한 메인보컬 혹은 메인래퍼를 넣어 임팩트를 주는 것과는 다르다고 볼 수 있다. 오히려, 의도적으로 보컬의 힘을 빼고 있다는 게 느껴질 만큼 중저음을 내세우고 있다. 이는 90년대 Urban R&amp;B의 영향이 강하게 느껴지는 부분이라 할 수 있는데, 과거 TLC나 토니 브랙스턴처럼 고음보다는 중저음의 바이브가 그대로 뉴진스에도 적용되고 있는 것. 음악평론가 임희윤은 기존의 K-POP 씬에서 볼 수 있던 &#39;한국식 마라맛&#39;과 다른 &#39;한국식 버터맛&#39;이라고 평하기도 했다. #&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. 댄스&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2023 TMA Dance Practice2024 SBS 가요대전 Summer Dance Practice멤버들의 전체적인 춤 실력이 매우 뛰어난 편이며, NewJeans의 곡들이 대부분 힙합 기반의 안무이기에 힘과 유연성을 모두 고려하면서 춰야하는 데다가 넓은 무대에서 돋보이기 위해서는 춤선 또한 부드러워야 한다. 하지만 모든 멤버들이 뒤쳐지지 않고 이를 잘 갖추었기에 담당 안무가가 멤버 개개인의 춤의 개성을 중요시함에도 군무가 전혀 어색하게 느껴지지 않는다.&#91;7&#93;유튜버로 활동하는 한 댄스 트레이너의 언급에 의하면, NewJeans 멤버들은 단순히 기계적으로 칼군무와 짜여진 안무를 수행하는 것이 아니라, 
+본 그룹의 데뷔 음반에 대한 내용은 New Jeans(음반) 문서를, 본 그룹이 발매한 동명의 노래에 대한 내용은 New Jeans(노래) 문서를 참고하십시오.
+
+1. 개요2. 멤버2.1. 멤버 간 케미2.2. 전 멤버
+
+## 1. 개요[편집]
+
+## 2. 멤버[편집]
+
+### 2.1. 멤버 간 케미[편집]
+
+### 2.2. 전 멤버[편집]
+
+## 3. 특징[편집]
+
+### 3.1. 로고[편집]
+
+### 3.2. 그룹명[편집]
+
+### 3.3. 콘셉트[편집]
+
+### 3.4. 실력[편집]
+
+#### 3.4.1. 보컬[편집]
+
+#### 3.4.2. 댄스[편집]
+
+### 3.5. 비주얼[편집]
+
+### 3.6. 연혁 및 입지[편집]
+
+### 3.7. 인기 및 기록[편집]
+
+## 4. 수상 경력[편집]
+
+## 5. 빌보드[편집]
+
+### 5.1. 빌보드 HOT 100[편집]
+
+### 5.2. 빌보드 200[편집]
+
+### 5.3. 빌보드 글로벌 200[편집]
+
+### 5.4. 빌보드 글로벌 200 (미국 제외)[편집]
+
+## 6. 음반[편집]
+
+### 6.1. 노래방 수록 목록[편집]
+
+## 7. 뮤직비디오[편집]
+
+### 7.1. 등장인물[편집]
+
+## 8. 활동[편집]
+
+### 8.1. Phoning[편집]
+
+#### 8.1.1. LIVE[편집]
+
+### 8.2. YouTube[편집]
+
+### 8.3. 음악 방송 직캠[편집]
+
+### 8.4. 광고 및 화보[편집]
+
+### 8.5. 공연 및 행사[편집]
+
+## 9. 팬덤[편집]
+
+### 9.1. 응원법[편집]
+
+### 9.2. 굿즈[편집]
+
+## 10. 여담[편집]
+
+### 10.1. 데뷔 전[편집]
+
+### 10.2. 브랜드 평판[편집]
+
+## 11. 논란 및 사건 사고[편집]
+
+## 12. 역대 프로필 사진[편집]
+
+## 13. 둘러보기[편집]

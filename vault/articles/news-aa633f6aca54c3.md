@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845285wpp/moon-chae-won-shares-beautiful-wedding-photos"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -26,4 +26,3 @@ Congratulations to the happy couple!
 Watch Moon Chae Won in her recent film “Heartman: Rock and Love” on Viki below:
 
 Watch Now
-

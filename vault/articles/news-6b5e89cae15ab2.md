@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845419wpp/watch-so-ji-sub-returns-to-action-after-his-daughter-faces-danger-in-agent-kim-reactivated"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -44,4 +44,3 @@ In the meantime, watch So Ji Sub in “Confession” on Viki below:
 WATCH NOW
 
 Source (1)
-

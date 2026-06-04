@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845523wpp/jennie-enters-top-10-of-billboard-radio-songs-chart-for-1st-time-with-tame-impala-collab-dracula"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -32,4 +32,3 @@ On Billboard’s global charts, “Dracula” held steady at No. 4 on the Global
 Meanwhile, Jennie rose to No. 85 on Billboard’s Artist 100, marking her 12th week on the chart as a solo artist.
 
 Congratulations to both Jennie and Tame Impala!
-

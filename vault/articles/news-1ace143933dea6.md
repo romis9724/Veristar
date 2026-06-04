@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845356wpp/cortis-breaks-personal-record-as-greengreen-spends-3rd-week-on-billboard-200"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -26,4 +26,3 @@ On top of becoming CORTIS’s first album ever to break the top 10 of the Billbo
 Meanwhile, CORTIS’s title track “REDRED” climbed back up to No. 26 on Billboard’s Global Excl. U.S. chart and No. 60 on the Global 200 in its fifth week on both charts.
 
 Finally, CORTIS took No. 27 on Billboard’s Artist 100, marking their seventh overall week on the chart.
-

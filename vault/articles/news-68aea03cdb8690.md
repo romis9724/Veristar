@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845443wpp/kim-nam-gil-is-a-detective-who-imprisons-criminals-in-nightmares-in-new-drama"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -34,4 +34,3 @@ Stay tuned for more updates on the drama!
 While waiting, watch Kim Nam Gil in “Through the Darkness” below:
 
 WATCH NOW
-

@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845594wpp/choi-min-sik-offers-choi-hyun-wook-private-literature-lessons-after-discovering-his-talent-in-notes-from-the-last-row"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -42,4 +42,3 @@ Also check out Choi Min Sik in “Exhuma”:
 WATCH NOW
 
 Source (1)
-

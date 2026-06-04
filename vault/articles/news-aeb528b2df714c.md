@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845086wpp/twices-dahyun-makes-meaningful-birthday-donation-to-help-leukemia-patients"
 published: 2026-06-01
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -28,4 +28,3 @@ Watch TWICE’s Dahyun in her drama “Love Me” below:
 WATCH NOW
 
 Source (1)
-

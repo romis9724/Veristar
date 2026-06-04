@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845527wpp/twice-earns-new-riaj-triple-and-double-platinum-certifications-for-streaming-in-japan"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---

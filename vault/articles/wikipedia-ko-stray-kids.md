@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/Stray%20Kids"
 entity_refs: ["스트레이-키즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: Stray Kids

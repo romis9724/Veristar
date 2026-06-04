@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845616wpp/watch-ji-sung-ha-yun-kyung-and-more-test-chemistry-at-script-reading-for-new-drama-the-apartment-job"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---

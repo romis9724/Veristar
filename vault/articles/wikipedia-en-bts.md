@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/BTS"
 entity_refs: ["방탄소년단"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: BTS

@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845095wpp/park-so-yi-reunites-with-mother-lim-soo-jung-after-waking-from-a-3-year-coma-in-the-second-child"
 published: 2026-06-01
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -38,4 +38,3 @@ Watch Lim Soo Jung in “Mad Concrete Dreams” below:
 Watch Now
 
 Source (1)
-

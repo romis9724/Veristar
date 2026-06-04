@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845439wpp/colony-surpasses-4-million-moviegoers-becomes-fastest-film-of-2026-to-do-so"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -32,4 +32,3 @@ Watch Jun Ji Hyun’s drama “Jirisan” below:
 WATCH NOW
 
 Source (1)
-

@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845256wpp/watch-kang-han-nas-ex-husband-jin-sun-kyu-and-current-husband-gong-myoung-put-aside-their-rivalry-to-save-her-in-husbands-in-action"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -46,4 +46,3 @@ Or watch Gong Myoung and Jin Sun Kyu’s hit film “Extreme Job” below:
 WATCH NOW
 
 Source (1)c
-

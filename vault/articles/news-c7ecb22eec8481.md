@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845460wpp/nouera-cancels-vancouver-concert"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -30,4 +30,3 @@ For current ticket holders, separate instructions regarding ticket refund proced
 Please note that the Montreal concert and all other scheduled festival appearances will proceed as planned without any changes.
 
 We sincerely apologize to all the fans who have been looking forward to NouerA’s performance in Vancouver and kindly ask for your&nbsp;understanding.
-

@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845079wpp/jeong-sewoon-announces-military-enlistment-date"
 published: 2026-06-01
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -34,4 +34,3 @@ We ask for your continued support and encouragement as Jeong Sewoon fulfills his
 Wishing Jeong Sewoon a safe service!
 
 Source (1)
-

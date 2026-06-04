@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A7%80%EB%93%9C%EB%9E%98%EA%B3%A4"
 entity_refs: ["g-dragon"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 지드래곤

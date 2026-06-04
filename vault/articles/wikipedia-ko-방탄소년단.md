@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8"
 entity_refs: ["방탄소년단"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 방탄소년단

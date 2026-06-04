@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%88%98%ED%98%84%20%28%EC%9E%91%EA%B0%80%29"
 entity_refs: ["김수현"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김수현 (작가)

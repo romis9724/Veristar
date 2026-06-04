@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/IU%20%28entertainer%29"
 entity_refs: ["아이유"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: IU (entertainer)

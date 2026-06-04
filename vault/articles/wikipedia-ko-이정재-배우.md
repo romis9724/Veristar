@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A0%95%EC%9E%AC%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["이정재"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 이정재 (배우)

@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845520wpp/watch-secret-hints-at-comeback-by-launching-official-social-media-accounts"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -30,4 +30,3 @@ Follow Secret on their new social media accounts—and check out their first You
 Watch Jun Hyosung in her drama “Memorist” on Viki below:
 
 Watch Now
-

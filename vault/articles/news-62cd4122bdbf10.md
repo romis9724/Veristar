@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845619wpp/mark-establishes-new-label-launches-official-social-media-channels"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -36,4 +36,3 @@ You can also follow Upper Room&#8217;s Instagram account here and X (formerly Tw
 Wishing Mark and his new label all the best!
 
 Source (1) (2)
-

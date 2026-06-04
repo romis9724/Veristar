@@ -5,7 +5,8 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845304wpp/ji-chang-wooks-agency-releases-statement-regarding-his-tax-audit-and-penalty"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
+sensitive: true
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -32,4 +33,3 @@ Despite this difference in opinion, we respect the findings of the National Tax 
 In order to prevent a similar incident from occurring in the future, we will review our tax and accounting management systems even more closely, and we will continue to diligently fulfill our tax obligations while upholding the law and related principles.
 
 Source (1)
-

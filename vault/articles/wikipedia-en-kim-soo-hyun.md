@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Kim%20Soo-hyun"
 entity_refs: ["김수현"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Kim Soo-hyun

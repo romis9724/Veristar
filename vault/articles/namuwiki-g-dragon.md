@@ -13,6 +13,78 @@ method: scrape
 
 > ⚠️ 나무위키: CC BY-NC-SA 2.0 KR. 비상업적·출처 표기 필수.
 
-G-DRAGON - 나무위키
+편집 보호된 문서입니다. 문서의 ACL 탭을 확인하세요.
 
-최근 변경최근 토론특수 기능  G-DRAGON 최근 수정 시각: 2026-06-02 09:27:38270편집 요청편집 요청편집 권한이 부족합니다. 가입한지 15일 지난 사용자(이)여야 합니다. 해당 문서의 ACL 탭을 확인하시기 바랍니다. 편집 권한이 부족한 경우 아래의 &#39;편집 요청&#39; 버튼으로 편집 요청을 생성할 수 있습니다. [편집 요청 도움말]편집 요청닫기토론역사분류G-DRAGONBIGBANG/멤버GD&amp;TOPGD X TAEYANG한국 남가수대한민국의 싱어송라이터한국의 남성 래퍼대한민국의 작곡가대한민국의 작사가대한민국의 이학 교수대한민국의 공학 교수대한민국의 공학자1988년 출생MAMA AWARDS 대상 수상자멜론 뮤직 어워드 대상 수상자MAMA AWARDS/올해의 가수상멜론 뮤직 어워드 대상/아티스트1995년 데뷔용산구 출신 인물안동 권씨 추밀공파숭의초등학교 출신국립전통예술중학교 출신한국문화영상고등학교 출신국제사이버대학교 출신세종대학교 대학원 출신육군 출신아이돌 리더아이돌 래퍼한국의 정치인 자녀한국음악저작권협회 정회원재데뷔한 인물KAIST 재직옥관문화훈장인터넷 밈/가수/대한민국Spotify 인증 아티스트유튜브 공식 아티스트 채널갤럭시코퍼레이션 소속 아티스트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   편집 보호된 문서입니다. 문서의 ACL 탭을 확인하세요.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   지디는 여기로 연결됩니다. 다른 뜻에 대한 내용은 GD 문서를 참고하십시오.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BIGBANG빅뱅태양G-DRAGON대성 &#91; 전 멤버 &#93;T.O.P승리 &#91; 국내 음반 &#93;BIGBANG싱글2006. 08. 29.BIGBANG IS V.I.P싱글2006. 09. 28.BIGBANG 03싱글2006. 11. 22.BIGBANG Vol. 1정규 1집2006. 12. 22.Always미니 1집2007. 08. 16.HOT ISSUE미니 2집2007. 11. 22.Stand Up미니 3집2008. 08. 08.REMEMBER정규 2집2008. 11. 05.BIGBANG MINI 4미니 4집2011. 02. 24.BIGBANG SPECIAL EDITION미니 4집 리패키지2011. 04. 08.ALIVE미니 5집2012. 02. 29.STILL ALIVE미니 5집 리패키지2012. 06. 03.MADE SeriesM싱글2015. 05. 01.A싱글2015. 06. 01.D싱글2015. 07. 01.E싱글2015. 08. 05.MADE Series봄여름가을겨울(Still Life)디지털 싱글2022. 04. 05.20주년 음반미정2026. xx. xx.MADE정규 3집2016. 12. 13.꽃 길디지털 싱글2018. 03. 13. &#91; 일본 음반 &#93;For The World인디즈 미니 1집2008. 01. 04.With U인디즈 미니 2집2008. 05. 28.NUMBER 1인디즈 정규 1집2008. 10. 22.MY HEAVEN싱글 1집2009. 06. 24.ガラガラ GO!!싱글 2집2009. 07. 08.BIGBANG정규 1집2009. 08. 19.声をきかせて싱글 3집2009. 11. 04.Tell Me Goodbye싱글 4집2010. 06. 09.Beautiful Hangover싱글 5집2010. 08. 25.4th Mini Album-Japan Edition-미니 1집2011. 04. 13.BIGBANG 2정규 2집2011. 05. 11.ALIVE정규 3집2012. 03. 28.ALIVE-MONSTER EDITION-정규 3집 리패키지2012. 06. 20.MADE SERIES정규 4집2016. 02. 03.MADE정규 4집 리패키지2017. 02. 15. &#91; 컴필레이션 / 리믹스 앨범 &#93;Asia Best 2006-2009베스트 앨범2009. 08. 18.BIGBANG + Live Tracks스페셜 앨범2010. 04. 28.The UltimateInternational Best베스트 앨범2011. 05. 25.The Best of BIGBANG베스트 앨범2011. 12. 14.BIGBANG The Non Stop MIX리믹스 앨범2012. 04. 04.BIGBANG Best Selection베스트 앨범2012. 06. 06.Special Final In DomeMemorial Collection스페셜 앨범2012. 12. 05.BIGBANG The Non Stop MEGAMIX리믹스 앨범2013. 12. 18.The Best of BIGBANG2006-2014베스트 앨범2014. 11. 26. &#91; 라이브 앨범 &#93;Love &amp; Hope Tour라이브 앨범2011. 09. 28.ALIVE TOUR IN JAPANSPECIAL FINAL IN DOME라이브 앨범2013. 03. 20.BIGBANG JAPAN DOMETOUR 2013-2014라이브 앨범2014. 03. 19.BIGBANG JAPAN DOMETOUR 2014-2015 &#91;X&#93;라이브 앨범2015. 03. 25.BIGBANG WORLD TOUR2015-2016 &#91;MADE&#93; IN JAPAN라이브 앨범2016. 02. 23.BIGBANG WORLD TOUR2015-2016 &#91;MADE&#93; IN JAPAN : THE FINAL라이브 앨범2016. 07. 20.BIGBANG10 THE CONCERT: 0.TO.10 IN JAPAN라이브 앨범2016. 11. 02.BIGBANG10 THE CONCERT: 0.TO.10 IN JAPAN -THE FINAL-라이브 앨범2017. 03. 29.BIGBANG SPECIAL EVENT 2017라이브 앨범2018. 01. 17.BIGBANG JAPAN DOME TOUR2017 -LAST DANCE-라이브 앨범2018. 03. 14.BIGBANG JAPAN DOME TOUR2017 -LAST DANCE- : THE FINAL라이브 앨범2018. 08. 17. &#91; 기타 음반 &#93;FILA Limited Editionwith BIGBANG디지털 싱글2008. 12. 30.So Fresh, So Cool디지털 싱글2009. 03. 18.Lollipop디지털 싱글2009. 03. 27.친구OST2009. 06. 26.할렐루야OST2009. 11. 04.Lollipop Pt.2디지털 싱글2010. 02. 19.The Shouts Of Reds Part.2승리의 함성응원곡2010. 05. 11. &#91; 라이브 앨범 &#93;BIGBANG VOL.1 THE REALFIRST LIVE CONCERT라이브 앨범2007. 02. 08.BIGBANG VOL.2 THE GREATSECOND LIVE CONCERT라이브 앨범2008. 02. 27.2009 BIG SHOW라이브 앨범2009. 04. 22.2010 BIG SHOW라이브 앨범2010. 06. 23.2011 BIG SHOW라이브 앨범2011. 06. 14.2012 BIGBANG ALIVE TOURIN SEOUL라이브 앨범2013. 01. 10.2013 BIGBANG ALIVEGALAXY TOUR: THE FINAL IN SEOUL라이브 앨범2013. 05. 30.2014 BIGBANG +α IN SEOUL라이브 앨범2014. 03. 28.2015 BIGBANG WORLD TOUR&#91;MADE&#93; IN SEOUL라이브 앨범2016. 02. 03.2016 BIGBANG WORLD TOUR&#91;MADE&#93; FINAL IN SEOUL라이브 앨범2016. 06. 01.BIGBANG10 THE CONCERT0.TO.10 IN SEOUL라이브 앨범2017. 02. 08.BIGBANG10 THE CONCERT0.TO.10 IN SEOUL라이브 앨범2017. 05. 25. &#91; 태국 음반 &#93;BIGBANG Vol.1 : Dirty Cash정규 앨범2007. 09. 28.Always미니 앨범2008Hot Issue미니 앨범2008Stand Up미니 앨범2008NUMBER 1정규 앨범2008REMEMBER정규 앨범2008 &#91; 관련 문서 &#93;유닛활동음반직캠활동공연 및 행사노래콘서트 ｜ 팬미팅방송콘텐츠커버곡광고 및 화보팬덤VIP응원법굿즈갤러리ⓜ기타10주년 다큐멘터리기록수상 경력노래방가사논란 및 사건 사고킬링파트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G-DRAGON지드래곤 &#91; 음반 목록 &#93;정규 1집Heartbreaker2009. 08. 18.미니 1집One Of A Kind2012. 09. 15.정규 2집쿠데타 (COUP D&#39;ETAT)2013. 09. 05.미니 2집권지용2017. 06. 08.선공개 싱글PO￦ER2024. 10. 31.선공개 싱글HOME SWEET HOME(feat. 태양, 대성)2024. 11. 22.정규 3집Übermensch2025. 02. 25. &#91; 기타 음반 &#93;나만 바라봐 Part. 2디지털 싱글2008. 06. 30.SHINE A LIGHT1st Live Album2010. 03. 30.HEARTBREAKER리패키지2011. 10. 18.그 XX디지털 싱글2012. 09. 01.미치GO디지털 싱글2013. 04. 01.1st WORLD TOUR COMMEMORATIVE VINYL LP : ONE OF A KIND1st LP2013. 05. 24.ONE OF A KIND in Seoul2nd Live Album2013. 09. 02.COUP D&#39;ETAT Part 1정규 2집2013. 09. 02.COUP D&#39;ETAT정규 2집2013. 09. 12.COUP D&#39;ETAT Limited Edition2nd LP2013. 10. 22.ONE OF A KIND IN JAPAN DOME SPECIAL라이브 앨범2013. 11. 20.&#91;ONE OF A KIND&#93; THE FINAL3rd Live Album2013. 11. 22.COUP D&#39;ETAT &#91;+ HEARTBREAKER &amp; ONE OF A KIND&#93;일본 정규 앨범2013. 11. 27.1st WORLD TOUR COMMEMORATIVE VINYL LP : ONE OF A KIND Korean EditionLP2014. 02. 04.KWON JI YONG일본 미니 앨범2017. 12. 13.&lt;ACT III, M.O.T.T.E&gt; in Japan라이브 앨범2018. 02. 07. &#91; 참여 음반 &#93;Realize yourself G-dragon Hip Hop Nation 2001 대한민국 HipHop flex2001. 01. 15.G-dragon Storm Perry By Storm2001. 09. 04.Magic Eye Like A Movie2002. 04. 03.멋쟁이 신사 YMCA 야구단 저 높은 곳에 펼쳐 Why Be Normal?YG Family 22002. 10. 24.Opening, Ending Theme스페이스 힙합덕 OST2002. 12.IntroJust Listen…2003. 03. 08.허수아비 Masta Peace2003. 06. 20.Run24/72006. 03. 08.Can You Feel MeSe7olution2006. 11. 01.Super FlyRush2007. 04. 19.So In Love Part 2Soul Family With Johan2007. 10. 25.Intro - Work It Now Comfort2008. 03. 12.날 봐, 귀순디지털 싱글2008. 06. 16.PartyD.I.S.C.O2008. 07. 01.D.I.S.C.O Part2디지털 싱글2008. 09. 01.WhatMade In R.O.K2008. 10. 10.Lollipop 디지털 싱글2009. 03. 27.대박이야!디지털 싱글2009. 01. 29.Rain Is Fallin디지털 싱글2009. 05. 13.I Need A GirlSolar2010. 07. 01.창문을 열어VVIP2011. 01. 20.바람났어 서해안 고속도로 가요제2011. 07. 02.청개구리싸이6甲 Part.12012. 07. 15.Let&#39;s Talk About LoveLet&#39;s Talk About Love2013. 08. 19.해볼라고자유로 가요제2013. 11. 02.Dirty VibeSkrillex 1st Original Album Recess2014. 03. 18.Stay With Me Rise2014. 06. 03.맙소사영동고속도로 가요제2015. 08. 22.아니라고WELCOME BACK2015. 12. 24.TempleAa2016. 03. 18.ComplexOO2017. 02. 01.팔레트 Palette2017. 04. 21.팩트폭행4X2=82017. 05. 10.DRIPDRIP2024. 11. 01.텔레파시 + 달빛 창가에서굿데이 20252025. 04. 24.차차차디지털 싱글2025. 08. 18.한도초과디지털 싱글2025. 12. 10.WDA (Whole Different Animal)디지털 싱글2026. 05. 11. &#91; 관련 문서 &#93;음반콘서트논란 및 사건 사고PEACEMINUSONE무한상사굿데이저스피스FAM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G-DRAGON지드래곤본명권지용 (權志龍, Kwon Jiyong)출생1988년 8월 18일 (37세)서울특별시 용산구 이태원동거주지서울특별시 용산구 한남동 나인원 한남국적 대한민국본관안동 권씨 (安東 權氏)&#91;1&#93;신체172.7cm｜57.6kg｜A형가족아버지 권영환(1955년생), 어머니 한기란(1960년생)누나 권다미(1983년생)&#91;2&#93;, 매형 김민준조카 김이든(2022년 2월 4일생)반려동물반려견 가호(샤페이)반려묘 아이(아비시니안), 조아(먼치킨)학력 &#91; 펼치기 · 접기 &#93;숭의초등학교 (졸업)서울국악예술중학교&#91;3&#93; (음악연극과 / 졸업)서울국악예술고등학교&#91;4&#93; (음악연극과 / 전학)동두천정보산업고등학교&#91;5&#93; (상업디자인과 / 졸업)&#91;6&#93;경희대학교 예술·디자인대학 (포스트모던음악학 / 중퇴)국제사이버대학교 (레저스포츠학 / 학사)세종대학교 산업대학원 (유통산업학 / 석사)현직재단법인 저스피스재단 명예이사장 (2023. 12. 25.~현재)한국과학기술원 기계공학과 초빙교수 (2024. 06. 04.~2026. 06.)&#91;7&#93;병역대한민국 육군 제3보병사단 병장 만기전역(2018. 02. 27.~2019. 10. 26.)개인 브랜드PEACEMINUSONE소속사갤럭시코퍼레이션 (2023. 12. 21.~) &#91; 이전 소속사 펼치기 · 접기 &#93;YG엔터테인먼트 (2006. 08. 19.~2023. 12. 20.)레이블 EMPIRE (2024. 10. 31.~현재)유통사카카오엔터테인먼트소속 그룹BIGBANG소속 유닛GD X TAEYANGGD&amp;TOP포지션리더, 메인래퍼팬덤VIP｜FAM응원봉DAY-G데뷔1995년 9월 1일 컴필레이션  꼬마 룰라(데뷔일로부터 +11234일, 30주년)2001년 1월 15일 컴필레이션  2001 대한민국 Hip Hop Flex(데뷔일로부터 +9271일, 25주년)2006년 8월 19일 BIGBANG 싱글 1집  BIGBANG(데뷔일로부터 +7229일, 19주년)2009년 8월 18일 정규 1집  Heartbreaker(데뷔일로부터 +6134일, 16주년)훈장옥관문화훈장&#91;8&#93;MBTIENTP&#91;9&#93;별명 &#91; 펼치기 · 접기 &#93;GD&#91;10&#93;, KING OF K-POP&#91;11&#93;, K-POP의 아이콘, 권죵, 권집착&#91;12&#93;, 권사포, 권다정, 권아들, 권막내&#91;13&#93;, 지욘, 징요&#91;14&#93;,좋아요정 , 간지용&#91;15&#93;, 권fox, 지카츄, 권리더, 권시크, 권G랄&#91;16&#93;, 이태원 꼬마신사&#91;17&#93;, 사포지용, 인간샤넬, G(Guitar)D(Destroyer), 권부장&#91;18&#93;, 권전무, 회장님 아들&#91;19&#93;, 권교수&#91;20&#93;, 권샤이, 권아기, 연예인의 연예인, 하트브레이커&#91;21&#93;, 전설의 포켓몬, 뇽-&#91;22&#93; 링크 ⠀&#91; 펼치기 · 접기 &#93;개인  |  &#91;비공개&#93;  |    |    |    |  공식 FAM   |   ｜｜기타&#91;24&#93;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 개요2. 연혁2.1. BIGBANG 데뷔 전2.2. BIGBANG 데뷔 후3. 위상 및 영향력3.1. 패션의 아이콘3.2. 관련 언사4. 포지션4.1. 음악 프로듀서4.2. 랩4.3. 댄스4.4. 보컬5. 캐릭터5.1. 성격5.2. 비주얼6. 개인 활동6.1. 음반6.2. 뮤직비디오6.3. 콘서트6.4. 광고6.5. 화보6.6. 홍보대사6.7. TV 방송6.7.1. 무한도전6.8. 유튜브7. 기록7.1. 음원 및 음반 성적7.2. 수상 및 선정7.2.1. 시상식7.2.2. 음악 방송8. 저스피스 재단9. 굿즈10. 논란 및 사건 사고11. 여담12. 둘러보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 개요&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대한민국의 싱어송라이터, 프로듀서. 보이그룹 BIGBANG의 멤버로, 그룹 내에서 리더와 메인래퍼를 맡고 있다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 연혁&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1. BIGBANG 데뷔 전&#91;편집&#93;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연습생 기간은 SM엔터테인먼트에서 5년, YG엔터테인먼트에서 6년으로, 총 11년이다. 어린 시절부터 많은 방송 경험을 쌓아왔으며 5살 때 뽀뽀뽀라는 프로그램에 출연했고 룰라의 뮤직비디오에 꼬마 룰라로 참여했다. 또한 아들의
+지디는 여기로 연결됩니다. 다른 뜻에 대한 내용은 GD 문서를 참고하십시오.
+
+1. 개요2. 연혁2.1. BIGBANG 데뷔 전2.2. BIGBANG 데뷔 후
+
+## 1. 개요[편집]
+
+## 2. 연혁[편집]
+
+### 2.1. BIGBANG 데뷔 전[편집]
+
+### 2.2. BIGBANG 데뷔 후[편집]
+
+## 3. 위상 및 영향력[편집]
+
+### 3.1. 패션의 아이콘[편집]
+
+### 3.2. 관련 언사[편집]
+
+## 4. 포지션[편집]
+
+### 4.1. 음악 프로듀서[편집]
+
+### 4.2. 랩[편집]
+
+### 4.3. 댄스[편집]
+
+### 4.4. 보컬[편집]
+
+## 5. 캐릭터[편집]
+
+### 5.1. 성격[편집]
+
+### 5.2. 비주얼[편집]
+
+## 6. 개인 활동[편집]
+
+### 6.1. 음반[편집]
+
+### 6.2. 뮤직비디오[편집]
+
+### 6.3. 콘서트[편집]
+
+### 6.4. 광고[편집]
+
+### 6.5. 화보[편집]
+
+### 6.6. 홍보대사[편집]
+
+### 6.7. TV 방송[편집]
+
+#### 6.7.1. 무한도전[편집]
+
+### 6.8. 유튜브[편집]
+
+## 7. 기록[편집]
+
+### 7.1. 음원 및 음반 성적[편집]
+
+### 7.2. 수상 및 선정[편집]
+
+#### 7.2.1. 시상식[편집]
+
+#### 7.2.2. 음악 방송[편집]
+
+## 8. 저스피스 재단[편집]
+
+## 9. 굿즈[편집]
+
+## 10. 논란 및 사건 사고[편집]
+
+## 11. 여담[편집]
+
+## 12. 둘러보기[편집]

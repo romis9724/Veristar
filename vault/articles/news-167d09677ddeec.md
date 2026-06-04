@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1844679wpp/3-questions-that-have-us-fully-hooked-after-the-love-class-3-premiere"
 published: 2026-06-02
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---

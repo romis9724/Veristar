@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Lee%20Jung-jae"
 entity_refs: ["이정재"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Lee Jung-jae

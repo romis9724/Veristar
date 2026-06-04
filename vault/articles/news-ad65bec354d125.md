@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1843495wpp/5-song-wei-long-c-dramas-that-showcase-his-charm-and-versatility"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
