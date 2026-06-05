@@ -3,221 +3,209 @@
 {% block content %}
 <style>
   main { max-width: none; padding: 0; }
-  .vault-layout {
+  .vault-wrap {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 1fr 420px;
     height: calc(100vh - 57px);
   }
-  /* 왼쪽 파일 탐색기 */
-  .vault-sidebar {
+  /* ── 왼쪽: 검색+카드 ──────────────────────────────────── */
+  .vault-list {
+    display: flex; flex-direction: column;
     border-right: 1px solid var(--line);
-    overflow-y: auto;
+    overflow: hidden;
+  }
+  .vault-search-bar {
+    padding: 0.7rem 1rem;
     background: var(--surface);
-    font-size: 0.82rem;
-  }
-  .vault-sidebar-header {
-    padding: 0.7rem 0.9rem;
     border-bottom: 1px solid var(--line);
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-shrink: 0;
   }
-  .vault-search {
-    padding: 0.5rem 0.9rem;
-    border-bottom: 1px solid var(--line);
+  .vault-search-bar input {
+    width: 100%; padding: 0.5rem 0.8rem; font-size: 0.9rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg); font-family: var(--sans); margin-bottom: 0.5rem;
   }
-  .vault-search input {
-    width: 100%; padding: 0.35rem 0.6rem; font-size: 0.8rem;
-    border: 1px solid var(--line); border-radius: 6px; background: var(--bg);
+  .vault-search-bar input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .filter-chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .fchip {
+    padding: 0.15rem 0.5rem; border-radius: 20px; cursor: pointer;
+    border: 1px solid var(--line); font-size: 0.7rem; user-select: none;
+    background: var(--bg); transition: all 100ms;
   }
-  .vault-section { border-bottom: 1px solid var(--line); }
-  .vault-section-header {
-    padding: 0.5rem 0.9rem;
-    font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 0.4rem;
-    user-select: none;
+  .fchip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .fchip-high.on  { background: #2e7d32; border-color: #2e7d32; color:#fff; }
+  .fchip-med.on   { background: #e65100; border-color: #e65100; color:#fff; }
+  .fchip-low.on   { background: #888;    border-color: #888;    color:#fff; }
+  .fchip-wiki.on  { background: #1565C0; border-color: #1565C0; color:#fff; }
+  .fchip-namu.on  { background: #2E7D32; border-color: #2E7D32; color:#fff; }
+  .fchip-news.on  { background: #6A1B9A; border-color: #6A1B9A; color:#fff; }
+  .vault-stats {
+    padding: 0.35rem 1rem; font-size: 0.72rem; color: var(--muted);
+    background: var(--bg); border-bottom: 1px solid var(--line); flex-shrink: 0;
   }
-  .vault-section-header:hover { background: oklch(95% 0.005 260); }
-  .vault-section-header .chevron { font-size: 0.6rem; color: var(--muted); transition: transform 150ms; }
-  .vault-section-header.collapsed .chevron { transform: rotate(-90deg); }
-  .vault-section-body { display: none; }
-  .vault-section-body.open { display: block; }
-  .vault-item {
-    display: flex; align-items: center; gap: 0.5rem;
-    padding: 0.28rem 0.9rem 0.28rem 1.5rem;
-    cursor: pointer; transition: background 100ms;
-    border-left: 3px solid transparent;
+  .vault-cards { overflow-y: auto; flex: 1; }
+  .vault-card {
+    padding: 0.7rem 1rem; border-bottom: 1px solid var(--line); cursor: pointer;
+    transition: background 100ms; border-left: 3px solid transparent;
   }
-  .vault-item:hover { background: oklch(94% 0.01 265); }
-  .vault-item.active {
-    background: oklch(92% 0.04 265);
-    border-left-color: var(--accent);
-  }
-  .vault-item-name {
-    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-  .conf-dot {
-    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-  }
-  .conf-high { background: #2e7d32; }
-  .conf-medium { background: #e65100; }
-  .conf-low { background: #c62828; }
-  .conf-unverified { background: #aaa; }
-  /* 오른쪽 뷰어 */
+  .vault-card:hover { background: oklch(96% 0.005 265); }
+  .vault-card.active { background: oklch(94% 0.04 265); border-left-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem; }
+  .card-title { font-weight: 600; font-size: 0.85rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-badges { display: flex; gap: 0.25rem; flex-shrink: 0; }
+  .src-badge { font-size: 0.65rem; padding: 0.1rem 0.35rem; border-radius: 4px; font-weight: 600; }
+  .src-wikipedia { background: #e3f2fd; color: #1565C0; }
+  .src-namuwiki  { background: #e8f5e9; color: #2E7D32; }
+  .src-news      { background: #f3e5f5; color: #6A1B9A; }
+  .src-youtube   { background: #ffebee; color: #c62828; }
+  .conf-badge { font-size: 0.63rem; padding: 0.1rem 0.3rem; border-radius: 4px; }
+  .conf-high   { background: #e8f5e9; color: #2e7d32; }
+  .conf-medium { background: #fff3e0; color: #e65100; }
+  .conf-low    { background: #f5f5f5; color: #888; }
+  .conf-unverified { background: #f5f5f5; color: #aaa; }
+  .card-snippet { font-size: 0.75rem; color: var(--muted); line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+  /* ── 오른쪽: 문서 뷰어 ────────────────────────────────── */
   .vault-viewer {
-    overflow-y: auto;
-    padding: 1.5rem 2rem;
-    background: var(--bg);
+    overflow-y: auto; background: var(--bg);
+    display: flex; flex-direction: column;
   }
-  .vault-viewer-empty {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; height: 100%;
-    color: var(--muted); text-align: center;
+  .viewer-header {
+    padding: 0.8rem 1.2rem 0.6rem;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
   }
-  .vault-viewer-empty .icon { font-size: 3rem; margin-bottom: 0.5rem; }
-  #doc-view h1,h2,h3,h4 { margin-top: 1rem; margin-bottom: 0.3rem; }
-  #doc-view h1 { font-size: 1.4rem; }
-  #doc-view h2 { font-size: 1.15rem; }
-  #doc-view h3 { font-size: 1rem; }
-  #doc-view h4 { font-size: 0.9rem; }
-  #doc-view p { margin: 0.5rem 0; line-height: 1.65; }
-  #doc-view br + br { display: none; }
-  .stats-bar {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    padding: 0.6rem 0.9rem;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.75rem; color: var(--muted);
-    background: var(--surface);
+  .viewer-header h2 { margin: 0 0 0.3rem; font-size: 1rem; letter-spacing: -0.01em; }
+  .viewer-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; font-size: 0.72rem; color: var(--muted); }
+  .viewer-meta a { color: var(--accent); word-break: break-all; }
+  .viewer-body {
+    padding: 1rem 1.4rem;
+    font-size: 0.83rem; line-height: 1.7; flex: 1;
   }
-  .stats-bar strong { color: var(--ink); }
+  .viewer-empty {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; color: var(--muted); text-align: center; padding: 2rem;
+  }
+  .viewer-empty .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  /* 마크다운 */
+  .viewer-body h1{font-size:1.15rem;margin:1rem 0 0.3rem}
+  .viewer-body h2{font-size:1rem;margin:0.8rem 0 0.25rem}
+  .viewer-body h3{font-size:0.9rem;margin:0.6rem 0 0.2rem}
+  .viewer-body p{margin:0.4rem 0}
+  .viewer-body strong{font-weight:700}
 </style>
 
-<!-- 통계 바 -->
-<div class="stats-bar" id="stats-bar">
-  <span>로딩 중...</span>
-</div>
-
-<div class="vault-layout">
-  <!-- 파일 탐색기 -->
-  <div class="vault-sidebar">
-    <div class="vault-sidebar-header">
-      📂 vault
+<div class="vault-wrap">
+  <!-- 왼쪽 -->
+  <div class="vault-list">
+    <div class="vault-search-bar">
+      <input id="vault-q" placeholder="문서 제목·내용 검색…" oninput="filterDocs()" autofocus>
+      <div class="filter-chips">
+        <span class="fchip fchip-high on"  data-f="conf:high"       onclick="toggleFilter(this)">HIGH</span>
+        <span class="fchip fchip-med on"   data-f="conf:medium"     onclick="toggleFilter(this)">MED</span>
+        <span class="fchip fchip-low on"   data-f="conf:low"        onclick="toggleFilter(this)">LOW</span>
+        <span class="fchip"                data-f="conf:unverified" onclick="toggleFilter(this)">미검증</span>
+        <span class="fchip" style="margin-left:0.3rem">|</span>
+        <span class="fchip fchip-wiki on"  data-f="src:wikipedia"   onclick="toggleFilter(this)">📖 Wikipedia</span>
+        <span class="fchip fchip-namu on"  data-f="src:namuwiki"    onclick="toggleFilter(this)">📝 나무위키</span>
+        <span class="fchip fchip-news on"  data-f="src:news"        onclick="toggleFilter(this)">📰 뉴스</span>
+      </div>
     </div>
-    <div class="vault-search">
-      <input type="text" id="search-input" placeholder="문서 검색..." oninput="filterDocs(this.value)">
-    </div>
-    <div id="file-tree"></div>
+    <div class="vault-stats" id="vault-stats">로딩 중…</div>
+    <div class="vault-cards" id="vault-cards"></div>
   </div>
 
-  <!-- 문서 뷰어 -->
-  <div class="vault-viewer">
-    <div class="vault-viewer-empty" id="viewer-empty">
+  <!-- 오른쪽 뷰어 -->
+  <div class="vault-viewer" id="vault-viewer">
+    <div class="viewer-empty">
       <div class="icon">📄</div>
       <div>왼쪽에서 문서를 선택하세요.</div>
     </div>
-    <div id="doc-view" style="display:none"></div>
   </div>
 </div>
 
 <script>
-const SOURCE_ICON = {
-  wikipedia: "📖", namuwiki: "📝", news: "📰",
-  youtube: "▶️", instagram: "📷", twitter: "🐦",
-};
-const SOURCE_LABEL = {
-  wikipedia: "Wikipedia", namuwiki: "나무위키", news: "뉴스",
-  youtube: "YouTube", instagram: "Instagram", twitter: "Twitter",
-};
+const SRC_LABEL = { wikipedia:'📖', namuwiki:'📝', news:'📰', youtube:'▶️', instagram:'📷', twitter:'🐦' };
+const SRC_CLASS = { wikipedia:'src-wikipedia', namuwiki:'src-namuwiki', news:'src-news' };
 
-let allDocs = [];
-let activeId = null;
+let allDocs=[], activeFilters=new Set([
+  'conf:high','conf:medium','conf:low','src:wikipedia','src:namuwiki','src:news'
+]);
 
 async function loadDocs() {
-  const res = await fetch("/api/vault/docs?limit=200");
-  allDocs = (await res.json()).data;
-  renderTree(allDocs);
-  updateStats(allDocs);
+  const r=await fetch('/api/vault/docs?limit=2000');
+  allDocs=(await r.json()).data;
+  filterDocs();
 }
 
-function updateStats(docs) {
-  const byType = {};
-  const byConf = {};
-  docs.forEach(d => {
-    byType[d.source_type] = (byType[d.source_type] || 0) + 1;
-    byConf[d.confidence] = (byConf[d.confidence] || 0) + 1;
-  });
-  const bar = document.getElementById("stats-bar");
-  bar.innerHTML = `<strong>${docs.length}건</strong> &nbsp;` +
-    Object.entries(byType).map(([t, n]) => `${SOURCE_ICON[t] || ""} ${SOURCE_LABEL[t] || t}: <strong>${n}</strong>`).join(" &nbsp;·&nbsp; ") +
-    " &nbsp;|&nbsp; " +
-    `<span style="color:#2e7d32">HIGH: <strong>${byConf.high||0}</strong></span> ` +
-    `<span style="color:#e65100">MED: <strong>${byConf.medium||0}</strong></span> ` +
-    `<span style="color:#aaa">미검증: <strong>${byConf.unverified||0}</strong></span>`;
+function toggleFilter(el) {
+  const f=el.dataset.f;
+  if(f==="|") return;
+  el.classList.toggle("on");
+  if(el.classList.contains("on")) activeFilters.add(f); else activeFilters.delete(f);
+  filterDocs();
 }
 
-function renderTree(docs) {
-  const groups = {};
-  docs.forEach(d => {
-    if (!groups[d.source_type]) groups[d.source_type] = [];
-    groups[d.source_type].push(d);
+function filterDocs() {
+  const q=(document.getElementById('vault-q').value||"").trim().toLowerCase();
+  const allowConf=new Set([...activeFilters].filter(f=>f.startsWith('conf:')).map(f=>f.slice(5)));
+  const allowSrc =new Set([...activeFilters].filter(f=>f.startsWith('src:')).map(f=>f.slice(4)));
+
+  let shown=allDocs.filter(d=>{
+    if(!allowConf.has(d.confidence)) return false;
+    if(!allowSrc.has(d.source_type)) return false;
+    if(q && !d.title.toLowerCase().includes(q)) return false;
+    return true;
   });
 
-  const tree = document.getElementById("file-tree");
-  tree.innerHTML = Object.entries(groups).map(([type, items]) => `
-    <div class="vault-section">
-      <div class="vault-section-header" onclick="toggleSection(this)">
-        <span class="chevron">▶</span>
-        ${SOURCE_ICON[type] || "📁"} ${SOURCE_LABEL[type] || type}
-        <span style="margin-left:auto;font-size:0.7rem;color:var(--muted)">${items.length}</span>
-      </div>
-      <div class="vault-section-body open" data-type="${type}">
-        ${items.map(d => `
-          <div class="vault-item" id="item-${CSS.escape(d.id)}" onclick="selectDoc('${d.id.replace(/'/g,"\\'")}')">
-            <div class="conf-dot conf-${d.confidence}"></div>
-            <div class="vault-item-name" title="${d.title}">${d.title}</div>
-          </div>`).join("")}
-      </div>
-    </div>`).join("");
-}
+  document.getElementById('vault-stats').textContent=
+    `${shown.length}건 표시 / 전체 ${allDocs.length}건`;
 
-function toggleSection(header) {
-  header.classList.toggle("collapsed");
-  header.nextElementSibling.classList.toggle("open");
-}
+  const cards=document.getElementById('vault-cards');
+  if(!shown.length){
+    cards.innerHTML='<div style="padding:2rem;text-align:center;color:var(--muted);font-size:0.82rem">결과 없음 — 필터를 조정하세요.</div>';
+    return;
+  }
+  cards.innerHTML=shown.slice(0,200).map(d=>{
+    const srcCls=SRC_CLASS[d.source_type]||'';
+    const confCls=`conf-${d.confidence}`;
+    const snippet=(d.snippet||'').replace(/\n/g,' ').slice(0,120);
+    return `<div class="vault-card" id="card-${CSS.escape(d.id)}" onclick="selectDoc('${d.id.replace(/'/g,"\\'")}')">
+      <div class="card-header">
+        <div class="card-title">${d.title}</div>
+        <div class="card-badges">
+          <span class="src-badge ${srcCls}">${SRC_LABEL[d.source_type]||'📄'} ${d.source_type}</span>
+          <span class="conf-badge ${confCls}">${d.confidence}</span>
+        </div>
+      </div>
+      ${snippet?`<div class="card-snippet">${snippet}</div>`:''}
+    </div>`;
+  }).join('');
 
-function filterDocs(q) {
-  const filtered = q.trim()
-    ? allDocs.filter(d => d.title.toLowerCase().includes(q.toLowerCase()))
-    : allDocs;
-  renderTree(filtered);
-  updateStats(filtered);
+  if(shown.length>200) cards.innerHTML+=`<div style="padding:0.8rem;text-align:center;color:var(--muted);font-size:0.75rem">상위 200건 표시 중 (검색어로 좁혀보세요)</div>`;
 }
 
 async function selectDoc(id) {
-  // 활성 표시
-  document.querySelectorAll(".vault-item").forEach(el => el.classList.remove("active"));
-  const item = document.getElementById("item-" + CSS.escape(id));
-  if (item) item.classList.add("active");
-  activeId = id;
+  document.querySelectorAll('.vault-card').forEach(c=>c.classList.remove('active'));
+  const card=document.getElementById('card-'+CSS.escape(id));
+  if(card){card.classList.add('active');card.scrollIntoView({block:'nearest'});}
 
-  // 문서 로드
-  const res = await fetch(`/ui/vault/doc?id=${encodeURIComponent(id)}`);
-  const html = await res.text();
+  const r=await fetch(`/ui/vault/doc?id=${encodeURIComponent(id)}`);
+  const html=await r.text();
+  const doc=allDocs.find(d=>d.id===id);
 
-  document.getElementById("viewer-empty").style.display = "none";
-  const view = document.getElementById("doc-view");
-  view.style.display = "block";
-  view.innerHTML = `<div style="margin-bottom:1rem">
-    <h1 style="margin:0 0 0.3rem;font-size:1.3rem" id="doc-title">로딩 중...</h1>
-  </div>` + html;
-
-  // 제목 업데이트
-  const doc = allDocs.find(d => d.id === id);
-  if (doc) {
-    document.getElementById("doc-title").textContent = doc.title;
-  }
+  const viewer=document.getElementById('vault-viewer');
+  viewer.innerHTML=`
+    <div class="viewer-header">
+      <h2>${doc?doc.title:id}</h2>
+      <div class="viewer-meta">
+        ${doc?`<span class="src-badge ${SRC_CLASS[doc.source_type]||''}">${SRC_LABEL[doc.source_type]||'📄'} ${doc.source_type}</span>`:''}
+        ${doc?`<span class="conf-badge conf-${doc.confidence}">${doc.confidence}</span>`:''}
+        ${doc&&doc.published?`<span>${doc.published}</span>`:''}
+        ${doc?`<a href="${doc.source_url}" target="_blank" style="font-size:0.7rem">원문 →</a>`:''}
+      </div>
+    </div>
+    <div class="viewer-body">${html}</div>`;
 }
 
 loadDocs();

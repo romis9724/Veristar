@@ -2,266 +2,213 @@
 {% block title %}Q&A · Veristar{% endblock %}
 {% block content %}
 <style>
-  .qa-layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 1.5rem;
-    align-items: start;
+  main { max-width: none; padding: 0; }
+  .qa-wrap {
+    display: flex; height: calc(100vh - 57px); position: relative; overflow: hidden;
   }
-  .chat-container {
-    display: flex; flex-direction: column; gap: 0;
-    max-height: calc(100vh - 220px);
+  /* ── 메인 채팅 영역 ────────────────────────────────────── */
+  .qa-main {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    background: var(--bg); overflow: hidden;
+  }
+  .qa-header {
+    width: 100%; max-width: 800px; padding: 0.8rem 1rem 0;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .qa-header h1 { margin: 0; font-size: 1.2rem; letter-spacing: -0.02em; }
+  .qa-header .meta { font-size: 0.75rem; color: var(--muted); }
+  .qa-toggle-btn {
+    padding: 0.25rem 0.7rem; border: 1px solid var(--line); border-radius: 8px;
+    background: none; cursor: pointer; font-size: 0.75rem; color: var(--muted);
+    flex-shrink: 0;
+  }
+  .chat-box {
+    flex: 1; overflow-y: auto; width: 100%; max-width: 800px;
+    padding: 0.8rem 1rem; display: flex; flex-direction: column; gap: 0.3rem;
+  }
+  .msg { padding: 0.75rem 1rem; border-radius: 12px; max-width: 85%; line-height: 1.65; font-size: 0.88rem; }
+  .msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .msg.assistant { background: var(--surface); border: 1px solid var(--line); align-self: flex-start; border-bottom-left-radius: 4px; white-space: pre-wrap; }
+  .msg.assistant .msg-meta { margin-top: 0.4rem; padding-top: 0.35rem; border-top: 1px solid var(--line); font-size: 0.7rem; color: var(--muted); }
+  .msg.system { align-self: center; color: var(--muted); font-size: 0.75rem; background: none; border: none; padding: 0.3rem; }
+  .qa-input-area {
+    width: 100%; max-width: 800px; padding: 0.7rem 1rem 1rem;
+    flex-shrink: 0;
+  }
+  .qa-input-row { display: flex; gap: 0.5rem; align-items: flex-end; }
+  .qa-input-row textarea {
+    flex: 1; padding: 0.65rem 0.9rem; font-size: 0.9rem; resize: none;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+    font-family: var(--sans); line-height: 1.5; min-height: 44px; max-height: 120px;
     overflow-y: auto;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--surface);
-    padding: 0.5rem;
   }
-  .msg {
-    padding: 0.8rem 1rem;
-    margin: 0.25rem 0;
-    border-radius: 10px;
-    line-height: 1.65;
-    font-size: 0.9rem;
-  }
-  .msg.user {
-    background: var(--accent);
-    color: #fff;
-    align-self: flex-end;
-    max-width: 85%;
-    border-bottom-right-radius: 4px;
-  }
-  .msg.assistant {
-    background: oklch(96% 0.005 260);
-    border: 1px solid var(--line);
-    align-self: flex-start;
-    max-width: 90%;
-    border-bottom-left-radius: 4px;
-    white-space: pre-wrap;
-  }
-  .msg.assistant .msg-meta {
-    margin-top: 0.5rem;
-    padding-top: 0.4rem;
-    border-top: 1px solid var(--line);
-    font-size: 0.72rem;
-    color: var(--muted);
-  }
-  .msg.system {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.75rem;
-    background: none;
-    border: none;
-    padding: 0.4rem;
-  }
-  .input-row {
-    display: flex; gap: 0.5rem; margin-top: 0.8rem;
-  }
-  .input-row input {
-    flex: 1; padding: 0.7rem 1rem; font-size: 0.95rem;
-    border: 1px solid var(--line); border-radius: 10px;
-    background: var(--surface); font-family: var(--sans);
-  }
-  .input-row input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  .qa-input-row textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
   .send-btn {
-    padding: 0.7rem 1.2rem; background: var(--accent); color: #fff;
-    border: none; border-radius: 10px; cursor: pointer; font-size: 0.95rem;
-    transition: opacity 150ms;
+    padding: 0.65rem 1.1rem; background: var(--accent); color: #fff;
+    border: none; border-radius: 12px; cursor: pointer; font-size: 0.9rem; flex-shrink: 0;
+    transition: opacity 150ms; align-self: flex-end;
   }
-  .send-btn:disabled { opacity: 0.5; }
-  .send-btn:hover:not(:disabled) { opacity: 0.85; }
-  .clear-btn {
-    padding: 0.4rem 0.8rem; background: none; border: 1px solid var(--line);
-    border-radius: 8px; cursor: pointer; font-size: 0.78rem; color: var(--muted);
+  .send-btn:disabled { opacity: 0.4; }
+  .send-btn:hover:not(:disabled) { opacity: 0.87; }
+  .clear-btn { font-size: 0.73rem; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0.3rem 0; }
+  .typing { display: inline-flex; gap: 3px; align-items: center; }
+  .typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+  @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+
+  /* ── 사이드 패널 (오버레이 슬라이드) ──────────────────── */
+  .qa-side {
+    width: 260px; flex-shrink: 0;
+    background: var(--surface); border-left: 1px solid var(--line);
+    overflow-y: auto; font-size: 0.8rem;
+    transform: translateX(0);
+    transition: width 200ms ease, transform 200ms ease;
   }
-  /* 오른쪽 패널 */
-  .qa-sidebar h3 {
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--muted); margin: 0 0 0.5rem;
-  }
+  .qa-side.collapsed { width: 0; overflow: hidden; border: none; }
+  .side-section { padding: 0.8rem 0.9rem; border-bottom: 1px solid var(--line); }
+  .side-section h3 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.5rem; }
   .example-q {
-    display: block; padding: 0.4rem 0.6rem; margin: 0.25rem 0;
-    background: oklch(96% 0.005 260); border: 1px solid var(--line);
-    border-radius: 6px; font-size: 0.8rem; cursor: pointer;
-    transition: background 100ms;
+    display: block; padding: 0.32rem 0.6rem; margin: 0.2rem 0;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+    font-size: 0.78rem; cursor: pointer; transition: background 100ms;
   }
   .example-q:hover { background: oklch(92% 0.04 265); color: var(--accent); }
-  .vault-ctx {
-    margin-top: 1rem; padding: 0.6rem 0.8rem;
-    background: oklch(96% 0.005 260); border: 1px solid var(--line);
-    border-radius: 8px; font-size: 0.75rem;
-  }
-  .vault-ctx label { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
-  .typing {
-    display: inline-flex; gap: 3px; align-items: center;
-  }
-  .typing span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--muted);
-    animation: bounce 1.2s infinite;
-  }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-5px); }
-  }
+  .hist-item { padding: 0.22rem 0; border-bottom: 1px dashed var(--line); font-size: 0.77rem; color: var(--muted); cursor: pointer; }
+  .hist-item:hover { color: var(--ink); }
 </style>
 
-<div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem">
-  <h1 style="margin:0;letter-spacing:-0.02em">그래프 Q&amp;A</h1>
-  <span class="meta">공식 사실 기반 · 추론 없음 · Ollama qwen3</span>
-  <button class="clear-btn" onclick="clearChat()" style="margin-left:auto">대화 초기화</button>
-</div>
+<div class="qa-wrap">
+  <div class="qa-main">
+    <div class="qa-header">
+      <div>
+        <h1>그래프 Q&amp;A</h1>
+        <span class="meta">공식 사실 기반 · 추론 없음 · Ollama qwen3</span>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <button class="clear-btn" onclick="clearChat()">대화 초기화</button>
+        <button class="qa-toggle-btn" id="toggle-btn" onclick="toggleSide()">예시 ☰</button>
+      </div>
+    </div>
 
-<div class="qa-layout">
-  <div>
-    <div class="chat-container" id="chat-box">
+    <div class="chat-box" id="chat-box">
       <div class="msg system">안녕하세요! 한국 연예인에 대해 질문해 보세요.</div>
     </div>
-    <div class="input-row">
-      <input type="text" id="q-input" placeholder="예: 스트레이 키즈 멤버는?" autofocus
-        onkeydown="if(event.key==='Enter') sendQ()">
-      <button class="send-btn" id="send-btn" onclick="sendQ()">전송</button>
+
+    <div class="qa-input-area">
+      <div class="qa-input-row">
+        <textarea id="q-input" placeholder="예: 스트레이 키즈 멤버는?" rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendQ();}"
+          oninput="autoResize(this)" autofocus></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendQ()">전송</button>
+      </div>
     </div>
   </div>
 
-  <div class="qa-sidebar">
-    <h3>예시 질문</h3>
-    <a class="example-q" onclick="fillQ(this.textContent)">스트레이 키즈 멤버는 누구인가요?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">블랙핑크가 받은 상은?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">BTS는 언제 데뷔했나요?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">NewJeans 멤버 구성은?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">IU의 주요 작품은?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">TWICE 소속사는?</a>
-    <a class="example-q" onclick="fillQ(this.textContent)">aespa가 속한 소속사는?</a>
-
-    <div class="vault-ctx">
-      <h3 style="margin:0 0 0.4rem">컨텍스트 설정</h3>
-      <label>
-        <input type="checkbox" id="use-vault" checked>
-        vault 문서 포함 (RAG 강화)
-      </label>
+  <!-- 사이드바 -->
+  <div class="qa-side" id="qa-side">
+    <div class="side-section">
+      <h3>예시 질문</h3>
+      <a class="example-q" onclick="fillQ(this.textContent)">스트레이 키즈 멤버는?</a>
+      <a class="example-q" onclick="fillQ(this.textContent)">블랙핑크가 받은 상은?</a>
+      <a class="example-q" onclick="fillQ(this.textContent)">BTS는 언제 데뷔했나요?</a>
+      <a class="example-q" onclick="fillQ(this.textContent)">NewJeans 소속사는?</a>
+      <a class="example-q" onclick="fillQ(this.textContent)">아이유 주요 작품은?</a>
+      <a class="example-q" onclick="fillQ(this.textContent)">TWICE 멤버 구성은?</a>
     </div>
-
-    <div style="margin-top:1rem">
-      <h3>대화 기록</h3>
-      <div id="history-list" style="font-size:0.78rem;color:var(--muted)">없음</div>
+    <div class="side-section" id="history-section">
+      <h3>최근 질문</h3>
+      <div id="history-list" style="color:var(--muted);font-size:0.78rem">없음</div>
     </div>
   </div>
 </div>
 
 <script>
-let history = JSON.parse(sessionStorage.getItem("veristar_qa_history") || "[]");
+let history = JSON.parse(sessionStorage.getItem('vqa') || '[]');
+let sideOpen = true;
+
+function toggleSide() {
+  sideOpen = !sideOpen;
+  document.getElementById('qa-side').classList.toggle('collapsed', !sideOpen);
+  document.getElementById('toggle-btn').textContent = sideOpen ? '예시 ☰' : '예시 ☷';
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
 
 function renderHistory() {
-  const box = document.getElementById("chat-box");
-  // 기존 메시지 지우고 재렌더
+  const box = document.getElementById('chat-box');
   box.innerHTML = '<div class="msg system">안녕하세요! 한국 연예인에 대해 질문해 보세요.</div>';
-  history.forEach(turn => {
-    addBubble("user", turn.q);
-    addBubble("assistant", turn.a, { grounded: turn.grounded, model: turn.model });
+  history.forEach(t => {
+    addBubble('user', t.q);
+    addBubble('assistant', t.a, { grounded: t.grounded, model: t.model });
   });
-
-  // 사이드바 기록
-  const histList = document.getElementById("history-list");
-  if (history.length === 0) {
-    histList.textContent = "없음";
-  } else {
-    histList.innerHTML = history.slice(-5).reverse().map(t =>
-      `<div style="padding:0.2rem 0;border-bottom:1px solid var(--line);cursor:pointer"
-            onclick="fillQ('${t.q.replace(/'/g,"\\'")}')">
-        ${t.q.length > 20 ? t.q.slice(0,19) + "…" : t.q}
-      </div>`
-    ).join("");
-  }
+  const hist = document.getElementById('history-list');
+  hist.innerHTML = history.length ? history.slice(-6).reverse().map(t =>
+    `<div class="hist-item" onclick="fillQ('${t.q.replace(/'/g,"\\'")}')">${t.q.length>24?t.q.slice(0,23)+'…':t.q}</div>`
+  ).join('') : '<span style="color:var(--muted)">없음</span>';
   box.scrollTop = box.scrollHeight;
 }
 
-function addBubble(role, text, meta = null) {
-  const box = document.getElementById("chat-box");
-  const div = document.createElement("div");
+function addBubble(role, text, meta=null) {
+  const box = document.getElementById('chat-box');
+  const div = document.createElement('div');
   div.className = `msg ${role}`;
-  if (role === "assistant") {
-    div.textContent = text;
-    if (meta) {
-      const m = document.createElement("div");
-      m.className = "msg-meta";
-      m.textContent = `근거 ${meta.grounded || 0}건 · 모델: ${meta.model || "-"}`;
-      div.appendChild(m);
-    }
-  } else {
-    div.textContent = text;
+  div.textContent = text;
+  if (role==='assistant' && meta) {
+    const m = document.createElement('div');
+    m.className = 'msg-meta';
+    m.textContent = `근거 ${meta.grounded||0}건 · 모델: ${meta.model||'-'}`;
+    div.appendChild(m);
   }
   box.appendChild(div);
   box.scrollTop = box.scrollHeight;
-  return div;
 }
 
 function addTyping() {
-  const box = document.getElementById("chat-box");
-  const div = document.createElement("div");
-  div.className = "msg assistant";
+  const box = document.getElementById('chat-box');
+  const div = document.createElement('div');
+  div.className = 'msg assistant'; div.id = 'typing';
   div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
-  div.id = "typing-indicator";
   box.appendChild(div);
   box.scrollTop = box.scrollHeight;
 }
 
-function removeTyping() {
-  const t = document.getElementById("typing-indicator");
-  if (t) t.remove();
-}
-
 async function sendQ() {
-  const input = document.getElementById("q-input");
+  const input = document.getElementById('q-input');
   const q = input.value.trim();
   if (!q) return;
-
-  input.value = "";
-  const btn = document.getElementById("send-btn");
-  btn.disabled = true;
-
-  addBubble("user", q);
+  input.value = ''; input.style.height = 'auto';
+  document.getElementById('send-btn').disabled = true;
+  addBubble('user', q);
   addTyping();
-
   try {
-    const useVault = document.getElementById("use-vault").checked;
-    const params = new URLSearchParams({ q });
-    if (useVault) params.set("use_vault", "1");
-
-    const res = await fetch(`/api/qa?${params}`);
-    const data = (await res.json()).data;
-
-    removeTyping();
-    addBubble("assistant", data.answer, {
-      grounded: data.grounded_in_count,
-      model: data.model,
-    });
-
-    history.push({ q, a: data.answer, grounded: data.grounded_in_count, model: data.model });
-    sessionStorage.setItem("veristar_qa_history", JSON.stringify(history.slice(-20)));
+    const r = await fetch(`/api/qa?q=${encodeURIComponent(q)}`);
+    const d = (await r.json()).data;
+    document.getElementById('typing')?.remove();
+    addBubble('assistant', d.answer, { grounded: d.grounded_in_count, model: d.model });
+    history.push({ q, a: d.answer, grounded: d.grounded_in_count, model: d.model });
+    sessionStorage.setItem('vqa', JSON.stringify(history.slice(-20)));
     renderHistory();
-  } catch (e) {
-    removeTyping();
-    addBubble("assistant", "오류가 발생했습니다. Ollama 서버를 확인하세요.");
+  } catch {
+    document.getElementById('typing')?.remove();
+    addBubble('assistant', '오류: Ollama 서버를 확인하세요.');
   } finally {
-    btn.disabled = false;
-    input.focus();
+    document.getElementById('send-btn').disabled = false;
+    document.getElementById('q-input').focus();
   }
 }
 
-function fillQ(text) {
-  document.getElementById("q-input").value = text;
-  document.getElementById("q-input").focus();
+function fillQ(t) {
+  const inp = document.getElementById('q-input');
+  inp.value = t; autoResize(inp); inp.focus();
 }
 
 function clearChat() {
-  history = [];
-  sessionStorage.removeItem("veristar_qa_history");
-  renderHistory();
+  history = []; sessionStorage.removeItem('vqa'); renderHistory();
 }
 
-// 초기화
 renderHistory();
 </script>
 {% endblock %}

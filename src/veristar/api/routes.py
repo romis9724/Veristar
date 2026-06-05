@@ -696,8 +696,9 @@ def vault_docs(
             params.append(confidence)
         where = ("WHERE " + " AND ".join(filters)) if filters else ""
         rows = conn.execute(
-            f"SELECT id, title, source_type, confidence, sensitive, published "  # noqa: S608
-            f"FROM vault_docs {where} ORDER BY source_type, title LIMIT %s",
+            f"SELECT id, title, source_type, confidence, sensitive, published, "  # noqa: S608
+            f"left(content, 150) AS snippet "
+            f"FROM vault_docs {where} ORDER BY confidence DESC, source_type, title LIMIT %s",
             [*params, limit],
         ).fetchall()
         conn.close()
@@ -709,6 +710,7 @@ def vault_docs(
                 "confidence": r["confidence"],
                 "sensitive": r["sensitive"],
                 "published": str(r["published"]) if r["published"] else None,
+                "snippet": (r["snippet"] or "").replace("\n", " "),
             }
             for r in rows
         ]
@@ -725,8 +727,9 @@ def vault_docs(
                 "confidence": d.confidence,
                 "sensitive": d.sensitive,
                 "published": str(d.published) if d.published else None,
+                "snippet": d.content[:150].replace("\n", " "),
             }
-            for d in all_docs[:limit]
+            for d in sorted(all_docs, key=lambda x: x.confidence)[:limit]
         ]
 
     return ok(docs)
