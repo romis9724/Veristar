@@ -104,7 +104,7 @@
         <span class="fchip fchip-high on"  data-f="conf:high"       onclick="toggleFilter(this)">HIGH</span>
         <span class="fchip fchip-med on"   data-f="conf:medium"     onclick="toggleFilter(this)">MED</span>
         <span class="fchip fchip-low on"   data-f="conf:low"        onclick="toggleFilter(this)">LOW</span>
-        <span class="fchip"                data-f="conf:unverified" onclick="toggleFilter(this)">미검증</span>
+        <span class="fchip on"              data-f="conf:unverified" onclick="toggleFilter(this)">미검증</span>
         <span class="fchip" style="margin-left:0.3rem">|</span>
         <span class="fchip fchip-wiki on"  data-f="src:wikipedia"   onclick="toggleFilter(this)">📖 Wikipedia</span>
         <span class="fchip fchip-namu on"  data-f="src:namuwiki"    onclick="toggleFilter(this)">📝 나무위키</span>
@@ -129,7 +129,8 @@ const SRC_LABEL = { wikipedia:'📖', namuwiki:'📝', news:'📰', youtube:'▶
 const SRC_CLASS = { wikipedia:'src-wikipedia', namuwiki:'src-namuwiki', news:'src-news' };
 
 let allDocs=[], activeFilters=new Set([
-  'conf:high','conf:medium','conf:low','src:wikipedia','src:namuwiki','src:news'
+  'conf:high','conf:medium','conf:low','conf:unverified',
+  'src:wikipedia','src:namuwiki','src:news'
 ]);
 
 async function loadDocs() {

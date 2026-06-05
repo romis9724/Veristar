@@ -698,7 +698,10 @@ def vault_docs(
         rows = conn.execute(
             f"SELECT id, title, source_type, confidence, sensitive, published, "  # noqa: S608
             f"left(content, 150) AS snippet "
-            f"FROM vault_docs {where} ORDER BY confidence DESC, source_type, title LIMIT %s",
+            f"FROM vault_docs {where} "
+            f"ORDER BY CASE confidence "
+            f"WHEN 'high' THEN 1 WHEN 'medium' THEN 2 WHEN 'low' THEN 3 ELSE 4 END, "
+            f"source_type, title LIMIT %s",
             [*params, limit],
         ).fetchall()
         conn.close()
