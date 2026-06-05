@@ -224,13 +224,23 @@ function runPipeline(steps, sources, limit) {
   const params = new URLSearchParams({steps, sources, limit});
   evtSource = new EventSource(`/api/pipeline/stream?${params}`);
 
+  let _pipelineDone = false;  // done 수신 여부
+
   evtSource.onmessage = (e) => {
     const msg = JSON.parse(e.data);
+    if (msg.type === 'done') _pipelineDone = true;
     handleMsg(msg);
   };
 
   evtSource.onerror = () => {
-    addMsg('⚠️ 연결이 끊겼습니다.', 'msg-log-warn');
+    // done 메시지를 이미 받은 뒤 서버가 스트림을 닫으면 정상 종료
+    if (_pipelineDone) {
+      evtSource.close();
+      cleanup();
+      return;
+    }
+    // 실행 중 예기치 않은 끊김만 경고 표시
+    addMsg('⚠️ 연결이 끊겼습니다. 재접속하면 로그를 복원합니다.', 'msg-log-warn');
     cleanup();
   };
 }
