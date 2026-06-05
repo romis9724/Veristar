@@ -14,6 +14,15 @@ from veristar.ontology.graph import GraphDocument
 from veristar.ontology.models import Group, Person, Source, Statement
 
 
+@pytest.fixture(autouse=True)
+def _stub_vault(monkeypatch: pytest.MonkeyPatch) -> None:
+    """단위 테스트는 그래프 grounding 검증이 목적 — vault RAG는 빈 결과로 고정.
+
+    (PG가 살아 있는 개발 환경에서도 동일 결과 보장. vault 통합은 별도 통합 테스트에서.)
+    """
+    monkeypatch.setattr("veristar.generate.qa._vault_context", lambda *a, **k: ("", []))
+
+
 def _repo() -> InMemoryGraphRepository:
     p = Person(id="wd:QP", name="아티스트 A", created_at=datetime(2026, 1, 1))
     g = Group(id="wd:QG", name="그룹 G", created_at=datetime(2026, 1, 1))

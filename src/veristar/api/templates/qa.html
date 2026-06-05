@@ -13,15 +13,26 @@
   }
   .qa-header {
     width: 100%; max-width: 800px; padding: 0.8rem 1rem 0;
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
   }
-  .qa-header h1 { margin: 0; font-size: 1.2rem; letter-spacing: -0.02em; }
-  .qa-header .meta { font-size: 0.75rem; color: var(--muted); }
+  .qa-header .title-block { display: flex; flex-direction: column; min-width: 0; }
+  .qa-header h1 {
+    margin: 0; font-size: 1.05rem; letter-spacing: -0.02em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 460px;
+  }
+  .qa-header .meta { font-size: 0.7rem; color: var(--muted); }
   .qa-toggle-btn {
-    padding: 0.25rem 0.7rem; border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.3rem 0.7rem; border: 1px solid var(--line); border-radius: 8px;
     background: none; cursor: pointer; font-size: 0.75rem; color: var(--muted);
     flex-shrink: 0;
   }
+  .new-chat-btn {
+    padding: 0.35rem 0.85rem; border: 1px solid var(--accent);
+    background: var(--accent); color: #fff; border-radius: 8px;
+    font-size: 0.78rem; cursor: pointer; transition: opacity 120ms;
+    flex-shrink: 0; font-weight: 500;
+  }
+  .new-chat-btn:hover { opacity: 0.87; }
   .chat-box {
     flex: 1; overflow-y: auto; width: 100%; max-width: 800px;
     padding: 0.8rem 1rem; display: flex; flex-direction: column; gap: 0.3rem;
@@ -50,15 +61,14 @@
   }
   .send-btn:disabled { opacity: 0.4; }
   .send-btn:hover:not(:disabled) { opacity: 0.87; }
-  .clear-btn { font-size: 0.73rem; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0.3rem 0; }
   .typing { display: inline-flex; gap: 3px; align-items: center; }
   .typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: bounce 1.2s infinite; }
   .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
   @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
 
-  /* ── 사이드 패널 (오버레이 슬라이드) ──────────────────── */
+  /* ── 사이드 패널 ──────────────────────────────────────── */
   .qa-side {
-    width: 260px; flex-shrink: 0;
+    width: 280px; flex-shrink: 0;
     background: var(--surface); border-left: 1px solid var(--line);
     overflow-y: auto; font-size: 0.8rem;
     transform: translateX(0);
@@ -73,20 +83,40 @@
     font-size: 0.78rem; cursor: pointer; transition: background 100ms;
   }
   .example-q:hover { background: oklch(92% 0.04 265); color: var(--accent); }
-  .hist-item { padding: 0.22rem 0; border-bottom: 1px dashed var(--line); font-size: 0.77rem; color: var(--muted); cursor: pointer; }
-  .hist-item:hover { color: var(--ink); }
+  /* 세션 목록 항목 */
+  .session-item {
+    display: flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 0.55rem; margin: 0.18rem 0;
+    border: 1px solid transparent; border-radius: 8px;
+    cursor: pointer; transition: background 100ms, border-color 100ms;
+  }
+  .session-item:hover { background: var(--bg); border-color: var(--line); }
+  .session-item.active { background: var(--bg); border-color: var(--accent); }
+  .session-item .s-title {
+    flex: 1; min-width: 0; font-size: 0.78rem; color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .session-item .s-meta { font-size: 0.66rem; color: var(--muted); flex-shrink: 0; }
+  .session-item .s-del {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    padding: 0 0.25rem; font-size: 1rem; line-height: 1;
+    opacity: 0; transition: opacity 100ms;
+  }
+  .session-item:hover .s-del { opacity: 1; }
+  .session-item .s-del:hover { color: oklch(55% 0.2 25); }
+  .empty-hint { color: var(--muted); font-size: 0.75rem; padding: 0.3rem 0; }
 </style>
 
 <div class="qa-wrap">
   <div class="qa-main">
     <div class="qa-header">
-      <div>
-        <h1>그래프 Q&amp;A</h1>
+      <div class="title-block">
+        <h1 id="current-session-title">새 대화</h1>
         <span class="meta">공식 사실 기반 · 추론 없음 · Ollama qwen3</span>
       </div>
       <div style="display:flex;gap:0.5rem;align-items:center">
-        <button class="clear-btn" onclick="clearChat()">대화 초기화</button>
-        <button class="qa-toggle-btn" id="toggle-btn" onclick="toggleSide()">예시 ☰</button>
+        <button class="new-chat-btn" onclick="newSession()">+ 새 대화</button>
+        <button class="qa-toggle-btn" id="toggle-btn" onclick="toggleSide()">메뉴 ☰</button>
       </div>
     </div>
 
@@ -97,7 +127,7 @@
     <div class="qa-input-area">
       <div class="qa-input-row">
         <textarea id="q-input" placeholder="예: 스트레이 키즈 멤버는?" rows="1"
-          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendQ();}"
+          onkeydown="if(event.isComposing||event.keyCode===229)return;if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendQ();}"
           oninput="autoResize(this)" autofocus></textarea>
         <button class="send-btn" id="send-btn" onclick="sendQ()">전송</button>
       </div>
@@ -107,6 +137,10 @@
   <!-- 사이드바 -->
   <div class="qa-side" id="qa-side">
     <div class="side-section">
+      <h3>대화 목록</h3>
+      <div id="session-list"></div>
+    </div>
+    <div class="side-section">
       <h3>예시 질문</h3>
       <a class="example-q" onclick="fillQ(this.textContent)">스트레이 키즈 멤버는?</a>
       <a class="example-q" onclick="fillQ(this.textContent)">블랙핑크가 받은 상은?</a>
@@ -115,21 +149,82 @@
       <a class="example-q" onclick="fillQ(this.textContent)">아이유 주요 작품은?</a>
       <a class="example-q" onclick="fillQ(this.textContent)">TWICE 멤버 구성은?</a>
     </div>
-    <div class="side-section" id="history-section">
-      <h3>최근 질문</h3>
-      <div id="history-list" style="color:var(--muted);font-size:0.78rem">없음</div>
-    </div>
   </div>
 </div>
 
 <script>
-let history = JSON.parse(sessionStorage.getItem('vqa') || '[]');
+// ─── 세션 스토리지 모델 ───────────────────────────────────
+// localStorage:
+//   vqa_sessions = [{id, title, createdAt, messages: [{q,a,grounded,model,ts}]}]
+//   vqa_current  = current session id
+const SESSIONS_KEY = 'vqa_sessions';
+const CURRENT_KEY = 'vqa_current';
+const MAX_SESSIONS = 50;
+const MAX_MSGS_PER_SESSION = 100;
+
+function loadSessions() {
+  try { return JSON.parse(localStorage.getItem(SESSIONS_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveSessions(s) {
+  // 최신순 정렬, MAX_SESSIONS 한도
+  s.sort((a, b) => b.createdAt - a.createdAt);
+  if (s.length > MAX_SESSIONS) s.length = MAX_SESSIONS;
+  localStorage.setItem(SESSIONS_KEY, JSON.stringify(s));
+}
+function getCurrentId() { return localStorage.getItem(CURRENT_KEY) || null; }
+function setCurrentId(id) { localStorage.setItem(CURRENT_KEY, id); }
+
+// 기존 단일 sessionStorage.vqa → 첫 세션으로 이관 (한 번만)
+function migrateLegacy() {
+  try {
+    const legacy = sessionStorage.getItem('vqa');
+    if (!legacy) return;
+    const msgs = JSON.parse(legacy);
+    if (Array.isArray(msgs) && msgs.length) {
+      const sessions = loadSessions();
+      const id = 's_' + Date.now().toString(36);
+      sessions.push({
+        id, createdAt: Date.now() - 1,
+        title: msgs[0].q.slice(0, 30) || '이전 대화',
+        messages: msgs.map(m => ({ ...m, ts: m.ts || Date.now() })),
+      });
+      saveSessions(sessions);
+      sessionStorage.removeItem('vqa');
+    }
+  } catch {}
+}
+
+function getOrCreateCurrent() {
+  let sessions = loadSessions();
+  let curId = getCurrentId();
+  let cur = sessions.find(s => s.id === curId);
+  if (!cur) {
+    cur = createSession(sessions);
+    saveSessions(sessions);
+    setCurrentId(cur.id);
+  }
+  return { sessions, cur };
+}
+
+function createSession(sessions) {
+  const s = {
+    id: 's_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+    createdAt: Date.now(),
+    title: '새 대화',
+    messages: [],
+  };
+  sessions.unshift(s);
+  return s;
+}
+
+// ─── UI 상태 ──────────────────────────────────────────────
 let sideOpen = true;
 
 function toggleSide() {
   sideOpen = !sideOpen;
   document.getElementById('qa-side').classList.toggle('collapsed', !sideOpen);
-  document.getElementById('toggle-btn').textContent = sideOpen ? '예시 ☰' : '예시 ☷';
+  document.getElementById('toggle-btn').textContent = sideOpen ? '메뉴 ☰' : '메뉴 ☷';
 }
 
 function autoResize(el) {
@@ -137,29 +232,52 @@ function autoResize(el) {
   el.style.height = Math.min(el.scrollHeight, 120) + 'px';
 }
 
-function renderHistory() {
+// ─── 렌더 ─────────────────────────────────────────────────
+function renderAll() {
+  const { sessions, cur } = getOrCreateCurrent();
+  renderCurrentSession(cur);
+  renderSessionList(sessions, cur.id);
+}
+
+function renderCurrentSession(cur) {
+  document.getElementById('current-session-title').textContent = cur.title;
   const box = document.getElementById('chat-box');
   box.innerHTML = '<div class="msg system">안녕하세요! 한국 연예인에 대해 질문해 보세요.</div>';
-  history.forEach(t => {
+  cur.messages.forEach(t => {
     addBubble('user', t.q);
     addBubble('assistant', t.a, { grounded: t.grounded, model: t.model });
   });
-  const hist = document.getElementById('history-list');
-  hist.innerHTML = history.length ? history.slice(-6).reverse().map(t =>
-    `<div class="hist-item" onclick="fillQ('${t.q.replace(/'/g,"\\'")}')">${t.q.length>24?t.q.slice(0,23)+'…':t.q}</div>`
-  ).join('') : '<span style="color:var(--muted)">없음</span>';
   box.scrollTop = box.scrollHeight;
 }
 
-function addBubble(role, text, meta=null) {
+function renderSessionList(sessions, curId) {
+  const list = document.getElementById('session-list');
+  if (!sessions.length) {
+    list.innerHTML = '<div class="empty-hint">없음</div>';
+    return;
+  }
+  list.innerHTML = sessions.map(s => {
+    const active = s.id === curId ? ' active' : '';
+    const safeTitle = (s.title || '제목없음').replace(/[<>"']/g, c =>
+      ({ '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const count = s.messages.length;
+    return `<div class="session-item${active}" onclick="switchSession('${s.id}')">
+      <span class="s-title" title="${safeTitle}">${safeTitle}</span>
+      <span class="s-meta">${count}</span>
+      <button class="s-del" onclick="event.stopPropagation();deleteSession('${s.id}')" title="삭제">×</button>
+    </div>`;
+  }).join('');
+}
+
+function addBubble(role, text, meta = null) {
   const box = document.getElementById('chat-box');
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   div.textContent = text;
-  if (role==='assistant' && meta) {
+  if (role === 'assistant' && meta) {
     const m = document.createElement('div');
     m.className = 'msg-meta';
-    m.textContent = `근거 ${meta.grounded||0}건 · 모델: ${meta.model||'-'}`;
+    m.textContent = `근거 ${meta.grounded || 0}건 · 모델: ${meta.model || '-'}`;
     div.appendChild(m);
   }
   box.appendChild(div);
@@ -175,6 +293,7 @@ function addTyping() {
   box.scrollTop = box.scrollHeight;
 }
 
+// ─── 액션 ─────────────────────────────────────────────────
 async function sendQ() {
   const input = document.getElementById('q-input');
   const q = input.value.trim();
@@ -188,9 +307,18 @@ async function sendQ() {
     const d = (await r.json()).data;
     document.getElementById('typing')?.remove();
     addBubble('assistant', d.answer, { grounded: d.grounded_in_count, model: d.model });
-    history.push({ q, a: d.answer, grounded: d.grounded_in_count, model: d.model });
-    sessionStorage.setItem('vqa', JSON.stringify(history.slice(-20)));
-    renderHistory();
+    const { sessions, cur } = getOrCreateCurrent();
+    cur.messages.push({ q, a: d.answer, grounded: d.grounded_in_count, model: d.model, ts: Date.now() });
+    if (cur.messages.length > MAX_MSGS_PER_SESSION) {
+      cur.messages = cur.messages.slice(-MAX_MSGS_PER_SESSION);
+    }
+    // 첫 메시지면 제목 자동 설정
+    if (cur.messages.length === 1 || cur.title === '새 대화') {
+      cur.title = q.length > 30 ? q.slice(0, 30) + '…' : q;
+    }
+    saveSessions(sessions);
+    renderSessionList(sessions, cur.id);
+    document.getElementById('current-session-title').textContent = cur.title;
   } catch {
     document.getElementById('typing')?.remove();
     addBubble('assistant', '오류: Ollama 서버를 확인하세요.');
@@ -205,10 +333,37 @@ function fillQ(t) {
   inp.value = t; autoResize(inp); inp.focus();
 }
 
-function clearChat() {
-  history = []; sessionStorage.removeItem('vqa'); renderHistory();
+function newSession() {
+  const sessions = loadSessions();
+  // 빈 새 세션이 이미 현재면 재사용
+  const cur = sessions.find(s => s.id === getCurrentId());
+  if (cur && cur.messages.length === 0) { renderAll(); return; }
+  const s = createSession(sessions);
+  saveSessions(sessions);
+  setCurrentId(s.id);
+  renderAll();
+  document.getElementById('q-input').focus();
 }
 
-renderHistory();
+function switchSession(id) {
+  setCurrentId(id);
+  renderAll();
+}
+
+function deleteSession(id) {
+  let sessions = loadSessions();
+  sessions = sessions.filter(s => s.id !== id);
+  saveSessions(sessions);
+  // 현재 세션이 삭제됐으면 다음 세션 또는 신규 생성
+  if (getCurrentId() === id) {
+    if (sessions.length) setCurrentId(sessions[0].id);
+    else { const s = createSession(sessions); saveSessions(sessions); setCurrentId(s.id); }
+  }
+  renderAll();
+}
+
+// 부트스트랩
+migrateLegacy();
+renderAll();
 </script>
 {% endblock %}

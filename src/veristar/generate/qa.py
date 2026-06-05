@@ -39,8 +39,20 @@ def _statements_to_context(views: list[StatementView]) -> str:
     return "\n".join(lines)
 
 
-def _vault_context(question: str, limit: int = 3) -> str:
-    """vault 벡터 검색으로 관련 문서 스니펫을 가져온다 (PostgreSQL 모드만)."""
+_VAULT_MAX_CHARS = 2000  # qwen3:14b 컨텍스트 안전 범위
+_VAULT_TOP_K = 1  # 정밀도 우선: 1순위 1개만 grounding
+
+
+def _vault_context(
+    question: str,
+    limit: int = _VAULT_TOP_K,
+    max_chars: int = _VAULT_MAX_CHARS,
+) -> tuple[str, list[str]]:
+    """vault 벡터 검색으로 관련 문서 본문을 가져온다 (PostgreSQL 모드만).
+
+    Returns:
+        (LLM 컨텍스트 문자열, vault doc_id 리스트 — grounded_in 추적용)
+    """
     try:
         from pgvector.psycopg import register_vector  # type: ignore[import-untyped]
 
@@ -48,24 +60,25 @@ def _vault_context(question: str, limit: int = 3) -> str:
         from veristar.db.vector_store import VectorStore
 
         if not is_available():
-            return ""
+            return "", []
         with get_conn() as conn:
             register_vector(conn)
-            vs = VectorStore(conn)
-            docs = vs.search_vault_docs(
-                question, limit=limit, min_confidence="medium"
-            )
+            vs = VectorStore(conn)  # type: ignore[arg-type]
+            docs = vs.search_vault_docs(question, limit=limit, min_confidence="medium")
         if not docs:
-            return ""
-        snippets = []
+            return "", []
+        snippets: list[str] = []
+        doc_ids: list[str] = []
         for d in docs:
             if d.sensitive:
                 continue
-            snippet = d.content[:400].replace("\n", " ")
-            snippets.append(f"[{d.source_type}] {d.title}: {snippet}")
-        return "\n".join(snippets)
+            body = d.content[:max_chars].replace("\n", " ")
+            # 출처 라벨을 LLM이 답변에 인용할 수 있도록 명시
+            snippets.append(f"[{d.source_type}: {d.id}] {d.title}\n{body}")
+            doc_ids.append(d.id)
+        return "\n\n".join(snippets), doc_ids
     except Exception:
-        return ""
+        return "", []
 
 
 def answer_question(
@@ -91,10 +104,9 @@ def answer_question(
     graph_context = _statements_to_context(views) if views else "(관련 OFFICIAL 사실 없음)"
 
     # vault RAG 컨텍스트 추가 (PostgreSQL 모드일 때)
-    vault_ctx = _vault_context(question, limit=3)
-    context = (
-        f"{graph_context}\n\n[관련 문서 발췌]\n{vault_ctx}" if vault_ctx else graph_context
-    )
+    vault_ctx, vault_doc_ids = _vault_context(question)
+    grounded_ids.extend(vault_doc_ids)  # vault 문서도 근거로 추적
+    context = f"{graph_context}\n\n[관련 문서 발췌]\n{vault_ctx}" if vault_ctx else graph_context
 
     system_prompt = textwrap.dedent("""
         당신은 Veristar 지식그래프의 Q&A 어시스턴트입니다.
@@ -102,9 +114,12 @@ def answer_question(
 
         규칙:
         1. 제공된 사실에 없는 내용은 절대 추가하지 마세요 (추론·예측·평가 금지).
-        2. 확인할 수 없으면 "해당 정보는 그래프에 없습니다"라고 답하세요.
-        3. 답변에 사용한 사실의 관계(predicate)를 간략히 언급하세요.
-        4. 한국어로 간결하게 답하세요.
+        2. [관련 문서 발췌]에 정보가 있으면 그것을 활용해 답하세요 (그래프가 비어 있어도 OK).
+        3. 둘 다 비어 있을 때만 "해당 정보는 데이터에 없습니다"라고 답하세요.
+        4. [공식 확인 사실]을 사용했다면 관계(predicate)를 간략히 언급하세요.
+        5. [관련 문서 발췌]를 사용했다면 답변 끝에 "출처: [source_type: doc_id]"
+           형식으로 표기하세요.
+        6. 한국어로 간결하게 답하세요.
     """).strip()
 
     user_prompt = f"[공식 확인 사실]\n{context}\n\n[질문]\n{question}"
