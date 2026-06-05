@@ -84,12 +84,14 @@ class SyncReport:
     new_statements: int = 0
     errors: int = 0
     skipped: int = 0
+    entity_candidates_registered: int = 0
     details: list[str] = field(default_factory=list)
 
     def summary(self) -> str:
         return (
             f"docs={self.total_docs} extracted={self.extracted} "
             f"src+{self.new_sources} stmt+{self.new_statements} "
+            f"cand+{self.entity_candidates_registered} "
             f"skip={self.skipped} err={self.errors}"
         )
 
@@ -287,6 +289,48 @@ def _extract_facts(
     return valid
 
 
+def register_vault_entity_candidates(high_docs: list[VaultDoc], *, dry_run: bool = False) -> int:
+    """vault HIGH 문서의 entity_refs를 collection_targets에 등록한다.
+
+    PG 미가용 시 no-op (반환 0). 이미 entities 테이블에 같은 이름이 있으면 건너뛴다.
+    namuwiki 출처는 namu_title도 함께 채운다. status는 pending으로 시작 (upsert가 보존).
+    """
+    if not high_docs or dry_run:
+        return 0
+    try:
+        from veristar.db.connection import get_conn, is_available
+        from veristar.db.targets_repository import CollectionTargetsRepository
+
+        if not is_available():
+            return 0
+        registered = 0
+        with get_conn() as conn:
+            rows = conn.execute("SELECT name FROM entities").fetchall()
+            existing_names: set[str] = {str(r["name"]) for r in rows}
+            repo = CollectionTargetsRepository(conn)  # type: ignore[arg-type]
+            seen: set[str] = set()
+            for vd in high_docs:
+                for ref in vd.entity_refs:
+                    if not ref or ref in existing_names or ref in seen:
+                        continue
+                    seen.add(ref)
+                    repo.upsert(
+                        {
+                            "id": f"vault:{ref}",
+                            "name": ref,
+                            "namu_title": ref if vd.source_type == "namuwiki" else None,
+                        }
+                    )
+                    registered += 1
+            repo.commit()
+        if registered:
+            logger.info("vault entity 후보 %d건 collection_targets 등록", registered)
+        return registered
+    except Exception as exc:
+        logger.warning("vault entity 후보 등록 실패: %s", exc)
+        return 0
+
+
 def sync_high_to_graph(
     vault: VaultStore,
     seed_path: Path,
@@ -354,8 +398,13 @@ def sync_high_to_graph(
         msg = f"{vd.id}: +{len(facts)} facts"
         report.details.append(msg)
 
+    # vault entity 후보를 collection_targets에 등록 (그래프 사실 추출과 독립)
+    report.entity_candidates_registered = register_vault_entity_candidates(
+        high_docs, dry_run=dry_run
+    )
+
     if not all_sources:
-        logger.info("승격할 문서 없음")
+        logger.info("승격할 사실 없음 (entity 후보만 등록됨)")
         return report
 
     report.new_sources = len(all_sources)
