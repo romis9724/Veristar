@@ -49,7 +49,13 @@ class GraphDocument(BaseModel):
         violations: list[Violation] = []
         sources_by_id: dict[str, Source] = {s.id: s for s in self.sources}
 
+        from .enums import Status
+
         for stmt in self.statements:
+            # RETRACTED / SUPERSEDED 는 이미 무효화된 사실 — 검증 제외
+            if stmt.status in (Status.RETRACTED, Status.SUPERSEDED):
+                continue
+
             # 규칙 2: 참조된 source id가 실제로 존재
             missing = [sid for sid in stmt.sources if sid not in sources_by_id]
             for sid in missing:
