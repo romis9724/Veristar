@@ -1,0 +1,90 @@
+# 도메인 → SourceType + Grade 매핑
+#
+# 외부 검색(네이버 등)으로 발견된 URL은 도메인을 키로 이 파일을 조회해
+# 등급을 결정한다. CLAUDE.md §4-1·§4-3 정합.
+#
+# 등급 결정 우선순위:
+#   1. 정확 매칭(domain.tld)
+#   2. 서브도메인 매칭(*.domain.tld)
+#   3. 기본값(default) — RUMOR
+#
+# 등급 정의:
+#   OFFICIAL  : 당사자(소속사·방송사·아티스트 공식 채널)가 직접 발표
+#   REPORTED  : 주요 언론사가 보도 (사실 확인 가능하나 1차 출처 아님)
+#   RUMOR     : 커뮤니티·블로그·미확인 (vault 저장만, 답변 입력 금지)
+
+official:
+  # K-pop 4대 기획사
+  - smtown.com
+  - smtownandstore.com
+  - ygfamily.com
+  - ygfamilyshop.com
+  - jype.com
+  - jypentertainment.com
+  - hybe.com
+  - bighitmusic.com
+  - source-music.com
+  - plediscompany.com
+  - belift-lab.com
+  - adorbts.com
+  # 메이저 인디·중견
+  - fncent.com
+  - cubeent.co.kr
+  - rbwartist.com
+  - starshipent.com
+  - p-nation.com
+  - kqent.com
+  - antenna.co.kr
+  - mysticstory.com
+  # 방송사 공식
+  - kbs.co.kr
+  - imbc.com
+  - mbc.co.kr
+  - sbs.co.kr
+  - tving.com
+  - tvn.tving.com
+  - jtbc.co.kr
+  - ebs.co.kr
+  # 음원 플랫폼 (메타데이터 권위)
+  - melon.com
+  - genie.co.kr
+  - bugs.co.kr
+  - music.naver.com
+  - vibe.naver.com
+  - flo.bz
+  # 기타 공식 데이터
+  - wikidata.org
+  - en.wikipedia.org
+  - ko.wikipedia.org
+
+reported:
+  # 한국 주요 통신·신문 (검증된 보도)
+  - yna.co.kr            # 연합뉴스
+  - newsis.com           # 뉴시스
+  - news1.kr             # 뉴스1
+  - chosun.com
+  - donga.com
+  - joongang.co.kr
+  - hani.co.kr
+  - khan.co.kr
+  - mt.co.kr             # 머니투데이
+  - hankyung.com
+  - mk.co.kr             # 매일경제
+  # 연예 전문지
+  - osen.mt.co.kr
+  - tvreport.co.kr
+  - tenasia.hankyung.com
+  - newsen.com
+  - xportsnews.com
+  - sportskhan.news
+  - sports.news.naver.com
+  - news.naver.com
+  - n.news.naver.com
+  # 영문 K-pop
+  - soompi.com
+  - allkpop.com
+  - kpopherald.koreaherald.com
+
+# 그 외 모든 도메인은 RUMOR (커뮤니티·개인 블로그·디시 등)
+# 명시적으로 차단할 도메인 (sensitive=true 강제 등)이 필요하면 아래 추가
+blocked: []

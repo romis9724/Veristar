@@ -114,6 +114,32 @@ config/news_feeds.yaml (공개 RSS만)
 
 ⚠️ 추가 피드 사용 전 ToS·라이선스 반드시 검토.
 
+### 4.5 [5] 외부 검색 발견 파이프라인 — 구현 완료
+
+URL을 직접 알지 못해도 쿼리로 발견한 뒤 등급 분류 후 수집 큐에 추가한다.
+
+```
+NaverSearchProvider.search(query)    # 뉴스·블로그·웹 통합 검색
+    ↓
+DomainGrading.classify(url)          # config/source_grading.yaml 도메인 화이트리스트
+    ├── OFFICIAL  → collection_targets upsert (즉시 크롤링 대상)
+    ├── REPORTED  → collection_targets upsert
+    ├── RUMOR     → --include-rumor 옵션 없으면 건너뜀
+    └── blocked   → 항상 차단
+    ↓
+다음 cron: collectors.runner → vault → verify/pipeline → HIGH 시 그래프 승격
+```
+
+**설정**:
+- `config/source_grading.yaml`: official/reported/blocked 도메인 화이트리스트
+- 환경변수: `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` (미설정 시 graceful 빈 결과)
+
+**CLI 사용법**:
+```bash
+python -m veristar.ingest.search.discover --query "스트레이 키즈 신곡"
+python -m veristar.ingest.search.discover --query "블랙핑크" --limit 20 --include-rumor
+```
+
 ## 5. 검색(query) 설계
 
 ### 5.1 구조적 그래프 탐색 (메인)

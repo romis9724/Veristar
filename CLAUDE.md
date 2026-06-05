@@ -96,7 +96,12 @@ veristar/
 │   │   │   ├── youtube.py         #   YouTube Data API v3
 │   │   │   ├── sns_scraper.py     #   Instagram·Twitter (ToS 경고)
 │   │   │   └── runner.py          #   통합 CLI (collection_targets 우선·YAML 폴백)
-│   │   └── news/                  # M4: RSS 뉴스 파이프라인 (제목추출·REPORTED)
+│   │   ├── news/                  # M4: RSS 뉴스 파이프라인 (제목추출·REPORTED)
+│   │   └── search/                # 외부 검색 → collection_targets 보충
+│   │       ├── base.py            #   SearchProvider Protocol + SearchResult
+│   │       ├── domain_grading.py  #   URL 도메인 → Grade 분류 (config/source_grading.yaml)
+│   │       ├── naver.py           #   NaverSearchProvider (뉴스·블로그·웹 검색)
+│   │       └── discover.py        #   CLI: search → 도메인 분류 → collection_targets upsert
 │   ├── grading/                   # M3: 등급 분류 + 민감 필터
 │   ├── graph/
 │   │   ├── repository.py          # GraphRepository Protocol + InMemoryGraphRepository
@@ -132,7 +137,7 @@ veristar/
 │   └── refresh_seed.sh            # cron용 시드 갱신
 └── tests/
     ├── e2e/                       # Playwright 브라우저 테스트 (53개)
-    └── ...                        # 단위·통합 (184개)
+    └── ...                        # 단위·통합 (243개)
 ```
 
 ## 7. 기술 스택 (확정)
@@ -145,7 +150,7 @@ veristar/
 | 벡터 임베딩 | **nomic-embed-text** (Ollama) | 768-dim, 엔티티 링킹·문서 검색 |
 | LLM | **Ollama qwen3:14b** | Q&A·요약·검증; Anthropic API 미사용 |
 | 도구 | ruff · mypy · pytest · Playwright | |
-| 테스트 | 184 unit + 53 E2E | |
+| 테스트 | 243 unit + 53 E2E | |
 
 > 스택 변경 시 사용자에게 먼저 확인한다.
 
@@ -186,6 +191,8 @@ veristar/
 | Entity Linker | 벡터 cosine 기반 링킹 | `graph/entity_linker.py` |
 | E2E | Playwright 브라우저 테스트 53개 | `tests/e2e/` |
 | Scheduling | cron/launchd 주기 갱신 | `scripts/refresh_seed.sh` |
+| Search Discovery | 외부 검색 → 도메인 등급 → 수집 큐 보충 | `ingest/search/` + `config/source_grading.yaml` |
 
 ⚠️ **M4 추가 확장 전 선행 확인**: 공개 RSS 외 추가 피드 사용 시 ToS·라이선스 검토 필수.
 ⚠️ **나무위키 CSR 한계**: headless browser 없이 본문 불가 — TOC 구조만 수집됨.
+⚠️ **Naver Search API**: NAVER_CLIENT_ID·NAVER_CLIENT_SECRET 환경변수 필요. 미설정 시 graceful 빈 결과.
