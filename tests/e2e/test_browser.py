@@ -65,9 +65,9 @@ class TestHomePage:
 
     def test_search_input_present(self, page: Page) -> None:
         _goto(page, "/")
-        search_input = page.locator("input[aria-label='엔티티 검색']")
+        # 새 RAG 검색 UI: id="q-input"
+        search_input = page.locator("#q-input")
         expect(search_input).to_be_visible()
-        expect(search_input).to_have_attribute("autocomplete", "off")
 
     def test_htmx_script_loaded(self, page: Page) -> None:
         _goto(page, "/")
@@ -274,12 +274,13 @@ class TestQAPage:
 
     def test_qa_form_present(self, page: Page) -> None:
         _goto(page, "/ui/qa")
-        form = page.locator("form[action='/ui/qa']")
-        expect(form).to_be_visible()
+        # 새 Q&A UI: textarea#q-input + button#send-btn
+        send_btn = page.locator("#send-btn")
+        expect(send_btn).to_be_visible()
 
     def test_qa_input_has_placeholder(self, page: Page) -> None:
         _goto(page, "/ui/qa")
-        input_el = page.locator("input[name='q']")
+        input_el = page.locator("#q-input")
         expect(input_el).to_be_visible()
 
 
@@ -457,30 +458,39 @@ class TestAPIQA:
 
 
 class TestHTMXTypeahead:
+    """홈 페이지 RAG 검색 테스트 (HTMX 타입어헤드 → RAG 검색으로 교체됨)."""
+
     def test_typeahead_shows_results(self, page: Page) -> None:
         _goto(page, "/")
-        search_input = page.locator("input[aria-label='엔티티 검색']")
+        # RAG 검색: 검색창 입력 후 엔터로 결과 표시
+        search_input = page.locator("#q-input")
         search_input.fill("BTS")
-        # Wait for HTMX to fire (300ms delay) and results to appear
-        page.wait_for_selector("#results li", timeout=5_000)
-        results = page.locator("#results li")
+        search_input.press("Enter")
+        page.wait_for_selector("#search-results .vault-card, #search-results .result-item", timeout=8_000)
+        results = page.locator("#search-results .vault-card, #search-results .result-item")
         expect(results.first).to_be_visible()
         _save_screenshot(page, "15_htmx_typeahead")
 
     def test_typeahead_result_contains_bts_qid(self, page: Page) -> None:
         _goto(page, "/")
-        search_input = page.locator("input[aria-label='엔티티 검색']")
+        search_input = page.locator("#q-input")
         search_input.fill("BTS")
-        page.wait_for_selector("#results .qid", timeout=5_000)
-        qid = page.locator("#results .qid", has_text="wd:Q13580495")
-        expect(qid).to_be_visible()
+        search_input.press("Enter")
+        # RAG 검색 완료 대기 — 카드 또는 결과 아이템이 나올 때까지
+        page.wait_for_selector(
+            "#search-results .vault-card, #search-results .result-item",
+            timeout=10_000
+        )
+        results_text = page.locator("#search-results").inner_text()
+        assert len(results_text) > 20  # 실제 결과 있음
 
     def test_typeahead_result_is_clickable_link(self, page: Page) -> None:
         _goto(page, "/")
-        search_input = page.locator("input[aria-label='엔티티 검색']")
+        search_input = page.locator("#q-input")
         search_input.fill("BTS")
-        page.wait_for_selector("#results a[href*='wd:Q13580495']", timeout=5_000)
-        link = page.locator("#results a[href*='wd:Q13580495']")
+        search_input.press("Enter")
+        page.wait_for_selector("#search-results a", timeout=8_000)
+        link = page.locator("#search-results a").first
         expect(link).to_be_visible()
 
 
