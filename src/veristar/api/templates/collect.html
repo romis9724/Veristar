@@ -118,46 +118,55 @@
 </style>
 
 <div class="collect-layout">
-  <!-- 설정 패널 -->
+  <!-- 설정 패널 (압축형) -->
   <div class="config-panel">
-    <h2>🤖 파이프라인 설정</h2>
-
-    <div class="config-section">
-      <h3>실행 단계</h3>
-      <label class="check-item"><input type="checkbox" id="step-collect" checked> 📥 멀티소스 수집</label>
-      <label class="check-item"><input type="checkbox" id="step-verify" checked> 🔍 LLM 검증</label>
-      <label class="check-item"><input type="checkbox" id="step-sync" checked> 📊 그래프 승격</label>
-      <label class="check-item"><input type="checkbox" id="step-migrate" checked> 🐘 PostgreSQL 동기화</label>
-    </div>
-
-    <div class="config-section">
-      <h3>수집 소스</h3>
-      <label class="check-item"><input type="checkbox" id="src-wiki" checked> 📖 Wikipedia</label>
-      <label class="check-item"><input type="checkbox" id="src-namu" checked> 📝 나무위키</label>
-      <label class="check-item"><input type="checkbox" id="src-news" checked> 📰 뉴스</label>
-    </div>
-
-    <div class="config-section">
-      <h3>수집 한도</h3>
-      <div class="range-row">
-        <input type="range" id="limit-range" min="10" max="200" value="50" step="10"
-          oninput="document.getElementById('limit-val').textContent=this.value">
-        <span class="range-val" id="limit-val">50</span>건
+    <!-- 빠른 실행 버튼 — 항상 표시 -->
+    <div style="padding:0.8rem 0.9rem;border-bottom:1px solid var(--line)">
+      <button class="run-btn" id="run-btn" onclick="startPipeline()" style="margin-bottom:0.4rem">
+        ▶ 파이프라인 시작
+      </button>
+      <div style="display:flex;gap:0.3rem">
+        <button onclick="quickRun('verify,sync,migrate')"
+          style="flex:1;padding:0.35rem;border:1px solid var(--accent);border-radius:6px;background:none;cursor:pointer;font-size:0.73rem;color:var(--accent);font-weight:600">
+          🔍 검증+승격+동기화
+        </button>
+        <button onclick="quickRun('migrate')"
+          style="flex:1;padding:0.35rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;font-size:0.73rem">
+          🐘 PG만
+        </button>
       </div>
+      <button class="stop-btn" id="stop-btn" onclick="stopPipeline()">■ 중단</button>
     </div>
 
-    <button class="run-btn" id="run-btn" onclick="startPipeline()">▶ 파이프라인 시작</button>
-    <button class="stop-btn" id="stop-btn" onclick="stopPipeline()">■ 중단</button>
-
-    <div style="margin-top:1.5rem;padding-top:0.8rem;border-top:1px solid var(--line)">
-      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.4rem">빠른 실행</div>
-      <button onclick="quickRun('migrate')" style="width:100%;padding:0.4rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;font-size:0.78rem;margin-bottom:0.3rem">
-        🐘 PG 동기화만
-      </button>
-      <button onclick="quickRun('verify,sync,migrate')" style="width:100%;padding:0.4rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;font-size:0.78rem">
-        🔍 검증+승격+동기화
-      </button>
-    </div>
+    <!-- 세부 설정 — 접기/펼치기 -->
+    <details style="padding:0">
+      <summary style="padding:0.55rem 0.9rem;cursor:pointer;font-size:0.78rem;font-weight:600;color:var(--muted);list-style:none;display:flex;align-items:center;gap:0.4rem">
+        <span>⚙</span> 세부 설정
+      </summary>
+      <div style="padding:0.5rem 0.9rem 0.8rem">
+        <div class="config-section">
+          <h3>실행 단계</h3>
+          <label class="check-item"><input type="checkbox" id="step-collect" checked> 📥 수집</label>
+          <label class="check-item"><input type="checkbox" id="step-verify" checked> 🔍 검증</label>
+          <label class="check-item"><input type="checkbox" id="step-sync" checked> 📊 승격</label>
+          <label class="check-item"><input type="checkbox" id="step-migrate" checked> 🐘 동기화</label>
+        </div>
+        <div class="config-section">
+          <h3>수집 소스</h3>
+          <label class="check-item"><input type="checkbox" id="src-wiki" checked> 📖 Wikipedia</label>
+          <label class="check-item"><input type="checkbox" id="src-namu" checked> 📝 나무위키</label>
+          <label class="check-item"><input type="checkbox" id="src-news" checked> 📰 뉴스</label>
+        </div>
+        <div class="config-section">
+          <h3>수집 한도</h3>
+          <div class="range-row">
+            <input type="range" id="limit-range" min="10" max="500" value="50" step="10"
+              oninput="document.getElementById('limit-val').textContent=this.value">
+            <span class="range-val" id="limit-val">50</span>건
+          </div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <!-- 에이전트 터미널 -->

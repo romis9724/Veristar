@@ -88,6 +88,9 @@
       <div style="font-weight:600;margin-bottom:0.4rem">등급 필터</div>
       <label><input type="checkbox" name="grade" value="OFFICIAL" checked> OFFICIAL</label><br>
       <label><input type="checkbox" name="grade" value="REPORTED"> REPORTED</label>
+      <button onclick="resetHighlight()" style="margin-top:0.6rem;width:100%;padding:0.3rem;border:1px solid var(--line);border-radius:6px;background:none;cursor:pointer;font-size:0.75rem;color:var(--muted)">
+        전체 보기 (하이라이트 초기화)
+      </button>
     </div>
   </div>
 
@@ -136,6 +139,8 @@ const zoom = d3.zoom()
   .on("zoom", e => container.attr("transform", e.transform));
 
 svg.call(zoom);
+// 배경 클릭 → 하이라이트 초기화
+svg.on("click", (e) => { if (e.target.tagName === "svg") resetHighlight(); });
 const container = svg.append("g");
 
 async function loadGraph() {
@@ -252,17 +257,48 @@ async function loadTree() {
 function filterByType(type, id) {
   document.querySelectorAll(".tree-item").forEach(el => el.classList.remove("active"));
   event.target.classList.add("active");
-  activeType = type;
-  loadGraph();
-  // 해당 노드로 카메라 이동
+
+  // 필터링 X — 전체 그래프 유지하고 선택 노드와 이웃만 강조
+  const neighborIds = new Set([id]);
+  allLinks.forEach(l => {
+    const src = l.source.id || l.source;
+    const tgt = l.target.id || l.target;
+    if (src === id) neighborIds.add(tgt);
+    if (tgt === id) neighborIds.add(src);
+  });
+
+  // 비선택 노드 흐리게, 선택 노드 빨간 테두리
+  container.selectAll("circle")
+    .attr("opacity", d => neighborIds.has(d.id) ? 1 : 0.15)
+    .attr("stroke", d => d.id === id ? "#e53935" : "#fff")
+    .attr("stroke-width", d => d.id === id ? 3.5 : 2);
+  container.selectAll("text")
+    .attr("opacity", d => neighborIds.has(d.id) ? 1 : 0.1);
+  container.selectAll("line")
+    .attr("stroke-opacity", l => {
+      const s = l.source.id || l.source, t = l.target.id || l.target;
+      return (s === id || t === id) ? 0.9 : 0.05;
+    });
+
+  // 카메라 선택 노드 중심으로 이동
   const target = allNodes.find(n => n.id === id);
   if (target && target.x != null) {
     const W = canvas.clientWidth, H = canvas.clientHeight;
-    svg.transition().duration(600).call(
+    svg.transition().duration(500).call(
       zoom.transform,
-      d3.zoomIdentity.translate(W/2 - target.x*1.5, H/2 - target.y*1.5).scale(1.5)
+      d3.zoomIdentity.translate(W/2 - target.x * 1.8, H/2 - target.y * 1.8).scale(1.8)
     );
   }
+
+  // 상세 패널 표시
+  if (target) showDetail(target);
+}
+
+function resetHighlight() {
+  document.querySelectorAll(".tree-item").forEach(el => el.classList.remove("active"));
+  container.selectAll("circle").attr("opacity", 1).attr("stroke", "#fff").attr("stroke-width", 2);
+  container.selectAll("text").attr("opacity", 1);
+  container.selectAll("line").attr("stroke-opacity", 0.55);
 }
 
 function showDetail(d) {

@@ -216,7 +216,19 @@ def pipeline_logs() -> dict[str, object]:
 
 # bge-m3 cosine 분포: 관련 0.6~0.78 / 무관 0.45 이하 → 0.5 경계가 변별점
 _RAG_SIM_THRESHOLD = 0.5       # 기본 유사도 임계값 (이 미만은 무관련로 제외)
-_RAG_UNVERIFIED_WEIGHT = 0.5   # 미검증 문서의 점수 가중치 (정렬용, 임계값과 별개)
+_RAG_UNVERIFIED_WEIGHT = 0.5   # 미검증 문서의 점수 가중치
+_CONF_WEIGHTS = {
+    "high": 1.0, "medium": 0.85, "low": 0.6, "unverified": _RAG_UNVERIFIED_WEIGHT
+}
+# 소스 유형별 품질 가중치 — Wikipedia 우선, 나무위키 LOW 후순위
+_SRC_WEIGHTS = {
+    "wikipedia": 1.2,
+    "news": 1.0,
+    "namuwiki": 0.8,
+    "youtube": 0.9,
+    "instagram": 0.85,
+    "twitter": 0.85,
+}
 _CONF_WEIGHTS = {
     "high": 1.0, "medium": 0.85, "low": 0.6, "unverified": _RAG_UNVERIFIED_WEIGHT
 }
@@ -281,9 +293,11 @@ def rag_search(
                 # source_type 복수 필터
                 if source_type and vr.source_type not in source_type:
                     continue
-                # 유사도 × confidence 가중치 = 최종 점수 (정렬용)
-                weight = _CONF_WEIGHTS.get(vr.confidence, 0.5)
-                final_score = vr.similarity * weight
+                # 유사도 × confidence 가중치 × source 가중치 = 최종 점수
+                # → Wikipedia/HIGH가 나무위키/LOW보다 상위 노출
+                conf_w = _CONF_WEIGHTS.get(vr.confidence, 0.5)
+                src_w = _SRC_WEIGHTS.get(vr.source_type, 1.0)
+                final_score = vr.similarity * conf_w * src_w
                 # 임계값 미만 제외 — confidence와 무관하게 동일 적용
                 # (bge-m3는 unverified 문서도 관련성 자체는 정확히 측정)
                 if vr.similarity < sim_threshold:
