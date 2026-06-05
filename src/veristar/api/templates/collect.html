@@ -115,6 +115,42 @@
   .summary-card .lbl { font-size: 0.65rem; color: oklch(60% 0.03 260); }
   /* 타임스탬프 */
   .ts { color: oklch(40% 0.01 260); font-size: 0.72rem; flex-shrink: 0; }
+  /* 최근 배치 (cron) */
+  .cron-block { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .cron-block h3 {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--muted); margin: 0 0 0.5rem; display: flex; justify-content: space-between;
+  }
+  .cron-block h3 .refresh-btn {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 0.85rem; padding: 0; line-height: 1;
+  }
+  .cron-next {
+    font-size: 0.72rem; color: var(--muted); margin-bottom: 0.5rem;
+  }
+  .cron-next strong { color: var(--ink); }
+  .batch-item {
+    padding: 0.4rem 0.55rem; margin: 0.25rem 0;
+    border: 1px solid var(--line); border-radius: 6px;
+    font-size: 0.75rem; cursor: pointer; transition: background 100ms;
+  }
+  .batch-item:hover { background: var(--bg); }
+  .batch-item .b-head {
+    display: flex; justify-content: space-between; gap: 0.4rem;
+  }
+  .batch-item .b-time { color: var(--ink); font-weight: 500; }
+  .batch-item .b-status { font-size: 0.65rem; padding: 0.05rem 0.4rem; border-radius: 999px; }
+  .b-status.done { background: oklch(95% 0.07 145); color: oklch(45% 0.18 145); }
+  .b-status.running { background: oklch(95% 0.07 75); color: oklch(45% 0.18 75); }
+  .batch-item .b-meta { color: var(--muted); font-size: 0.68rem; margin-top: 0.15rem; }
+  .batch-steps {
+    display: none; margin-top: 0.5rem; padding-top: 0.4rem;
+    border-top: 1px dashed var(--line); font-family: var(--mono);
+    font-size: 0.68rem; max-height: 220px; overflow-y: auto;
+  }
+  .batch-item.open .batch-steps { display: block; }
+  .step-line { color: var(--muted); padding: 0.08rem 0; }
+  .step-line strong { color: var(--ink); }
 </style>
 
 <div class="collect-layout">
@@ -167,6 +203,16 @@
         </div>
       </div>
     </details>
+
+    <!-- 최근 cron 배치 -->
+    <div class="cron-block">
+      <h3>
+        최근 자동 배치 (cron)
+        <button class="refresh-btn" onclick="loadCronBatches()" title="새로고침">↻</button>
+      </h3>
+      <div class="cron-next" id="cron-next">로딩...</div>
+      <div id="cron-batches"></div>
+    </div>
   </div>
 
   <!-- 에이전트 터미널 -->
@@ -378,5 +424,58 @@ async function restoreIfRunning() {
 }
 
 restoreIfRunning();
+
+// ─── 최근 cron 배치 ──────────────────────────────────────
+async function loadCronBatches() {
+  try {
+    const r = await fetch('/api/pipeline/cron-batches?limit=5');
+    const d = (await r.json()).data;
+    document.getElementById('cron-next').innerHTML =
+      d.log_exists
+        ? `다음 실행 예정: <strong>${d.next_run}</strong>`
+        : `다음 실행 예정: <strong>${d.next_run}</strong> · <span style="color:oklch(65% 0.18 75)">아직 실행 이력 없음</span>`;
+    const box = document.getElementById('cron-batches');
+    if (!d.batches.length) {
+      box.innerHTML = '<div style="font-size:0.72rem;color:var(--muted);padding:0.3rem 0">— 아직 배치 없음 —</div>';
+      return;
+    }
+    box.innerHTML = d.batches.map((b, i) => {
+      const stepCount = (b.steps || []).length;
+      const running = b.running;
+      const status = running ? 'running' : 'done';
+      const statusLabel = running ? '실행 중' : '완료';
+      const duration = (b.started_at && b.finished_at)
+        ? ` · ${diffMin(b.started_at, b.finished_at)}`
+        : '';
+      const stepsHtml = (b.steps || []).map(s => {
+        const safe = (s.msg || '').replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+        return `<div class="step-line"><strong>${s.ts || ''}</strong> ${safe}</div>`;
+      }).join('');
+      return `<div class="batch-item" onclick="this.classList.toggle('open')">
+        <div class="b-head">
+          <span class="b-time">${b.started_at || '?'}</span>
+          <span class="b-status ${status}">${statusLabel}</span>
+        </div>
+        <div class="b-meta">${stepCount}단계${duration}</div>
+        <div class="batch-steps">${stepsHtml || '— 단계 로그 없음 —'}</div>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    document.getElementById('cron-next').innerHTML =
+      `<span style="color:oklch(65% 0.22 25)">로드 실패</span>`;
+  }
+}
+
+function diffMin(start, end) {
+  try {
+    const s = new Date(start.replace(' ', 'T'));
+    const e = new Date(end.replace(' ', 'T'));
+    const mins = Math.round((e - s) / 60000);
+    return mins < 60 ? `${mins}분` : `${Math.floor(mins/60)}시 ${mins%60}분`;
+  } catch { return ''; }
+}
+
+loadCronBatches();
+setInterval(loadCronBatches, 60000); // 1분마다 자동 새로고침
 </script>
 {% endblock %}

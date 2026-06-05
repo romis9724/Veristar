@@ -200,6 +200,71 @@ def pipeline_status() -> dict[str, object]:
     })
 
 
+@router.get("/api/pipeline/cron-batches")
+def pipeline_cron_batches(limit: int = Query(default=5, ge=1, le=20)) -> dict[str, object]:
+    """cron으로 실행된 collect_all.sh의 최근 배치 결과를 .run/collect.log에서 파싱.
+
+    각 사이클은 "====== Veristar 수집 시작 ======"로 시작하고
+    "====== 수집 완료 ======"로 끝난다. 단계별 상태와 시작/종료 시각만 추출.
+    """
+    from pathlib import Path
+
+    log_path = Path("/Users/user/Workspace/Veristar/.run/collect.log")
+    if not log_path.exists():
+        return ok({"batches": [], "next_run": _next_cron_time(), "log_exists": False})
+
+    lines = log_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    batches: list[dict[str, object]] = []
+    current: dict[str, object] | None = None
+    for line in lines:
+        if "====== Veristar 수집 시작 ======" in line:
+            current = {"started_at": _extract_ts(line), "steps": [], "finished_at": None}
+        elif "====== 수집 완료 ======" in line and current is not None:
+            current["finished_at"] = _extract_ts(line)
+            batches.append(current)
+            current = None
+        elif current is not None and "] [" in line:
+            # "[2026-06-05 03:00:01] [1] 수집 완료"
+            ts = _extract_ts(line)
+            tail = line.split("] ", 1)[-1] if "] " in line else line
+            current["steps"].append({"ts": ts, "msg": tail.strip()[:200]})
+
+    # 미완료 배치(실행 중)도 포함
+    if current is not None:
+        current["finished_at"] = None
+        current["running"] = True
+        batches.append(current)
+
+    batches.reverse()  # 최신순
+    return ok({
+        "batches": batches[:limit],
+        "next_run": _next_cron_time(),
+        "log_exists": True,
+    })
+
+
+def _extract_ts(line: str) -> str | None:
+    """'[YYYY-MM-DD HH:MM:SS] ...' 형식에서 타임스탬프 추출."""
+    if line.startswith("[") and "]" in line:
+        return line[1:line.index("]")]
+    return None
+
+
+def _next_cron_time() -> str:
+    """다음 cron 실행 예정 시각(03/09/15/21시 중 가장 가까운 미래)."""
+    from datetime import datetime, timedelta
+
+    now = datetime.now()
+    hours = [3, 9, 15, 21]
+    for h in hours:
+        candidate = now.replace(hour=h, minute=0, second=0, microsecond=0)
+        if candidate > now:
+            return candidate.strftime("%Y-%m-%d %H:%M")
+    # 모두 지났으면 다음날 03시
+    tomorrow = (now + timedelta(days=1)).replace(hour=3, minute=0, second=0, microsecond=0)
+    return tomorrow.strftime("%Y-%m-%d %H:%M")
+
+
 @router.get("/api/pipeline/logs")
 def pipeline_logs() -> dict[str, object]:
     """전체 로그 반환 (재접속 시 화면 복원용)."""
@@ -673,7 +738,7 @@ def entity_tree(
 def vault_docs(
     source_type: str | None = Query(default=None),
     confidence: str | None = Query(default=None),
-    limit: int = Query(default=50, ge=1, le=200),
+    limit: int = Query(default=200, ge=1, le=2000),
     request: Request = None,  # type: ignore[assignment]
 ) -> dict[str, object]:
     """vault 문서 목록 (파일 탐색기용)."""
