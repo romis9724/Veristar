@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%88%EB%8B%A8%ED%85%8C"
 entity_refs: ["안단테"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 안단테
 method: playwright

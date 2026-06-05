@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%94%EB%B6%84%EC%9D%98%EC%9D%BC"
 entity_refs: ["엔분의일"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엔분의일
 method: playwright

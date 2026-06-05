@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A7%81%EC%8B%9C"
 entity_refs: ["직시"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 직시
 method: playwright

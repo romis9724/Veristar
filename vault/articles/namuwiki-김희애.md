@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%ED%9D%AC%EC%95%A0"
 entity_refs: ["김희애"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김희애
 method: playwright

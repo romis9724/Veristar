@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%AC%EC%9D%80%EA%B2%BD"
 entity_refs: ["심은경"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 심은경
 method: playwright

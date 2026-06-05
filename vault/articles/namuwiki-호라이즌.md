@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%98%B8%EB%9D%BC%EC%9D%B4%EC%A6%8C"
 entity_refs: ["호라이즌"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 호라이즌
 method: playwright

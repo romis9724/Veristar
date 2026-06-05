@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B2%A0%EB%A6%AC%EA%B5%BF"
 entity_refs: ["베리굿"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 베리굿
 method: playwright

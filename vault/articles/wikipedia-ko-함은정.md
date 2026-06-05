@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%ED%95%A8%EC%9D%80%EC%A0%95"
 entity_refs: ["함은정"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 함은정
 ---

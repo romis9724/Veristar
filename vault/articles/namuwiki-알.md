@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%8C"
 entity_refs: ["알"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 알
 method: playwright

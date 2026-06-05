@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A9%94%EC%9D%B4%EC%9C%84%EC%8B%9C"
 entity_refs: ["메이위시"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 메이위시
 method: playwright

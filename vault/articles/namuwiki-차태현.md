@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B0%A8%ED%83%9C%ED%98%84"
 entity_refs: ["차태현"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 차태현
 method: playwright

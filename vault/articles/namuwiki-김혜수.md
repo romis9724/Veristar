@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%ED%98%9C%EC%88%98"
 entity_refs: ["김혜수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김혜수
 method: playwright
@@ -621,4 +621,4 @@ www.sixshop.com
 [35] 본인이 말하기를 지금까지 맡은 배역 중 가장 상스럽다고 한다.
 [36] 기사
 [37] 촬영 중 오른쪽 허벅지 근육이 파열될 정도로 열정을 보였고 오히려 역동적인 장면이 나온 것 같아 만족했다는 후일담을 전함. 기사
-[38] 두 배우는 김혜수를 누나라고 부른다. 남다른 케미와 애정을 보여주었던 
+[38] 두 배우는 김혜수를 누나라고 부른다. 남다른 케미와 애정을 보여주었던

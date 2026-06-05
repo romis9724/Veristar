@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%B0%EB%93%9C%ED%82%A4%EC%A6%88"
 entity_refs: ["배드키즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 배드키즈
 method: playwright

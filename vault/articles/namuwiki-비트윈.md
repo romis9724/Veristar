@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B9%84%ED%8A%B8%EC%9C%88"
 entity_refs: ["비트윈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 비트윈
 method: playwright

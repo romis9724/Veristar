@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EC%A6%88%EB%82%98"
 entity_refs: ["이즈나"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이즈나
 method: playwright

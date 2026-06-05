@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%9E%99%EB%85%B8%EC%8B%9C%EC%8A%A4%20%ED%85%8C%EB%9D%BC%ED%94%BC"
 entity_refs: ["힙노시스-테라피"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 힙노시스 테라피
 method: playwright

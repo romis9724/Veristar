@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%B4%EC%8B%9C%ED%83%9C%EA%B7%B8"
 entity_refs: ["해시태그"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 해시태그
 method: playwright

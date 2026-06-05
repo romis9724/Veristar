@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%9C%EA%B5%AD%EC%96%B4%EB%A6%B0%EC%9D%B4%EC%9A%94%EB%93%A4%ED%95%A9%EC%B0%BD%EB%8B%A8"
 entity_refs: ["한국어린이요들합창단"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 한국어린이요들합창단
 method: playwright

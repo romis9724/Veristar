@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/2bic"
 entity_refs: ["2bic"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 2bic
 method: playwright

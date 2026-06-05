@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Ros%C3%A9%20%28singer%29"
 entity_refs: ["로제"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Rosé (singer)

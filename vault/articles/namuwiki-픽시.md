@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%BD%EC%8B%9C"
 entity_refs: ["픽시"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 픽시
 method: playwright

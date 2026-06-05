@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8C%80%EC%84%B1%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["대성-가수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 대성 (가수)
 method: playwright

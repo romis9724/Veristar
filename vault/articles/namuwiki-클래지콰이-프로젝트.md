@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%B4%EB%9E%98%EC%A7%80%EC%BD%B0%EC%9D%B4%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8"
 entity_refs: ["클래지콰이-프로젝트"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 클래지콰이 프로젝트
 method: playwright

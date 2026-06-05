@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%94%ED%94%8C%EB%9D%BC%EC%9E%89"
 entity_refs: ["엔플라잉"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엔플라잉
 method: playwright

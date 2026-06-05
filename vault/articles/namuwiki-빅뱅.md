@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B9%85%EB%B1%85"
 entity_refs: ["빅뱅"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 빅뱅
 method: playwright

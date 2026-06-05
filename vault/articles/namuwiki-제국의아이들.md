@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%9C%EA%B5%AD%EC%9D%98%EC%95%84%EC%9D%B4%EB%93%A4"
 entity_refs: ["제국의아이들"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 제국의아이들
 method: playwright

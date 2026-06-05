@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B0%AC%EC%96%91%ED%95%98%EB%8A%94%20%EA%B0%80%EC%95%BC%EA%B8%88"
 entity_refs: ["찬양하는-가야금"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 찬양하는 가야금
 method: playwright

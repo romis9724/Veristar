@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/ALL%20OURS"
 entity_refs: ["all-ours"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: ALL OURS
 method: playwright

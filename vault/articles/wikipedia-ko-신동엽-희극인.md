@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%8B%A0%EB%8F%99%EC%97%BD%20%28%ED%9D%AC%EA%B7%B9%EC%9D%B8%29"
 entity_refs: ["신동엽"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 신동엽 (희극인)

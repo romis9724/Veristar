@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%9C%A4%EC%9A%B0"
 entity_refs: ["김윤우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김윤우
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%86%A1%EC%8A%B9%ED%97%8C"
 entity_refs: ["송승헌"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 송승헌

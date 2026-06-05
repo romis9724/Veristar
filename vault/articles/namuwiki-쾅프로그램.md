@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BE%85%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8"
 entity_refs: ["쾅프로그램"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 쾅프로그램
 method: playwright

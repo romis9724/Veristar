@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A8%EB%93%A0%EC%B0%A8%EC%9D%BC%EB%93%9C%20%28%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9%29"
 entity_refs: ["골든차일드-음악-그룹"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 골든차일드 (음악 그룹)
 method: playwright

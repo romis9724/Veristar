@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A0%EB%A7%89%EC%86%8C%EB%85%84%EB%8B%A8"
 entity_refs: ["고막소년단"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 고막소년단
 method: playwright

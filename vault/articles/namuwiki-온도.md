@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A8%EB%8F%84"
 entity_refs: ["온도"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 온도
 method: playwright

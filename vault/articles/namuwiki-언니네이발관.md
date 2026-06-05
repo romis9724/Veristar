@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C%EA%B4%80"
 entity_refs: ["언니네이발관"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 언니네이발관
 method: playwright
@@ -305,4 +305,4 @@ www.coupang.com
 
 밤에도 걱정 없는 성남시페인트, 저소음으로 쾌적한 어항을 만드세요. 로켓배송.
 [1] 언니네 이발관 공식 홈페이지의 8월 7일자 마지막 일기에 쓰여져 있다.
-[2] 1980년대에서 1990년대 초반의 한국에서 야한 비디오를 틀어주는 
+[2] 1980년대에서 1990년대 초반의 한국에서 야한 비디오를 틀어주는

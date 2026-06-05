@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845583wpp/zo-in-sung-transforms-into-a-local-resident-with-strong-survival-instinct-in-new-film-hope"
 published: 2026-06-04
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -38,4 +38,3 @@ In the meantime, watch Zo In Sung in “Escape from Mogadishu”:
 Watch Now
 
 Source (1)
-

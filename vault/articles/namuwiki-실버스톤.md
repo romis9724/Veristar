@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%A4%EB%B2%84%EC%8A%A4%ED%86%A4"
 entity_refs: ["실버스톤"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 실버스톤
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%B8%EB%B8%90%EC%96%B4%EC%8A%A4"
 entity_refs: ["세븐어스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 세븐어스
 method: playwright

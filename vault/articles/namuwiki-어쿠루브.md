@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EC%BF%A0%EB%A3%A8%EB%B8%8C"
 entity_refs: ["어쿠루브"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 어쿠루브
 method: playwright

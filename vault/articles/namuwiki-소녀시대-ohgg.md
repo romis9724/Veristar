@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EB%85%80%EC%8B%9C%EB%8C%80-Oh%21GG"
 entity_refs: ["소녀시대-ohgg"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소녀시대-Oh!GG
 method: playwright

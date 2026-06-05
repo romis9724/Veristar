@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%B8%EC%9D%B4%20%EC%98%88%EC%8A%A4"
 entity_refs: ["세이-예스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 세이 예스
 method: playwright

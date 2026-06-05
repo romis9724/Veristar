@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B9%84%ED%88%AC%EB%B9%84%EF%BC%8D%EB%B8%94%EB%A3%A8"
 entity_refs: ["비투비블루"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 비투비－블루
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9A%B0%EC%A3%BC%EB%AF%B8%ED%82%A4"
 entity_refs: ["우주미키"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 우주미키
 method: playwright

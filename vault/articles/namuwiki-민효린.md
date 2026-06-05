@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%BC%ED%9A%A8%EB%A6%B0"
 entity_refs: ["민효린"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 민효린
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%94%94%ED%81%AC%EB%9F%B0%EC%B9%98"
 entity_refs: ["디크런치"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 디크런치
 method: playwright

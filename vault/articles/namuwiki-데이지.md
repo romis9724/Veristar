@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%B0%EC%9D%B4%EC%A7%80"
 entity_refs: ["데이지"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 데이지
 method: playwright

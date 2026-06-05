@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%ED%99%8D%EC%A2%85%ED%98%84"
 entity_refs: ["홍종현"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 홍종현

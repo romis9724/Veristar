@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%84%EC%9B%83%EC%98%A4%EB%B8%8C%EC%BA%A0%ED%8D%BC%EC%8A%A4"
 entity_refs: ["아웃오브캠퍼스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 아웃오브캠퍼스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/10cm"
 entity_refs: ["10cm"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 10cm
 method: playwright

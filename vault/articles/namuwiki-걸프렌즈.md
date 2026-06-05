@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B1%B8%ED%94%84%EB%A0%8C%EC%A6%88"
 entity_refs: ["걸프렌즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 걸프렌즈
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%97%A4%EC%9D%BC%EB%A1%9C"
 entity_refs: ["헤일로"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 헤일로
 method: playwright

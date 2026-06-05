@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B9%84%ED%83%80%EB%AF%BC"
 entity_refs: ["비타민"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 비타민
 method: playwright

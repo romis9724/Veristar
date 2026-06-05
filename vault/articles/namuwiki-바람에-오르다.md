@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%94%EB%9E%8C%EC%97%90%20%EC%98%A4%EB%A5%B4%EB%8B%A4"
 entity_refs: ["바람에-오르다"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 바람에 오르다
 method: playwright

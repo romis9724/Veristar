@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%98%81%EA%B4%91%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["김영광"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김영광 (배우)

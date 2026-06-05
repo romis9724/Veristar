@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/SM%20TOWN"
 entity_refs: ["sm-town"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: SM TOWN
 method: playwright

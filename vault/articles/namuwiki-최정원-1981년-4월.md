@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B5%9C%EC%A0%95%EC%9B%90%20%281981%EB%85%84%204%EC%9B%94%29"
 entity_refs: ["최정원-1981년-4월"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 최정원 (1981년 4월)
 method: playwright

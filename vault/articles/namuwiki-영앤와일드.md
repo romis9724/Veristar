@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%81%EC%95%A4%EC%99%80%EC%9D%BC%EB%93%9C"
 entity_refs: ["영앤와일드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 영앤와일드
 method: playwright

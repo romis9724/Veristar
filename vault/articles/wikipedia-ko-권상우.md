@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B6%8C%EC%83%81%EC%9A%B0"
 entity_refs: ["권상우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 권상우

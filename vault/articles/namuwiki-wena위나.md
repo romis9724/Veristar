@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/We%3BNa%28%EC%9C%84%EB%82%98%29"
 entity_refs: ["wena위나"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: We;Na(위나)
 method: playwright

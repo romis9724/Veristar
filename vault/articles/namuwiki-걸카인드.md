@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B1%B8%EC%B9%B4%EC%9D%B8%EB%93%9C"
 entity_refs: ["걸카인드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 걸카인드
 method: playwright

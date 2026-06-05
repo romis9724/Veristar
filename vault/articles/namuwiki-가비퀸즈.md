@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B0%80%EB%B9%84%ED%80%B8%EC%A6%88"
 entity_refs: ["가비퀸즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 가비퀸즈
 method: playwright

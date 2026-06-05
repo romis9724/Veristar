@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%B0%EB%94%94%EC%98%A4%EB%A0%88%EB%94%94%EC%98%A4"
 entity_refs: ["데디오레디오"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 데디오레디오
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A1%B0%EC%8A%B9%EC%9A%B0"
 entity_refs: ["조승우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 조승우
 method: playwright

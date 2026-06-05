@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%B9%85%EB%A7%88%EB%A7%88"
 entity_refs: ["빅마마"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 빅마마

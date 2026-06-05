@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%83%80%EC%9D%B4%ED%91%BC"
 entity_refs: ["타이푼"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 타이푼
 method: playwright

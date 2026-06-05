@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/LE%20SSERAFIM"
 entity_refs: ["le-sserafim"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: LE SSERAFIM
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%82%A8%EB%85%80%EA%B3%B5%ED%95%99"
 entity_refs: ["남녀공학"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 남녀공학
 method: playwright

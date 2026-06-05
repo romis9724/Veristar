@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%BC%ED%94%84%ED%8B%B0%20%ED%94%BC%ED%94%84%ED%8B%B0"
 entity_refs: ["피프티-피프티"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 피프티 피프티
 method: playwright
@@ -825,4 +825,4 @@ www.coupang.com
 [67] 차트 진입 6주차(4월 29일자) 자체 최고 순위 5위 기록
 [68] 3월 25일 20위 진입 → 2주차 19위 → 3주차 15위 → 4주차 14위 → 5주차 10위 → 6~7주차 5위 → 차트 아웃 ☞ Artist 100; 5월 13일자
 [69] 방탄소년단(315주)에 이어 EXO(18주)와 케이팝 역대 공동 2위 최장 연속 진입
-[70] TWICE(38주), BLACKPINK(32주)에 이어 케이팝 걸그룹 역대 3위 
+[70] TWICE(38주), BLACKPINK(32주)에 이어 케이팝 걸그룹 역대 3위

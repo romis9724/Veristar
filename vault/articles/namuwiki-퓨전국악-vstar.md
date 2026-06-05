@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%93%A8%EC%A0%84%EA%B5%AD%EC%95%85%20VSTAR"
 entity_refs: ["퓨전국악-vstar"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 퓨전국악 VSTAR
 method: playwright

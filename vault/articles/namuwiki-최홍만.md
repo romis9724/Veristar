@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B5%9C%ED%99%8D%EB%A7%8C"
 entity_refs: ["최홍만"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 최홍만
 method: playwright

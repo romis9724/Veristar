@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B8%B8%EA%B5%AC%EB%B4%89%EA%B5%AC"
 entity_refs: ["길구봉구"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 길구봉구
 method: playwright

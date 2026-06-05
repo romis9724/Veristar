@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98"
 entity_refs: ["시그니처"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 시그니처
 method: playwright

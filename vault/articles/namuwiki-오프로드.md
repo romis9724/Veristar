@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A4%ED%94%84%EB%A1%9C%EB%93%9C"
 entity_refs: ["오프로드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 오프로드
 method: playwright

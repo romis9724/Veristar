@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%B2%9C%EC%83%81%EC%A7%80%ED%9D%AC%20%EB%8D%94%20%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%8A%A4"
 entity_refs: ["천상지희-the-grace"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 천상지희 더 그레이스

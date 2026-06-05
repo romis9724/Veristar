@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%84%EB%9D%BC%EC%9E%84%ED%82%B9%EC%A6%88"
 entity_refs: ["프라임킹즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 프라임킹즈
 method: playwright

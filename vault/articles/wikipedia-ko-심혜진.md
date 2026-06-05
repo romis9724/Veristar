@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%8B%AC%ED%98%9C%EC%A7%84"
 entity_refs: ["심혜진"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 심혜진

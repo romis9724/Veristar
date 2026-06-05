@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Lee%20Dong-gun"
 entity_refs: ["이동건"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Lee Dong-gun

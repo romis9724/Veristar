@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A7%80%EB%AF%BC%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["지민"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 지민 (가수)

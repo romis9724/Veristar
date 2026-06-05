@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B6%80%EB%9D%BC%EB%8D%94%EC%8A%A4"
 entity_refs: ["부라더스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 부라더스
 method: playwright

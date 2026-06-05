@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%9D%B4%EB%A8%B8%EC%8A%A4"
 entity_refs: ["에이머스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에이머스
 method: playwright

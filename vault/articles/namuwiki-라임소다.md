@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9D%BC%EC%9E%84%EC%86%8C%EB%8B%A4"
 entity_refs: ["라임소다"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 라임소다
 method: playwright

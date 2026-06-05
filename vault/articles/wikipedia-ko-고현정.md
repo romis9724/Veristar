@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B3%A0%ED%98%84%EC%A0%95"
 entity_refs: ["고현정"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 고현정

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%ED%9B%84%EB%93%9C"
 entity_refs: ["브라운-후드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 브라운 후드
 method: playwright

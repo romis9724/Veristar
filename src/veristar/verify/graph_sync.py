@@ -104,9 +104,23 @@ def _stmt_id(subject: str, predicate: str, obj: str, source_id: str) -> str:
 
 
 def _grade_for(vault_doc: VaultDoc) -> Grade:
-    # vault 추출 사실은 LLM 추출 특성상 오류 가능성이 있으므로 항상 REPORTED.
-    # 사람이 검토 후 별도로 OFFICIAL 승격 가능.
-    return Grade.REPORTED
+    """출처 유형이 지원하는 최대 등급을 넘지 않도록 grade를 결정한다.
+
+    - namuwiki (COMMUNITY_OR_ANON) → 최대 RUMOR
+    - news (PRESS) → 최대 REPORTED
+    - wikipedia (WIKIDATA_VERIFIED) → OFFICIAL이지만 vault 추출이므로 REPORTED 상한
+    규칙 3 위반(grade > source 허용 최대) 방지.
+    """
+    from veristar.ontology.grading_map import max_grade_for_source_types
+
+    source_type = _source_type_for(vault_doc)
+    max_grade = max_grade_for_source_types([source_type])
+    if max_grade is None:
+        return Grade.RUMOR
+    # vault LLM 추출은 REPORTED 이하로 제한 (OFFICIAL 자동 승격 금지)
+    if max_grade == Grade.OFFICIAL:
+        return Grade.REPORTED
+    return max_grade
 
 
 def _source_type_for(vault_doc: VaultDoc) -> SourceType:

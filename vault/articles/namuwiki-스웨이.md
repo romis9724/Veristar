@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%A4%EC%9B%A8%EC%9D%B4"
 entity_refs: ["스웨이"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 스웨이
 method: playwright

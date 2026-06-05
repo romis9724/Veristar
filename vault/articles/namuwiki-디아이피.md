@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%94%94%EC%95%84%EC%9D%B4%ED%94%BC"
 entity_refs: ["디아이피"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 디아이피
 method: playwright

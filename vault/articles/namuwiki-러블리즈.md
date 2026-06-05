@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9F%AC%EB%B8%94%EB%A6%AC%EC%A6%88"
 entity_refs: ["러블리즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 러블리즈
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%84%B1%EC%9C%A0%EB%A6%AC"
 entity_refs: ["성유리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 성유리

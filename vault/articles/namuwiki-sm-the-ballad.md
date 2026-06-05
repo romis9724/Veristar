@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/S.M.%20THE%20BALLAD"
 entity_refs: ["sm-the-ballad"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: S.M. THE BALLAD
 method: playwright
 ---

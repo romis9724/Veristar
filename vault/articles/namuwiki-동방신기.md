@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8F%99%EB%B0%A9%EC%8B%A0%EA%B8%B0"
 entity_refs: ["동방신기"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 동방신기
 method: playwright

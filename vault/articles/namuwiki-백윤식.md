@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%B1%EC%9C%A4%EC%8B%9D"
 entity_refs: ["백윤식"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 백윤식
 method: playwright

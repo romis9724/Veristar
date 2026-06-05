@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B3%A0%EC%9D%80%EC%95%84%20%281946%EB%85%84%29"
 entity_refs: ["고은아"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 고은아 (1946년)

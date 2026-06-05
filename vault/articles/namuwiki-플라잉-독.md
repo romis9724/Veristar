@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%8C%EB%9D%BC%EC%9E%89%20%EB%8F%85"
 entity_refs: ["플라잉-독"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 플라잉 독
 method: playwright

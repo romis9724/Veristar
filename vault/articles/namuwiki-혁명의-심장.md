@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%98%81%EB%AA%85%EC%9D%98%20%EC%8B%AC%EC%9E%A5"
 entity_refs: ["혁명의-심장"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 혁명의 심장
 method: playwright

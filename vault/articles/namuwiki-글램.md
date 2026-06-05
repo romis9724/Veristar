@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B8%80%EB%9E%A8"
 entity_refs: ["글램"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 글램
 method: playwright
 ---

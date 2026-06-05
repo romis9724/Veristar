@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%90%EB%A6%AC"
 entity_refs: ["큐리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 큐리
 method: playwright
 ---

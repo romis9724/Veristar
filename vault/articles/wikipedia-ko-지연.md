@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A7%80%EC%97%B0"
 entity_refs: ["지연"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 지연

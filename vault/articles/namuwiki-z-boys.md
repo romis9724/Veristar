@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/Z-BOYS"
 entity_refs: ["z-boys"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: Z-BOYS
 method: playwright

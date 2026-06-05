@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/IVE"
 entity_refs: ["ive"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: IVE
 method: playwright
@@ -1049,4 +1049,4 @@ m.place.naver.com/restaurant/1927405941
 
 
 생활의 달인 맛집 핫플, 5,000원 상당의 치킨 가라아게 이벤트, 하이볼 1+1
-[운영중단] 2025년 6월 1일을 끝으로 운영이 
+[운영중단] 2025년 6월 1일을 끝으로 운영이

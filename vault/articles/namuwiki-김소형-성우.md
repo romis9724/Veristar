@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%86%8C%ED%98%95%20%28%EC%84%B1%EC%9A%B0%29"
 entity_refs: ["김소형-성우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김소형 (성우)
 method: playwright

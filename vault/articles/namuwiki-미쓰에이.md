@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%B8%EC%93%B0%EC%97%90%EC%9D%B4"
 entity_refs: ["미쓰에이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 미쓰에이
 method: playwright

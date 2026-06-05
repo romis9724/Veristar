@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EB%B8%8C%EB%A6%AC%20%EC%8B%B1%EA%B8%80%20%EB%8D%B0%EC%9D%B4"
 entity_refs: ["에브리-싱글-데이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에브리 싱글 데이
 method: playwright

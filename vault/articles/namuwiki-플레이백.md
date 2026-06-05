@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%8C%EB%A0%88%EC%9D%B4%EB%B0%B1"
 entity_refs: ["플레이백"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 플레이백
 method: playwright

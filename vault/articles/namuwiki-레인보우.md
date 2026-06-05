@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A0%88%EC%9D%B8%EB%B3%B4%EC%9A%B0"
 entity_refs: ["레인보우"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 레인보우
 method: playwright

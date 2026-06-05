@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BA%94%EB%94%94%EC%83%B5"
 entity_refs: ["캔디샵"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 캔디샵
 method: playwright

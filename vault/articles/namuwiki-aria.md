@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/Aria"
 entity_refs: ["aria"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: Aria
 method: playwright

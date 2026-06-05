@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%B8%EC%97%AD%EC%88%98%EC%97%BC"
 entity_refs: ["미역수염"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 미역수염
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EB%85%84%3A%EB%8B%AC"
 entity_refs: ["소년달"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: "소년:달"
 method: playwright

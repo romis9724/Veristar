@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8A%B8%EB%A1%9C%ED%94%BC%EC%B9%BC"
 entity_refs: ["트로피칼"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 트로피칼
 method: playwright

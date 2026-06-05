@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A2%8B%EC%9D%80%EC%94%A8%EC%95%97"
 entity_refs: ["좋은씨앗"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 좋은씨앗
 method: playwright

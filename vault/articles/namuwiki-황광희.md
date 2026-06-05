@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%99%A9%EA%B4%91%ED%9D%AC"
 entity_refs: ["황광희"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 황광희
 method: playwright
 ---

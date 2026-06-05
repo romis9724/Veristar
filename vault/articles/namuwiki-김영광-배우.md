@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%98%81%EA%B4%91%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["김영광-배우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김영광 (배우)
 method: playwright

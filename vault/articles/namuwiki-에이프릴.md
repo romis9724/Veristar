@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%9D%B4%ED%94%84%EB%A6%B4"
 entity_refs: ["에이프릴"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에이프릴
 method: playwright

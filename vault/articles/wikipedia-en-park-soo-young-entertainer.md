@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Park%20Soo-young%20%28entertainer%29"
 entity_refs: ["박수아"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Park Soo-young (entertainer)

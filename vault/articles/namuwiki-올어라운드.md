@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%AC%EC%96%B4%EB%9D%BC%EC%9A%B4%EB%93%9C"
 entity_refs: ["올어라운드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 올어라운드
 method: playwright

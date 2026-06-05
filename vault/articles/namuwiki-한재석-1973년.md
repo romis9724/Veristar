@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%9C%EC%9E%AC%EC%84%9D%20%281973%EB%85%84%29"
 entity_refs: ["한재석-1973년"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 한재석 (1973년)
 method: playwright

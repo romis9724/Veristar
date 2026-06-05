@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%A4%ED%86%A0%EB%8B%88%20%EC%8A%A4%EC%BB%B9%ED%81%AC"
 entity_refs: ["스토니-스컹크"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 스토니 스컹크
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A2%85%EC%84%9D%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["이종석"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 이종석 (배우)

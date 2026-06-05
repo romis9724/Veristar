@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B6%88%EB%8F%85%EB%A7%A8%EC%85%98"
 entity_refs: ["불독맨션"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 불독맨션
 method: playwright

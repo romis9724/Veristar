@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%93%A8%EC%A0%84%EC%97%A0%EC%94%A8"
 entity_refs: ["퓨전엠씨"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 퓨전엠씨
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Song%20Yoon-ah"
 entity_refs: ["송윤아"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Song Yoon-ah

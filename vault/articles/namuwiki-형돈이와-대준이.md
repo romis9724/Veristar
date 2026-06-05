@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%98%95%EB%8F%88%EC%9D%B4%EC%99%80%20%EB%8C%80%EC%A4%80%EC%9D%B4"
 entity_refs: ["형돈이와-대준이"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 형돈이와 대준이
 method: playwright

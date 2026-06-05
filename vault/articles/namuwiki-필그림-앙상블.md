@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%84%EA%B7%B8%EB%A6%BC%20%EC%95%99%EC%83%81%EB%B8%94"
 entity_refs: ["필그림-앙상블"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 필그림 앙상블
 method: playwright

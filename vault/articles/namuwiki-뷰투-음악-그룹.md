@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B7%B0%ED%88%AC%20%28%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9%29"
 entity_refs: ["뷰투-음악-그룹"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 뷰투 (음악 그룹)
 method: playwright

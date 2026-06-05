@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%80%B8%EB%B9%84%EC%A6%88"
 entity_refs: ["퀸비즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 퀸비즈
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%84%EB%8A%94%EB%8F%99%EC%83%9D"
 entity_refs: ["아는동생"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 아는동생
 method: playwright

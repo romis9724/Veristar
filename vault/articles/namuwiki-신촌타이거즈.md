@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%A0%EC%B4%8C%ED%83%80%EC%9D%B4%EA%B1%B0%EC%A6%88"
 entity_refs: ["신촌타이거즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 신촌타이거즈
 method: playwright

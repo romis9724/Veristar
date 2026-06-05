@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%95%84%EC%9D%B4%EB%93%9C%20%EC%86%8C%EC%9A%B8"
 entity_refs: ["브라운-아이드-소울"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 브라운 아이드 소울
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B9%84%ED%88%AC%EB%B9%84%20%ED%8F%AC%EC%9C%A0"
 entity_refs: ["비투비-포유"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 비투비 포유
 method: playwright

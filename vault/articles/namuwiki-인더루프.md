@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B8%EB%8D%94%EB%A3%A8%ED%94%84"
 entity_refs: ["인더루프"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 인더루프
 method: playwright

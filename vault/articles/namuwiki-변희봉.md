@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B3%80%ED%9D%AC%EB%B4%89"
 entity_refs: ["변희봉"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 변희봉
 method: playwright

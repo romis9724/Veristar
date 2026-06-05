@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A5%AC%EC%96%BC%EB%A6%AC"
 entity_refs: ["쥬얼리"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 쥬얼리
 method: playwright

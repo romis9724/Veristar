@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/406%ED%98%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8"
 entity_refs: ["406호-프로젝트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 406호 프로젝트
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A4%20%ED%81%AC%EB%A3%A8"
 entity_refs: ["다-크루"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 다 크루
 method: playwright

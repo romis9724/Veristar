@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A7%80%ED%94%BC%EC%A7%80%EA%B8%B0"
 entity_refs: ["지피지기"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 지피지기
 method: playwright

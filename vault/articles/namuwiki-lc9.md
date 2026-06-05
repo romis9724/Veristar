@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/LC9"
 entity_refs: ["lc9"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: LC9
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Sold%20Out%20on%20You"
 entity_refs: ["주연"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Sold Out on You

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%9C%EC%9D%B4%EB%B9%84%EC%A0%9C%EC%9D%B4%EA%B5%AC%EC%98%A4"
 entity_refs: ["제이비제이구오"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 제이비제이구오
 method: playwright

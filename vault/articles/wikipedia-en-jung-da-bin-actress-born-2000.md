@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Jung%20Da-bin%20%28actress%2C%20born%202000%29"
 entity_refs: ["정다빈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Jung Da-bin (actress, born 2000)

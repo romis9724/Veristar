@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9B%90%EB%8D%94%EB%82%98%EC%9D%B8"
 entity_refs: ["원더나인"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 원더나인
 method: playwright

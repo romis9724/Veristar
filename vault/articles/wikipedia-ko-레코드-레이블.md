@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%A0%88%EC%BD%94%EB%93%9C%20%EB%A0%88%EC%9D%B4%EB%B8%94"
 entity_refs: ["레이블"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 레코드 레이블

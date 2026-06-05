@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%97%88%EC%9D%B4%EC%9E%AC"
 entity_refs: ["허이재"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 허이재
 method: playwright
 ---

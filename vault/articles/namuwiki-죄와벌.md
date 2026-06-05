@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A3%84%EC%99%80%EB%B2%8C"
 entity_refs: ["죄와벌"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 죄와벌
 method: playwright

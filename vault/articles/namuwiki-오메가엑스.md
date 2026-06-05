@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A4%EB%A9%94%EA%B0%80%EC%97%91%EC%8A%A4"
 entity_refs: ["오메가엑스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 오메가엑스
 method: playwright

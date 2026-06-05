@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EB%85%80%EC%A3%BC%EC%9D%98%EB%B3%B4"
 entity_refs: ["소녀주의보"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소녀주의보
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EB%93%9C%EB%B0%B4%EC%8A%A4%EB%93%9C"
 entity_refs: ["어드밴스드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 어드밴스드
 method: playwright

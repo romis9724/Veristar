@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A3%B0%EB%9D%BC"
 entity_refs: ["룰라"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 룰라
 method: playwright
 ---

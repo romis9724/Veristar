@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Jonghyun"
 entity_refs: ["종현"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
+sensitive: true
 lang: en
 wiki_title: Jonghyun
 ---

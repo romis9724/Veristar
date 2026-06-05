@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A2%85%ED%98%84"
 entity_refs: ["종현"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 종현
 ---

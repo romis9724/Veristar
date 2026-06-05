@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8D%BC%ED%94%8C%ED%82%A4%EC%8A%A4"
 entity_refs: ["퍼플키스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 퍼플키스
 method: playwright
@@ -587,4 +587,4 @@ RBW 출신 아티스트
 [49] 둘의 경우 이전 소속사에서 같은 시기에 함께 현 소속사로 옮겨왔다. 비교적 낯가림이 심한 이레가 다른 멤버들과 금방 친해질 수 있었던 이유도 친한 친구이자 사교성이 좋은 채인과 같이 입사했기 때문이라고.
 [50] 해당 영상은 3월 23일부터 한 주당 한 명씩 총 3주에 걸쳐 업로드되었다.
 [51] 특히 채인이 별자리 운세를 가장 자주 보는 멤버라고 한다.
-[52] 
+[52]

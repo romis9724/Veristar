@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%B8%EC%BB%A8%EB%93%9C"
 entity_refs: ["세컨드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 세컨드
 method: playwright

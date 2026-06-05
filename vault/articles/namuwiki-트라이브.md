@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8A%B8%EB%9D%BC%EC%9D%B4%EB%B8%8C"
 entity_refs: ["트라이브"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 트라이브
 method: playwright

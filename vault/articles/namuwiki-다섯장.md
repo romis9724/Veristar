@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A4%EC%84%AF%EC%9E%A5"
 entity_refs: ["다섯장"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 다섯장
 method: playwright

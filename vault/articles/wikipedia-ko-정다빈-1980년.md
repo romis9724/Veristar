@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A0%95%EB%8B%A4%EB%B9%88%20%281980%EB%85%84%29"
 entity_refs: ["정다빈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 정다빈 (1980년)

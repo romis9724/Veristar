@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A6%AC%EB%B2%A0%EB%9E%80%ED%85%8C"
 entity_refs: ["리베란테"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 리베란테
 method: playwright

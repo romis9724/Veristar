@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8E%98%EC%9E%84%EC%96%B4%EC%8A%A4"
 entity_refs: ["페임어스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 페임어스
 method: playwright
 ---

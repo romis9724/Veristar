@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A0%88%EB%8B%88%EB%AA%A8%EB%8B%88"
 entity_refs: ["레니모니"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 레니모니
 method: playwright

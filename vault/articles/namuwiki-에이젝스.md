@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%9D%B4%EC%A0%9D%EC%8A%A4"
 entity_refs: ["에이젝스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에이젝스
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/FT%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
 entity_refs: ["ft아일랜드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: FT아일랜드

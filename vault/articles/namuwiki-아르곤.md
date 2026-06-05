@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%84%EB%A5%B4%EA%B3%A4"
 entity_refs: ["아르곤"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 아르곤
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9B%90%EB%8D%94%EA%B1%B8%EC%8A%A4"
 entity_refs: ["원더걸스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 원더걸스
 method: playwright

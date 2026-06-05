@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A8%EB%93%9C%ED%94%BC%EA%B7%B8"
 entity_refs: ["골드피그"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 골드피그
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EA%B7%B8%EB%AA%A8%EA%B7%B8"
 entity_refs: ["모그모그"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모그모그
 method: playwright

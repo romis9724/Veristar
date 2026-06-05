@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A1%9C%EC%9A%B0"
 entity_refs: ["하이브로우"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하이브로우
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A9%94%EB%85%B8%20%EB%AA%A8%EC%86%8C"
 entity_refs: ["메노-모소"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 메노 모소
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8C%8C%EC%9D%B4%EB%B8%8C%EB%8F%8C%EC%8A%A4"
 entity_refs: ["파이브돌스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 파이브돌스
 method: playwright

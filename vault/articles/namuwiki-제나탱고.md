@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%9C%EB%82%98%ED%83%B1%EA%B3%A0"
 entity_refs: ["제나탱고"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 제나탱고
 method: playwright

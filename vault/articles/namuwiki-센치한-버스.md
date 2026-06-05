@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%BC%EC%B9%98%ED%95%9C%20%EB%B2%84%EC%8A%A4"
 entity_refs: ["센치한-버스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 센치한 버스
 method: playwright

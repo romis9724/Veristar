@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B2%A0%EA%B0%80%EB%B3%B8%EC%A6%88"
 entity_refs: ["베가본즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 베가본즈
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%94%EB%A3%A8%EC%8A%A4%EC%99%84"
 entity_refs: ["블루스완"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 블루스완
 method: playwright

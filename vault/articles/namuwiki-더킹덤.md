@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%ED%82%B9%EB%8D%A4"
 entity_refs: ["더킹덤"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더킹덤
 method: playwright

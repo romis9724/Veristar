@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/AOA%20%ED%81%AC%EB%A6%BC"
 entity_refs: ["aoa-크림"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: AOA 크림
 method: playwright

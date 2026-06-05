@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/CLOSE%20YOUR%20EYES"
 entity_refs: ["close-your-eyes"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: CLOSE YOUR EYES
 method: playwright

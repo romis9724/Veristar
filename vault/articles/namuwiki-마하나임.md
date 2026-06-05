@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A7%88%ED%95%98%EB%82%98%EC%9E%84"
 entity_refs: ["마하나임"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 마하나임
 method: playwright

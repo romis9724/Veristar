@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A4%EC%9C%97%EA%B3%BC%20%EC%9A%94%EB%82%98%EB%8B%A8"
 entity_refs: ["다윗과-요나단"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 다윗과 요나단
 method: playwright

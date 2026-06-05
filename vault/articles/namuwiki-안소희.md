@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%88%EC%86%8C%ED%9D%AC"
 entity_refs: ["안소희"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 안소희
 method: playwright
@@ -175,7 +175,3 @@ Irony
 Tell Me
 	
 So Hot
-
-
-	
-	

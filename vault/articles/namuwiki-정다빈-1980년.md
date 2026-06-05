@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%95%EB%8B%A4%EB%B9%88%20%281980%EB%85%84%29"
 entity_refs: ["정다빈-1980년"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 정다빈 (1980년)
 method: playwright

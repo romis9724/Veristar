@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%B5%EC%A4%91%EA%B7%B8%EB%84%A4"
 entity_refs: ["공중그네"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 공중그네
 method: playwright

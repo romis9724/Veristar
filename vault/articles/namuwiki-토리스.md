@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%86%A0%EB%A6%AC%EC%8A%A4"
 entity_refs: ["토리스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 토리스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B1%B8%ED%81%AC%EB%9F%AC%EC%89%AC"
 entity_refs: ["걸크러쉬"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 걸크러쉬
 method: playwright

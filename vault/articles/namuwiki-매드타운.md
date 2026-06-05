@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A7%A4%EB%93%9C%ED%83%80%EC%9A%B4"
 entity_refs: ["매드타운"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 매드타운
 method: playwright

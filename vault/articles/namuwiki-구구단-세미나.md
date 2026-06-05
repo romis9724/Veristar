@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B5%AC%EA%B5%AC%EB%8B%A8%20%EC%84%B8%EB%AF%B8%EB%82%98"
 entity_refs: ["구구단-세미나"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 구구단 세미나
 method: playwright

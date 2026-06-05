@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%9D%B4%EB%94%94%EC%95%BC"
 entity_refs: ["에이디야"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에이디야
 method: playwright

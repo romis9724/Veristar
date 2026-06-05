@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BB%A8%ED%8C%8C%EC%9D%B8%EB%93%9C%20%ED%99%94%EC%9D%B4%ED%8A%B8"
 entity_refs: ["컨파인드-화이트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 컨파인드 화이트
 method: playwright

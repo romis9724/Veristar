@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B4%89%EC%A0%9C%EC%9D%B8%EA%B0%84"
 entity_refs: ["봉제인간"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 봉제인간
 method: playwright

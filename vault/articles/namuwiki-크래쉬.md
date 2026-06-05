@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%AC%EB%9E%98%EC%89%AC"
 entity_refs: ["크래쉬"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 크래쉬
 method: playwright

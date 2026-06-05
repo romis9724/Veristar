@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%B0%95%EC%9A%A9%ED%95%98"
 entity_refs: ["박용하"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 박용하
 ---

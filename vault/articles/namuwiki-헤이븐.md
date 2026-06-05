@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%97%A4%EC%9D%B4%EB%B8%90"
 entity_refs: ["헤이븐"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 헤이븐
 method: playwright

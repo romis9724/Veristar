@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8C%94%EC%B9%A0%EB%8C%84%EC%8A%A4"
 entity_refs: ["팔칠댄스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 팔칠댄스
 method: playwright

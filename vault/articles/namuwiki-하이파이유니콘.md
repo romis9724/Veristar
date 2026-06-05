@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EC%9D%B4%ED%8C%8C%EC%9D%B4%EC%9C%A0%EB%8B%88%EC%BD%98"
 entity_refs: ["하이파이유니콘"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하이파이유니콘
 method: playwright

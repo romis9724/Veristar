@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B0%90%EC%84%B1%EB%B0%B4%EB%93%9C%20%EC%97%AC%EC%9A%B0%EB%B9%84"
 entity_refs: ["감성밴드-여우비"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 감성밴드 여우비
 method: playwright

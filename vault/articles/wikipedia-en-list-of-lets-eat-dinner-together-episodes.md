@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/List%20of%20Let%27s%20Eat%20Dinner%20Together%20episodes"
 entity_refs: ["이경규"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: en
 wiki_title: "List of Let's Eat Dinner Together episodes"

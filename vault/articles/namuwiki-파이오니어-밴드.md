@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8C%8C%EC%9D%B4%EC%98%A4%EB%8B%88%EC%96%B4%20%EB%B0%B4%EB%93%9C"
 entity_refs: ["파이오니어-밴드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 파이오니어 밴드
 method: playwright

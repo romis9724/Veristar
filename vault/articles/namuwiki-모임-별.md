@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EC%9E%84%20%EB%B3%84"
 entity_refs: ["모임-별"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모임 별
 method: playwright

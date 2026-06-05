@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%94%EB%8B%90%EB%A0%88%EC%96%B4"
 entity_refs: ["바닐레어"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 바닐레어
 method: playwright

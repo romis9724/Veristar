@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8A%B8%EB%A6%AC%EB%8B%88%ED%8B%B0"
 entity_refs: ["트리니티"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 트리니티
 method: playwright

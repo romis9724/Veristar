@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%95%EC%B4%88%EB%A1%B1"
 entity_refs: ["박초롱"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 박초롱
 method: playwright
@@ -522,4 +522,4 @@ PINK WORLD에서는 솔로 무대로 비의 '나쁜 남자'를 부르면서, 이
 멤버들 중 유일하게 노태우 대통령 때 태어났다.[73] 또한 구 유고 연방과 체코슬로바키아, 소련이 남아있을 때 태어난 유일한 에이핑크 멤버이기도 하다.
 댄스로 23,000:1의 경쟁률을 뚫고 오디션에 합격했다.
 목소리가 귀여운 탓에 재채기하는 모습 및 소리 역시 심하게 귀엽다. 에이핑크의 쇼타임을 보면 홍대 카페에서 재채기하는 모습이 나오고, 팬 사인회에서도 재채기를 하자마자 팬들이 한 번 더를 외칠 정도였다.
-동명이인 필라테스 강사 덕분에 네이버 
+동명이인 필라테스 강사 덕분에 네이버

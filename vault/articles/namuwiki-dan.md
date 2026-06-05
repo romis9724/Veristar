@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/D.A.N"
 entity_refs: ["dan"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: D.A.N
 method: playwright

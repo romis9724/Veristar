@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%A4%ED%8C%8C%EC%9D%B4%EC%8B%9C%EC%86%8C%EB%8B%A4"
 entity_refs: ["스파이시소다"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 스파이시소다
 method: playwright

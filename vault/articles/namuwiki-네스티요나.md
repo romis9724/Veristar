@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%84%A4%EC%8A%A4%ED%8B%B0%EC%9A%94%EB%82%98"
 entity_refs: ["네스티요나"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 네스티요나
 method: playwright

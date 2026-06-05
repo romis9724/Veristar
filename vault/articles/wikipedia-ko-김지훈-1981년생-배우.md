@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%A7%80%ED%9B%88%20%281981%EB%85%84%EC%83%9D%20%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["김지훈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김지훈 (1981년생 배우)

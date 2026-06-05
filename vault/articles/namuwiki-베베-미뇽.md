@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B2%A0%EB%B2%A0%20%EB%AF%B8%EB%87%BD"
 entity_refs: ["베베-미뇽"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 베베 미뇽
 method: playwright

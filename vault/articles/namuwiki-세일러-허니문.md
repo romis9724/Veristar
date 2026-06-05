@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%B8%EC%9D%BC%EB%9F%AC%20%ED%97%88%EB%8B%88%EB%AC%B8"
 entity_refs: ["세일러-허니문"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 세일러 허니문
 method: playwright

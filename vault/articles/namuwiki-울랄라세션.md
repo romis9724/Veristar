@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9A%B8%EB%9E%84%EB%9D%BC%EC%84%B8%EC%85%98"
 entity_refs: ["울랄라세션"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 울랄라세션
 method: playwright

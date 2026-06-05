@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%83%88%EB%B2%BD%EA%B3%B5%EB%B0%A9"
 entity_refs: ["새벽공방"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 새벽공방
 method: playwright

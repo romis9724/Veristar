@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%93%9C%EB%A1%9C%EC%9E%89"
 entity_refs: ["드로잉"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 드로잉
 method: playwright

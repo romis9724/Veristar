@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B6%80%EA%B7%80%EC%8C%80%EB%A3%AC"
 entity_refs: ["부귀쌀룬"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 부귀쌀룬
 method: playwright

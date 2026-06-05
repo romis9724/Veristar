@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A3%A8%EC%8B%B8%EC%9D%B4%ED%8A%B8%20%ED%86%A0%EB%81%BC"
 entity_refs: ["루싸이트-토끼"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 루싸이트 토끼
 method: playwright

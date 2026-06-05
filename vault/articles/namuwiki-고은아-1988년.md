@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A0%EC%9D%80%EC%95%84%20%281988%EB%85%84%29"
 entity_refs: ["고은아-1988년"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 고은아 (1988년)
 method: playwright

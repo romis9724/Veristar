@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%98%EB%9D%BC%EC%8A%A4%ED%8A%B8"
 entity_refs: ["엘라스트"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엘라스트
 method: playwright

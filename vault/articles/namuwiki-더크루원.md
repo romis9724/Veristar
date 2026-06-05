@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%ED%81%AC%EB%A3%A8%EC%9B%90"
 entity_refs: ["더크루원"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더크루원
 method: playwright

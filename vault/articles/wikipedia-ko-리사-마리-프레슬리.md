@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%A6%AC%EC%82%AC%20%EB%A7%88%EB%A6%AC%20%ED%94%84%EB%A0%88%EC%8A%AC%EB%A6%AC"
 entity_refs: ["리사"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 리사 마리 프레슬리
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A1%B0%EC%9D%B8%EC%84%B1%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["조인성-배우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 조인성 (배우)
 method: playwright

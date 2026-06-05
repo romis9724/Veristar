@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845707wpp/watch-le-sserafim-takes-1st-win-for-boompala-on-m-countdown"
 published: 2026-06-04
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -20,6 +20,3 @@ LE SSERAFIM has won their first music show trophy for their new title track “B
 On the June 4 episode of “M Countdown,” the candidates for first place were LE SSERAFIM&#8217;s &#8220;BOOMPALA&#8221; and aespa’s “LEMONADE.” LE SSERAFIM ultimately took the win!
 
 Congratulations to LE SSERAFIM! Watch the winner announcement below!
-
-
-

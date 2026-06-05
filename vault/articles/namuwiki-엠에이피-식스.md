@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%A0%EC%97%90%EC%9D%B4%ED%94%BC%20%EC%8B%9D%EC%8A%A4"
 entity_refs: ["엠에이피-식스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엠에이피 식스
 method: playwright

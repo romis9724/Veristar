@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845773wpp/heo-nam-jun-gets-jealous-of-lim-ji-yeons-male-co-star-in-my-royal-nemesis"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -36,4 +36,3 @@ And watch Lim Ji Yeon in “Lies Hidden in My Garden” below:
 Watch Now
 
 Source (1)
-

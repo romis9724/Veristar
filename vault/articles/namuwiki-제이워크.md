@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%9C%EC%9D%B4%EC%9B%8C%ED%81%AC"
 entity_refs: ["제이워크"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 제이워크
 method: playwright

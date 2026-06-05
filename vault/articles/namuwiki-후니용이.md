@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%9B%84%EB%8B%88%EC%9A%A9%EC%9D%B4"
 entity_refs: ["후니용이"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 후니용이
 method: playwright

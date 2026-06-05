@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%94%EB%9E%99%ED%85%8C%ED%8A%B8%EB%9D%BC"
 entity_refs: ["블랙테트라"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 블랙테트라
 method: playwright

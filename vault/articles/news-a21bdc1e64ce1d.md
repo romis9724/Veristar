@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845385wpp/4-things-that-got-properly-wrapped-up-in-filing-for-love"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---

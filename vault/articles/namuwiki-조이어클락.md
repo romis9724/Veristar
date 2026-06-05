@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A1%B0%EC%9D%B4%EC%96%B4%ED%81%B4%EB%9D%BD"
 entity_refs: ["조이어클락"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 조이어클락
 method: playwright

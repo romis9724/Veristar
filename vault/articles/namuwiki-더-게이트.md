@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%20%EA%B2%8C%EC%9D%B4%ED%8A%B8"
 entity_refs: ["더-게이트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더 게이트
 method: playwright

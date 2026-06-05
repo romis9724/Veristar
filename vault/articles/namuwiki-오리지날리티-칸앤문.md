@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A4%EB%A6%AC%EC%A7%80%EB%82%A0%EB%A6%AC%ED%8B%B0%20%EC%B9%B8%EC%95%A4%EB%AC%B8"
 entity_refs: ["오리지날리티-칸앤문"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 오리지날리티 칸앤문
 method: playwright

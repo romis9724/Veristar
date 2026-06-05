@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%88%AC%EC%83%A4%EC%9D%B4"
 entity_refs: ["투샤이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 투샤이
 method: playwright

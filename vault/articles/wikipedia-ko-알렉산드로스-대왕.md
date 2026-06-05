@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%95%8C%EB%A0%89%EC%82%B0%EB%93%9C%EB%A1%9C%EC%8A%A4%20%EB%8C%80%EC%99%95"
 entity_refs: ["알렉산더"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 알렉산드로스 대왕

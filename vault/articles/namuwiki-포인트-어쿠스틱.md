@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8F%AC%EC%9D%B8%ED%8A%B8%20%EC%96%B4%EC%BF%A0%EC%8A%A4%ED%8B%B1"
 entity_refs: ["포인트-어쿠스틱"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 포인트 어쿠스틱
 method: playwright

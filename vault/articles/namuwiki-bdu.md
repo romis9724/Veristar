@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/B.D.U"
 entity_refs: ["bdu"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: B.D.U
 method: playwright

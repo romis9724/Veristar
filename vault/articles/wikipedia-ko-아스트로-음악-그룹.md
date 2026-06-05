@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%95%84%EC%8A%A4%ED%8A%B8%EB%A1%9C%20%28%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9%29"
 entity_refs: ["astro"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 아스트로 (음악 그룹)
 ---

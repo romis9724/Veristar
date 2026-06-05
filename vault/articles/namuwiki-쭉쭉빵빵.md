@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%AD%89%EC%AD%89%EB%B9%B5%EB%B9%B5"
 entity_refs: ["쭉쭉빵빵"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 쭉쭉빵빵
 method: playwright

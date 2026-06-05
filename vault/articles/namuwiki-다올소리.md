@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A4%EC%98%AC%EC%86%8C%EB%A6%AC"
 entity_refs: ["다올소리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 다올소리
 method: playwright

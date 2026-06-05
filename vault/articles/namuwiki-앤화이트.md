@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%A4%ED%99%94%EC%9D%B4%ED%8A%B8"
 entity_refs: ["앤화이트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 앤화이트
 method: playwright

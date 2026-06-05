@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/blackpink-lisa-latest-social-media-update-sparks-frenzy/"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

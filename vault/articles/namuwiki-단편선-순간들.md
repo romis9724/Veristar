@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A8%ED%8E%B8%EC%84%A0%20%EC%88%9C%EA%B0%84%EB%93%A4"
 entity_refs: ["단편선-순간들"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 단편선 순간들
 method: playwright

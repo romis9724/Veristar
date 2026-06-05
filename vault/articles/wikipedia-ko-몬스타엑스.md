@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%AA%AC%EC%8A%A4%ED%83%80%EC%97%91%EC%8A%A4"
 entity_refs: ["monsta-x"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 몬스타엑스
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/B.A.P"
 entity_refs: ["bap"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: B.A.P
 method: playwright

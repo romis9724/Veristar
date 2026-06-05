@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A8%B8%EC%8A%A4%ED%8A%B8%EB%B9%84"
 entity_refs: ["머스트비"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 머스트비
 method: playwright

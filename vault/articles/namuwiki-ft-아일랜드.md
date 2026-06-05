@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/F.T.%20%EC%95%84%EC%9D%BC%EB%9E%9C%EB%93%9C"
 entity_refs: ["ft-아일랜드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: F.T. 아일랜드
 method: playwright

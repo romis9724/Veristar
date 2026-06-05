@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%A0%ED%94%8C%EB%B9%84%20%28%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9%29"
 entity_refs: ["애플비-음악-그룹"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 애플비 (음악 그룹)
 method: playwright

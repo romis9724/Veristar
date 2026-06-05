@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9C%A4%EC%A2%85%EC%8B%A0"
 entity_refs: ["윤종신"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 윤종신
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/Visionary%20Vision"
 entity_refs: ["visionary-vision"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: Visionary Vision
 method: playwright

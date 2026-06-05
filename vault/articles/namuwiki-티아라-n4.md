@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8B%B0%EC%95%84%EB%9D%BC%20N4"
 entity_refs: ["티아라-n4"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 티아라 N4
 method: playwright

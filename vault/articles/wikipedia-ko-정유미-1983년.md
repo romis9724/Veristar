@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%A0%95%EC%9C%A0%EB%AF%B8%20%281983%EB%85%84%29"
 entity_refs: ["정유미"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 정유미 (1983년)

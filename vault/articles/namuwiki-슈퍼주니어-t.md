@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%88%ED%8D%BC%EC%A3%BC%EB%8B%88%EC%96%B4-T"
 entity_refs: ["슈퍼주니어-t"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 슈퍼주니어-T
 method: playwright

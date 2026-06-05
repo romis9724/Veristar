@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9C%84%EC%95%84%EB%8D%94%EC%9B%90"
 entity_refs: ["위아더원"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 위아더원
 method: playwright

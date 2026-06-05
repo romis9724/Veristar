@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%89%EC%95%A4%EC%8C%94%EB%AF%B8"
 entity_refs: ["닉앤쌔미"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 닉앤쌔미
 method: playwright

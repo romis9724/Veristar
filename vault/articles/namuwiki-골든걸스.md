@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A8%EB%93%A0%EA%B1%B8%EC%8A%A4"
 entity_refs: ["골든걸스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 골든걸스
 method: playwright

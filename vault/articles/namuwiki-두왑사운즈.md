@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%91%90%EC%99%91%EC%82%AC%EC%9A%B4%EC%A6%88"
 entity_refs: ["두왑사운즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 두왑사운즈
 method: playwright

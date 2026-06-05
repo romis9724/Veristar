@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%95%EC%B0%AC%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["정찬-배우"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 정찬 (배우)
 method: playwright

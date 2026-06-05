@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/By%20%EC%A7%84%EC%84%B1"
 entity_refs: ["by-진성"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: By 진성
 method: playwright

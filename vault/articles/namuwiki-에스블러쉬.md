@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%8A%A4%EB%B8%94%EB%9F%AC%EC%89%AC"
 entity_refs: ["에스블러쉬"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에스블러쉬
 method: playwright

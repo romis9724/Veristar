@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EB%85%B8%EA%B7%B8%EB%9E%A8"
 entity_refs: ["모노그램"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모노그램
 method: playwright

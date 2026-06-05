@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A0%88%EC%9D%B4%EB%93%9C%EB%B0%B1"
 entity_refs: ["레이드백"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 레이드백
 method: playwright

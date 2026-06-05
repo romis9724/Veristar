@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8A%B8%EC%99%80%EC%9D%B4%EC%8A%A4"
 entity_refs: ["트와이스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 트와이스
 method: playwright

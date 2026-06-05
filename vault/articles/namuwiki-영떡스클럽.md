@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%81%EB%96%A1%EC%8A%A4%ED%81%B4%EB%9F%BD"
 entity_refs: ["영떡스클럽"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 영떡스클럽
 method: playwright

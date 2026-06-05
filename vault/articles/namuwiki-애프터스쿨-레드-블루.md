@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%A0%ED%94%84%ED%84%B0%EC%8A%A4%EC%BF%A8%20%EB%A0%88%EB%93%9C%20%26%20%EB%B8%94%EB%A3%A8"
 entity_refs: ["애프터스쿨-레드--블루"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 애프터스쿨 레드 & 블루
 method: playwright

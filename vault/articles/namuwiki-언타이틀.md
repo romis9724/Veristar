@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B8%ED%83%80%EC%9D%B4%ED%8B%80"
 entity_refs: ["언타이틀"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 언타이틀
 method: playwright

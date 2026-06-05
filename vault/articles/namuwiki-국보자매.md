@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B5%AD%EB%B3%B4%EC%9E%90%EB%A7%A4"
 entity_refs: ["국보자매"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 국보자매
 method: playwright

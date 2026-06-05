@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8B%B0%EB%A7%A5%EC%8A%A4"
 entity_refs: ["티맥스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 티맥스
 method: playwright

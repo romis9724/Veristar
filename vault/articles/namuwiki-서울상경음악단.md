@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%9C%EC%9A%B8%EC%83%81%EA%B2%BD%EC%9D%8C%EC%95%85%EB%8B%A8"
 entity_refs: ["서울상경음악단"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 서울상경음악단
 method: playwright

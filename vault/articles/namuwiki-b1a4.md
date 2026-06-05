@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/B1A4"
 entity_refs: ["b1a4"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: B1A4
 method: playwright

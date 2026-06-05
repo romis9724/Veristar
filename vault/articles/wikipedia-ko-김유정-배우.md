@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%9C%A0%EC%A0%95%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["김유정"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김유정 (배우)

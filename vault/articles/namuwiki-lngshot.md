@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/LNGSHOT"
 entity_refs: ["lngshot"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: LNGSHOT
 method: playwright

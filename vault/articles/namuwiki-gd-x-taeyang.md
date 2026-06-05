@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/GD%20X%20TAEYANG"
 entity_refs: ["gd-x-taeyang"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: GD X TAEYANG
 method: playwright

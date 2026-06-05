@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/List%20of%20King%20of%20Mask%20Singer%20episodes%20%282021%29"
 entity_refs: ["곽범"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: en
 wiki_title: List of King of Mask Singer episodes (2021)

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B2%80%EC%9D%80%EC%9E%8E%EB%93%A4"
 entity_refs: ["검은잎들"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 검은잎들
 method: playwright

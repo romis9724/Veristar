@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%BC%EC%97%90%EC%8A%A4%ED%83%80"
 entity_refs: ["피에스타"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 피에스타
 method: playwright

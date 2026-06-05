@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%A0%ED%8C%8C%EC%9D%B4%EC%96%B4"
 entity_refs: ["엠파이어"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엠파이어
 method: playwright

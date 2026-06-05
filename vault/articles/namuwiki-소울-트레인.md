@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%20%ED%8A%B8%EB%A0%88%EC%9D%B8"
 entity_refs: ["소울-트레인"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울 트레인
 method: playwright

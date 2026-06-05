@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EC%8D%B8%20%EB%B2%A0%EC%9D%B4%EB%B9%84"
 entity_refs: ["어썸-베이비"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 어썸 베이비
 method: playwright

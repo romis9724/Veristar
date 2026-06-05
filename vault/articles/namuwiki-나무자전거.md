@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9E%90%EC%A0%84%EA%B1%B0"
 entity_refs: ["나무자전거"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 나무자전거
 method: playwright

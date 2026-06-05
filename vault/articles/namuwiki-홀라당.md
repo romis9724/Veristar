@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%99%80%EB%9D%BC%EB%8B%B9"
 entity_refs: ["홀라당"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 홀라당
 method: playwright
 ---

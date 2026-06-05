@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%EC%97%94%EC%A7%84"
 entity_refs: ["소울엔진"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울엔진
 method: playwright

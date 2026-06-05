@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A7%80%ED%91%B8%EC%99%80%20%EC%B9%9C%EA%B5%AC%EB%93%A4"
 entity_refs: ["지푸와-친구들"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 지푸와 친구들
 method: playwright

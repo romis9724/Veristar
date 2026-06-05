@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B5%9C%EA%B0%95%EC%B0%BD%EB%AF%BC"
 entity_refs: ["최강창민"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 최강창민
 method: playwright

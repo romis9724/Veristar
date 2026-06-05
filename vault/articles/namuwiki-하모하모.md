@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EB%AA%A8%ED%95%98%EB%AA%A8"
 entity_refs: ["하모하모"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하모하모
 method: playwright

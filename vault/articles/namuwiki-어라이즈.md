@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EB%9D%BC%EC%9D%B4%EC%A6%88"
 entity_refs: ["어라이즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 어라이즈
 method: playwright

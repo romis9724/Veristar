@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8E%9C%ED%83%80%EA%B3%A4"
 entity_refs: ["펜타곤"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 펜타곤
 method: playwright

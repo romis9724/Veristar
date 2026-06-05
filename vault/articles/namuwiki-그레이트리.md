@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B7%B8%EB%A0%88%EC%9D%B4%ED%8A%B8%EB%A6%AC"
 entity_refs: ["그레이트리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 그레이트리
 method: playwright

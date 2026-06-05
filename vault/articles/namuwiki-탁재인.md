@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%83%81%EC%9E%AC%EC%9D%B8"
 entity_refs: ["탁재인"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 탁재인
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%B4%EB%A6%AD%EB%B9%84"
 entity_refs: ["클릭비"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 클릭비
 method: playwright

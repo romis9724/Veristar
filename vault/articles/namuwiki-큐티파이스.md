@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%90%ED%8B%B0%ED%8C%8C%EC%9D%B4%EC%8A%A4"
 entity_refs: ["큐티파이스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 큐티파이스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B2%84%EC%8A%A4%ED%84%B0%EC%A6%88"
 entity_refs: ["버스터즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 버스터즈
 method: playwright

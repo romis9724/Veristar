@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%B0%EC%9D%B4%EB%93%9C%EB%A6%BC"
 entity_refs: ["데이드림"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 데이드림
 method: playwright

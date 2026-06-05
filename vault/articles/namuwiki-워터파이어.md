@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9B%8C%ED%84%B0%ED%8C%8C%EC%9D%B4%EC%96%B4"
 entity_refs: ["워터파이어"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 워터파이어
 method: playwright

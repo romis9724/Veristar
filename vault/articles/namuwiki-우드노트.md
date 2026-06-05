@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9A%B0%EB%93%9C%EB%85%B8%ED%8A%B8"
 entity_refs: ["우드노트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 우드노트
 method: playwright

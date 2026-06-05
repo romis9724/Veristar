@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%20%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80"
 entity_refs: ["소울-스테이지"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울 스테이지
 method: playwright

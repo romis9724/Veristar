@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%82%A8%EC%A7%80%ED%98%84%20%281990%EB%85%84%29"
 entity_refs: ["남지현-1990년"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 남지현 (1990년)
 method: playwright

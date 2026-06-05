@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/M%26D"
 entity_refs: ["md"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: M&D
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%85%EB%8F%99%EB%AE%A4%EC%A7%80%EC%85%98"
 entity_refs: ["악동뮤지션"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 악동뮤지션
 method: playwright
@@ -635,6 +635,3 @@ Love Lee
 	
 소문의 낙원
 1회
-	
-
-

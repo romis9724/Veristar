@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9E%AD%ED%82%B9%EC%BD%A9"
 entity_refs: ["잭킹콩"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 잭킹콩
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%B8%EC%8A%A4%EC%97%90%EC%8A%A4"
 entity_refs: ["미스에스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 미스에스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EB%85%84%EA%B3%B5%ED%99%94%EA%B5%AD"
 entity_refs: ["소년공화국"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소년공화국
 method: playwright

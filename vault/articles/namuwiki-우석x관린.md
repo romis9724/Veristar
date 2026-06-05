@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9A%B0%EC%84%9DX%EA%B4%80%EB%A6%B0"
 entity_refs: ["우석x관린"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 우석X관린
 method: playwright

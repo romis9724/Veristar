@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%A4%EB%A6%AC%EC%B9%B4%EA%B2%94"
 entity_refs: ["실리카겔"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 실리카겔
 method: playwright

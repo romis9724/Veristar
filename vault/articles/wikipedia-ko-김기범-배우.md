@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EA%B8%B0%EB%B2%94%20%28%EB%B0%B0%EC%9A%B0%29"
 entity_refs: ["김기범"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김기범 (배우)

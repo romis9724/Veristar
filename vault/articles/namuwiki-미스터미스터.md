@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%B8%EC%8A%A4%ED%84%B0%EB%AF%B8%EC%8A%A4%ED%84%B0"
 entity_refs: ["미스터미스터"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 미스터미스터
 method: playwright
 ---

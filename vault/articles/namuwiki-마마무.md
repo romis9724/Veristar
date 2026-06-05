@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A7%88%EB%A7%88%EB%AC%B4%2B"
 entity_refs: ["마마무"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 마마무+
 method: playwright

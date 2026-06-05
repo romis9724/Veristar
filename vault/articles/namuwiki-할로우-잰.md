@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%A0%EB%A1%9C%EC%9A%B0%20%EC%9E%B0"
 entity_refs: ["할로우-잰"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 할로우 잰
 method: playwright

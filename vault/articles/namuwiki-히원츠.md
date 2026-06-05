@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%9E%88%EC%9B%90%EC%B8%A0"
 entity_refs: ["히원츠"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 히원츠
 method: playwright

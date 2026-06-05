@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845790wpp/watch-aomgs-new-girl-group-keyveatz-announces-debut-date-with-preview-of-oxy"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -26,4 +26,3 @@ AOMG also released a sneak peek of “OXY,” which is described as a “song th
 Check out Keyveatz’s preview of their debut track “OXY” below!
 
 Source (1)
-

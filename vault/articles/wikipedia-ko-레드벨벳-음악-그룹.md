@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%A0%88%EB%93%9C%EB%B2%A8%EB%B2%B3%20%28%EC%9D%8C%EC%95%85%20%EA%B7%B8%EB%A3%B9%29"
 entity_refs: ["red-velvet"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 레드벨벳 (음악 그룹)

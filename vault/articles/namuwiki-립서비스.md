@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A6%BD%EC%84%9C%EB%B9%84%EC%8A%A4"
 entity_refs: ["립서비스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 립서비스
 method: playwright

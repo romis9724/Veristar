@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AC%B4%ED%82%A4%EB%AC%B4%ED%82%A4%EB%A7%8C%EB%A7%8C%EC%88%98"
 entity_refs: ["무키무키만만수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 무키무키만만수
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%83%9C%EA%B6%8C%ED%81%AC%EB%A6%AC"
 entity_refs: ["태권크리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 태권크리
 method: playwright

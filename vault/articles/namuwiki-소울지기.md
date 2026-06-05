@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%EC%A7%80%EA%B8%B0"
 entity_refs: ["소울지기"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울지기
 method: playwright

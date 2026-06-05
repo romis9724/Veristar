@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A5%ED%83%91%EB%B0%A9%20%EC%9E%91%EC%97%85%EC%8B%A4"
 entity_refs: ["옥탑방-작업실"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 옥탑방 작업실
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%94%94%EC%97%90%EC%9D%B4%EB%93%9C"
 entity_refs: ["디에이드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 디에이드
 method: playwright

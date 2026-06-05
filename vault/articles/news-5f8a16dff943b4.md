@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845654wpp/3-reasons-to-look-forward-to-kim-moo-yeol-lee-sung-min-jin-ki-joo-and-p-os-new-netflix-series-teach-you-a-lesson"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -56,4 +56,3 @@ And watch Jin Ki Joo in “Undercover High School” below:
 WATCH NOW
 
 Source (1)
-

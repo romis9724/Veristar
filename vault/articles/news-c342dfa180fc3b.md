@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845605wpp/kim-myung-soo-kang-min-ah-and-more-impress-at-script-reading-for-new-drama"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -44,4 +44,3 @@ Also watch Kang Min Ah in “Miracle” on Viki below:
 Watch Now
 
 Source (1)
-

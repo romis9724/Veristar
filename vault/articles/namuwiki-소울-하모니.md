@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%20%ED%95%98%EB%AA%A8%EB%8B%88"
 entity_refs: ["소울-하모니"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울 하모니
 method: playwright

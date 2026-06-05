@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%A2%85%EA%B5%AD%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["김종국"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 김종국 (가수)

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/BTL"
 entity_refs: ["btl"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: BTL
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%82%AC%EB%9E%91%EA%BE%BC%EB%B0%B4%EB%93%9C"
 entity_refs: ["사랑꾼밴드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 사랑꾼밴드
 method: playwright

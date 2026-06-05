@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EB%AA%A8%EB%82%98%EC%9D%B4%EC%A6%88"
 entity_refs: ["하모나이즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하모나이즈
 method: playwright

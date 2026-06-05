@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B4%88%EB%A1%9D%EB%B6%88%EA%BD%83%EC%86%8C%EB%85%84%EB%8B%A8"
 entity_refs: ["초록불꽃소년단"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 초록불꽃소년단
 method: playwright

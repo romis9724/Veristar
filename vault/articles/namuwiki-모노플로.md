@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EB%85%B8%ED%94%8C%EB%A1%9C"
 entity_refs: ["모노플로"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모노플로
 method: playwright

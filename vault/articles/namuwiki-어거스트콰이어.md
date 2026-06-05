@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EA%B1%B0%EC%8A%A4%ED%8A%B8%EC%BD%B0%EC%9D%B4%EC%96%B4"
 entity_refs: ["어거스트콰이어"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 어거스트콰이어
 method: playwright

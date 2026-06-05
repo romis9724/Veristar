@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%93%9C%EB%A6%BC%EB%85%B8%ED%8A%B8"
 entity_refs: ["드림노트"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 드림노트
 method: playwright

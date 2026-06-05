@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BD%98%EC%B9%98%EC%99%80%20%EC%BD%98%EC%B9%98%EC%A6%88"
 entity_refs: ["콘치와-콘치즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 콘치와 콘치즈
 method: playwright

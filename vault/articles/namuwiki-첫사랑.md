@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B2%AB%EC%82%AC%EB%9E%91"
 entity_refs: ["첫사랑"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 첫사랑
 method: playwright

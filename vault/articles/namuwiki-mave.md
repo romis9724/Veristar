@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/MAVE%3A"
 entity_refs: ["mave"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: "MAVE:"
 method: playwright

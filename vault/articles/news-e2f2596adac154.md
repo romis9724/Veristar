@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845713wpp/watch-performances-from-m-countdown-x-mega-concert"
 published: 2026-06-04
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -86,6 +86,3 @@ tripleS &#8211; &#8220;Baby Flower&#8221;
 
 
 hrtz.wav &#8211; &#8220;NINETEEN&#8221;
-
-
-

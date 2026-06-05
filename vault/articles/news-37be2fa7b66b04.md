@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845767wpp/watch-park-eun-bin-gives-yang-se-jong-the-ability-to-see-ghosts-in-spooky-in-love-teaser"
 published: 2026-06-04
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---
@@ -34,4 +34,3 @@ Watch Now
 And watch Yang Se Jong in “Thirty But Seventeen” below:
 
 Watch Now
-

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%8C%ED%8C%8C%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%EC%9B%90"
 entity_refs: ["알파드라이브원"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 알파드라이브원
 method: playwright

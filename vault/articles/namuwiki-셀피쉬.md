@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%85%80%ED%94%BC%EC%89%AC"
 entity_refs: ["셀피쉬"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 셀피쉬
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%B0%EB%93%9C%EB%B9%8C%EB%9F%B0"
 entity_refs: ["배드빌런"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 배드빌런
 method: playwright

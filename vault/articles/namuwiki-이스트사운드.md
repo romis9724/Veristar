@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EC%8A%A4%ED%8A%B8%EC%82%AC%EC%9A%B4%EB%93%9C"
 entity_refs: ["이스트사운드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이스트사운드
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%88%ED%8D%BC%EB%85%B8%EB%B0%94"
 entity_refs: ["슈퍼노바"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 슈퍼노바
 method: playwright

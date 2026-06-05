@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%89%B4%ED%81%B4%EB%A6%AC%EC%96%B4%EC%8A%A4"
 entity_refs: ["뉴클리어스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 뉴클리어스
 method: playwright

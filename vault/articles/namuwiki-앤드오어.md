@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%A4%EB%93%9C%EC%98%A4%EC%96%B4"
 entity_refs: ["앤드오어"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 앤드오어
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9D%BD%EC%9D%8C%EA%B5%AD%EC%95%85%EB%8B%A8"
 entity_refs: ["락음국악단"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 락음국악단
 method: playwright

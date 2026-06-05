@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%91%EC%8A%A4%ED%8C%8C%EC%9D%B4%EB%B8%8C"
 entity_refs: ["엑스파이브"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 엑스파이브
 method: playwright
 ---

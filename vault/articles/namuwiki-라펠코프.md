@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9D%BC%ED%8E%A0%EC%BD%94%ED%94%84"
 entity_refs: ["라펠코프"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 라펠코프
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A0%AC%EC%8A%A4%ED%86%A4"
 entity_refs: ["젬스톤"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 젬스톤
 method: playwright

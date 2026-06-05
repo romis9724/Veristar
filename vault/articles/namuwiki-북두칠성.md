@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B6%81%EB%91%90%EC%B9%A0%EC%84%B1"
 entity_refs: ["북두칠성"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: 북두칠성
 method: playwright

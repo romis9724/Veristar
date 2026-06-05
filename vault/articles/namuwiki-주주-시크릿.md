@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A3%BC%EC%A3%BC%20%EC%8B%9C%ED%81%AC%EB%A6%BF"
 entity_refs: ["주주-시크릿"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 주주 시크릿
 method: playwright

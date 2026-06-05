@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/SS501"
 entity_refs: ["ss501"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: SS501
 method: playwright

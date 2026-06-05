@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Big%20Mama%20%28group%29"
 entity_refs: ["빅마마"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Big Mama (group)

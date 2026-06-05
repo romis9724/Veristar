@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%97%AC%EB%A1%9C%EB%B9%84%EB%84%88%EC%8A%A4"
 entity_refs: ["헬로비너스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 헬로비너스
 method: playwright

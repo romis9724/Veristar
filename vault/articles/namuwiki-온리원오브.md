@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%A8%EB%A6%AC%EC%9B%90%EC%98%A4%EB%B8%8C"
 entity_refs: ["온리원오브"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 온리원오브
 method: playwright
@@ -814,4 +814,4 @@ www.대찬크린.com
 [37] OnlyOneOf에 O가 3개라서 방송국 사람들이 간결하게 부르기 시작한 것에서 유래
 [38] 발음이 비슷해서. 엠카운트다운 포토월에서 준지가 "안녕하세요 저희는 올리브영입니다"라고 말해 유정이 놀랐다고 한다.
 [39] 2020년 10월 7일 유튜브 라이브
-[40] 멤버 모두 나무위키 존재를 
+[40] 멤버 모두 나무위키 존재를

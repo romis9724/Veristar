@@ -5,7 +5,8 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/lingerie-clad-sasaeng-waiting-underage-idol-outside-company-alarms-fans/"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
+sensitive: true
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

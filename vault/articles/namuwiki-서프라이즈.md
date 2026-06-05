@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%9C%ED%94%84%EB%9D%BC%EC%9D%B4%EC%A6%88"
 entity_refs: ["서프라이즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 서프라이즈
 method: playwright

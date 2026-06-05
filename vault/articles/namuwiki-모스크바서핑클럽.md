@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EC%8A%A4%ED%81%AC%EB%B0%94%EC%84%9C%ED%95%91%ED%81%B4%EB%9F%BD"
 entity_refs: ["모스크바서핑클럽"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모스크바서핑클럽
 method: playwright

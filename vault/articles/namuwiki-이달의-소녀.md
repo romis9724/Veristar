@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EB%8B%AC%EC%9D%98%20%EC%86%8C%EB%85%80"
 entity_refs: ["이달의-소녀"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이달의 소녀
 method: playwright
@@ -605,4 +605,4 @@ www.coupang.com
 [3] 일본 팬클럽 사이트이다. 계정을 생성하려면 일본 거주자는 5,500￥(가입비 1,100￥ 추가), 외거주자는 2,500￥을 가입일로부터 1년마다 지불해야 한다.
 [4] 보통 유닛 ODD EYE CIRCLE의 리더인 김립이 이 부분을 선창한다.
 [5] 각 유닛에는 특색 있는 인사법이 있으나, 완전체는 특별한 인사법이 없다.
-[6] 한국인 10명, 홍콩인 1명으로 구성. 본래는 한국인 11명, 홍콩인 
+[6] 한국인 10명, 홍콩인 1명으로 구성. 본래는 한국인 11명, 홍콩인

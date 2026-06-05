@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BD%94%EC%BD%94%EC%86%8C%EB%A6%AC"
 entity_refs: ["코코소리"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 코코소리
 method: playwright

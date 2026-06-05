@@ -5,7 +5,8 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/zerobaseone-park-gunwook-viral-clip-allegedly-ai/"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
+sensitive: true
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

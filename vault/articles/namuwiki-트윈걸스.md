@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8A%B8%EC%9C%88%EA%B1%B8%EC%8A%A4"
 entity_refs: ["트윈걸스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 트윈걸스
 method: playwright

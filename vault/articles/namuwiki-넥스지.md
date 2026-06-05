@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%84%A5%EC%8A%A4%EC%A7%80"
 entity_refs: ["넥스지"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 넥스지
 method: playwright

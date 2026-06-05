@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EC%83%81%EC%9D%98%EB%82%A0%EA%B0%9C"
 entity_refs: ["이상의날개"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이상의날개
 method: playwright

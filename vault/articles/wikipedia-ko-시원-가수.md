@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%8B%9C%EC%9B%90%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["최시원"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 시원 (가수)

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EC%9D%B4%EC%BB%AC%EB%9F%AC"
 entity_refs: ["하이컬러"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하이컬러
 method: playwright

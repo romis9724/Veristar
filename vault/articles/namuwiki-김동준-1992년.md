@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EB%8F%99%EC%A4%80%20%281992%EB%85%84%29"
 entity_refs: ["김동준-1992년"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김동준 (1992년)
 method: playwright

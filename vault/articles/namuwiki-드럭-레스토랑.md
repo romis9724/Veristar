@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%93%9C%EB%9F%AD%20%EB%A0%88%EC%8A%A4%ED%86%A0%EB%9E%91"
 entity_refs: ["드럭-레스토랑"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 드럭 레스토랑
 method: playwright

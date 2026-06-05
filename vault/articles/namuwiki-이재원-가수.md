@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EC%9E%AC%EC%9B%90%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["이재원-가수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이재원 (가수)
 method: playwright

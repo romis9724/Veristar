@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/Pink%20Fantasy"
 entity_refs: ["pink-fantasy"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: Pink Fantasy
 method: playwright

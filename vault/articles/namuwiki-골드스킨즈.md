@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A8%EB%93%9C%EC%8A%A4%ED%82%A8%EC%A6%88"
 entity_refs: ["골드스킨즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 골드스킨즈
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%ED%8A%B8%EC%99%80%EC%B9%9C%EA%B5%AC%EB%93%A4"
 entity_refs: ["김트와친구들"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김트와친구들
 method: playwright

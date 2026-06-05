@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%91%90%EB%A6%AC%EC%95%88"
 entity_refs: ["두리안"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 두리안
 method: playwright
@@ -172,4 +172,4 @@ Durio testudinarius Becc.
 [편집]
 열매가 있던 자리에 물을 받아서 손을 씻거나 양치를 하면 냄새가 없어진다는 말이 있는데, 말레이시아인들은 단순한 도시전설 혹은 미신이라고 한다. 냄새를 빼는 가장 좋은 방법은 단순히 독한 비누와 독한 치약을 써서 두리안의 향을 덮어버리는 것이다. 바람이 잘 부는 자리라면 몸에 묻은 냄새는 금방 옅어진다.
 
-다만 원래 냄새가 적은 몬통 품종의 경우는 냄새가 밴다는 것이 어려울 정도기 
+다만 원래 냄새가 적은 몬통 품종의 경우는 냄새가 밴다는 것이 어려울 정도기

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%A0%EB%B0%95%EC%84%9C%ED%81%B4"
 entity_refs: ["신박서클"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 신박서클
 method: playwright

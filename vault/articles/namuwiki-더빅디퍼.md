@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%EB%B9%85%EB%94%94%ED%8D%BC"
 entity_refs: ["더빅디퍼"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더빅디퍼
 method: playwright

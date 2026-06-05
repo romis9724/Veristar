@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%94%B8%EA%B8%B0%EC%9A%B0%EC%9C%A0"
 entity_refs: ["딸기우유"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 딸기우유
 method: playwright

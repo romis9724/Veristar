@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9C%A0%EB%8B%A4%EB%B9%88%EB%B0%B4%EB%93%9C"
 entity_refs: ["유다빈밴드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 유다빈밴드
 method: playwright

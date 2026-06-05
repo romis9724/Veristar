@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%94%A8%EC%97%98%EB%A1%9C"
 entity_refs: ["씨엘로"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 씨엘로
 method: playwright

@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%B1%84%EC%98%81%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["채영"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 채영 (가수)

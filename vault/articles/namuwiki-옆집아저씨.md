@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%86%EC%A7%91%EC%95%84%EC%A0%80%EC%94%A8"
 entity_refs: ["옆집아저씨"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 옆집아저씨
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%87%BC%EB%A8%B8%EC%8A%A4%ED%8A%B8"
 entity_refs: ["쇼머스트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 쇼머스트
 method: playwright

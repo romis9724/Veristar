@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8E%98%EC%9D%B4%EB%B8%8C%EC%9B%90"
 entity_refs: ["페이브원"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 페이브원
 method: playwright
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%91%EC%8A%A4%ED%81%AC%EB%A1%9C%EC%8A%A4"
 entity_refs: ["엑스크로스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엑스크로스
 method: playwright

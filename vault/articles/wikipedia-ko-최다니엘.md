@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%B5%9C%EB%8B%A4%EB%8B%88%EC%97%98"
 entity_refs: ["최다니엘"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 최다니엘

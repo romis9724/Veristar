@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9F%AC%EB%B8%8C%EC%97%91%EC%8A%A4%ED%85%8C%EB%A0%88%EC%98%A4"
 entity_refs: ["러브엑스테레오"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 러브엑스테레오
 method: playwright

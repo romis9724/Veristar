@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%96%B4%EC%BF%A0%EC%8A%A4%ED%8B%B1%20%EC%BD%9C%EB%9D%BC%EB%B3%B4"
 entity_refs: ["어쿠스틱-콜라보"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 어쿠스틱 콜라보
 method: playwright
 ---

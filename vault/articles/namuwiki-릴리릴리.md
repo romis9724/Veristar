@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A6%B4%EB%A6%AC%EB%A6%B4%EB%A6%AC"
 entity_refs: ["릴리릴리"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 릴리릴리
 method: playwright

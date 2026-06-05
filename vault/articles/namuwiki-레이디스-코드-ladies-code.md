@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A0%88%EC%9D%B4%EB%94%94%EC%8A%A4%20%EC%BD%94%EB%93%9C%20%28Ladies%27%20Code%29"
 entity_refs: ["레이디스-코드-ladies-code"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: "레이디스 코드 (Ladies' Code)"
 method: playwright

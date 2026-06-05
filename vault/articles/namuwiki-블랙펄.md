@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%94%EB%9E%99%ED%8E%84"
 entity_refs: ["블랙펄"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 블랙펄
 method: playwright

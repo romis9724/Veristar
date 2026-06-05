@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Park%20Ji-yeon"
 entity_refs: ["지연"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Park Ji-yeon

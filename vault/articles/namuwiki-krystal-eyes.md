@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%2B%28KR%29ystal%20Eyes"
 entity_refs: ["krystal-eyes"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: +(KR)ystal Eyes
 method: playwright

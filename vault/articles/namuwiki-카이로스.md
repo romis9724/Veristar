@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B9%B4%EC%9D%B4%EB%A1%9C%EC%8A%A4"
 entity_refs: ["카이로스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 카이로스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8F%99%ED%82%A4%EC%A6%88%20%EC%95%84%EC%9D%B4%EC%BA%94"
 entity_refs: ["동키즈-아이캔"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 동키즈 아이캔
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A7%80%ED%94%BC%20%EB%B2%A0%EC%9D%B4%EC%A7%81"
 entity_refs: ["지피-베이직"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 지피 베이직
 method: playwright

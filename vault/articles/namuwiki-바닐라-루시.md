@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B0%94%EB%8B%90%EB%9D%BC%20%EB%A3%A8%EC%8B%9C"
 entity_refs: ["바닐라-루시"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 바닐라 루시
 method: playwright

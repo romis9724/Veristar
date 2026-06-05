@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9A%B0%EC%A3%BC%EC%86%8C%EB%85%80"
 entity_refs: ["우주소녀"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 우주소녀
 method: playwright

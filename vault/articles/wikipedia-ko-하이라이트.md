@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%ED%95%98%EC%9D%B4%EB%9D%BC%EC%9D%B4%ED%8A%B8"
 entity_refs: ["highlight"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 하이라이트

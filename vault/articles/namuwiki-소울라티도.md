@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%EB%9D%BC%ED%8B%B0%EB%8F%84"
 entity_refs: ["소울라티도"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울라티도
 method: playwright

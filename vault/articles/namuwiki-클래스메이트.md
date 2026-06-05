@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A9%94%EC%9D%B4%ED%8A%B8"
 entity_refs: ["클래스메이트"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 클래스메이트
 method: playwright
 ---

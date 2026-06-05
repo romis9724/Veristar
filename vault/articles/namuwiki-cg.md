@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/C%26G"
 entity_refs: ["cg"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: C&G
 method: playwright

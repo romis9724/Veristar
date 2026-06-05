@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%85%94%EB%88%84%20X%20%ED%98%95%EC%9B%90"
 entity_refs: ["셔누-x-형원"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 셔누 X 형원
 method: playwright

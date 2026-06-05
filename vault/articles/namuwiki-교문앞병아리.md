@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B5%90%EB%AC%B8%EC%95%9E%EB%B3%91%EC%95%84%EB%A6%AC"
 entity_refs: ["교문앞병아리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 교문앞병아리
 method: playwright

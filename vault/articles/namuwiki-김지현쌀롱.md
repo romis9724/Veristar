@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%A7%80%ED%98%84%EC%8C%80%EB%A1%B1"
 entity_refs: ["김지현쌀롱"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김지현쌀롱
 method: playwright

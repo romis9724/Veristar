@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%ED%98%B8%EB%8C%80%20%28%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%29"
 entity_refs: ["소호대-대한민국"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소호대 (대한민국)
 method: playwright

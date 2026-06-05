@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%9D%B4%ED%83%9C%EB%A6%AC"
 entity_refs: ["이태리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 이태리

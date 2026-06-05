@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.koreaboo.com/stories/kpop-boy-group-friendzone-fans-fandom/"
 published: 2026-06-03
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

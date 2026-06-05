@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Kai%20%28entertainer%2C%20born%201994%29"
 entity_refs: ["카이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Kai (entertainer, born 1994)

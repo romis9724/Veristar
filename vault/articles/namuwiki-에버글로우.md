@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EB%B2%84%EA%B8%80%EB%A1%9C%EC%9A%B0"
 entity_refs: ["에버글로우"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에버글로우
 method: playwright

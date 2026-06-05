@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B2%84%EC%8A%A4%EC%BB%A4%20%EB%B2%84%EC%8A%A4%EC%BB%A4"
 entity_refs: ["버스커-버스커"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 버스커 버스커
 method: playwright

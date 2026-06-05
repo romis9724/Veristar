@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%88%ED%94%84%EB%A6%BC%ED%8C%80"
 entity_refs: ["슈프림팀"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 슈프림팀
 method: playwright
@@ -206,4 +206,4 @@ the615village.imweb.me
 이 저작물은 CC BY-NC-SA 2.0 KR에 따라 이용할 수 있습니다. (단, 라이선스가 명시된 일부 문서 및 삽화 제외)
 기여하신 문서의 저작권은 각 기여자에게 있으며, 각 기여자는 기여하신 부분의 저작권을 갖습니다.
 
-나무위키는 백과사전이 아니며 검증되지 않았거나, 편향적이거나, 잘못된 
+나무위키는 백과사전이 아니며 검증되지 않았거나, 편향적이거나, 잘못된

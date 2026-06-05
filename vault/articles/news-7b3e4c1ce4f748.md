@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.soompi.com/article/1845795wpp/tws-to-release-new-single-for-fifa-world-cup-2026-as-team-koreas-official-cheer-song"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Soompi
 news_source_type: PRESS
 ---

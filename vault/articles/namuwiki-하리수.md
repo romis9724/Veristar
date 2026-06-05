@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%98%EB%A6%AC%EC%88%98"
 entity_refs: ["하리수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 하리수
 method: playwright
@@ -268,4 +268,4 @@ www.simchung.co.kr
 [29] 하리수 “대만선 내가 한류 톱스타” - 스포츠경향, 2006년 4월 28일
 [30] 신작 RPG `파괴자` 공개…하리수 홍보모델로 떴다 - 매일경제, 2014년 12월 30일
 [31] 군인들이 자신들을 찾으러 화장실에 들이닥치자 남자 목소리를 내며 "이보세요! 똥 싸는 중입니다!"라는 시전했으나, 이미 하리수가 숨어있다는 것을 안 군인들이 문을 차며 나오라고 소리치자 결국 투항한다.
-[32] 2009년 12월 8일, 3년 전 악플 쓴 걸로 부산광역시의 한 여성이 경찰에 불구속입건되었다. 또한, 
+[32] 2009년 12월 8일, 3년 전 악플 쓴 걸로 부산광역시의 한 여성이 경찰에 불구속입건되었다. 또한,

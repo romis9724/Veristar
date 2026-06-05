@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Partners%20for%20Justice"
 entity_refs: ["정재영"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
 lang: en
 wiki_title: Partners for Justice

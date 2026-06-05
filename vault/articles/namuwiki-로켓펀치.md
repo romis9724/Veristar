@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A1%9C%EC%BC%93%ED%8E%80%EC%B9%98"
 entity_refs: ["로켓펀치"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 로켓펀치
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A7%88%EC%9D%B4%ED%8A%B8%EB%A1%9C"
 entity_refs: ["마이트로"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 마이트로
 method: playwright

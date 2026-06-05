@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B9%A0%ED%95%99%EB%85%84%EC%9D%BC%EB%B0%98"
 entity_refs: ["칠학년일반"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 칠학년일반
 method: playwright

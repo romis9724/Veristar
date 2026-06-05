@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%A2%85%EA%B5%AD%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["김종국-가수"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김종국 (가수)
 method: playwright

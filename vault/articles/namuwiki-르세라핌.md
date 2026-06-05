@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A5%B4%EC%84%B8%EB%9D%BC%ED%95%8C"
 entity_refs: ["르세라핌"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 르세라핌
 method: playwright

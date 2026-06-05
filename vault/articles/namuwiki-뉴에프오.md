@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%89%B4%EC%97%90%ED%94%84%EC%98%A4"
 entity_refs: ["뉴에프오"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 뉴에프오
 method: playwright

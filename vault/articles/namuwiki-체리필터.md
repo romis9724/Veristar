@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B2%B4%EB%A6%AC%ED%95%84%ED%84%B0"
 entity_refs: ["체리필터"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 체리필터
 method: playwright

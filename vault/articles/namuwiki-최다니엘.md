@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B5%9C%EB%8B%A4%EB%8B%88%EC%97%98"
 entity_refs: ["최다니엘"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: 최다니엘
 method: playwright
 ---

@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%ED%95%9C%EB%8B%A4%EA%B0%90"
 entity_refs: ["한은정"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 한다감
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B5%9C%EC%88%98%EC%A2%85"
 entity_refs: ["최수종"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 최수종
 method: playwright
@@ -1265,4 +1265,3 @@ MC
 
 
 10월 24일
-	

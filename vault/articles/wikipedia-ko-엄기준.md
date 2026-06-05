@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%97%84%EA%B8%B0%EC%A4%80"
 entity_refs: ["엄기준"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 엄기준
 ---

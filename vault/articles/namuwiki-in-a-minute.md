@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/In%20A%20Minute"
 entity_refs: ["in-a-minute"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: In A Minute
 method: playwright

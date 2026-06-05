@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EB%A1%9C%EC%A0%9C%20%28%EA%B0%80%EC%88%98%29"
 entity_refs: ["로제"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 로제 (가수)

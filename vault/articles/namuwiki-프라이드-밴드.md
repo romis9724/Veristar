@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%84%EB%9D%BC%EC%9D%B4%EB%93%9C%20%EB%B0%B4%EB%93%9C"
 entity_refs: ["프라이드-밴드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 프라이드 밴드
 method: playwright

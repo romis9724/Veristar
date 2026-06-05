@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AF%B8%EB%AF%B8%EB%A1%9C%EC%A6%88"
 entity_refs: ["미미로즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 미미로즈
 method: playwright

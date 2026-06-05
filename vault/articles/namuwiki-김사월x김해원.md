@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B9%80%EC%82%AC%EC%9B%94X%EA%B9%80%ED%95%B4%EC%9B%90"
 entity_refs: ["김사월x김해원"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 김사월X김해원
 method: playwright

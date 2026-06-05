@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%82%AC%EB%9E%8C%EA%B3%BC%20%EB%82%98%EB%AC%B4"
 entity_refs: ["사람과-나무"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 사람과 나무
 method: playwright

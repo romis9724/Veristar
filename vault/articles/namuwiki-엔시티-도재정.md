@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%94%EC%8B%9C%ED%8B%B0%20%EB%8F%84%EC%9E%AC%EC%A0%95"
 entity_refs: ["엔시티-도재정"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 엔시티 도재정
 method: playwright

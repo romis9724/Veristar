@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A7%88%EC%9D%B4%ED%8B%B0%20%EB%A7%88%EC%9A%B0%EC%8A%A4"
 entity_refs: ["마이티-마우스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 마이티 마우스
 method: playwright

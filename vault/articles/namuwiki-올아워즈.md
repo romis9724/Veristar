@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%98%AC%EC%95%84%EC%9B%8C%EC%A6%88"
 entity_refs: ["올아워즈"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 올아워즈
 method: playwright

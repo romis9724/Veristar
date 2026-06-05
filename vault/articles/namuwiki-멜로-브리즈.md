@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A9%9C%EB%A1%9C%20%EB%B8%8C%EB%A6%AC%EC%A6%88"
 entity_refs: ["멜로-브리즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 멜로 브리즈
 method: playwright

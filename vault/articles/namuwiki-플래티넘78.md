@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%8C%EB%9E%98%ED%8B%B0%EB%84%9878"
 entity_refs: ["플래티넘78"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 플래티넘78
 method: playwright

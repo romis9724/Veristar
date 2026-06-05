@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/Ab%20%EC%97%90%EB%B9%84%EB%89%B4"
 entity_refs: ["ab-에비뉴"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: Ab 에비뉴
 method: playwright

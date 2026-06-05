@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8B%A8%EB%B0%9C%EB%A8%B8%EB%A6%AC"
 entity_refs: ["단발머리"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 단발머리
 method: playwright

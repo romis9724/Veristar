@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B9%B4%EC%A6%88%EB%AA%A8%EC%8A%A4"
 entity_refs: ["카즈모스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 카즈모스
 method: playwright

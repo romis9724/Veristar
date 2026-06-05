@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8B%A0%ED%95%9C%ED%83%9C%EC%99%80%20%EB%A0%88%EA%B2%8C%EC%86%8C%EC%9A%B8"
 entity_refs: ["신한태와-레게소울"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 신한태와 레게소울
 method: playwright

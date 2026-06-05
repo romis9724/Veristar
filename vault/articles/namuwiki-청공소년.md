@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B2%AD%EA%B3%B5%EC%86%8C%EB%85%84"
 entity_refs: ["청공소년"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 청공소년
 method: playwright

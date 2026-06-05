@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A3%B0%EB%9D%BC%20%EB%A7%A8"
 entity_refs: ["룰라-맨"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 룰라 맨
 method: playwright

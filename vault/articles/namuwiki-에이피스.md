@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%90%EC%9D%B4%ED%94%BC%EC%8A%A4"
 entity_refs: ["에이피스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 에이피스
 method: playwright
@@ -801,4 +801,3 @@ Lapis→Onyx 5
 없음
 	
 없음
-	

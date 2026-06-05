@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8H"
 entity_refs: ["인피니트h"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 인피니트H
 method: playwright

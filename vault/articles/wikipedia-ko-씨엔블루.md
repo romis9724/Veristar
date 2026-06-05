@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%94%A8%EC%97%94%EB%B8%94%EB%A3%A8"
 entity_refs: ["씨엔블루"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 씨엔블루

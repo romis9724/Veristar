@@ -5,7 +5,7 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/mark-lee-perform-first-solo-stage-since-leaving-sm-nct/"
 published: 2026-06-05
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

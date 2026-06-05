@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%84%A4%EC%98%A8%ED%8E%80%EC%B9%98"
 entity_refs: ["네온펀치"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 네온펀치
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EC%9A%B8%EB%9D%BC%EC%9D%B4%EC%B8%A0"
 entity_refs: ["소울라이츠"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소울라이츠
 method: playwright

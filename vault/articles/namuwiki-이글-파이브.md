@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EA%B8%80%20%ED%8C%8C%EC%9D%B4%EB%B8%8C"
 entity_refs: ["이글-파이브"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이글 파이브
 method: playwright

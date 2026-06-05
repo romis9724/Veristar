@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%B4%EC%82%ADN%EC%A7%80%EC%97%B0"
 entity_refs: ["이삭n지연"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 이삭N지연
 method: playwright

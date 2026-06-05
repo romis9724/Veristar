@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%85%EB%8C%93%EB%B8%8C%EB%9D%BC%EC%9A%B4"
 entity_refs: ["업댓브라운"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 업댓브라운
 method: playwright

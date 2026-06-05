@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/S.E.S."
 entity_refs: ["ses"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: S.E.S.
 method: playwright
@@ -321,4 +321,4 @@ NCT 127 도영은 최근 한 음악방송 대기실에서 가진 스포츠월드
 
 마크도 "S.E.S. 선배님들이 활동할 당시 난 태어나지도 않았다"고 너스레를 떨며 "그럼에도 그분들의 노래를 안다는 게 굉장히 신기했다. 나 역시 그런 가수가 되고 싶다"고 덧붙였다.
 NCT 127 "S.E.S는 SM 개국공신, 선배 있어 우리가 존재"(인터뷰) 아카이브 (2017.01.14 스포츠월드)
-MC 박나래는 바다에게 SM 사옥에 대한 S.E.S.의 
+MC 박나래는 바다에게 SM 사옥에 대한 S.E.S.의

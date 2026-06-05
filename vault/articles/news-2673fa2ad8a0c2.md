@@ -5,7 +5,8 @@ source_type: news
 source_url: "https://www.koreaboo.com/news/bts-allegedly-used-promote-cortis-hybe/"
 published: 2026-06-04
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
+sensitive: true
 feed_name: Koreaboo
 news_source_type: PRESS
 ---

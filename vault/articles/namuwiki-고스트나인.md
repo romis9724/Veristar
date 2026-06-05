@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B3%A0%EC%8A%A4%ED%8A%B8%EB%82%98%EC%9D%B8"
 entity_refs: ["고스트나인"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 고스트나인
 method: playwright

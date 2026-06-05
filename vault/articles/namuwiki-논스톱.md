@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%85%BC%EC%8A%A4%ED%86%B1"
 entity_refs: ["논스톱"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 논스톱
 method: playwright

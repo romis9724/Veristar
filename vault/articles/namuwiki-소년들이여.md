@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%86%8C%EB%85%84%EB%93%A4%EC%9D%B4%EC%97%AC"
 entity_refs: ["소년들이여"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 소년들이여
 method: playwright

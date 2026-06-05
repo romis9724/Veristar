@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/919-23"
 entity_refs: ["919-23"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 919-23
 method: playwright

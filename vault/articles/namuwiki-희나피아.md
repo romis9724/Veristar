@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%9D%AC%EB%82%98%ED%94%BC%EC%95%84"
 entity_refs: ["희나피아"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 희나피아
 method: playwright

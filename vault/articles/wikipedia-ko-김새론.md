@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B9%80%EC%83%88%EB%A1%A0"
 entity_refs: ["김새론"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: 김새론
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A1%9C%EB%B9%88%EC%9D%B4%20%ED%86%A0%EB%81%BC%EB%9E%80%20%EC%82%AC%EC%8B%A4%EC%9D%84%20%EC%95%8C%EA%B3%A0%20%EC%9E%88%EC%97%88%EB%82%98"
 entity_refs: ["로빈이-토끼란-사실을-알고-있었나"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 로빈이 토끼란 사실을 알고 있었나
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%B2%B4%EB%A6%AC%EB%B8%94%EB%A0%9B"
 entity_refs: ["체리블렛"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 체리블렛
 method: playwright

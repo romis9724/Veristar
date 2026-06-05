@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%94%EB%A0%8C%EB%94%94%EB%93%9C"
 entity_refs: ["블렌디드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 블렌디드
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BD%94%EC%9D%B8%EC%9E%AD%EC%8A%A8"
 entity_refs: ["코인잭슨"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 코인잭슨
 method: playwright

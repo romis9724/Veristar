@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9D%BD%ED%95%9C%EB%B0%B4%EB%93%9C"
 entity_refs: ["락한밴드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 락한밴드
 method: playwright

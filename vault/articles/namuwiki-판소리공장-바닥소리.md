@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8C%90%EC%86%8C%EB%A6%AC%EA%B3%B5%EC%9E%A5%20%EB%B0%94%EB%8B%A5%EC%86%8C%EB%A6%AC"
 entity_refs: ["판소리공장-바닥소리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 판소리공장 바닥소리
 method: playwright

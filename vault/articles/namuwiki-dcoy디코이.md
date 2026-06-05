@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/D.COY%28%EB%94%94%EC%BD%94%EC%9D%B4%29"
 entity_refs: ["dcoy디코이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: D.COY(디코이)
 method: playwright

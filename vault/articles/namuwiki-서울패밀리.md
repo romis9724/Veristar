@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%9C%EC%9A%B8%ED%8C%A8%EB%B0%80%EB%A6%AC"
 entity_refs: ["서울패밀리"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 서울패밀리
 method: playwright

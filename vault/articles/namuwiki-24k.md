@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/24K%2B"
 entity_refs: ["24k"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 24K+
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%9F%AC%EB%B2%84%EC%82%AC%EC%9D%B4%EC%A6%88"
 entity_refs: ["러버사이즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 러버사이즈
 method: playwright

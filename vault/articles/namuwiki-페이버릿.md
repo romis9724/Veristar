@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8E%98%EC%9D%B4%EB%B2%84%EB%A6%BF"
 entity_refs: ["페이버릿"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 페이버릿
 method: playwright

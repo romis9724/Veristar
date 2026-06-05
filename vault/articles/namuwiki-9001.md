@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/9001"
 entity_refs: ["9001"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 9001
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%20%EB%AA%A8%EB%85%B8%ED%86%A4%EC%A6%88"
 entity_refs: ["더-모노톤즈"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더 모노톤즈
 method: playwright

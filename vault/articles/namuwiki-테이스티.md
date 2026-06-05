@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%85%8C%EC%9D%B4%EC%8A%A4%ED%8B%B0"
 entity_refs: ["테이스티"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 테이스티
 method: playwright

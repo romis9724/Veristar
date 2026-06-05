@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/AOA%20%EB%B8%94%EB%9E%99"
 entity_refs: ["aoa-블랙"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: AOA 블랙
 method: playwright

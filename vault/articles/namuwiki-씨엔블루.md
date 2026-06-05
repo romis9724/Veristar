@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%94%A8%EC%97%94%EB%B8%94%EB%A3%A8"
 entity_refs: ["씨엔블루"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 씨엔블루
 method: playwright

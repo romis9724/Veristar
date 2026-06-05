@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A0%88%EB%93%9C%EC%95%A0%ED%94%8C"
 entity_refs: ["레드애플"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 레드애플
 method: playwright

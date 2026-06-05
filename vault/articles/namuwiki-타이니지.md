@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%83%80%EC%9D%B4%EB%8B%88%EC%A7%80"
 entity_refs: ["타이니지"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 타이니지
 method: playwright

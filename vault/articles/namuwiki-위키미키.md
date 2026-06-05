@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9C%84%ED%82%A4%EB%AF%B8%ED%82%A4"
 entity_refs: ["위키미키"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 위키미키
 method: playwright

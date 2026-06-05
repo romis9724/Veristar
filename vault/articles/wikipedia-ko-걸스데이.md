@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EA%B1%B8%EC%8A%A4%EB%8D%B0%EC%9D%B4"
 entity_refs: ["걸스데이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 걸스데이

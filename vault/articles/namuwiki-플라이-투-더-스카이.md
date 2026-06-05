@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%94%8C%EB%9D%BC%EC%9D%B4%20%ED%88%AC%20%EB%8D%94%20%EC%8A%A4%EC%B9%B4%EC%9D%B4"
 entity_refs: ["플라이-투-더-스카이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 플라이 투 더 스카이
 method: playwright

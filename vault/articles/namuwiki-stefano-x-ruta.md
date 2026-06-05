@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/STEFANO%20X%20RUTA"
 entity_refs: ["stefano-x-ruta"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: STEFANO X RUTA
 method: playwright

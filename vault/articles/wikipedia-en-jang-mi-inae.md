@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://en.wikipedia.org/wiki/Jang%20Mi-inae"
 entity_refs: ["장미인애"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-SA 4.0
+sensitive: true
 lang: en
 wiki_title: Jang Mi-inae
 ---

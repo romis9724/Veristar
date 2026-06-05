@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%B8%8C%EB%A0%88%EC%9D%B4%EB%B8%8C%EA%B1%B8%EC%8A%A4"
 entity_refs: ["브레이브걸스"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 브레이브걸스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%A9%9C%EB%A1%9C%EB%94%94%ED%95%91%ED%81%AC"
 entity_refs: ["멜로디핑크"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 멜로디핑크
 method: playwright

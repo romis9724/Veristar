@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B5%BF%EB%8D%B0%EC%9D%B4"
 entity_refs: ["굿데이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 굿데이
 method: playwright

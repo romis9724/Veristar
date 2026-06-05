@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%94%94%EC%9C%A0%EB%8B%9B"
 entity_refs: ["디유닛"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 디유닛
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EA%B7%B8%EB%A3%A8%EB%B8%94%EB%9D%BC%EC%8D%B8"
 entity_refs: ["그루블라썸"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 그루블라썸
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%A7%80%EB%8B%88%EC%96%B4%EC%8A%A4"
 entity_refs: ["지니어스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 지니어스
 method: playwright

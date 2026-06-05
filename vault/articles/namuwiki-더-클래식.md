@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%8D%94%20%ED%81%B4%EB%9E%98%EC%8B%9D"
 entity_refs: ["더-클래식"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 더 클래식
 method: playwright

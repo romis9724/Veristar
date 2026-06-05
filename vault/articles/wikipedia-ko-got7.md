@@ -5,8 +5,9 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/GOT7"
 entity_refs: ["got7"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-SA 4.0
+sensitive: true
 lang: ko
 wiki_title: GOT7
 ---

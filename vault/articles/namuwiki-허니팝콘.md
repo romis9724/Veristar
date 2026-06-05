@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%97%88%EB%8B%88%ED%8C%9D%EC%BD%98"
 entity_refs: ["허니팝콘"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 허니팝콘
 method: playwright

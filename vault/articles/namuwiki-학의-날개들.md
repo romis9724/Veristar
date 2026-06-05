@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%99%EC%9D%98%20%EB%82%A0%EA%B0%9C%EB%93%A4"
 entity_refs: ["학의-날개들"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 학의 날개들
 method: playwright

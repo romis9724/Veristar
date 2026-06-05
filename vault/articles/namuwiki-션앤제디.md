@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%85%98%EC%95%A4%EC%A0%9C%EB%94%94"
 entity_refs: ["션앤제디"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 션앤제디
 method: playwright

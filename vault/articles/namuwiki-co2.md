@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/CO2"
 entity_refs: ["co2"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: high
 license: CC BY-NC-SA 2.0 KR
 namu_title: CO2
 method: playwright

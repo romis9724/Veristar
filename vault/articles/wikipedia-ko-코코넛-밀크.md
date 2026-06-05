@@ -5,7 +5,7 @@ source_type: wikipedia
 source_url: "https://ko.wikipedia.org/wiki/%EC%BD%94%EC%BD%94%EB%84%9B%20%EB%B0%80%ED%81%AC"
 entity_refs: ["밀크"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: high
 license: CC BY-SA 4.0
 lang: ko
 wiki_title: 코코넛 밀크

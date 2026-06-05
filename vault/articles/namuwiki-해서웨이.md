@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%95%B4%EC%84%9C%EC%9B%A8%EC%9D%B4"
 entity_refs: ["해서웨이"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 해서웨이
 method: playwright

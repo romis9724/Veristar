@@ -5,8 +5,9 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/DJ%20DOC"
 entity_refs: ["dj-doc"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
+sensitive: true
 namu_title: DJ DOC
 method: playwright
 ---

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9D%BC%EA%B8%89%EB%B9%84%EB%B0%80"
 entity_refs: ["일급비밀"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 일급비밀
 method: playwright

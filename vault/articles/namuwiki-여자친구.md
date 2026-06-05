@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%97%AC%EC%9E%90%EC%B9%9C%EA%B5%AC"
 entity_refs: ["여자친구"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 여자친구
 method: playwright

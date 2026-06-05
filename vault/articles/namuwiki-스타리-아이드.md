@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8A%A4%ED%83%80%EB%A6%AC%20%EC%95%84%EC%9D%B4%EB%93%9C"
 entity_refs: ["스타리-아이드"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 스타리 아이드
 method: playwright

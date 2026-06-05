@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AA%A8%EB%AA%A8%EB%9E%9C%EB%93%9C"
 entity_refs: ["모모랜드"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 모모랜드
 method: playwright

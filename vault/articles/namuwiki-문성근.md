@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EB%AC%B8%EC%84%B1%EA%B7%BC"
 entity_refs: ["문성근"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 문성근
 method: playwright
@@ -587,5 +587,3 @@ MBC
 1991년
 	
 베스트극장 - 문밖에서
-	
-	

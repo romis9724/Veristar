@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/BabyMonster"
 entity_refs: ["babymonster"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: BabyMonster
 method: playwright

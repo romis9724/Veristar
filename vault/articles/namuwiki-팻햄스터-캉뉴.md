@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%ED%8C%BB%ED%96%84%EC%8A%A4%ED%84%B0%20%26%20%EC%BA%89%EB%89%B4"
 entity_refs: ["팻햄스터--캉뉴"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 팻햄스터 & 캉뉴
 method: playwright

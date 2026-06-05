@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%95%84%EC%8A%A4%ED%8A%B8%EB%A1%9C"
 entity_refs: ["아스트로"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 아스트로
 method: playwright

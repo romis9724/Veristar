@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%9C%A0%EC%97%94%EC%A0%A4%20%EB%B3%B4%EC%9D%B4%EC%8A%A4"
 entity_refs: ["유엔젤-보이스"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 유엔젤 보이스
 method: playwright

@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%BD%94%EB%A6%AC%EC%95%84%EB%82%98"
 entity_refs: ["코리아나"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 코리아나
 method: playwright

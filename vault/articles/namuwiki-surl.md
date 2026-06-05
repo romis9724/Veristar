@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/SURL"
 entity_refs: ["surl"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: SURL
 method: playwright
@@ -2152,4 +2152,4 @@ Destiny
 대상
 
 
-EBS 올해의 헬로루키 
+EBS 올해의 헬로루키

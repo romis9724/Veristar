@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%8D%A8%EB%93%9C%EC%95%84%EC%9D%B4"
 entity_refs: ["써드아이"]
 retrieved: 2026-06-04
-confidence: unverified
+confidence: medium
 license: CC BY-NC-SA 2.0 KR
 namu_title: 써드아이
 method: playwright

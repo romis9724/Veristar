@@ -5,7 +5,7 @@ source_type: namuwiki
 source_url: "https://namu.wiki/w/%EC%84%B8%EC%83%81%EB%B0%96%EC%9C%BC%EB%A1%9C"
 entity_refs: ["세상밖으로"]
 retrieved: 2026-06-05
-confidence: unverified
+confidence: low
 license: CC BY-NC-SA 2.0 KR
 namu_title: 세상밖으로
 method: playwright
