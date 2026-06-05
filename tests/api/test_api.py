@@ -152,7 +152,7 @@ def test_ui_vault_page_renders(client: TestClient) -> None:
     r = client.get("/ui/vault")
     assert r.status_code == 200
     assert "vault" in r.text.lower()
-    assert "file-tree" in r.text
+    assert "vault-cards" in r.text
 
 
 def test_ui_qa_page_renders_multiturn(client: TestClient) -> None:

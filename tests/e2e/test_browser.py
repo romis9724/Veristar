@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import re
 import urllib.parse
 
 import pytest
@@ -262,8 +263,8 @@ class TestQAPage:
     def test_qa_page_renders(self, page: Page) -> None:
         q = urllib.parse.quote("BTS는 언제 데뷔했나요")
         _goto(page, f"/ui/qa?q={q}", timeout=60_000)
-        h1 = page.locator("h1")
-        expect(h1).to_contain_text("Q&A")
+        # UI 개편: h1은 현재 세션 타이틀("새 대화")로 변경됨 — 페이지 <title>로 검증
+        expect(page).to_have_title(re.compile(r"Q&A"))
         _save_screenshot(page, "08_qa_page")
 
     def test_qa_question_echoed(self, page: Page) -> None:
@@ -466,7 +467,8 @@ class TestHTMXTypeahead:
         search_input = page.locator("#q-input")
         search_input.fill("BTS")
         search_input.press("Enter")
-        page.wait_for_selector("#search-results .vault-card, #search-results .result-item", timeout=8_000)
+        sel = "#search-results .vault-card, #search-results .result-item"
+        page.wait_for_selector(sel, timeout=8_000)
         results = page.locator("#search-results .vault-card, #search-results .result-item")
         expect(results.first).to_be_visible()
         _save_screenshot(page, "15_htmx_typeahead")
